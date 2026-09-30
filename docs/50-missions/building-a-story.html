@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building a story &middot; Expeditions Map Making</title>
+<meta name="description" content="How to make the map change as the player progresses, which is what progression actually feels like from inside the game."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html" aria-current="page">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Missions</p>
+        <h1>Building a story</h1>
+<p class="lede">How to make the map change as the player progresses, which is what progression actually feels like from inside the game.</p>      </div>
+      <article class="prose"><p>You have stages, and stages have rewards. Put those two together and you have
+progression, because <strong>a reward can change the map</strong>.</p>
+<p>That is the whole technique, and it is better than it sounds.</p>
+<h2 id="the-obvious-approach-and-why-it-is-not-available">The obvious approach, and why it is not available<a class="headerlink" href="#the-obvious-approach-and-why-it-is-not-available" title="Permanent link">#</a></h2>
+<p>The natural way to build a campaign is to lock mission B until mission A is done.
+There is a field for exactly that, <code>blockerObjectives</code>, which takes a list of
+objective names.</p>
+<p>The official guide says the field is &ldquo;currently absent&rdquo;.</p>
+<p>Here is the more precise situation. The field exists on every objective, and the
+editor&rsquo;s own type schema marks it <strong>hidden from mod tools</strong> rather than absent.
+<span class="prov prov-schema">schema only</span> It sits in every custom map&rsquo;s file
+as an empty list. So writing it in by hand may well work.</p>
+<div class="admonition warning">
+<p class="admonition-title">Worth an experiment, not a foundation</p>
+<p>Nobody has confirmed that <code>blockerObjectives</code> functions in a custom map. If you
+test it, you will have learned something genuinely new. Until then, do not build
+a multi-mission campaign that depends on it.</p>
+</div>
+<h2 id="what-actually-works-rewards-that-reshape-the-world">What actually works: rewards that reshape the world<a class="headerlink" href="#what-actually-works-rewards-that-reshape-the-world" title="Permanent link">#</a></h2>
+<p>Three reward types change zones, and any stage can carry them:</p>
+<table>
+<thead>
+<tr>
+<th>Reward</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ObjectiveRewardOpenZoneProperties</code></td>
+<td>a zone the player could not use becomes usable, with properties you supply</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardUpdateZoneProperties</code></td>
+<td>an existing zone gains properties</td>
+</tr>
+<tr>
+<td><code>zoneSettingsToRemove</code></td>
+<td>an existing zone loses properties</td>
+</tr>
+</tbody>
+</table>
+<p>So a mission can open up territory, upgrade a place the player already knows, or
+clear an obstacle, all as the consequence of finishing a step.</p>
+<h2 id="a-worked-example">A worked example<a class="headerlink" href="#a-worked-example" title="Permanent link">#</a></h2>
+<p>Here is a three-stage expedition where every stage visibly changes the map.</p>
+<div class="hl"><pre><span></span><code>stage[0]   Reach the ridge
+           reward → OpenZoneProperties
+                    &quot;Rattlesnake Outpost&quot; becomes a deploy zone
+
+stage[1]   Deliver fuel to the outpost
+           reward → UpdateZoneProperties
+                    the outpost gains a supply shop
+
+stage[2]   Clear the cave blockage
+           reward → UpdateZoneProperties + zoneSettingsToRemove
+                    the blockage stops being an obstacle
+</code></pre></div>
+
+<p>Play that through and it does not feel like a checklist. It feels like establishing
+a foothold: you find the place, you supply it, it becomes useful, and then you open
+the route beyond it. The player&rsquo;s map genuinely changes shape as they work.</p>
+<p>None of that needed a script.</p>
+<h2 id="three-things-that-will-trip-you-up">Three things that will trip you up<a class="headerlink" href="#three-things-that-will-trip-you-up" title="Permanent link">#</a></h2>
+<p><strong>The zone has to exist already.</strong> <code>OpenZoneProperties</code> <em>reveals</em> a zone. It does not
+create one. You still place the zone object in the map editor first, exactly as you
+would for any other zone, and the reward attaches properties to it later. If the
+locator is not there, nothing appears.</p>
+<p><strong>Zone names in reward blocks are written differently.</strong> Everywhere else in the
+objective file, a zone is referred to with the map token, then <code>||</code>, then the name.
+Inside these reward blocks it is the <strong>short name only</strong>, with the map supplied
+separately in a <code>mapId</code> field. Mixing the two forms up is a common and silent
+mistake.</p>
+<p><strong>Removing properties is not the same as deleting the zone.</strong> The zone stays. It just
+stops doing the thing you removed. That is usually what you want, because the player
+has seen that place and it should not vanish.</p>
+<h2 id="progress-carries-between-expeditions">Progress carries between expeditions<a class="headerlink" href="#progress-carries-between-expeditions" title="Permanent link">#</a></h2>
+<p>Two expeditions on the same map are not independent, which you can use
+deliberately. <span class="prov prov-doc">documented</span></p>
+<p><strong>Persists between expeditions on one map:</strong></p>
+<ul>
+<li>ground the player has explored</li>
+<li>FOB modules they have built</li>
+<li>zones that have been opened</li>
+</ul>
+<p><strong>Resets:</strong></p>
+<ul>
+<li>air drop locations and contents are randomised again</li>
+<li>FOB module stock, fuel and supplies refresh</li>
+</ul>
+<p><strong>The one exception:</strong> items the player put in the Warehouse, the <code>EXTRA_STORAGE</code>
+module, are still there next time.</p>
+<p>So you can write a second expedition that assumes the first one&rsquo;s base exists. A
+player who does them out of order gets a slightly different experience rather than a
+broken one, since expeditions can be played in any order when nothing locks them.</p>
+<h2 id="telling-the-story-in-words">Telling the story in words<a class="headerlink" href="#telling-the-story-in-words" title="Permanent link">#</a></h2>
+<p>The mechanics above carry the shape of a story. The text carries the rest, and there
+are more places to put it than people use:</p>
+<ul>
+<li><code>uiDesc</code> and <code>description</code> on the objective, which is the briefing</li>
+<li><code>uiDesc</code> on every single assignment, which is the current instruction</li>
+<li>a <code>notification</code> on each individual target, which fires when the player gets there</li>
+</ul>
+<p>That last one is the most underused thing in the system. A short line of text when
+the player arrives somewhere costs nothing and does more for atmosphere than another
+objective. It is also the only notification that reliably fires on
+<code>objectConstruction</code> and <code>visitAllZones</code>, so put your writing there rather than at
+the assignment level.</p>
+<p><code>rewardDescription</code> is worth filling in too, since an unexplained reward panel reads
+as an oversight.</p>
+<h2 id="a-design-note-on-hiding-things">A design note on hiding things<a class="headerlink" href="#a-design-note-on-hiding-things" title="Permanent link">#</a></h2>
+<p>Every assignment target can carry a <code>radiusSett</code>, which swaps the exact marker for a
+search circle. It is one setting and it changes the whole character of a job.</p>
+<p>A marker says <em>go here</em>. A circle says <em>it is somewhere in there</em>. For a map about
+expedition and exploration, the circle is almost always the better choice, and a mission
+built entirely from precise waypoints will feel like a delivery route no matter how
+good the terrain is.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../50-missions/rewards.html"><span>Previous</span>Rewards</a><a class="seq-next" href="../60-custom/specialists.html"><span>Next</span>Custom specialists</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-obvious-approach-and-why-it-is-not-available">The obvious approach, and why it is not available</a></li>
+<li><a href="#what-actually-works-rewards-that-reshape-the-world">What actually works: rewards that reshape the world</a></li>
+<li><a href="#a-worked-example">A worked example</a></li>
+<li><a href="#three-things-that-will-trip-you-up">Three things that will trip you up</a></li>
+<li><a href="#progress-carries-between-expeditions">Progress carries between expeditions</a></li>
+<li><a href="#telling-the-story-in-words">Telling the story in words</a></li>
+<li><a href="#a-design-note-on-hiding-things">A design note on hiding things</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

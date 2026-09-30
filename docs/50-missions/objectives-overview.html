@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Objectives in one page &middot; Expeditions Map Making</title>
+<meta name="description" content="The three kinds of objective, how they differ, and the single idea that the rest of the mission system is built on."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html" aria-current="page">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Missions</p>
+        <h1>Objectives in one page</h1>
+<p class="lede">The three kinds of objective, how they differ, and the single idea that the rest of the mission system is built on.</p>      </div>
+      <article class="prose"><p>An <strong>objective</strong> is a job you give the player. There are three kinds, they all
+live in the same file, and they share nearly every field.</p>
+<h2 id="the-three-kinds">The three kinds<a class="headerlink" href="#the-three-kinds" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>The player starts it by</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Expedition</strong></td>
+<td>picking it on the Expedition Selection screen before deploying</td>
+<td>the headline job. The reason to come to this map</td>
+</tr>
+<tr>
+<td><strong>Contract</strong></td>
+<td>accepting it in the world, during an expedition</td>
+<td>optional side work</td>
+</tr>
+<tr>
+<td><strong>Task</strong></td>
+<td>driving to a specific zone that offers it</td>
+<td>small local jobs, found by exploring</td>
+</tr>
+</tbody>
+</table>
+<p>An expedition and a contract are <strong>the same record</strong> with one number changed.
+<code>contractType</code> is <code>1</code> for an expedition and <code>0</code> for a contract, and everything else
+about them is identical. If a job turns out to be too small to headline a map, you
+demote it by editing one digit.</p>
+<p>A task is slightly different: it lives in its own list and it needs a <strong>task giver
+zone</strong>, a place the player has to reach before the job is offered at all. Without
+one, the task exists but can never be started.</p>
+<p>There is no limit on how many of any kind a map can have.</p>
+<div class="admonition warning">
+<p class="admonition-title">Names must be unique across all three</p>
+<p>A task and a contract with the same name cause undefined behaviour. Not an
+error message. Undefined behaviour. This is easy to do by accident when you
+duplicate something, and hard to spot afterwards.</p>
+</div>
+<h2 id="the-one-required-objective">The one required objective<a class="headerlink" href="#the-one-required-objective" title="Permanent link">#</a></h2>
+<p>A map is only loadable if it has at least one <strong>expedition</strong>, plus at least one
+deploy zone. <span class="prov prov-doc">documented</span></p>
+<p>And that expedition is allowed to be a Free Roam one, which is the cheapest thing
+in the whole system: a single stage containing a single field. So the minimum map
+is &ldquo;drive around&rdquo;, and <a href="../00-start/map-that-loads.html">that is what you should build
+first</a>.</p>
+<p>Offering Free Roam is also just good practice even on a finished map. Some players
+want to explore your terrain without a job attached, and it costs you one record.</p>
+<h2 id="the-idea-everything-else-rests-on-stages">The idea everything else rests on: stages<a class="headerlink" href="#the-idea-everything-else-rests-on-stages" title="Permanent link">#</a></h2>
+<p>Every objective, of all three kinds, is a list of <strong>stages</strong>.</p>
+<ul>
+<li><strong>Stages happen in order.</strong> Stage 1 does not start until stage 0 is done.</li>
+<li>Inside a single stage you can put several assignments. Those happen in <strong>any
+  order</strong>, and all of them must finish before the stage closes.</li>
+</ul>
+<p>That is the whole of mission structure. There is no scripting language, no trigger
+system and no conditions. You sequence a mission purely by choosing which stage
+each assignment goes in.</p>
+<p>Two jobs in one stage means <em>&ldquo;do these in any order&rdquo;</em>. The same two jobs in
+consecutive stages means <em>&ldquo;do this one, then that one&rdquo;</em>.</p>
+<p><a href="stages.html">Stages and substages</a> covers this properly, and it is the page to
+read next.</p>
+<h2 id="how-many-steps-can-one-expedition-have">How many steps can one expedition have?<a class="headerlink" href="#how-many-steps-can-one-expedition-have" title="Permanent link">#</a></h2>
+<p><strong>As many as you like.</strong> There is no limit in the file format.
+<span class="prov prov-schema">schema only</span> The real ceiling is the player&rsquo;s
+patience.</p>
+<p>You can also make a mission wider instead of longer. Most assignment types accept
+a <strong>list</strong> of targets, so a single step can mean &ldquo;visit all six of these, in any
+order&rdquo; without adding any stages at all.</p>
+<h2 id="where-it-is-all-stored">Where it is all stored<a class="headerlink" href="#where-it-is-all-stored" title="Permanent link">#</a></h2>
+<p>One file, <code>objective_settings.json</code>, with four sections:</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>contractsSettings</code></td>
+<td>expeditions <strong>and</strong> contracts, told apart by <code>contractType</code></td>
+</tr>
+<tr>
+<td><code>tasksSettings</code></td>
+<td>tasks</td>
+</tr>
+<tr>
+<td><code>employer</code></td>
+<td>custom employers, if you make one</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>the map</td>
+</tr>
+</tbody>
+</table>
+<p>You edit it through the zone settings tool, or by hand, since it is plain JSON.</p>
+<h2 id="what-to-read-next">What to read next<a class="headerlink" href="#what-to-read-next" title="Permanent link">#</a></h2>
+<ul class="cards">
+<li><a href="stages.html"><strong>Stages and substages</strong><span>How to order a mission. The core mechanic.</span></a></li>
+<li><a href="assignment-types.html"><strong>The assignment types</strong><span>Every kind of thing you can ask a player to do.</span></a></li>
+<li><a href="rewards.html"><strong>Rewards</strong><span>Money, trucks, specialists, bases, and your own custom content.</span></a></li>
+<li><a href="building-a-story.html"><strong>Building a story</strong><span>Making the world change as the player progresses.</span></a></li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../40-zones/discoverability.html"><span>Previous</span>Hiding and revealing zones</a><a class="seq-next" href="../50-missions/stages.html"><span>Next</span>Stages and substages</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-three-kinds">The three kinds</a></li>
+<li><a href="#the-one-required-objective">The one required objective</a></li>
+<li><a href="#the-idea-everything-else-rests-on-stages">The idea everything else rests on: stages</a></li>
+<li><a href="#how-many-steps-can-one-expedition-have">How many steps can one expedition have?</a></li>
+<li><a href="#where-it-is-all-stored">Where it is all stored</a></li>
+<li><a href="#what-to-read-next">What to read next</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

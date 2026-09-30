@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where everything lives &middot; Expeditions Map Making</title>
+<meta name="description" content="Your map exists in three places at once and they drift apart. This is the single most common source of wasted days, so it comes before anything else."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html" aria-current="page">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Start here</p>
+        <h1>Where everything lives</h1>
+<p class="lede">Your map exists in three places at once and they drift apart. This is the single most common source of wasted days, so it comes before anything else.</p>      </div>
+      <article class="prose"><p>Your map is not one thing in one folder. It exists in <strong>three</strong> places, they hold
+different data, and they fall out of step with each other constantly.</p>
+<p>Almost every &ldquo;I fixed it and nothing changed&rdquo; story ends here. So does almost
+every &ldquo;it worked yesterday&rdquo;. Learn this page and you will skip a category of
+problem entirely.</p>
+<h2 id="the-three-copies">The three copies<a class="headerlink" href="#the-three-copies" title="Permanent link">#</a></h2>
+<p>All three live under <code>Documents\My Games\Expeditions\Media\</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>What it is</th>
+<th>Who writes it</th>
+<th>Who reads it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>prebuild\&lt;level&gt;\</code></td>
+<td><strong>The source.</strong> Your real work lives here</td>
+<td>The editor, when you save</td>
+<td>The editor, when you open the map</td>
+</tr>
+<tr>
+<td><code>levels\&lt;Level&gt;\</code></td>
+<td><strong>The staging copy.</strong> What the zone settings tool shows you, and what the packer reads</td>
+<td>The editor and the zone tool</td>
+<td>The packer</td>
+</tr>
+<tr>
+<td><code>Mods\&lt;Level&gt;.pak</code></td>
+<td><strong>The product.</strong> A zip archive</td>
+<td>The packer</td>
+<td><strong>The game</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Read that last column again. <strong>The game only ever reads the <code>.pak</code>.</strong> Nothing you
+do in <code>prebuild</code> or <code>levels</code> changes what you see when you press Deploy until you
+pack again.</p>
+<div class="admonition warning">
+<p class="admonition-title">The mistake everyone makes once</p>
+<p>You find a bad value, you fix it in the <code>.pak</code> because that is the file the
+game reads, and it works. Then you pack the map again and your fix is gone,
+because the pack was built from the source, which you never touched.</p>
+<p><strong>Fix the source. Then pack.</strong> Editing the pak is for emergencies, not for
+work you want to keep.</p>
+</div>
+<h2 id="the-flow-in-one-direction">The flow, in one direction<a class="headerlink" href="#the-flow-in-one-direction" title="Permanent link">#</a></h2>
+<div class="hl"><pre><span></span><code>     you, in the editor
+             │  save
+             ▼
+   prebuild\&lt;level&gt;\          ← the source. edit here.
+             │  the editor copies forward
+             ▼
+   levels\&lt;Level&gt;\            ← staging. the zone tool reads this.
+             │  Pack (about 25 minutes)
+             ▼
+   Mods\&lt;Level&gt;.pak           ← the game reads only this.
+</code></pre></div>
+
+<p>It flows one way. There is no &ldquo;sync back&rdquo;.</p>
+<h2 id="closing-the-editor-is-a-write-not-a-stop">Closing the editor is a write, not a stop<a class="headerlink" href="#closing-the-editor-is-a-write-not-a-stop" title="Permanent link">#</a></h2>
+<p>This one costs people a whole evening.</p>
+<p>While the editor has your map open, it holds the entire map in memory. When you
+close it, <strong>it writes that memory back over your files.</strong> So if you edit
+<code>prebuild</code> by hand while the editor is open, closing the editor silently throws
+your edit away.</p>
+<p>The safe order is always:</p>
+<div class="step"><div class="n">1</div><div>
+
+In the editor: **save**, then **close it**.
+
+</div></div>
+<div class="step"><div class="n">2</div><div>
+
+Make your file edits now, with the editor shut.
+
+</div></div>
+<div class="step"><div class="n">3</div><div>
+
+Open the editor again. It reads your edits.
+
+</div></div>
+<div class="step"><div class="n">4</div><div>
+
+Pack.
+
+</div></div>
+
+<h2 id="packing-rewrites-some-of-your-work">Packing rewrites some of your work<a class="headerlink" href="#packing-rewrites-some-of-your-work" title="Permanent link">#</a></h2>
+<p>The pack step is not a simple copy. It rebuilds parts of your map from what the
+editor has in memory, and one of the things it rebuilds is the list of zones.</p>
+<p><strong>Zone properties can be discarded during a pack.</strong> The zone names survive,
+because they come from the objects placed in your scene, but the settings you
+attached to those names can be regenerated as an empty list. If you pack and your
+deploy zone stops working, this is the first thing to check, not the last.</p>
+<p>The habit that protects you: after every pack, open the packed file and confirm
+your zones still have properties. It takes seconds and it catches a failure that
+otherwise costs you a whole test cycle.</p>
+<h2 id="zone-names-spaces-in-the-source-underscores-in-the-pack">Zone names: spaces in the source, underscores in the pack<a class="headerlink" href="#zone-names-spaces-in-the-source-underscores-in-the-pack" title="Permanent link">#</a></h2>
+<p>A genuinely nasty one, and it is worth understanding now rather than discovering
+it three weeks in.</p>
+<ul>
+<li>The <strong>editor</strong> matches a zone&rsquo;s settings to the object in your scene by name,
+  and scene names contain <strong>spaces</strong>. Rename them with underscores in the source
+  and the editor stops finding them, so your settings silently detach.</li>
+<li>The <strong>game</strong> splits one of its internal zone references on <strong>whitespace</strong>. A
+  zone whose name contains a space can never be looted and can never receive
+  delivered items.</li>
+</ul>
+<p>No single spelling satisfies both. So:</p>
+<div class="admonition tip">
+<p class="admonition-title">The rule</p>
+<p><strong>Spaces in the source. Underscores in the pack.</strong></p>
+<p>Keep your source names as the editor made them, with spaces. After packing,
+convert the names of any zone that holds or receives items to underscores.
+Every time you pack.</p>
+</div>
+<p>This affects storage zones, airdrops and construction zones. It does not affect a
+zone that is only a deploy point, because nothing passes through it.</p>
+<h2 id="cloning-a-map">Cloning a map<a class="headerlink" href="#cloning-a-map" title="Permanent link">#</a></h2>
+<p>Copying a finished map to start a new one is a good habit with one trap in it.</p>
+<p>A map&rsquo;s identity is a token stored in <code>user_name_of_map.txt</code>, and a copy still
+holds the <strong>original&rsquo;s</strong> name. Two maps then claim to be the same map, and the
+game loads whichever it finds first.</p>
+<p>The symptom is bewildering and worth memorising, because you will never guess the
+cause from it: <em>&ldquo;this is an older version of the map I just packed.&rdquo;</em></p>
+<p>If you clone a map, change the identity in every file that carries it, or do not
+clone at all.</p>
+<h2 id="what-to-take-away">What to take away<a class="headerlink" href="#what-to-take-away" title="Permanent link">#</a></h2>
+<ul>
+<li>edit <code>prebuild</code>, never the pak</li>
+<li>close the editor <strong>before</strong> hand-editing, because closing it overwrites</li>
+<li>the game only sees the pak, so nothing counts until you pack</li>
+<li>check your zone properties survived the pack</li>
+<li>convert item-carrying zone names to underscores after packing</li>
+<li>a cloned map needs its own identity</li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../00-start/what-you-need.html"><span>Previous</span>What you need</a><a class="seq-next" href="../00-start/map-that-loads.html"><span>Next</span>Make a map that loads</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-three-copies">The three copies</a></li>
+<li><a href="#the-flow-in-one-direction">The flow, in one direction</a></li>
+<li><a href="#closing-the-editor-is-a-write-not-a-stop">Closing the editor is a write, not a stop</a></li>
+<li><a href="#packing-rewrites-some-of-your-work">Packing rewrites some of your work</a></li>
+<li><a href="#zone-names-spaces-in-the-source-underscores-in-the-pack">Zone names: spaces in the source, underscores in the pack</a></li>
+<li><a href="#cloning-a-map">Cloning a map</a></li>
+<li><a href="#what-to-take-away">What to take away</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

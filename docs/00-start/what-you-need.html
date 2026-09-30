@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What you need &middot; Expeditions Map Making</title>
+<meta name="description" content="The tools, the folders, and an honest note on how long each part of the job actually takes."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html" aria-current="page">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Start here</p>
+        <h1>What you need</h1>
+<p class="lede">The tools, the folders, and an honest note on how long each part of the job actually takes.</p>      </div>
+      <article class="prose"><h2 id="the-tools">The tools<a class="headerlink" href="#the-tools" title="Permanent link">#</a></h2>
+<p>Everything you need ships with the game. There is nothing to buy and nothing to
+download.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Map editor</strong></td>
+<td><code>Sources\BinEditor\ExpeditionsEditor.exe</code></td>
+<td>terrain, objects, roads, water, and placing the zones</td>
+</tr>
+<tr>
+<td><strong>Zone settings tool</strong></td>
+<td><code>Sources\BinEditor\ZoneSettingsEditor.exe</code></td>
+<td>the properties <strong>on</strong> those zones, plus all objectives. Opens from the editor&rsquo;s toolbar</td>
+</tr>
+<tr>
+<td><strong>Resource converter</strong></td>
+<td><code>Sources\Bin\ResourceConverter.exe</code></td>
+<td>converts and compiles assets</td>
+</tr>
+<tr>
+<td><strong>Type schema</strong></td>
+<td><code>Sources\BinEditor\meta_desc_ssl.ps</code></td>
+<td>not a tool, a text file. Every type the editor understands, and the final word when a guide and the game disagree</td>
+</tr>
+</tbody>
+</table>
+<p>Two of those deserve a note.</p>
+<p><strong>The zone settings tool is a separate program.</strong> This confuses people, because
+&ldquo;zones&rdquo; feel like a map thing. You place the zone&rsquo;s <em>shape</em> in the map editor, and
+you set what that zone <em>does</em> in the zone tool. Two programs, one concept.</p>
+<p><strong>The schema is worth knowing about.</strong> It is a plain text file listing every field
+the editor understands. When the official guide says a feature does not exist, the
+schema sometimes disagrees, and the schema is what the software actually runs on.</p>
+<h2 id="your-working-folders">Your working folders<a class="headerlink" href="#your-working-folders" title="Permanent link">#</a></h2>
+<p>Under <code>Documents\My Games\Expeditions\Media\</code>:</p>
+<div class="hl"><pre><span></span><code>Media\
+  prebuild\&lt;level&gt;\      your source. this is where you work.
+  levels\&lt;Level&gt;\        staging. the zone tool reads from here.
+  Mods\&lt;Level&gt;.pak       the packed map. the game reads only this.
+</code></pre></div>
+
+<p>The relationship between those three is the most important thing on this site, so
+it gets <a href="where-things-live.html">its own page</a>.</p>
+<h2 id="how-long-things-take">How long things take<a class="headerlink" href="#how-long-things-take" title="Permanent link">#</a></h2>
+<p>Worth knowing up front, because two of these are much slower than people expect
+and it changes how you plan a session.</p>
+<table>
+<thead>
+<tr>
+<th>Job</th>
+<th>Roughly</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open a map in the editor</td>
+<td>seconds to a minute, depending on size</td>
+</tr>
+<tr>
+<td>Sculpt terrain, place objects</td>
+<td>as long as you like, it is interactive</td>
+</tr>
+<tr>
+<td><strong>Pack the map</strong></td>
+<td><strong>around 25 minutes</strong></td>
+</tr>
+<tr>
+<td>Load the packed map in game</td>
+<td>a minute</td>
+</tr>
+</tbody>
+</table>
+<p>That 25 minutes is the number that shapes everything. It means <strong>a
+trial-and-error loop through the game costs you half an hour per attempt.</strong> So the
+skill that matters most is not sculpting, it is catching mistakes before you pack.</p>
+<p>A long pack is not a hang. It builds output for six platforms in sequence. Let it
+finish.</p>
+<h2 id="what-you-can-and-cannot-do-outside-the-editor">What you can and cannot do outside the editor<a class="headerlink" href="#what-you-can-and-cannot-do-outside-the-editor" title="Permanent link">#</a></h2>
+<p>Some of a map is stored as plain text you can read and edit. Some is not.</p>
+<p><strong>Editable by hand:</strong> zones and their properties, objectives, contracts, tasks,
+rewards, level metadata, starting money and prices. These are JSON files, and
+scripting them is often faster and safer than clicking.</p>
+<p><strong>Editor only:</strong> terrain shape, the <em>position</em> of anything, roads and rivers,
+object placement, textures and vegetation. These live in compiled scene data. You
+can automate what goes <em>into</em> the editor, but the placement itself happens there.</p>
+<p>This split is why a zone has two halves. The shape is editor work. The behaviour
+is a text file.</p>
+<h2 id="a-note-on-backups">A note on backups<a class="headerlink" href="#a-note-on-backups" title="Permanent link">#</a></h2>
+<p>Keep one, and keep it current.</p>
+<p>Map data is large. A single packed map can run to hundreds of megabytes, and the
+staging folder holds uncompressed texture masters that are larger still. It is
+very easy to write a backup on every save, forget about it, and discover later
+that you have filled a drive with near-identical copies of the same map.</p>
+<p>One backup. The latest. Overwrite it. And never put a backup inside a folder the
+editor scans, because it will try to load it as map content.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../index.html"><span>Previous</span>Expeditions map making, for people who have never done it</a><a class="seq-next" href="../00-start/where-things-live.html"><span>Next</span>Where everything lives</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-tools">The tools</a></li>
+<li><a href="#your-working-folders">Your working folders</a></li>
+<li><a href="#how-long-things-take">How long things take</a></li>
+<li><a href="#what-you-can-and-cannot-do-outside-the-editor">What you can and cannot do outside the editor</a></li>
+<li><a href="#a-note-on-backups">A note on backups</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make a map that loads &middot; Expeditions Map Making</title>
+<meta name="description" content="The shortest path from nothing to driving around your own terrain. Do this before you make anything look good."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html" aria-current="page">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Start here</p>
+        <h1>Make a map that loads</h1>
+<p class="lede">The shortest path from nothing to driving around your own terrain. Do this before you make anything look good.</p>      </div>
+      <article class="prose"><p>A playable Expeditions map needs exactly <strong>two</strong> things:</p>
+<ol>
+<li>one <strong>expedition</strong></li>
+<li>one <strong>deploy zone</strong></li>
+</ol>
+<p>That is the entire requirement. <span class="prov prov-doc">documented</span> Not
+a mission, not an objective, not a reward. And the expedition is allowed to be a
+Free Roam one, which is the simplest possible kind.</p>
+<p>So the smallest map that works is <em>&ldquo;here is some ground, drive on it&rdquo;</em>. Build that
+first. It proves the whole chain works, from editor to pack to deploy, before you
+invest real time in anything.</p>
+<h2 id="why-this-order-matters">Why this order matters<a class="headerlink" href="#why-this-order-matters" title="Permanent link">#</a></h2>
+<p>Packing takes about 25 minutes. If you sculpt for a week and only then try to
+load the map, every problem you find costs half an hour to test a fix for, and you
+will have several problems, and you will not know which of a week&rsquo;s changes caused
+any of them.</p>
+<p>Get to &ldquo;I can drive on it&rdquo; on day one. Then every later problem has a short list
+of suspects: whatever you did since it last worked.</p>
+<h2 id="the-five-steps">The five steps<a class="headerlink" href="#the-five-steps" title="Permanent link">#</a></h2>
+<div class="step"><div class="n">1</div><div>
+
+### Make the map and give it a shape
+
+Create a new map in the editor and raise some terrain. Do not make it good. A
+lumpy field is fine. You want geometry that exists, not geometry you like, because
+you are testing the pipeline and you will probably throw this away.
+
+</div></div>
+
+<div class="step"><div class="n">2</div><div>
+
+### Place a deploy zone
+
+In the map editor, place a zone object where you want trucks to arrive, and give
+it an **Id**. Pick a name without spaces or punctuation, something like
+`main_deploy`. Note it exactly, because the next step has to match it character
+for character.
+
+Put it on reasonably flat ground, and sit it slightly **above** the terrain
+surface rather than exactly on it. <span class="prov prov-doc">documented</span>
+Zones that intersect the ground cause collision problems for arriving trucks.
+
+</div></div>
+
+<div class="step"><div class="n">3</div><div>
+
+### Tell the game that zone is a deploy point
+
+Open the zone settings tool. Find your zone by its Id and give it the
+**`ZonePropertyDeploy`** property. Set:
+
+- `defaultDeployPoint` to **true**, so this is where the player starts
+- `maxTrucksNum` to how many trucks can arrive here, 4 is a reasonable start
+
+Leave everything else alone for now. In particular leave `zoneDiscoverability`
+empty, because a zone with no discoverability settings is simply available from
+the start, which is what you want.
+
+</div></div>
+
+<div class="step"><div class="n">4</div><div>
+
+### Add a Free Roam expedition
+
+Still in the zone settings tool, under objectives, create one record in
+**`contractsSettings`**:
+
+- `contractType` = **1**, which means expedition rather than contract
+- `name` = `Free Roam`
+- `region` = `mod_region`
+- `employer` = pick any, `ExpeditionsInc` is fine
+- add exactly **one** stage, and inside it fill in only **`freeRoamInfo`**
+
+In that `freeRoamInfo`, `map` is the name of your map's XML file and `uiDesc` is
+whatever text you want shown while the player roams.
+
+</div></div>
+
+<div class="step"><div class="n">5</div><div>
+
+### Save, close, pack
+
+Save. Close the editor, which is also how your work gets written out. Pack.
+
+Wait the 25 minutes. Then launch the game, find your map under the mod region,
+pick Free Roam, and deploy.
+
+</div></div>
+
+<h2 id="if-it-does-not-appear-or-does-not-deploy">If it does not appear or does not deploy<a class="headerlink" href="#if-it-does-not-appear-or-does-not-deploy" title="Permanent link">#</a></h2>
+<p>Four causes cover nearly all of it. In order of how often they are the answer:</p>
+<p><strong>The map is not in the list at all.</strong> You are missing the expedition, or its
+<code>contractType</code> is 0 instead of 1. Only an expedition makes a map loadable.</p>
+<p><strong>The map lists but Deploy does nothing.</strong> You have no deploy zone that the game
+can find. Either the property is missing, or it was discarded during the pack, or
+the Id in the zone tool does not match the Id on the object in the scene. That
+last one is the usual answer, and it is usually a typo or a capital letter.</p>
+<p><strong>The map lists, Deploy hangs forever on the loading screen.</strong> Something in your
+settings refers to a zone that does not exist. A reference that resolves to
+nothing kills the script that picks your starting point, and it does so with no
+error message, no popup and no log entry. Check every zone name you typed.</p>
+<p><strong>The map loads but it is not your map.</strong> If you built this by copying another
+map, it is still claiming that map&rsquo;s identity. See
+<a href="where-things-live.html#cloning-a-map">cloning</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Once it works, stop and take a backup</p>
+<p>You now have a known-good map: one that loads, deploys and drives. That is a
+genuinely valuable thing to be able to return to. Keep a copy of the source
+before you start changing it.</p>
+</div>
+<h2 id="what-next">What next<a class="headerlink" href="#what-next" title="Permanent link">#</a></h2>
+<p>You have a working pipeline. From here you can go in any direction, and the order
+is up to you:</p>
+<ul>
+<li>make the land worth driving on, starting with <a href="../20-land/terrain.html">how terrain
+  works</a></li>
+<li>give the player something to do, starting with <a href="../50-missions/objectives-overview.html">objectives in one
+  page</a></li>
+<li>add a base, a store and somewhere to refuel with <a href="../40-zones/deploy-zones.html">deploy zones and
+  FOBs</a></li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../00-start/where-things-live.html"><span>Previous</span>Where everything lives</a><a class="seq-next" href="../20-land/terrain.html"><span>Next</span>How terrain actually works</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#why-this-order-matters">Why this order matters</a></li>
+<li><a href="#the-five-steps">The five steps</a></li>
+<li><a href="#if-it-does-not-appear-or-does-not-deploy">If it does not appear or does not deploy</a></li>
+<li><a href="#what-next">What next</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

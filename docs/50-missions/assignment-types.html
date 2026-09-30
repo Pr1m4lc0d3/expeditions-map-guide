@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The assignment types &middot; Expeditions Map Making</title>
+<meta name="description" content="Every kind of job you can give a player, what each one needs, and the three that exist in the engine but not in the official guides."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html" aria-current="page">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Missions</p>
+        <h1>The assignment types</h1>
+<p class="lede">Every kind of job you can give a player, what each one needs, and the three that exist in the engine but not in the official guides.</p>      </div>
+      <article class="prose"><p>An assignment is one thing you ask the player to do. A stage holds one or more of
+them. There are <strong>eleven</strong> kinds, and the official guides document <strong>eight</strong>.</p>
+<h2 id="the-eight-documented-kinds">The eight documented kinds<a class="headerlink" href="#the-eight-documented-kinds" title="Permanent link">#</a></h2>
+<h3 id="visitallzones">visitAllZones<a class="headerlink" href="#visitallzones" title="Permanent link">#</a></h3>
+<p>Reach one or more places. The simplest assignment and the one you will use most.</p>
+<p>Each target can optionally be reached by <strong>drone</strong> instead of by truck, or by drone
+<strong>only</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Drone-only needs two settings, not one</p>
+<p>To require the drone you must turn on <em>both</em> <code>visitWithDroneOnly</code> <strong>and</strong>
+<code>mayVisitZoneWithDrone</code>. With only the first, trucks are forbidden and drones
+were never allowed, so the zone becomes unreachable by any means.
+<span class="prov prov-doc">documented</span></p>
+<p>Also: the default drone cannot fly within <strong>170 m</strong> of the map edge, and cannot
+climb more than <strong>30 m</strong> above the truck. A drone-only target outside those
+limits is impossible. <span class="prov prov-doc">documented</span></p>
+</div>
+<h3 id="takeinventory">takeInventory<a class="headerlink" href="#takeinventory" title="Permanent link">#</a></h3>
+<p>Collect specific items from specific places. You name the item type, optionally a
+specific item id, and how many.</p>
+<p>Works with custom items. If you have made your own device, its id goes here like
+any other.</p>
+<h3 id="objectconstruction">objectConstruction<a class="headerlink" href="#objectconstruction" title="Permanent link">#</a></h3>
+<p>Deliver something to a place. That something can be an inventory item, <strong>fuel</strong>,
+<strong>repair parts</strong>, or any combination. At least one of the three must be set or
+there is nothing to deliver.</p>
+<p>The name comes from what it is usually used for: tying the delivery to a model that
+appears once the goods arrive, which is how bridges get built. That part is
+optional, and the delivery works fine without it.</p>
+<p>Two useful extras:</p>
+<ul>
+<li><code>additionalUnloadZones</code> lets the goods be delivered to an alternative place. The
+  base game uses this for bridges buildable from either bank.</li>
+<li><code>modelPlacementZones</code> blocks the delivery while a truck is parked somewhere it
+  would be clipped by the model appearing.</li>
+</ul>
+<h3 id="truckdelivery">truckDelivery<a class="headerlink" href="#truckdelivery" title="Permanent link">#</a></h3>
+<p>Drive a truck that is already placed on the map to a destination. The truck needs
+an <strong>Id</strong> in the editor, and the same string goes in the assignment.</p>
+<div class="admonition warning">
+<p class="admonition-title">Do not use REWARD to give the truck away</p>
+<p><code>afterStageFinished: REWARD</code> does nothing in Expeditions. It behaves as
+<code>DO_NOTHING</code>: the truck stays on the map, the player does not get it, and it
+never appears on the rewards screen. <span class="prov prov-doc">documented</span></p>
+<p>Use <code>DESTROY</code>, which is what the base game does, and grant the vehicle properly
+through the <a href="rewards.html">rewards list</a>.</p>
+</div>
+<h3 id="scoutinginfo">scoutingInfo<a class="headerlink" href="#scoutinginfo" title="Permanent link">#</a></h3>
+<p>Explore an area. You define it with a hidden zone at the centre, a radius, and the
+percentage of the area that must be uncovered. A <code>winCondition</code> of <code>0.75</code> means 75%.</p>
+<p>The centre can be offset from the zone if you want the search area somewhere the
+zone object is not.</p>
+<div class="admonition danger">
+<p class="admonition-title">The one crash in the objective system</p>
+<p><code>localOffsetScoutingAreaRelativeZone</code> <strong>must not be left empty.</strong> Leaving it
+unset crashes the game. <span class="prov prov-doc">documented</span></p>
+<p>If you want no offset, you still have to pick the <code>Vector2d</code> type and leave the
+x and y values at zero. An explicit zero is fine. Nothing is not.</p>
+</div>
+<p>The target zone hides itself automatically in current versions, so you do not need
+to do anything extra to keep it off the map.</p>
+<h3 id="minigameinfo">minigameInfo<a class="headerlink" href="#minigameinfo" title="Permanent link">#</a></h3>
+<p>Play a minigame. Five kinds exist in the engine:</p>
+<table>
+<thead>
+<tr>
+<th>Minigame</th>
+<th>What the player does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera</td>
+<td>photograph a subject at an expected focus, zoom and angle</td>
+</tr>
+<tr>
+<td>Echolot</td>
+<td>scan across zones with a limited number of charges</td>
+</tr>
+<tr>
+<td>ProcessPoints</td>
+<td>fly the drone to track a moving circle</td>
+</tr>
+<tr>
+<td>LookAtObject</td>
+<td>observe a particular object</td>
+</tr>
+<tr>
+<td>VisualInspection</td>
+<td>inspect marked points on an object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="seismograph">Seismograph<a class="headerlink" href="#seismograph" title="Permanent link">#</a></h3>
+<p>Trigger seismic readings at zones that are deliberately not shown on the map, so
+the player has to find them.</p>
+<h3 id="freeroaminfo">freeRoamInfo<a class="headerlink" href="#freeroaminfo" title="Permanent link">#</a></h3>
+<p>Not really an assignment. It marks an expedition as the Free Roam one.</p>
+<div class="admonition tip">
+<p class="admonition-title">Free Roam has strict shape</p>
+<p>A Free Roam expedition is <strong>one stage containing only <code>freeRoamInfo</code></strong>. Nothing
+else in that stage, and no other stages.
+<span class="prov prov-doc">documented</span></p>
+<p>Its <code>map</code> field holds the name of your own map&rsquo;s XML file. Pointing it at a
+<em>different</em> map is a real and confusing bug, and it is easy to inherit by
+copying someone else&rsquo;s map as a starting point.</p>
+</div>
+<h2 id="the-three-undocumented-kinds">The three undocumented kinds<a class="headerlink" href="#the-three-undocumented-kinds" title="Permanent link">#</a></h2>
+<p>These are in the editor&rsquo;s type schema <strong>and</strong> referenced in the shipped game code,
+so they are real features. They are simply missing from the official guides, and as
+far as is known nobody has used them in a custom map.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Appears to be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>objectInteraction</code></td>
+<td>interact with a placed object</td>
+</tr>
+<tr>
+<td><code>makeActionInZone</code></td>
+<td>perform an action in a zone. It reuses the same settings type as <code>visitAllZones</code>, so it is shaped like a visit</td>
+</tr>
+<tr>
+<td><code>puzzleInfo</code></td>
+<td>a puzzle, with a starting zone and a list of puzzle properties</td>
+</tr>
+</tbody>
+</table>
+<p><span class="prov prov-schema">schema only</span></p>
+<p>Treat these as worth an experiment, not as something to build a map around. If you
+do get one working, that is genuinely new information for everyone.</p>
+<p>There is also <code>cutsceneInfo</code>, which plays a cutscene rather than asking for
+anything, and a gateway type the base game uses to move players between maps which
+is deliberately hidden from mod tools.</p>
+<h2 id="the-field-name-the-guides-get-wrong">The field name the guides get wrong<a class="headerlink" href="#the-field-name-the-guides-get-wrong" title="Permanent link">#</a></h2>
+<p>Every assignment points at a zone, and the official guides call that field
+<code>globalZoneId</code> throughout. The actual files do not agree:</p>
+<table>
+<thead>
+<tr>
+<th>Assignment</th>
+<th>The field is really called</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visitAllZones</code>, <code>objectConstruction</code></td>
+<td><code>globalZoneId</code></td>
+</tr>
+<tr>
+<td><code>takeInventory</code>, <code>scoutingInfo</code></td>
+<td><code>zoneGlobalId</code></td>
+</tr>
+<tr>
+<td><code>truckDelivery</code></td>
+<td><code>globalZoneDeliveryId</code></td>
+</tr>
+</tbody>
+</table>
+<p>If you are editing JSON by hand, or writing anything that reads these files, expect
+all three spellings.</p>
+<h2 id="the-failure-they-all-share">The failure they all share<a class="headerlink" href="#the-failure-they-all-share" title="Permanent link">#</a></h2>
+<p>Whatever the assignment, a zone reference that points at a name which does not
+exist will <strong>hang the Deploy screen forever</strong>. No popup, no error, no log entry.</p>
+<p>It is the single most common way to lose an evening, and the fix is always the
+same: check every zone name against the zones that actually exist, character for
+character.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../50-missions/stages.html"><span>Previous</span>Stages and substages</a><a class="seq-next" href="../50-missions/rewards.html"><span>Next</span>Rewards</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-eight-documented-kinds">The eight documented kinds</a><ul>
+<li><a href="#visitallzones">visitAllZones</a></li>
+<li><a href="#takeinventory">takeInventory</a></li>
+<li><a href="#objectconstruction">objectConstruction</a></li>
+<li><a href="#truckdelivery">truckDelivery</a></li>
+<li><a href="#scoutinginfo">scoutingInfo</a></li>
+<li><a href="#minigameinfo">minigameInfo</a></li>
+<li><a href="#seismograph">Seismograph</a></li>
+<li><a href="#freeroaminfo">freeRoamInfo</a></li>
+</ul>
+</li>
+<li><a href="#the-three-undocumented-kinds">The three undocumented kinds</a></li>
+<li><a href="#the-field-name-the-guides-get-wrong">The field name the guides get wrong</a></li>
+<li><a href="#the-failure-they-all-share">The failure they all share</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

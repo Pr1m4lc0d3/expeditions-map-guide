@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rewards &middot; Expeditions Map Making</title>
+<meta name="description" content="Money, trucks, specialists, FOB modules and your own custom content. Plus the reward classes that look fine and never pay."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html" aria-current="page">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Missions</p>
+        <h1>Rewards</h1>
+<p class="lede">Money, trucks, specialists, FOB modules and your own custom content. Plus the reward classes that look fine and never pay.</p>      </div>
+      <article class="prose"><h2 id="two-places-to-attach-a-reward">Two places to attach a reward<a class="headerlink" href="#two-places-to-attach-a-reward" title="Permanent link">#</a></h2>
+<ul>
+<li>on the <strong>objective</strong>, paid when the whole thing is finished</li>
+<li>on each <strong>stage</strong>, paid the moment that stage closes</li>
+</ul>
+<p>Both draw from the same list of reward types. Stage rewards are the more
+interesting of the two, because they can change the map while the player is still
+on it. See <a href="building-a-story.html">building a story</a>.</p>
+<h2 id="what-you-can-give">What you can give<a class="headerlink" href="#what-you-can-give" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Reward</th>
+<th>Gives the player</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ObjectiveRewardMoney</code></td>
+<td>cash</td>
+<td><span class="prov prov-doc">documented</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardUnlock</code></td>
+<td>a truck or upgrade becomes purchasable</td>
+<td><span class="prov prov-doc">documented</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardItem</code></td>
+<td>a truck or upgrade, handed over outright</td>
+<td><span class="prov prov-doc">documented</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardSticker</code></td>
+<td>a truck sticker</td>
+<td><span class="prov prov-doc">documented</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardSpecialist</code></td>
+<td>a crew member becomes available</td>
+<td><span class="prov prov-doc">documented</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardBaseUpgrade</code></td>
+<td>a FOB module is unlocked</td>
+<td><span class="prov prov-doc">documented</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardOpenZoneProperties</code></td>
+<td><strong>a new zone appears</strong>, with properties you define</td>
+<td><span class="prov prov-doc">documented</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardUpdateZoneProperties</code></td>
+<td><strong>an existing zone changes</strong>, gaining or losing properties</td>
+<td><span class="prov prov-doc">documented</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardOpenZoneDesc</code></td>
+<td>the map text and icons for a newly revealed zone</td>
+<td><span class="prov prov-schema">schema only</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardExperience</code></td>
+<td>experience</td>
+<td><span class="prov prov-schema">schema only</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardOverlayState</code></td>
+<td>changes an overlay&rsquo;s state, such as a road surface or a bridge deck</td>
+<td><span class="prov prov-schema">schema only</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardZoneInventoryRandModifier</code></td>
+<td>alters what a zone randomly spawns</td>
+<td><span class="prov prov-schema">schema only</span></td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardsByTime</code></td>
+<td>rewards gated on elapsed time</td>
+<td><span class="prov prov-schema">schema only</span></td>
+</tr>
+</tbody>
+</table>
+<p>The last five are absent from the official guides entirely. <code>ObjectiveRewardOverlayState</code>
+is the most immediately useful of them, because it means the visible state of a road
+or bridge can change as a reward.</p>
+<div class="admonition danger">
+<p class="admonition-title">Rewards that never pay</p>
+<p>Several reward types are technical scaffolding or are marked for removal. They
+are accepted, they look correct in the file, and they do nothing:</p>
+<p><code>ContestResultRewards</code>, <code>ObjectiveRewardAddItemsToZone</code>,
+<code>ObjectiveRewardsUpgradeGarage</code>, <code>ObjectiveSingleRewardUnlockOnce</code>,
+<code>ObjectiveRewardSettingsBase</code>, <code>ObjectiveRewardListener</code>,
+<code>ObjectiveRewardTrialPartItem</code></p>
+<p><code>ContestResultRewards</code> is the one that bites, because it takes an <code>amount</code> and
+a <code>timeLimit</code> and therefore looks exactly like a working money reward. If it is
+an objective&rsquo;s only reward, that objective pays <strong>nothing</strong>.</p>
+</div>
+<h2 id="rewarding-your-own-custom-content">Rewarding your own custom content<a class="headerlink" href="#rewarding-your-own-custom-content" title="Permanent link">#</a></h2>
+<p>Short answer: yes, for all three of the things people usually want.</p>
+<h3 id="your-own-devices-and-items">Your own devices and items<a class="headerlink" href="#your-own-devices-and-items" title="Permanent link">#</a></h3>
+<p><strong>Works.</strong> A custom inventory item has an id, and the objective system takes custom
+ids the same way it takes built-in ones. You can require them, ask the player to
+collect them, and hand them over as rewards with <code>ObjectiveRewardItem</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">One requirement that will stop your expedition dead</p>
+<p>If a custom item appears in an expedition&rsquo;s <code>requiredInventory</code>, that item
+<strong>must</strong> have <code>canTakeInHq</code> enabled. <span class="prov prov-doc">documented</span></p>
+<p>Without it the player cannot load the item at Headquarters, so they can never
+satisfy the requirement, so they can never start the expedition. The expedition
+simply refuses, and nothing explains why.</p>
+</div>
+<h3 id="your-own-bases">Your own bases<a class="headerlink" href="#your-own-bases" title="Permanent link">#</a></h3>
+<p><strong>Works.</strong> <code>ObjectiveRewardBaseUpgrade</code> takes a FOB module id, and custom FOB
+modules are a supported, documented entity. The built-in ids are:</p>
+<div class="hl"><pre><span></span><code>BASE_MODULE     SUPPLY_SHOP    WORKSHOP       SERVICE_STATION   GAS_STATION
+REPAIR_ZONE     PARKING        GENERATOR      ANTENNA           HELICOPTER
+DRONE_BASE      TOW_TRUCK      EXTRA_STORAGE  DOUBLE_STOCK      NOTE
+</code></pre></div>
+
+<p>This is a good reward for a mid-mission stage. &ldquo;Get the generator running&rdquo; that
+actually unlocks the generator module reads as real progress.</p>
+<h3 id="your-own-specialists">Your own specialists<a class="headerlink" href="#your-own-specialists" title="Permanent link">#</a></h3>
+<p><strong>Works for the built-in crew. Probably works for yours.</strong>
+<span class="prov prov-unver">unverified</span></p>
+<p><code>ObjectiveRewardSpecialist</code> takes an id, and the documented examples are built-in
+crew like <code>Mechanic_01</code>, <code>Jaeger_02</code> and <code>Hydrologist_03</code>.</p>
+<p>Custom specialist descriptors do carry an <code>isLocked</code> flag, which is exactly the
+mechanism such a reward would open, and it defaults to unlocked so a custom crew
+member is normally available from the start anyway.</p>
+<p>What is <strong>not</strong> established is the id string a custom specialist answers to. The
+descriptor file contains no id field at all, and identity appears to come from the
+pak&rsquo;s own name. So this is likely to work and the exact spelling is a guess. Test it
+before you build a mission whose payoff is a custom crew member.</p>
+<h2 id="bonus-rewards">Bonus rewards<a class="headerlink" href="#bonus-rewards" title="Permanent link">#</a></h2>
+<p>Extra money for playing well, rather than for finishing. <strong>Expeditions only</strong>, not
+contracts or tasks.</p>
+<p>Each one carries a description and an amount, and most carry a limit. The engine has
+<strong>twenty</strong> conditions. The official guides cover twelve.</p>
+<table>
+<thead>
+<tr>
+<th>Documented</th>
+<th>Undocumented <span class="prov prov-schema">schema only</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BonusConditionDamageTaken</code></td>
+<td><code>BonusConditionCompleteExpedition</code></td>
+</tr>
+<tr>
+<td><code>BonusConditionNoRecovery</code></td>
+<td><code>BonusConditionDriveLessThenLimit</code></td>
+</tr>
+<tr>
+<td><code>BonusConditionEngineStall</code></td>
+<td><code>BonusConditionSpendFuelLessThenLimit</code></td>
+</tr>
+<tr>
+<td><code>BonusConditionTireInflation</code></td>
+<td><code>BonusConditionSpendFuelMoreThanLimitInOneGo</code></td>
+</tr>
+<tr>
+<td><code>BonusConditionItemConsumed</code></td>
+<td><code>BonusConditionFinishExpWithEmptyInventory</code></td>
+</tr>
+<tr>
+<td><code>BonusConditionDoNotUseItem</code></td>
+<td><code>BonusConditionFinishExpOnSpecificTruckType</code></td>
+</tr>
+<tr>
+<td><code>BonusConditionDetectResource</code></td>
+<td><code>BonusConditionDontSkipTime</code></td>
+</tr>
+<tr>
+<td><code>BonusConditionMinigameTryLimit</code></td>
+<td><code>BonusConditionHaveMoreItemsThanLimit</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>BonusConditionDriveXMetersOnLowTiresInOneGo</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>BonusConditionCollectMoreItemsThenLimitOnExp</code></td>
+</tr>
+</tbody>
+</table>
+<p>Several of the undocumented ones are more interesting than the documented ones.
+&ldquo;Finish with an empty inventory&rdquo;, &ldquo;finish on a specific truck type&rdquo; and &ldquo;do not skip
+time&rdquo; are all real design levers. At least one undocumented condition is already in
+use by a published custom map, so the group is not dead code.</p>
+<p><code>BonusConditionEngineStall</code> deserves a note: it counts engine stalls for a given
+reason, and the base game mostly uses it with <code>ROLL_OVER</code>. So the natural reading of
+it is &ldquo;do not roll your truck&rdquo;.</p>
+<h2 id="gating-an-expedition-before-it-starts">Gating an expedition before it starts<a class="headerlink" href="#gating-an-expedition-before-it-starts" title="Permanent link">#</a></h2>
+<p>Three lists decide whether a player may begin an expedition at all. All three are
+<strong>expeditions only</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>List</th>
+<th>Requires</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requiredInventory</code></td>
+<td>items, by type or id, in the stated quantity</td>
+</tr>
+<tr>
+<td><code>requiredSpecialities</code></td>
+<td>specific crew</td>
+</tr>
+<tr>
+<td><code>requiredTruckAddons</code></td>
+<td><code>SEISMIC_VIBRATOR</code>, <code>METAL_DETECTOR</code> or <code>SIDEBOARD</code></td>
+</tr>
+</tbody>
+</table>
+<p>These are good for making a mission feel prepared for rather than stumbled into.
+Use them sparingly, because a requirement the player cannot work out how to satisfy
+just looks like a broken map.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../50-missions/assignment-types.html"><span>Previous</span>The assignment types</a><a class="seq-next" href="../50-missions/building-a-story.html"><span>Next</span>Building a story</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#two-places-to-attach-a-reward">Two places to attach a reward</a></li>
+<li><a href="#what-you-can-give">What you can give</a></li>
+<li><a href="#rewarding-your-own-custom-content">Rewarding your own custom content</a><ul>
+<li><a href="#your-own-devices-and-items">Your own devices and items</a></li>
+<li><a href="#your-own-bases">Your own bases</a></li>
+<li><a href="#your-own-specialists">Your own specialists</a></li>
+</ul>
+</li>
+<li><a href="#bonus-rewards">Bonus rewards</a></li>
+<li><a href="#gating-an-expedition-before-it-starts">Gating an expedition before it starts</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>
