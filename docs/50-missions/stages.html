@@ -204,8 +204,8 @@ install a camera trap, which needs a camera trap in their inventory. You add a
 one should not have to.</p>
 <p>So make the &ldquo;go and find one&rdquo; step optional, and put it in <strong>the same stage</strong> as
 the install step:</p>
-<div class="hl"><pre><span></span><code>  stage[0]     ├─ takeInventory       &quot;Collect a camera trap&quot;   (optional)
-               └─ objectConstruction  &quot;Install the camera trap&quot; (required)
+<div class="hl"><pre><span></span><code>  stage[0]  ├─ takeInventory        optional  &quot;Collect a camera trap&quot;
+            └─ objectConstruction   required  &quot;Install the camera trap&quot;
 </code></pre></div>
 
 <div class="admonition danger">

@@ -61,8 +61,8 @@ So make the "go and find one" step optional, and put it in **the same stage** as
 the install step:
 
 ```
-  stage[0]     ├─ takeInventory       "Collect a camera trap"   (optional)
-               └─ objectConstruction  "Install the camera trap" (required)
+  stage[0]  ├─ takeInventory        optional  "Collect a camera trap"
+            └─ objectConstruction   required  "Install the camera trap"
 ```
 
 !!! danger "A stage where every assignment is optional is an error"

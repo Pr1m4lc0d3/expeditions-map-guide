@@ -238,11 +238,16 @@ body {
   margin-top: 2.25rem;
 }
 .prose > h4 { font-size: 1rem; font-weight: 600; margin-top: 1.75rem; }
-.prose h2 .headerlink, .prose h3 .headerlink {
+/* heading permalinks: present for linking, quiet until wanted. h1 was missing
+   from this rule, so the home page's title carried a bright green # at rest. */
+.prose :is(h1, h2, h3, h4) .headerlink {
   font-family: var(--mono); font-size: .7em; color: var(--rule);
   text-decoration: none; margin-left: .45rem;
+  opacity: 0; transition: opacity .12s ease;
 }
-.prose h2:hover .headerlink, .prose h3:hover .headerlink { color: var(--flag); }
+.prose :is(h1, h2, h3, h4):hover .headerlink { opacity: 1; }
+.prose .headerlink:hover, .prose .headerlink:focus-visible { color: var(--flag); opacity: 1; }
+@media (hover: none) { .prose :is(h1, h2, h3, h4) .headerlink { opacity: .5; } }
 
 .prose a { color: var(--flag); text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .prose strong { font-weight: 600; }
