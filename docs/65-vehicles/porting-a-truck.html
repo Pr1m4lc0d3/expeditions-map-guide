@@ -361,6 +361,28 @@ skin for the same ones.</p>
 <p>An override can also change <code>ShadingMap</code>, which is how you get chrome — high
 metalness, very low roughness — while still letting the preset tint it, so one
 chrome skin gives you gold, blue and black chrome from three presets.</p>
+<h3 id="using-a-real-camouflage-pattern">Using a real camouflage pattern<a class="headerlink" href="#using-a-real-camouflage-pattern" title="Permanent link">#</a></h3>
+<p>A generated pattern is fine; a real one looks better. Wikimedia Commons carries
+clean swatches of military patterns, and <strong>images of U.S. military patterns are
+public domain as works of the U.S. Government</strong> — no attribution, no share-alike,
+safe to redistribute inside a mod. Check the licence on each file: the same
+search also returns CC BY-SA uploads whose terms are awkward for a mod.</p>
+<p>A photographed swatch is not a texture. Three things need fixing, and
+<code>camo_from_source.py</code> does all of them:</p>
+<p><strong>The lighting gradient.</strong> Any photographed fabric is brighter on one side.
+Divide by a heavily blurred copy of itself and re-centre on the mean, or the
+pattern reads as dirty across one flank of the vehicle.</p>
+<p><strong>The edges do not meet.</strong> Offset the image by half in both axes and blend the
+cross seam that exposes. Mirror-tiling is also seamless but produces obvious
+symmetry, which camouflage shows badly.</p>
+<p><strong>The scale is wrong.</strong> A swatch photographed at life size is far too coarse once
+wrapped onto a body panel. Tile it two or three times across the texture.</p>
+<div class="admonition warning">
+<p class="admonition-title">A hue shift keeps the original lightness</p>
+<p>Recolouring a desert pattern to woodland by rotating hue gives a pale mint
+green, because desert tan is light and the shift preserves that. Pull the
+value down to about 0.6 and raise saturation as well.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Gloss lives in the shading map, not the colour</p>
 <p><code>ShadingMap</code> is R metalness, G roughness, B ambient occlusion. A flat
@@ -409,7 +431,10 @@ loaded it, and its silence then means nothing.</p>
 <li><a href="#always-test-the-encoder-before-you-trust-it">Always test the encoder before you trust it</a></li>
 <li><a href="#what-you-will-and-will-not-get">What you will and will not get</a></li>
 <li><a href="#the-store-and-garage-artwork-which-survives-a-successful-port">The store and garage artwork, which survives a successful port</a></li>
-<li><a href="#adding-skins-camo-chrome-a-livery">Adding skins: camo, chrome, a livery</a></li>
+<li><a href="#adding-skins-camo-chrome-a-livery">Adding skins: camo, chrome, a livery</a><ul>
+<li><a href="#using-a-real-camouflage-pattern">Using a real camouflage pattern</a></li>
+</ul>
+</li>
 <li><a href="#the-errors-you-can-ignore">The errors you can ignore</a></li>
 <li><a href="#checking-your-work">Checking your work</a></li>
 </ul>

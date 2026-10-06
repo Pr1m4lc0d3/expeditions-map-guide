@@ -205,6 +205,33 @@ An override can also change `ShadingMap`, which is how you get chrome — high
 metalness, very low roughness — while still letting the preset tint it, so one
 chrome skin gives you gold, blue and black chrome from three presets.
 
+### Using a real camouflage pattern
+
+A generated pattern is fine; a real one looks better. Wikimedia Commons carries
+clean swatches of military patterns, and **images of U.S. military patterns are
+public domain as works of the U.S. Government** — no attribution, no share-alike,
+safe to redistribute inside a mod. Check the licence on each file: the same
+search also returns CC BY-SA uploads whose terms are awkward for a mod.
+
+A photographed swatch is not a texture. Three things need fixing, and
+`camo_from_source.py` does all of them:
+
+**The lighting gradient.** Any photographed fabric is brighter on one side.
+Divide by a heavily blurred copy of itself and re-centre on the mean, or the
+pattern reads as dirty across one flank of the vehicle.
+
+**The edges do not meet.** Offset the image by half in both axes and blend the
+cross seam that exposes. Mirror-tiling is also seamless but produces obvious
+symmetry, which camouflage shows badly.
+
+**The scale is wrong.** A swatch photographed at life size is far too coarse once
+wrapped onto a body panel. Tile it two or three times across the texture.
+
+!!! warning "A hue shift keeps the original lightness"
+    Recolouring a desert pattern to woodland by rotating hue gives a pale mint
+    green, because desert tan is light and the shift preserves that. Pull the
+    value down to about 0.6 and raise saturation as well.
+
 !!! note "Gloss lives in the shading map, not the colour"
     `ShadingMap` is R metalness, G roughness, B ambient occlusion. A flat
     roughness around 160 looks matte and makes every colour look cheap;
