@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The skills &middot; Expeditions Map Making</title>
+<meta name="description" content="The written instruction sets that teach Claude Code or Codex how to work on this game, what each one covers, and how to install them."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html" aria-current="page">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">AI tools</p>
+        <h1>The skills</h1>
+<p class="lede">The written instruction sets that teach Claude Code or Codex how to work on this game, what each one covers, and how to install them.</p>      </div>
+      <article class="prose"><h1 id="the-skills">The skills<a class="headerlink" href="#the-skills" title="Permanent link">#</a></h1>
+<p>A skill is a folder containing a <code>SKILL.md</code> — a short document with a name, a
+description of when it applies, and the instructions themselves. The agent reads
+the description, decides the skill is relevant, and follows it.</p>
+<p>They matter more than they look. Most of what is in them is not &ldquo;how to use a
+tool&rdquo;, it is <strong>the rules that are invisible until you break them</strong>: the editor
+reads tiles and not masters, a CRLF subgroup file is silently ignored, an
+absolute path makes the texture converter claim a file does not exist.</p>
+<h2 id="installing-them">Installing them<a class="headerlink" href="#installing-them" title="Permanent link">#</a></h2>
+<p>Copy the skill folder into your agent&rsquo;s skills directory. For Claude Code that
+is <code>~/.claude/skills/&lt;name&gt;/SKILL.md</code>. The agent picks them up automatically and
+you can also invoke one by name.</p>
+<h2 id="what-is-here">What is here<a class="headerlink" href="#what-is-here" title="Permanent link">#</a></h2>
+<h3 id="expeditions-mapping"><code>expeditions-mapping</code><a class="headerlink" href="#expeditions-mapping" title="Permanent link">#</a></h3>
+<p>Terrain, roads, rivers, models, zones and objectives. The whole map-making
+surface. Its most valuable single instruction is to search the official
+documentation <strong>before</strong> building anything, because the editor already has a tool
+for most things people reimplement by hand.</p>
+<p>Covers, among much else: that the editor builds from <code>data/&lt;col&gt;_&lt;row&gt;/</code> tiles
+rather than the master images, that it reads those tiles when the map is
+<em>opened</em>, that roads are overlay objects and not carved terrain, that heights are
+R16F so there is a hard floor on smoothness, and that model scale is meaningless
+without reading the mesh bounding box first.</p>
+<h3 id="expeditions-vehicle-port"><code>expeditions-vehicle-port</code><a class="headerlink" href="#expeditions-vehicle-port" title="Permanent link">#</a></h3>
+<p>Bringing a SnowRunner vehicle into Expeditions, and specifically the black-truck
+problem. Carries the texture encoder invocation, the ground-truth acceptance
+test, the texture map conventions, and a list of the eighteen things that are
+<strong>not</strong> the cause — which is most of its value, because each of them looks
+plausible for hours.</p>
+<p>See <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>.</p>
+<h3 id="expeditions-specialist"><code>expeditions-specialist</code><a class="headerlink" href="#expeditions-specialist" title="Permanent link">#</a></h3>
+<p>Custom specialists: the persona definitions and the packing rules for them.</p>
+<h2 id="writing-your-own">Writing your own<a class="headerlink" href="#writing-your-own" title="Permanent link">#</a></h2>
+<p>The useful shape, learned from the ones above:</p>
+<p><strong>Lead with the fact that changes behaviour.</strong> Not background. The vehicle skill
+opens with &ldquo;meshes port, textures do not&rdquo; because everything else follows from
+it.</p>
+<p><strong>Say what is <em>not</em> the cause.</strong> A list of eliminated hypotheses is worth more
+than a list of steps, because it stops the agent re-deriving a dead end you
+already paid for.</p>
+<p><strong>Record the error message, not just the fix.</strong> <code>Unable to find texture file</code>
+means &ldquo;not underneath <code>-r</code>&rdquo;. An agent that knows that saves an hour.</p>
+<p><strong>Mark what is measured and what is guessed.</strong> Same discipline the rest of this
+guide uses. An agent will treat a confident sentence as fact.</p>
+<div class="admonition note">
+<p class="admonition-title">Keep the description on one line and quote any colon</p>
+<p>A skill description containing <code>:</code> is read by strict YAML parsers as a
+nested mapping, and the whole file is rejected. Wrap it in double quotes.</p>
+</div></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../80-ai-tools/overview.html"><span>Previous</span>Using AI with the editor</a><a class="seq-next" href="../80-ai-tools/toolkit.html"><span>Next</span>The toolkit</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#installing-them">Installing them</a></li>
+<li><a href="#what-is-here">What is here</a><ul>
+<li><a href="#expeditions-mapping">expeditions-mapping</a></li>
+<li><a href="#expeditions-vehicle-port">expeditions-vehicle-port</a></li>
+<li><a href="#expeditions-specialist">expeditions-specialist</a></li>
+</ul>
+</li>
+<li><a href="#writing-your-own">Writing your own</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

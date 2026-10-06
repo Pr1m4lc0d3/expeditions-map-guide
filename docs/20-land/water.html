@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rivers, lakes and waterfalls &middot; Expeditions Map Making</title>
-<meta name="description" content="River and water objects, riverbeds, and why real-world elevation data never contains water."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Give water somewhere to go, hide the edges, and keep the result editable whether you build it yourself or with AI."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -70,7 +70,7 @@
 <span class="pill pill-outline">outline</span>        </li>
         <li>
           <a href="../20-land/water.html" aria-current="page">Rivers, lakes and waterfalls</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
 <span class="pill pill-outline">outline</span>        </li>
@@ -145,6 +145,14 @@
       </ul>
     </section>
     <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+      </ul>
+    </section>
+    <section>
       <h2>Shipping</h2>
       <ul>
         <li>
@@ -155,29 +163,140 @@
         </li>
       </ul>
     </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+      </ul>
+    </section>
   </nav>
 
   <main id="main">
       <div class="page-head">
         <p class="eyebrow">The land</p>
         <h1>Rivers, lakes and waterfalls</h1>
-<p class="lede">River and water objects, riverbeds, and why real-world elevation data never contains water.</p>      </div>
+<p class="lede">Give water somewhere to go, hide the edges, and keep the result editable whether you build it yourself or with AI.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>Planned for this page:</p>
-<ul>
-<li>River and water objects, and how a channel gets its shape</li>
-<li>foam and spray, including the mistake that looks wrong immediately: foam computed
-  evenly along a river comes out as mirror-symmetric bands. Real foam starts at a
-  discrete obstruction and streaks downstream</li>
-<li>mist and spray are placeable models, not an effect setting</li>
-<li>if you are importing real terrain, <strong>water is never in elevation data.</strong> Survey
-  specifications flatten any waterbody above a couple of acres to a plane. Valleys and
-  banks are captured, beds are not</li>
-</ul></article>
+      <article class="prose"><p>A river is not a blue road. Putting a strip of water across a valley does not make
+that strip fit the valley. It gives you a water surface. The ground still has to
+provide the bed and the banks.</p>
+<p>Get those three things to agree first. Foam can wait.</p>
+<h2 id="the-mistake-that-looks-wrong-immediately">The mistake that looks wrong immediately<a class="headerlink" href="#the-mistake-that-looks-wrong-immediately" title="Permanent link">#</a></h2>
+<p>If you can see straight, square or saw-toothed edges floating over the ground,
+you are seeing the edge of the water object instead of a shoreline.</p>
+<p>The fix is not always more width, and it is not always less height. Measure both.
+The visible water should meet soil on each side, with the outer mesh edges hidden
+inside the banks. Check from road height, not only from directly above.</p>
+<h2 id="measure-in-two-directions">Measure in two directions<a class="headerlink" href="#measure-in-two-directions" title="Permanent link">#</a></h2>
+<p><strong>Along the channel</strong>, measure the bed and the fall toward the outlet. A flowing
+reach needs a connected downhill route. Do not stretch one horizontal sheet down
+a steep ravine. Equally, do not force a pool to follow every bump in its bed.</p>
+<p><strong>Across the channel</strong>, measure from bank to bank, at right angles to the local
+flow direction. The water surface is normally level across a section. Follow the
+bend when choosing that direction; the map&rsquo;s X axis is not the river&rsquo;s cross-section.</p>
+<p>A heightmap is a starting point, not a promise about underwater ground. Its survey
+and processing may describe a water surface rather than the actual bed. Inspect
+what your particular dataset contains before designing a lake around it.</p>
+<div class="admonition warning">
+<p class="admonition-title">The road may not be the raw terrain</p>
+<p>Road flattening can change the surface you drive on. Do not turn it off just
+to make a puddle show. You may uncover a much deeper hollow than intended.</p>
+</div>
+<h2 id="give-each-piece-a-name">Give each piece a name<a class="headerlink" href="#give-each-piece-a-name" title="Permanent link">#</a></h2>
+<p>You should not have to click seventy objects to find one crossing.</p>
+<p>Our convention is <code>W00_R000_Name_ReachDescription</code>. <code>W00</code> identifies a channel;
+<code>R000</code>, <code>R001</code> and <code>R002</code> run downstream within it. Tributaries get their own channel
+codes and a recorded connection to the receiving reach. Lakes use <code>L000</code>, road
+pools <code>P000</code>, and culverts <code>C000</code>.</p>
+<p>Use the real drainage name when you can verify it against mapping of that actual
+channel. Otherwise use a clearly descriptive name such as
+<code>W01_R000_UnnamedDrainage_UpperChannel</code>. A named canyon nearby is not evidence that
+its stream has the same official name.</p>
+<p>The label is for people. The object ID is for the files. Keep both, and keep a
+small index linking labels, IDs, source files and upstream/downstream neighbours.</p>
+<div class="admonition warning">
+<p class="admonition-title">A name in a spreadsheet is not a name in the editor</p>
+<p>Confirm that the editor displays your label and lets you select its nodes.
+If individual rivers cannot retain labels, test a named group containing one
+river. Save and reopen it before adopting the method. The exact serialization
+is still unverified in this workflow; do not invent a River XML attribute.</p>
+</div>
+<h2 id="build-the-first-reach-by-hand">Build the first reach by hand<a class="headerlink" href="#build-the-first-reach-by-hand" title="Permanent link">#</a></h2>
+<ol>
+<li>Back up a map that already rebuilds and deploys. Work on a separate copy.</li>
+<li>Choose a short, uncomplicated channel. Measure its bed and both banks.</li>
+<li>Use <strong>Add River</strong> from the terrain&rsquo;s context menu, then position its nodes along
+   the channel. Adjust node height and width together.</li>
+<li>Rebuild and inspect the whole reach from both banks. Check between nodes and
+   around bends, not just where the handles sit. Lower, narrow, widen or reroute
+   where needed. If no banks exist, design the channel before adding more water.</li>
+<li>Inspect both ends. Connect them to another reach, a pool or a deliberately
+   concealed endpoint. Do not leave a visible square cap.</li>
+<li>Give the reach its label and test that you can find its nodes after reopening.</li>
+<li>Pack and drive it. Then extend it.</li>
+</ol>
+<p>The editor provides river nodes and separate water painting controls.
+<span class="prov prov-doc">documented</span> See
+<a href="https://expeditions-guides.saber.games/map_modding/creating_a_map/rivers_and_water_objects/adding_rivers_and_water_objects/">Saber&rsquo;s river instructions</a>
+for the controls in your editor version.</p>
+<h2 id="a-lake-is-a-bowl-not-a-wide-river">A lake is a bowl, not a wide river<a class="headerlink" href="#a-lake-is-a-bowl-not-a-wide-river" title="Permanent link">#</a></h2>
+<p>Pick a water elevation and inspect the entire shoreline. The surrounding terrain
+must contain that level. A low saddle is an outlet, not a bank you can ignore.
+Use level water nodes, shape the water object to cover the basin, and hide its
+outside edges under surrounding terrain. Check the bed depth separately from the
+surface height, especially anywhere a truck can enter.</p>
+<h2 id="when-the-channel-goes-under-a-road">When the channel goes under a road<a class="headerlink" href="#when-the-channel-goes-under-a-road" title="Permanent link">#</a></h2>
+<p>Mark a planned culvert explicitly. Do not let an automatic watershed tool treat
+the road embankment as the end of the channel.</p>
+<p>For a crossing designed with matching mouth levels, connect water on both sides
+at that specified elevation, beneath the roadway. Keep the exposed inlet and
+outlet contained by banks. The covered section is allowed to disappear into the
+road terrain; raising it to become visible would defeat the crossing.</p>
+<p>The culvert model and its opening still need placement and collision checks.
+Drawing water through solid ground does not cut a tunnel. A ford or washout is a
+different design, not an excuse to apply this exception everywhere.</p>
+<h2 id="make-it-move-after-it-fits">Make it move after it fits<a class="headerlink" href="#make-it-move-after-it-fits" title="Permanent link">#</a></h2>
+<p>Flow direction, speed and foam are not the same setting. Neither are brown water,
+wet ground and deep mud. Check each one independently. Use the editor&rsquo;s water
+brushes and verify a small painted sample before asking a script to write masks.</p>
+<p>Put foam where water is disturbed, then carry it downstream. Perfect matching
+white bands on both banks tend to look painted on. Treat falls as separate drops
+with a receiving pool and suitable effects, not a stretched river ribbon. The
+repeatable waterfall procedure is still being tested.</p>
+<h2 id="ask-ai-for-measurements-not-reassurance">Ask AI for measurements, not reassurance<a class="headerlink" href="#ask-ai-for-measurements-not-reassurance" title="Permanent link">#</a></h2>
+<p>A useful request looks like this:</p>
+<blockquote>
+<p>Survey this channel along its bed and across both banks. Name every reach,
+preserve my edits, and show where the proposed water has no enclosing bank.
+Export one short test reach only. Do not change the road. Mark this crossing
+as a planned culvert with matching mouth levels.</p>
+</blockquote>
+<p>Ask for the measurements, a connectivity index, a change list and a rollback
+copy. Then inspect the result yourself. A script passing its tests is not the
+same as the editor rebuilding, and neither proves the packed map deploys.</p>
+<p>The current <strong>expeditions-waterways</strong> skill is a workflow preview for Claude Code
+and Codex. It is not yet an automatic river designer. One short Shafer Trail
+Monsoon reach has received a positive visual review; bends, junctions, naming
+serialization and full-network export still need validation.</p>
+<div class="admonition tip">
+<p class="admonition-title">Keep the change small enough to blame</p>
+<p>Build one reach. Check it. Save a known-good version. Add the next reach.
+If a build fails, undo that last isolated change before collecting more
+guesses. A crash at a step labelled plants does not, by itself, prove that
+the plants caused it.</p>
+</div></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../20-land/roads.html"><span>Previous</span>Roads are not carved terrain</a><a class="seq-next" href="../20-land/real-terrain.html"><span>Next</span>Using real-world terrain</a>      </nav>
@@ -186,7 +305,16 @@
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#the-mistake-that-looks-wrong-immediately">The mistake that looks wrong immediately</a></li>
+<li><a href="#measure-in-two-directions">Measure in two directions</a></li>
+<li><a href="#give-each-piece-a-name">Give each piece a name</a></li>
+<li><a href="#build-the-first-reach-by-hand">Build the first reach by hand</a></li>
+<li><a href="#a-lake-is-a-bowl-not-a-wide-river">A lake is a bowl, not a wide river</a></li>
+<li><a href="#when-the-channel-goes-under-a-road">When the channel goes under a road</a></li>
+<li><a href="#make-it-move-after-it-fits">Make it move after it fits</a></li>
+<li><a href="#ask-ai-for-measurements-not-reassurance">Ask AI for measurements, not reassurance</a></li>
+</ul>
 </div>
 
   </aside>

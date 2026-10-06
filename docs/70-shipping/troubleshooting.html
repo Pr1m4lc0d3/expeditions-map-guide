@@ -70,7 +70,7 @@
 <span class="pill pill-outline">outline</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
 <span class="pill pill-outline">outline</span>        </li>
@@ -145,6 +145,14 @@
       </ul>
     </section>
     <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+      </ul>
+    </section>
+    <section>
       <h2>Shipping</h2>
       <ul>
         <li>
@@ -152,6 +160,20 @@
 <span class="pill pill-outline">outline</span>        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html" aria-current="page">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
         </li>
       </ul>
     </section>
@@ -247,8 +269,33 @@ minute pack.</p>
 <td>Terrain edits do nothing in game</td>
 <td>you edited the masters, not the tiles, or you did not repack</td>
 </tr>
+<tr>
+<td>A ported vehicle is solid black, wheels and all</td>
+<td><a href="#a-ported-vehicle-is-solid-black">its textures are SnowRunner-encoded</a></td>
+</tr>
 </tbody>
 </table>
+<hr />
+<h2 id="a-ported-vehicle-is-solid-black">A ported vehicle is solid black<a class="headerlink" href="#a-ported-vehicle-is-solid-black" title="Permanent link">#</a></h2>
+<p>A SnowRunner vehicle brought into Expeditions spawns, drives and steers correctly
+but renders completely black, including glass and wheels.</p>
+<p>Its <code>.pct</code> textures were encoded by SnowRunner&rsquo;s converter and Expeditions cannot
+decode them. The log shows one line per map:</p>
+<div class="hl"><pre><span></span><code>Failed to load texture textures/&lt;modid&gt;\trucks/&lt;name&gt;.tga
+</code></pre></div>
+
+<p>It asks for a <code>.tga</code> because that is the fallback after the converted texture
+fails, and a packed mod does not ship source textures.</p>
+<p><strong>The container header is identical between the two games</strong>, so nothing about the
+files looks wrong. Do not go hunting through pak layout, naming, the mod id,
+<code>modio.json</code>, <code>modStateList</code> or texture sizes — all of those were eliminated
+against a working mod on the same install.</p>
+<p>The fix is to re-encode the textures with the game&rsquo;s own
+<code>Sources\Bin\ResourceConverter.exe</code> and rebuild <code>pc.pak</code>. Full method, including
+the two traps in the converter&rsquo;s arguments, is in
+<a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>.</p>
+<p>Separately, <code>Mesh| Cant find material's part by name</code> errors in the same log are
+the mod author&rsquo;s own defect and are cosmetic. They are not the cause.</p>
 <hr />
 <h2 id="the-map-is-not-in-the-list">The map is not in the list<a class="headerlink" href="#the-map-is-not-in-the-list" title="Permanent link">#</a></h2>
 <p>A map is only loadable with <strong>at least one expedition</strong>. Not a contract, not a task.
@@ -382,7 +429,7 @@ game sees is what is in there, and comparing it against what you <em>think</em> 
 settles most arguments in about a minute.</p></article>
 
       <nav class="seq" aria-label="Previous and next page">
-<a class="seq-prev" href="../70-shipping/packing.html"><span>Previous</span>Packing your map</a>      </nav>
+<a class="seq-prev" href="../70-shipping/packing.html"><span>Previous</span>Packing your map</a><a class="seq-next" href="../80-ai-tools/overview.html"><span>Next</span>Using AI with the editor</a>      </nav>
   </main>
 
   <aside class="onthispage" aria-label="On this page">
@@ -390,6 +437,7 @@ settles most arguments in about a minute.</p></article>
     <div class="toc">
 <ul>
 <li><a href="#symptom-table">Symptom table</a></li>
+<li><a href="#a-ported-vehicle-is-solid-black">A ported vehicle is solid black</a></li>
 <li><a href="#the-map-is-not-in-the-list">The map is not in the list</a></li>
 <li><a href="#deploy-does-nothing">Deploy does nothing</a></li>
 <li><a href="#deploy-hangs-forever">Deploy hangs forever</a></li>

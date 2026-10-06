@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The toolkit &middot; Expeditions Map Making</title>
+<meta name="description" content="The scripts that read and write map and vehicle files directly. Plain Python, runnable by hand, no AI required."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html" aria-current="page">The toolkit</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">AI tools</p>
+        <h1>The toolkit</h1>
+<p class="lede">The scripts that read and write map and vehicle files directly. Plain Python, runnable by hand, no AI required.</p>      </div>
+      <article class="prose"><h1 id="the-toolkit">The toolkit<a class="headerlink" href="#the-toolkit" title="Permanent link">#</a></h1>
+<p><code>F:\Expeditions\Toolkit</code> is a folder of Python scripts that read and write the
+game&rsquo;s files directly. An agent uses them, but there is nothing AI about them —
+run them yourself from a terminal.</p>
+<p>They exist for the work the editor structurally cannot do: operations whose
+target changes continuously along a path, and operations over a whole network at
+once. <strong>Do not reimplement the editor&rsquo;s brushes.</strong> Use the editor for sculpting
+and placement; use these for the rest.</p>
+<h2 id="read-the-documentation-first">Read the documentation first<a class="headerlink" href="#read-the-documentation-first" title="Permanent link">#</a></h2>
+<p>The single highest-value command here:</p>
+<div class="hl"><pre><span></span><code>python wiki.py howto &lt;road|river|trees|terrain|zones|sounds|overlays&gt;
+</code></pre></div>
+
+<p>It returns every page for that topic from the 514-page official mirror, in
+reading order. <code>howto road</code> returns nine pages about overlays.</p>
+<p>This exists because a day was lost carving roads into a heightmap while the
+editor&rsquo;s actual road tool sat indexed in that wiki the whole time.</p>
+<div class="hl"><pre><span></span><code>python wiki.py search &quot;&lt;phrase&gt;&quot;      # full-text across the docs
+python wiki.py schema &lt;type&gt;          # the editor&#39;s own type definitions
+</code></pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Test a search tool with a question, not a keyword</p>
+<p>The index returned nothing useful for &ldquo;how do I make a road&rdquo; for months,
+because it was only ever tested with words that were already known to be in
+it.</p>
+</div>
+<h2 id="terrain-and-roads">Terrain and roads<a class="headerlink" href="#terrain-and-roads" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>need</th>
+<th>command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>real-world elevation</td>
+<td><code>fetch_terrain.py &lt;lat&gt; &lt;lon&gt; --span --blocks</code></td>
+</tr>
+<tr>
+<td>lay a road network</td>
+<td><code>make_overlays.py &lt;level&gt;</code></td>
+</tr>
+<tr>
+<td>cut a graded bench</td>
+<td><code>sculpt_roads.py</code></td>
+</tr>
+<tr>
+<td>smooth a roadway</td>
+<td><code>smooth_roadway.py</code></td>
+</tr>
+<tr>
+<td>push heights into tiles</td>
+<td><code>push_heights.py</code></td>
+</tr>
+<tr>
+<td>clear scatter from a road</td>
+<td><code>clear_roadway.py</code>, <code>sync_tiles.py</code></td>
+</tr>
+<tr>
+<td>rivers</td>
+<td><code>paint_river.py</code>, <code>shape_river.py</code></td>
+</tr>
+<tr>
+<td>build a whole map from real terrain</td>
+<td><code>build_map.py</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">A push into tiles is a merge, never a copy</p>
+<p>Tiles hold hand sculpting done after the master was written. Protect water
+channels and take explicit no-go areas for ground you reshaped by hand.</p>
+</div>
+<p>Cap terrain movement near 3 m. Forcing a gradient onto a bad alignment once
+produced 30 m embankments, and a surface 30 m different from its surroundings has
+a cliff at every boundary.</p>
+<h2 id="models">Models<a class="headerlink" href="#models" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>need</th>
+<th>command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>what models exist</td>
+<td><code>stock_models.py</code>, <code>list_installed_models.py</code></td>
+</tr>
+<tr>
+<td>re-seat placements</td>
+<td><code>reseat_models.py</code></td>
+</tr>
+<tr>
+<td>move a group</td>
+<td><code>move_cluster.py</code></td>
+</tr>
+<tr>
+<td>check a custom model converts and loads</td>
+<td><code>verify_model.py</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>verify_model.py</code> exists because <code>ResourceConverter --mod-convert -s</code> only tells
+you the files parse. Twenty-nine models passed it and then crashed the editor on
+placement. The script converts, keeps the output, and inspects the artifact the
+engine actually reads.</p>
+<div class="admonition warning">
+<p class="admonition-title">Scale is meaningless without the mesh</p>
+<p>Read the bounding box out of the mesh and specify sizes in metres. Copying a
+scale distribution across a different mix of brands once turned a 6.84 m
+boulder into a 227 m potato stuck to a cliff.</p>
+</div>
+<h2 id="missions-and-zones">Missions and zones<a class="headerlink" href="#missions-and-zones" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>need</th>
+<th>command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validate objectives before packing</td>
+<td><code>check_objectives.py &lt;level&gt;</code> / <code>--pak</code> / <code>--all</code></td>
+</tr>
+<tr>
+<td>author the gameplay layer</td>
+<td><code>build_missions.py</code></td>
+</tr>
+</tbody>
+</table>
+<p>Run <code>check_objectives.py</code> before every pack. Objective errors are silent: a stage
+where every substage is optional is prohibited and errors, a null
+<code>localOffsetScoutingAreaRelativeZone</code> crashes, and a dangling <code>globalZoneId</code>
+hangs Deploy with no popup and no log line.</p>
+<h2 id="packing-and-checking">Packing and checking<a class="headerlink" href="#packing-and-checking" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>need</th>
+<th>command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pack a map</td>
+<td><code>pack_map.py</code></td>
+</tr>
+<tr>
+<td>patch one member in place</td>
+<td><code>patch_member.py</code></td>
+</tr>
+<tr>
+<td>identify a pak</td>
+<td><code>pak_fingerprint.py</code></td>
+</tr>
+<tr>
+<td>a map misbehaves</td>
+<td><code>check_pack.py &lt;Level&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>check_pack.py</code> comes before any theory.</strong> When a map misbehaves, run it first
+and read what it says, rather than reasoning about what might be wrong.</p>
+<div class="admonition danger">
+<p class="admonition-title"><code>apply_loot_naming.py</code> is disabled</p>
+<p>It is still in the folder, and its own header says so: it broke a map for a
+week and must not be run. Older notes that tell you to run it after every
+pack are out of date.</p>
+</div>
+<h2 id="custom-content">Custom content<a class="headerlink" href="#custom-content" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>need</th>
+<th>command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>validate a FOB module</td>
+<td><code>check_fob_module.py</code></td>
+</tr>
+<tr>
+<td>pack a FOB module</td>
+<td><code>pack_fob_module.py</code></td>
+</tr>
+</tbody>
+</table>
+<p>An invalid <code>$type</code> in a FOB module is <strong>silently nulled at pack time</strong>, which is
+why a validator exists.</p>
+<h2 id="vehicles">Vehicles<a class="headerlink" href="#vehicles" title="Permanent link">#</a></h2>
+<div class="hl"><pre><span></span><code>python port_vehicle.py analyze &lt;mod.zip&gt;
+python port_vehicle.py port &lt;mod.zip&gt; --id &lt;modid&gt; --name &quot;My Truck&quot;
+</code></pre></div>
+
+<p>Brings a SnowRunner vehicle into Expeditions: works out the required textures,
+writes source <code>.tga</code> maps, encodes them with the game&rsquo;s own converter, rebuilds
+<code>pc.pak</code>, installs and registers the mod.</p>
+<table>
+<thead>
+<tr>
+<th>flag</th>
+<th>effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--donor &lt;dir&gt;</code></td>
+<td>reuse real <code>.tga</code> files where the names match. Defaults to the game&rsquo;s own sample mod, so genuine template textures are preferred over invented ones</td>
+</tr>
+<tr>
+<td><code>--palette &lt;json&gt;</code></td>
+<td><code>{"material": [r,g,b]}</code> colour overrides</td>
+</tr>
+<tr>
+<td><code>--no-install</code></td>
+<td>build only, do not touch your mod folder</td>
+</tr>
+<tr>
+<td><code>--work &lt;dir&gt;</code></td>
+<td>scratch directory</td>
+</tr>
+<tr>
+<td><code>--skip-self-test</code></td>
+<td>skip the encoder verification. Do not</td>
+</tr>
+</tbody>
+</table>
+<p>It verifies the encoder against a file the game itself produced before it changes
+anything, and refuses to continue if that check fails. The full explanation is in
+<a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>.</p>
+<h2 id="conventions-these-scripts-follow">Conventions these scripts follow<a class="headerlink" href="#conventions-these-scripts-follow" title="Permanent link">#</a></h2>
+<p><strong>Measure, then claim.</strong> Report the number, not the impression.</p>
+<p><strong>A zero result is a claim.</strong> Run a positive control before citing one. A search
+that returns nothing may be a search that was not looking in the right place.</p>
+<p><strong>Never write a backup into a folder the editor scans.</strong> Backups left in
+<code>subgroups\</code> were loaded as empty SubGroups, and the symptom was models that
+would not highlight and snap appearing broken — both selection-driven, so one
+bug wearing two faces.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../80-ai-tools/skills.html"><span>Previous</span>The skills</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#read-the-documentation-first">Read the documentation first</a></li>
+<li><a href="#terrain-and-roads">Terrain and roads</a></li>
+<li><a href="#models">Models</a></li>
+<li><a href="#missions-and-zones">Missions and zones</a></li>
+<li><a href="#packing-and-checking">Packing and checking</a></li>
+<li><a href="#custom-content">Custom content</a></li>
+<li><a href="#vehicles">Vehicles</a></li>
+<li><a href="#conventions-these-scripts-follow">Conventions these scripts follow</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

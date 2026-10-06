@@ -37,7 +37,17 @@ Two rules save more time than everything else on this site combined.
 <li><a href="00-start/where-things-live.html"><strong>Where everything lives</strong><span>Three copies of your map, and which one to edit. Read this one early.</span></a></li>
 <li><a href="00-start/map-that-loads.html"><strong>Make a map that loads</strong><span>The shortest path from nothing to driving around your own terrain.</span></a></li>
 <li><a href="70-shipping/troubleshooting.html"><strong>Something is broken</strong><span>Symptom to cause. Start here when the game misbehaves.</span></a></li>
+<li><a href="65-vehicles/porting-a-truck.html"><strong>Porting a SnowRunner truck</strong><span>The meshes just work. The textures do not, and that is the whole story.</span></a></li>
+<li><a href="80-ai-tools/overview.html"><strong>Using AI with the editor</strong><span>The scripts and agent skills, what they are good at, and what they must not be trusted with.</span></a></li>
 </ul>
+
+## Maps, and everything else
+
+Most of this guide is about building maps, because that is the biggest surface.
+Two other parts of the editor get the same treatment: bringing **vehicles** over
+from SnowRunner, and the **tooling** — a set of plain Python scripts plus agent
+skills that automate the work the editor structurally cannot do. Both are written
+to be read by someone doing it by hand; the automation is optional throughout.
 
 ## How this guide marks what it knows
 

@@ -33,6 +33,37 @@ minute pack.
 | Objective behaves erratically or inconsistently | [two objectives share a name](#two-objectives-with-the-same-name) |
 | Map shows "No Signal" as its picture | [`uiMinimapScreenshot` left at its default](#no-signal-instead-of-a-picture) |
 | Terrain edits do nothing in game | you edited the masters, not the tiles, or you did not repack |
+| A ported vehicle is solid black, wheels and all | [its textures are SnowRunner-encoded](#a-ported-vehicle-is-solid-black) |
+
+---
+
+## A ported vehicle is solid black
+
+A SnowRunner vehicle brought into Expeditions spawns, drives and steers correctly
+but renders completely black, including glass and wheels.
+
+Its `.pct` textures were encoded by SnowRunner's converter and Expeditions cannot
+decode them. The log shows one line per map:
+
+```
+Failed to load texture textures/<modid>\trucks/<name>.tga
+```
+
+It asks for a `.tga` because that is the fallback after the converted texture
+fails, and a packed mod does not ship source textures.
+
+**The container header is identical between the two games**, so nothing about the
+files looks wrong. Do not go hunting through pak layout, naming, the mod id,
+`modio.json`, `modStateList` or texture sizes — all of those were eliminated
+against a working mod on the same install.
+
+The fix is to re-encode the textures with the game's own
+`Sources\Bin\ResourceConverter.exe` and rebuild `pc.pak`. Full method, including
+the two traps in the converter's arguments, is in
+[Porting a SnowRunner truck](../65-vehicles/porting-a-truck.html).
+
+Separately, `Mesh| Cant find material's part by name` errors in the same log are
+the mod author's own defect and are cosmetic. They are not the cause.
 
 ---
 
