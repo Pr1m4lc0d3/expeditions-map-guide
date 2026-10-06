@@ -172,6 +172,48 @@ HUD, and fit it to a dark canvas at each size.
 
 `port_vehicle.py analyze` reports all of this.
 
+## Adding skins: camo, chrome, a livery
+
+A colour preset does not only carry three colours. It names a **MaterialOverride**,
+and an override can replace the albedo outright. That is how a truck offers a
+wrap rather than just a repaint — pick the scheme, get the livery.
+
+```xml
+<MaterialOverride AlbedoMap="trucks/carroceria_jungle__d.tga"
+                  Name="skin_jungle" TargetMaterialName="carroceria"
+                  TintMap="trucks/carroceria_notint__d.tga" />
+```
+
+```xml
+<CustomizationPreset Id="14" MaterialOverrideName="skin_jungle" TintColor1="..." ... />
+```
+
+Two things make this work properly:
+
+**Give a pattern a tint mask with R=0.** The red channel defines the overall
+paint zone, so an area with no red never tints. A camo or livery then shows
+exactly as painted instead of being recoloured by whatever the preset's tint
+happens to be.
+
+**Mirror the override onto every mesh that has the others.** Addons, bumpers and
+racks carry their own `MaterialOverride` entries. Add the new skin only to the
+body and the body goes camo while the bumpers stay factory. The practical rule
+is: for each mesh, find the materials `skin_00` already targets and add the new
+skin for the same ones.
+
+An override can also change `ShadingMap`, which is how you get chrome — high
+metalness, very low roughness — while still letting the preset tint it, so one
+chrome skin gives you gold, blue and black chrome from three presets.
+
+!!! note "Gloss lives in the shading map, not the colour"
+    `ShadingMap` is R metalness, G roughness, B ambient occlusion. A flat
+    roughness around 160 looks matte and makes every colour look cheap;
+    automotive paint wants roughly 40-60. If your colours look flat, that is the
+    first thing to check.
+
+`make_truck_skins.py` generates the textures and `add_truck_skins.js` injects the
+overrides and rebuilds the preset list.
+
 ## The errors you can ignore
 
 ```

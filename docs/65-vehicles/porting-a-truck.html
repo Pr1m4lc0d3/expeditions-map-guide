@@ -336,6 +336,40 @@ schema does not list it — check what the game&rsquo;s own content does.</p>
 <p>A screenshot makes a perfectly good store image. Frame the vehicle, crop out the
 HUD, and fit it to a dark canvas at each size.</p>
 <p><code>port_vehicle.py analyze</code> reports all of this.</p>
+<h2 id="adding-skins-camo-chrome-a-livery">Adding skins: camo, chrome, a livery<a class="headerlink" href="#adding-skins-camo-chrome-a-livery" title="Permanent link">#</a></h2>
+<p>A colour preset does not only carry three colours. It names a <strong>MaterialOverride</strong>,
+and an override can replace the albedo outright. That is how a truck offers a
+wrap rather than just a repaint — pick the scheme, get the livery.</p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;MaterialOverride</span><span class="w"> </span><span class="na">AlbedoMap=</span><span class="s">&quot;trucks/carroceria_jungle__d.tga&quot;</span>
+<span class="w">                  </span><span class="na">Name=</span><span class="s">&quot;skin_jungle&quot;</span><span class="w"> </span><span class="na">TargetMaterialName=</span><span class="s">&quot;carroceria&quot;</span>
+<span class="w">                  </span><span class="na">TintMap=</span><span class="s">&quot;trucks/carroceria_notint__d.tga&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+<div class="hl"><pre><span></span><code><span class="nt">&lt;CustomizationPreset</span><span class="w"> </span><span class="na">Id=</span><span class="s">&quot;14&quot;</span><span class="w"> </span><span class="na">MaterialOverrideName=</span><span class="s">&quot;skin_jungle&quot;</span><span class="w"> </span><span class="na">TintColor1=</span><span class="s">&quot;...&quot;</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+<p>Two things make this work properly:</p>
+<p><strong>Give a pattern a tint mask with R=0.</strong> The red channel defines the overall
+paint zone, so an area with no red never tints. A camo or livery then shows
+exactly as painted instead of being recoloured by whatever the preset&rsquo;s tint
+happens to be.</p>
+<p><strong>Mirror the override onto every mesh that has the others.</strong> Addons, bumpers and
+racks carry their own <code>MaterialOverride</code> entries. Add the new skin only to the
+body and the body goes camo while the bumpers stay factory. The practical rule
+is: for each mesh, find the materials <code>skin_00</code> already targets and add the new
+skin for the same ones.</p>
+<p>An override can also change <code>ShadingMap</code>, which is how you get chrome — high
+metalness, very low roughness — while still letting the preset tint it, so one
+chrome skin gives you gold, blue and black chrome from three presets.</p>
+<div class="admonition note">
+<p class="admonition-title">Gloss lives in the shading map, not the colour</p>
+<p><code>ShadingMap</code> is R metalness, G roughness, B ambient occlusion. A flat
+roughness around 160 looks matte and makes every colour look cheap;
+automotive paint wants roughly 40-60. If your colours look flat, that is the
+first thing to check.</p>
+</div>
+<p><code>make_truck_skins.py</code> generates the textures and <code>add_truck_skins.js</code> injects the
+overrides and rebuilds the preset list.</p>
 <h2 id="the-errors-you-can-ignore">The errors you can ignore<a class="headerlink" href="#the-errors-you-can-ignore" title="Permanent link">#</a></h2>
 <div class="hl"><pre><span></span><code>Mesh| Cant find material&#39;s part by name &#39;negrochasis&#39; in trucks_&lt;name&gt;_&lt;modid&gt;
 </code></pre></div>
@@ -375,6 +409,7 @@ loaded it, and its silence then means nothing.</p>
 <li><a href="#always-test-the-encoder-before-you-trust-it">Always test the encoder before you trust it</a></li>
 <li><a href="#what-you-will-and-will-not-get">What you will and will not get</a></li>
 <li><a href="#the-store-and-garage-artwork-which-survives-a-successful-port">The store and garage artwork, which survives a successful port</a></li>
+<li><a href="#adding-skins-camo-chrome-a-livery">Adding skins: camo, chrome, a livery</a></li>
 <li><a href="#the-errors-you-can-ignore">The errors you can ignore</a></li>
 <li><a href="#checking-your-work">Checking your work</a></li>
 </ul>
