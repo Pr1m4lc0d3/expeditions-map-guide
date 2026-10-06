@@ -283,6 +283,59 @@ because that art only exists inside the undecodable <code>.pct</code> files.</p>
 coloured vehicle with working paint, glass and lights — not the author&rsquo;s livery,
 logos or panel wear. If you want the real appearance, ask the mod&rsquo;s author for
 their source <code>.tga</code> files and pass them with <code>--donor</code>.</p>
+<h2 id="the-store-and-garage-artwork-which-survives-a-successful-port">The store and garage artwork, which survives a successful port<a class="headerlink" href="#the-store-and-garage-artwork-which-survives-a-successful-port" title="Permanent link">#</a></h2>
+<p>Fixing the textures gets the vehicle rendering. It does not give it a picture,
+and two separate things go wrong here. Both are invisible until you open the
+truck store, and neither produces any error.</p>
+<p><strong>The garage list shows a completely different vehicle.</strong> A mod built on the
+sample truck usually ships the <em>sample truck&rsquo;s</em> store picture, under the sample
+truck&rsquo;s filename, and never replaces the image. The field is wired correctly and
+is faithfully displaying a vintage soft-top 4x4 that has nothing to do with the
+truck you ported. Check what the image actually depicts — open it — rather than
+trusting the filename.</p>
+<p><strong>The large store preview is blank.</strong> There are two store image fields and they
+are different sizes:</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>size</th>
+<th>purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UiIcon328x458</code></td>
+<td>328x458</td>
+<td>the small list thumbnail</td>
+</tr>
+<tr>
+<td><code>UiIcon576x640</code></td>
+<td>576x640</td>
+<td>the large store preview</td>
+</tr>
+<tr>
+<td><code>uiIcon576x640Bw</code></td>
+<td>576x640</td>
+<td>greyscale variant</td>
+</tr>
+<tr>
+<td><code>UiIconLogo</code></td>
+<td>80x80</td>
+<td>manufacturer badge</td>
+</tr>
+</tbody>
+</table>
+<p><span class="prov prov-unver">measured</span>
+Of the game&rsquo;s 44 stock truck classes, <strong>42 declare <code>UiIcon328x458</code> and 43 declare
+<code>UiIcon576x640</code></strong>. A SnowRunner mod often declares only the first, so the big
+preview has nothing to draw.</p>
+<p>Note that <code>UiIcon328x458</code> is <strong>absent from the editor&rsquo;s type schema</strong> but is used
+by almost every shipped truck. Do not conclude a field is invalid because the
+schema does not list it — check what the game&rsquo;s own content does.</p>
+<p>A screenshot makes a perfectly good store image. Frame the vehicle, crop out the
+HUD, and fit it to a dark canvas at each size.</p>
+<p><code>port_vehicle.py analyze</code> reports all of this.</p>
 <h2 id="the-errors-you-can-ignore">The errors you can ignore<a class="headerlink" href="#the-errors-you-can-ignore" title="Permanent link">#</a></h2>
 <div class="hl"><pre><span></span><code>Mesh| Cant find material&#39;s part by name &#39;negrochasis&#39; in trucks_&lt;name&gt;_&lt;modid&gt;
 </code></pre></div>
@@ -321,6 +374,7 @@ loaded it, and its silence then means nothing.</p>
 </li>
 <li><a href="#always-test-the-encoder-before-you-trust-it">Always test the encoder before you trust it</a></li>
 <li><a href="#what-you-will-and-will-not-get">What you will and will not get</a></li>
+<li><a href="#the-store-and-garage-artwork-which-survives-a-successful-port">The store and garage artwork, which survives a successful port</a></li>
 <li><a href="#the-errors-you-can-ignore">The errors you can ignore</a></li>
 <li><a href="#checking-your-work">Checking your work</a></li>
 </ul>

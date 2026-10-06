@@ -135,6 +135,43 @@ coloured vehicle with working paint, glass and lights — not the author's liver
 logos or panel wear. If you want the real appearance, ask the mod's author for
 their source `.tga` files and pass them with `--donor`.
 
+## The store and garage artwork, which survives a successful port
+
+Fixing the textures gets the vehicle rendering. It does not give it a picture,
+and two separate things go wrong here. Both are invisible until you open the
+truck store, and neither produces any error.
+
+**The garage list shows a completely different vehicle.** A mod built on the
+sample truck usually ships the *sample truck's* store picture, under the sample
+truck's filename, and never replaces the image. The field is wired correctly and
+is faithfully displaying a vintage soft-top 4x4 that has nothing to do with the
+truck you ported. Check what the image actually depicts — open it — rather than
+trusting the filename.
+
+**The large store preview is blank.** There are two store image fields and they
+are different sizes:
+
+| field | size | purpose |
+|---|---|---|
+| `UiIcon328x458` | 328x458 | the small list thumbnail |
+| `UiIcon576x640` | 576x640 | the large store preview |
+| `uiIcon576x640Bw` | 576x640 | greyscale variant |
+| `UiIconLogo` | 80x80 | manufacturer badge |
+
+<span class="prov prov-unver">measured</span>
+Of the game's 44 stock truck classes, **42 declare `UiIcon328x458` and 43 declare
+`UiIcon576x640`**. A SnowRunner mod often declares only the first, so the big
+preview has nothing to draw.
+
+Note that `UiIcon328x458` is **absent from the editor's type schema** but is used
+by almost every shipped truck. Do not conclude a field is invalid because the
+schema does not list it — check what the game's own content does.
+
+A screenshot makes a perfectly good store image. Frame the vehicle, crop out the
+HUD, and fit it to a dark canvas at each size.
+
+`port_vehicle.py analyze` reports all of this.
+
 ## The errors you can ignore
 
 ```
