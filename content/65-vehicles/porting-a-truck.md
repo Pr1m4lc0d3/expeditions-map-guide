@@ -112,6 +112,26 @@ install three files to `.modio\mods\<id>\`: `<Name>.pak`, a file named literally
     fails to read that member. Build fresh `ZipInfo` objects. Validate by
     inflating every member afterwards.
 
+!!! danger "TGA rows go bottom-up. This one costs days."
+    The engine's `.tga` files store pixel row 0 as the **bottom** row — the
+    descriptor's origin bit is clear. Write them top-down and every texture is
+    vertically flipped.
+
+    That is **invisible** on a flat colour and on a tiled camo pattern, and it
+    **completely scrambles a real UV atlas**: the wrong region of the image
+    lands on every panel. So a generated-skin vehicle looks perfect and hides
+    the bug until you port one with genuine artwork.
+
+    The game hands you the test for free. The sample mod ships a source `.tga`
+    next to the `.dds` the game converted from it:
+
+    ```
+    tga read as-stored vs its own dds : MAE 52.4   wrong
+    tga read flipped   vs its own dds : MAE  0.3   correct
+    ```
+
+    If a texture looks wrong, check orientation **first**. It is one comparison.
+
 ## Always test the encoder before you trust it
 
 The game's sample mod — the one TOOLS → Add Mod generates — ships both the source

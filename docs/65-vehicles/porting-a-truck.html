@@ -267,6 +267,21 @@ the <strong>local</strong> header as well as the central directory, and the engi
 fails to read that member. Build fresh <code>ZipInfo</code> objects. Validate by
 inflating every member afterwards.</p>
 </div>
+<div class="admonition danger">
+<p class="admonition-title">TGA rows go bottom-up. This one costs days.</p>
+<p>The engine&rsquo;s <code>.tga</code> files store pixel row 0 as the <strong>bottom</strong> row — the
+descriptor&rsquo;s origin bit is clear. Write them top-down and every texture is
+vertically flipped.</p>
+<p>That is <strong>invisible</strong> on a flat colour and on a tiled camo pattern, and it
+<strong>completely scrambles a real UV atlas</strong>: the wrong region of the image
+lands on every panel. So a generated-skin vehicle looks perfect and hides
+the bug until you port one with genuine artwork.</p>
+<p>The game hands you the test for free. The sample mod ships a source <code>.tga</code>
+next to the <code>.dds</code> the game converted from it:</p>
+<p><code>tga read as-stored vs its own dds : MAE 52.4   wrong
+tga read flipped   vs its own dds : MAE  0.3   correct</code></p>
+<p>If a texture looks wrong, check orientation <strong>first</strong>. It is one comparison.</p>
+</div>
 <h2 id="always-test-the-encoder-before-you-trust-it">Always test the encoder before you trust it<a class="headerlink" href="#always-test-the-encoder-before-you-trust-it" title="Permanent link">#</a></h2>
 <p>The game&rsquo;s sample mod — the one TOOLS → Add Mod generates — ships both the source
 <code>.tga</code> files <em>and</em> the <code>.pct</code> files the game produced from them. That is a free
