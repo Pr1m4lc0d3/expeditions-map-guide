@@ -19,7 +19,7 @@ store and look.
 | field | size | kind | where it shows | stock trucks declaring it |
 |---|---|---|---|---|
 | `TruckImage` | 380×92 | **cut-out, RGBA** | the card in the truck list | 44 / 44 |
-| `TruckImageSmall` | 124×52 | **cut-out, RGBA** | fleet tab, top of truck selection | 1 / 44 |
+| `TruckImageSmall` | 124×52 | **cut-out, RGBA** | compact list variant | 1 / 44 |
 | `UiIcon328x458` | 328×458 | scene photo | store list thumbnail | 42 / 44 |
 | `UiIcon576x640` | 576×640 | scene photo | large store preview | 43 / 44 |
 | `uiIcon576x640Bw` | 576×640 | scene photo, greyscale | greyscale variant | 1 / 44 |
@@ -58,8 +58,17 @@ like every stock truck's.
     elements and only one of them is the right one.
 
     <span class="prov prov-unver">measured</span>
-    Diffing a mod whose fleet image works against one whose does not left
-    exactly this difference: the working one declares `TruckImageSmall`.
+    Diffing a working mod against a broken one left exactly this difference:
+    the working one declares `TruckImageSmall` and the broken one shipped the
+    PNG with nothing pointing at it.
+
+    !!! note "What this did NOT turn out to explain"
+        It is tempting to conclude from that diff that `TruckImageSmall` feeds
+        the fleet tab. **It does not.** With the field correctly declared on
+        three vehicles, the tabs still render the shared category glyph. The
+        fleet tab is `UiIcon40x40`/`UiIcon30x30`, and restoring the shared
+        sprite is what filled it. `TruckImageSmall`'s real consumer is still
+        unidentified — one stock truck in 44 declares it at all.
 
 ### The fleet tabs are shared, and giving a vehicle its own empties them
 
