@@ -148,7 +148,25 @@
       <h2>Vehicles</h2>
       <ul>
         <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
           <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
         </li>
       </ul>
     </section>
@@ -417,8 +435,39 @@ writes source <code>.tga</code> maps, encodes them with the game&rsquo;s own con
 </tbody>
 </table>
 <p>It verifies the encoder against a file the game itself produced before it changes
-anything, and refuses to continue if that check fails. The full explanation is in
-<a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>.</p>
+anything, and refuses to continue if that check fails. The ordered procedure is
+the <a href="../65-vehicles/porting-runbook.html">porting runbook</a>; the explanation of
+the big failure is <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>.</p>
+<h3 id="restore_addonspy-give-a-ported-truck-back-its-stock-accessories"><code>restore_addons.py</code> — give a ported truck back its stock accessories<a class="headerlink" href="#restore_addonspy-give-a-ported-truck-back-its-stock-accessories" title="Permanent link">#</a></h3>
+<div class="hl"><pre><span></span><code>python restore_addons.py analyze &lt;main.pak&gt; --pc &lt;pc.pak&gt;
+python restore_addons.py fix     &lt;main.pak&gt; &lt;out.pak&gt; --pc &lt;pc.pak&gt; [--synthesize]
+</code></pre></div>
+
+<p>Bumpers, side steps and the spare wheel are separate addon classes, installed
+only because a socket names one in <code>DefaultAddon</code>. A port loses them two ways:
+the class lives in the donor game, or the mod dropped the default outright.
+Neither logs anything.</p>
+<p>Pairs the mod&rsquo;s truck class to the donor&rsquo;s on <strong>socket names, not filenames</strong> —
+a mod renames the class file but cannot rename <code>CJ7FrontBumper</code>. Refuses to
+enable an addon whose mesh is absent, and reports textures with no encoded
+<code>.pct</code>. A truck with no confident donor match is reported as <strong>not checked</strong>
+rather than as passing.</p>
+<p><code>--synthesize</code> rebuilds a class neither game ships, from the donor&rsquo;s template
+for that kind. Mesh-less addons only — cloning geometry between trucks bolts on
+the wrong part.</p>
+<h3 id="vehicle_uipy-store-and-garage-artwork"><code>vehicle_ui.py</code> — store and garage artwork<a class="headerlink" href="#vehicle_uipy-store-and-garage-artwork" title="Permanent link">#</a></h3>
+<div class="hl"><pre><span></span><code>python vehicle_ui.py --howto
+python vehicle_ui.py mod.pak out.pak --shot shot.png --name Tundra \
+    --box L T R B [--safe L T R B] [--exclude L T R B] [--badge TRD]
+</code></pre></div>
+
+<p><code>--howto</code> prints how to compose the screenshots and what every image field is
+for. <code>--box</code> only has to <strong>contain</strong> the vehicle — the tool mattes it and
+measures the real silhouette. <code>--exclude</code> paints out a scene object standing
+against the bodywork, which otherwise survives the matte because it shares an
+edge with the vehicle.</p>
+<p>Full field table in
+<a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>.</p>
 <h2 id="conventions-these-scripts-follow">Conventions these scripts follow<a class="headerlink" href="#conventions-these-scripts-follow" title="Permanent link">#</a></h2>
 <p><strong>Measure, then claim.</strong> Report the number, not the impression.</p>
 <p><strong>A zero result is a claim.</strong> Run a positive control before citing one. A search
@@ -442,7 +491,11 @@ bug wearing two faces.</p></article>
 <li><a href="#missions-and-zones">Missions and zones</a></li>
 <li><a href="#packing-and-checking">Packing and checking</a></li>
 <li><a href="#custom-content">Custom content</a></li>
-<li><a href="#vehicles">Vehicles</a></li>
+<li><a href="#vehicles">Vehicles</a><ul>
+<li><a href="#restore_addonspy-give-a-ported-truck-back-its-stock-accessories">restore_addons.py — give a ported truck back its stock accessories</a></li>
+<li><a href="#vehicle_uipy-store-and-garage-artwork">vehicle_ui.py — store and garage artwork</a></li>
+</ul>
+</li>
 <li><a href="#conventions-these-scripts-follow">Conventions these scripts follow</a></li>
 </ul>
 </div>

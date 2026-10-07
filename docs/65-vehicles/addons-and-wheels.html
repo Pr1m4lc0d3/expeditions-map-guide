@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessories and tyres &middot; Expeditions Map Making</title>
+<meta name="description" content="Bumpers, side steps, spare wheels and tyre sets are separate classes that often live in the donor game. A port loses them silently, and the truck still drives."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html" aria-current="page">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Vehicles</p>
+        <h1>Accessories and tyres</h1>
+<p class="lede">Bumpers, side steps, spare wheels and tyre sets are separate classes that often live in the donor game. A port loses them silently, and the truck still drives.</p>      </div>
+      <article class="prose"><h1 id="accessories-and-tyres">Accessories and tyres<a class="headerlink" href="#accessories-and-tyres" title="Permanent link">#</a></h1>
+<p>A truck is not one object. Its bumpers, side steps, spare wheel and tyre sets are
+<strong>separate classes</strong>, referenced by name, and a port loses them in two different
+ways that look identical in game: the part is simply not there, and nothing is
+logged about it.</p>
+<p>This is the second of the three failure kinds in a port — the mod is not broken,
+it just depends on something only the donor game has.</p>
+<h2 id="accessories">Accessories<a class="headerlink" href="#accessories" title="Permanent link">#</a></h2>
+<p>Each is an addon class, installed because the truck&rsquo;s <code>&lt;AddonSockets&gt;</code> element
+names one in <code>DefaultAddon</code>:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;AddonSockets</span><span class="w"> </span><span class="na">DefaultAddon=</span><span class="s">&quot;jeep_cj7_renegade_bumper_default&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Socket</span><span class="w"> </span><span class="na">Names=</span><span class="s">&quot;CJ7FrontBumper&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/AddonSockets&gt;</span>
+</code></pre></div>
+
+<p>Two things go wrong.</p>
+<h3 id="the-class-lives-in-the-donor-game">The class lives in the donor game<a class="headerlink" href="#the-class-lives-in-the-donor-game" title="Permanent link">#</a></h3>
+<p>And you excluded the donor&rsquo;s classes — correctly, because including its <strong>truck</strong>
+classes shadows the mod&rsquo;s own rework and produces a mangled vehicle. It is easy
+to exclude too much while fixing that.</p>
+<h3 id="the-mod-dropped-the-default">The mod dropped the default<a class="headerlink" href="#the-mod-dropped-the-default" title="Permanent link">#</a></h3>
+<p>Nothing is missing from the pak at all. The socket is there, the class may even
+be shipped, and the <code>DefaultAddon</code> attribute is simply absent, so nothing is
+installed. <strong>Indistinguishable from the first case once you are in game.</strong></p>
+<div class="hl"><pre><span></span><code>python restore_addons.py analyze &lt;main.pak&gt; --pc &lt;pc.pak&gt;
+python restore_addons.py fix     &lt;main.pak&gt; &lt;out.pak&gt; --pc &lt;pc.pak&gt;
+</code></pre></div>
+
+<p>It pairs the mod&rsquo;s truck class to the donor&rsquo;s on <strong>socket names, not
+filenames</strong>. A mod renames <code>jeep_cj7_renegade.xml</code> to <code>JTTs_jeep_renegade.xml</code>
+freely, but it cannot rename <code>CJ7FrontBumper</code> without breaking its own meshes,
+so the sockets are the stable identity.</p>
+<div class="admonition warning">
+<p class="admonition-title">One missing part is not always one missing class</p>
+<p><span class="prov prov-unver">measured</span>
+On the CJ7 the <strong>spare wheel rides on the rear bumper addon</strong>. A single
+dropped default cost both parts, and looking for a separate &ldquo;spare wheel&rdquo;
+class would have found nothing wrong.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">A dangling <code>DefaultAddon</code> is not cosmetic</p>
+<p>A declared default whose class is absent leaves a reference the game cannot
+resolve — and the save records it too. Fix it rather than shipping it.</p>
+</div>
+<p>If a class exists in neither game, <code>--synthesize</code> rebuilds it from the donor&rsquo;s
+template for that kind. <strong>Mesh-less addons only</strong>: cloning geometry between
+trucks bolts the wrong part on, so the tool refuses.</p>
+<h2 id="tyres">Tyres<a class="headerlink" href="#tyres" title="Permanent link">#</a></h2>
+<p><code>&lt;CompatibleWheels Type="..."&gt;</code> names a wheel class, and each class holds the
+tyre variants the player can buy:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;CompatibleWheels</span><span class="w"> </span><span class="na">OffsetZ=</span><span class="s">&quot;0.10&quot;</span><span class="w"> </span><span class="na">Scale=</span><span class="s">&quot;0.43&quot;</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;wheels_scout_mudtires&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+<p>SnowRunner&rsquo;s names do not exist in Expeditions. The game logs
+<code>Unknown wheels type</code> for each one and the truck ends up with almost nothing to
+buy — which reads in the garage as <strong>&ldquo;There are no suitable devices for this
+truck&rdquo;</strong>, a message that does not mention wheels at all.</p>
+<h3 id="choose-replacements-on-scale-not-on-tyre-count">Choose replacements on scale, not on tyre count<a class="headerlink" href="#choose-replacements-on-scale-not-on-tyre-count" title="Permanent link">#</a></h3>
+<p><span class="prov prov-unver">measured</span>
+This is the part that is tempting to get wrong. The richest-looking tyre set is
+not the right one; the right one is the one the target game runs <strong>at the scale
+your truck is already built for</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>stock scout class</th>
+<th>scale stock trucks use it at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wheels_scout2</code></td>
+<td>0.37 – 0.52</td>
+</tr>
+<tr>
+<td><code>wheels_scout_shiba_dart_srv</code></td>
+<td>0.43 – 0.45</td>
+</tr>
+<tr>
+<td><code>wheels_scout_shiba_dart_srv_2</code></td>
+<td>0.43 – 0.45</td>
+</tr>
+<tr>
+<td><code>wheels_scout_yar_87</code></td>
+<td>0.55 – 0.66</td>
+</tr>
+<tr>
+<td><code>wheels_scout_collie_PUG_293</code></td>
+<td>0.63 – 0.65</td>
+</tr>
+</tbody>
+</table>
+<p>A truck scaled 0.43 given a set stock runs at 0.63 comes out visibly
+undersized. Rescaling to compensate is inventing new geometry, not mapping — and
+you will be eyeballing wheel diameter against an arch you cannot measure.</p>
+<div class="admonition warning">
+<p class="admonition-title">Keep the truck&rsquo;s own <code>OffsetZ</code></p>
+<p>Offset is <strong>hub geometry</strong>, not tyre geometry. Copy the donor truck&rsquo;s value
+and the wheels sit outside the arches. Reuse the value from the truck&rsquo;s own
+dead entry for the matching tyre category.</p>
+</div>
+<h3 id="check-before-you-look-for-a-cause">Check before you look for a cause<a class="headerlink" href="#check-before-you-look-for-a-cause" title="Permanent link">#</a></h3>
+<div class="hl"><pre><span></span><code>Game| Unknown wheels type &#39;wheels_scout_offroad&#39;
+Game| Unknown wheels type &#39;wheels_scout_mudtires&#39;
+</code></pre></div>
+
+<p>Those lines in <code>base\logs\LegacyLog.txt</code> are the whole diagnosis. A truck with
+no tyre options is nearly always this, and it is cheaper to read than to guess
+at.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../65-vehicles/porting-a-truck.html"><span>Previous</span>Porting a SnowRunner truck</a><a class="seq-next" href="../65-vehicles/store-and-garage-images.html"><span>Next</span>Store and garage artwork</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#accessories">Accessories</a><ul>
+<li><a href="#the-class-lives-in-the-donor-game">The class lives in the donor game</a></li>
+<li><a href="#the-mod-dropped-the-default">The mod dropped the default</a></li>
+</ul>
+</li>
+<li><a href="#tyres">Tyres</a><ul>
+<li><a href="#choose-replacements-on-scale-not-on-tyre-count">Choose replacements on scale, not on tyre count</a></li>
+<li><a href="#check-before-you-look-for-a-cause">Check before you look for a cause</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

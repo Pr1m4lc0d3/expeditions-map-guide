@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnosing a vehicle &middot; Expeditions Map Making</title>
+<meta name="description" content="What to read when something is wrong and there is no error to go on. The crash dumps are the real diagnostic tool, and every one of them is destroyed by the next launch."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html" aria-current="page">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Vehicles</p>
+        <h1>Diagnosing a vehicle</h1>
+<p class="lede">What to read when something is wrong and there is no error to go on. The crash dumps are the real diagnostic tool, and every one of them is destroyed by the next launch.</p>      </div>
+      <article class="prose"><h1 id="diagnosing-a-vehicle">Diagnosing a vehicle<a class="headerlink" href="#diagnosing-a-vehicle" title="Permanent link">#</a></h1>
+<p>Almost nothing in this part of the game reports an error, so debugging is
+reading artefacts rather than reading messages. Three of them matter, and the
+first rule is about keeping them alive.</p>
+<div class="admonition danger">
+<p class="admonition-title">The evidence is destroyed at every launch</p>
+<p><code>base\logs\*</code> and <code>base\ssl_crash_dump\*</code> are cleared when the game starts.
+If something fails, <strong>quit and do not relaunch</strong> before looking. Restarting
+to &ldquo;try it again&rdquo; wipes the only record of what happened the first time.</p>
+<p>This costs people the same evening twice: once to the bug, once to losing
+the evidence of it.</p>
+</div>
+<h2 id="the-three-artefacts">The three artefacts<a class="headerlink" href="#the-three-artefacts" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>artefact</th>
+<th>what it gives you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>base\ssl_crash_dump\ssl_dump_*.json</code></td>
+<td><code>callstack[0]</code> names the exact script function, class and arguments</td>
+</tr>
+<tr>
+<td><code>base\logs\LegacyLog.txt</code></td>
+<td>often 0 bytes while running; written on exit</td>
+</tr>
+<tr>
+<td><code>base\CrashScreenshot.jpg</code></td>
+<td>the screen it died on</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-dump-is-the-good-one">The dump is the good one<a class="headerlink" href="#the-dump-is-the-good-one" title="Permanent link">#</a></h3>
+<p>Each dump has <code>callstack</code>, <code>globals</code> and <code>objects</code>. The callstack reads like
+this, innermost first:</p>
+<div class="hl"><pre><span></span><code>ZonePropertyInventoryStorage.InitZoneInventory()          &lt;- died here
+ZonePropertyGenerator.GenerateInventory(slotModifiers=null, createdForZoneId=null)
+PopupBaseBuildingUiController.CreateModuleLir(building)
+PopupBaseBuildingUiController.CreateListData()
+PopupBaseBuildingUiController.Show(withFade=true)
+</code></pre></div>
+
+<p>That is a complete diagnosis with argument values attached, and it took one
+read. Note what it also tells you: nothing in that stack is a vehicle, so a
+vehicle theory was wrong no matter how plausible it sounded.</p>
+<div class="admonition note">
+<p class="admonition-title"><code>objects</code> holds the game&rsquo;s live data</p>
+<p><span class="prov prov-unver">measured</span>
+A dump carried <strong>74,695 loaded objects</strong>, including every stock module and
+its field values. The game ships its own content compiled, so those values
+appear in no pak and cannot be grepped — the dump is the only readable copy.</p>
+<p>This is how you compare your thing against the game&rsquo;s equivalent when the
+game&rsquo;s equivalent is not a file.</p>
+</div>
+<h3 id="zero-frames-means-it-was-not-a-script">Zero frames means it was not a script<a class="headerlink" href="#zero-frames-means-it-was-not-a-script" title="Permanent link">#</a></h3>
+<p>A dump with an empty callstack is a <strong>native</strong> crash, not a script one, and
+<code>dxdiag.txt</code> appearing beside it means the game&rsquo;s own reporter fired rather than
+Windows. <code>Get-WinEvent -LogName Application -Id 1000,1001</code> tells you whether the
+OS saw a fault at all; if it did not, the game caught it internally.</p>
+<h2 id="reading-the-log">Reading the log<a class="headerlink" href="#reading-the-log" title="Permanent link">#</a></h2>
+<p>When it does have content, go to the end first. <code>Failed to load texture</code> should
+be zero, and <code>Unknown wheels type</code> should be absent. Most of the rest is noise
+the stock game produces too.</p>
+<div class="admonition warning">
+<p class="admonition-title">A clean log proves nothing on its own</p>
+<p>If you are comparing against a mod that works, check it is mentioned in the
+log <strong>at all</strong>. A short launch-and-quit may never have loaded it, and its
+silence then means nothing. Four conclusions were once built on a log whose
+quietness only meant the session was 35 seconds long.</p>
+</div>
+<h2 id="discipline-that-saves-time">Discipline that saves time<a class="headerlink" href="#discipline-that-saves-time" title="Permanent link">#</a></h2>
+<p><strong>Verify the artefact you are actually running.</strong> Hash the installed pak against
+your build before reasoning about it. A conclusion drawn from a stale file is
+worse than no conclusion, and building a pak to <code>out.pak.new</code> and then
+installing the old one is an easy mistake to make twice.</p>
+<p><strong>A field differing from a working example is a lead, not a cause.</strong> Name the
+mechanism, or say you do not know yet. Two plausible differences in one
+investigation turned out to be nothing: a capacity of <code>0</code> that the stock module
+also had, and missing schema members that the working modules also omitted. The
+one that mattered survived because it was the only difference that held across
+<em>every</em> working example.</p>
+<p><strong>A zero result is a claim.</strong> Run a positive control before citing one. A search
+that returns nothing may be a search that was not looking in the right place —
+or a tool that silently skipped the folder your answer was in.</p>
+<p><strong>Three failed fixes is an architecture question.</strong> Not a fourth attempt.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../65-vehicles/skins-and-paint.html"><span>Previous</span>Skins and paint</a><a class="seq-next" href="../70-shipping/packing.html"><span>Next</span>Packing your map</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-three-artefacts">The three artefacts</a><ul>
+<li><a href="#the-dump-is-the-good-one">The dump is the good one</a></li>
+<li><a href="#zero-frames-means-it-was-not-a-script">Zero frames means it was not a script</a></li>
+</ul>
+</li>
+<li><a href="#reading-the-log">Reading the log</a></li>
+<li><a href="#discipline-that-saves-time">Discipline that saves time</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

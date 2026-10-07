@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Store and garage artwork &middot; Expeditions Map Making</title>
+<meta name="description" content="Every image a vehicle needs, what size it is, which one must be a cut-out, and the one pair you must never give a vehicle of its own."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html" aria-current="page">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Vehicles</p>
+        <h1>Store and garage artwork</h1>
+<p class="lede">Every image a vehicle needs, what size it is, which one must be a cut-out, and the one pair you must never give a vehicle of its own.</p>      </div>
+      <article class="prose"><h1 id="store-and-garage-artwork">Store and garage artwork<a class="headerlink" href="#store-and-garage-artwork" title="Permanent link">#</a></h1>
+<p>A vehicle can render perfectly, drive perfectly, and still look like someone
+else&rsquo;s truck everywhere the UI shows a picture of it. None of these fields logs
+anything when it is wrong, so the only way to find a mistake is to open the
+store and look.</p>
+<h2 id="the-fields">The fields<a class="headerlink" href="#the-fields" title="Permanent link">#</a></h2>
+<p><span class="prov prov-unver">measured across the game&rsquo;s 44 stock truck classes</span></p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>size</th>
+<th>kind</th>
+<th>where it shows</th>
+<th>stock trucks declaring it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TruckImage</code></td>
+<td>380×92</td>
+<td><strong>cut-out, RGBA</strong></td>
+<td>the card in the truck list</td>
+<td>44 / 44</td>
+</tr>
+<tr>
+<td><code>TruckImageSmall</code></td>
+<td>124×52</td>
+<td><strong>cut-out, RGBA</strong></td>
+<td>compact list variant</td>
+<td>1 / 44</td>
+</tr>
+<tr>
+<td><code>UiIcon328x458</code></td>
+<td>328×458</td>
+<td>scene photo</td>
+<td>store list thumbnail</td>
+<td>42 / 44</td>
+</tr>
+<tr>
+<td><code>UiIcon576x640</code></td>
+<td>576×640</td>
+<td>scene photo</td>
+<td>large store preview</td>
+<td>43 / 44</td>
+</tr>
+<tr>
+<td><code>uiIcon576x640Bw</code></td>
+<td>576×640</td>
+<td>scene photo, greyscale</td>
+<td>greyscale variant</td>
+<td>1 / 44</td>
+</tr>
+<tr>
+<td><code>UiIconLogo</code></td>
+<td>80×80</td>
+<td>badge</td>
+<td>manufacturer badge</td>
+<td>42 / 44</td>
+</tr>
+<tr>
+<td><code>UiIcon40x40</code></td>
+<td>—</td>
+<td><strong>shared glyph</strong></td>
+<td>fleet tab, top of truck selection</td>
+<td>44 / 44</td>
+</tr>
+<tr>
+<td><code>UiIcon30x30</code></td>
+<td>—</td>
+<td><strong>shared glyph</strong></td>
+<td>fleet tab, small</td>
+<td>44 / 44</td>
+</tr>
+</tbody>
+</table>
+<p><code>TruckImage*</code> live in <code>&lt;TruckData&gt;</code>. The <code>UiIcon*</code> live in <code>&lt;UiDesc&gt;</code>.</p>
+<p>Note that <code>UiIcon328x458</code> is <strong>absent from the editor&rsquo;s type schema</strong> and is used
+by 42 of the 44 shipped trucks. Schema absence is not invalidity — check what the
+game&rsquo;s own content does before concluding a field is wrong.</p>
+<h2 id="the-two-rules-that-cost-the-most">The two rules that cost the most<a class="headerlink" href="#the-two-rules-that-cost-the-most" title="Permanent link">#</a></h2>
+<h3 id="a-cut-out-slot-needs-alpha-and-an-opaque-screenshot-renders-as-nothing">A cut-out slot needs alpha, and an opaque screenshot renders as nothing<a class="headerlink" href="#a-cut-out-slot-needs-alpha-and-an-opaque-screenshot-renders-as-nothing" title="Permanent link">#</a></h3>
+<p><code>TruckImage</code> and <code>TruckImageSmall</code> are composited into the UI. They must be RGBA
+with the vehicle isolated on transparency. Put a rectangle of garage scene in
+one of those slots and the card is simply blank — no error, no fallback.</p>
+<p>The store slots are the opposite: they are ordinary opaque photographs, exactly
+like every stock truck&rsquo;s.</p>
+<h3 id="a-field-that-is-absent-is-never-fixed-by-substitution">A field that is ABSENT is never fixed by substitution<a class="headerlink" href="#a-field-that-is-absent-is-never-fixed-by-substitution" title="Permanent link">#</a></h3>
+<div class="admonition danger">
+<p class="admonition-title"><code>TruckImage*</code> live on <code>&lt;TruckData&gt;</code>, and 43 of 44 stock trucks omit <code>TruckImageSmall</code></p>
+<p>Tooling that repoints image fields usually substitutes <code>field="..."</code> where it
+finds it. That silently does nothing when the field is <strong>absent</strong>, and the
+result is a pak that ships the PNG with no field pointing at it — no error,
+no fallback, just an empty slot.</p>
+<p><code>UiIcon*</code> go on <code>&lt;UiDesc&gt;</code>; <code>TruckImage</code> and <code>TruckImageSmall</code> go on
+<code>&lt;TruckData&gt;</code>. Insert into the right element, anchored on the tag that
+already carries <code>TruckImage</code> — a truck class can hold several <code>&lt;TruckData&gt;</code>
+elements and only one of them is the right one.</p>
+<p><span class="prov prov-unver">measured</span>
+Diffing a working mod against a broken one left exactly this difference:
+the working one declares <code>TruckImageSmall</code> and the broken one shipped the
+PNG with nothing pointing at it.</p>
+<div class="admonition note">
+<p class="admonition-title">What this did NOT turn out to explain</p>
+<p>It is tempting to conclude from that diff that <code>TruckImageSmall</code> feeds
+the fleet tab. <strong>It does not.</strong> With the field correctly declared on
+three vehicles, the tabs still render the shared category glyph. The
+fleet tab is <code>UiIcon40x40</code>/<code>UiIcon30x30</code>, and restoring the shared
+sprite is what filled it. <code>TruckImageSmall</code>&rsquo;s real consumer is still
+unidentified — one stock truck in 44 declares it at all.</p>
+</div>
+</div>
+<h3 id="the-fleet-tabs-are-shared-and-giving-a-vehicle-its-own-empties-them">The fleet tabs are shared, and giving a vehicle its own empties them<a class="headerlink" href="#the-fleet-tabs-are-shared-and-giving-a-vehicle-its-own-empties-them" title="Permanent link">#</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">Never point <code>UiIcon40x40</code> / <code>UiIcon30x30</code> at a per-vehicle image</p>
+<p>All 44 stock trucks point these at a <strong>shared category glyph</strong> —
+<code>scoutVehicleImg</code> ×27, <code>offroadVehicleImg</code> ×13, <code>heavyVehicleImg</code> ×2 — and so
+does every working mod. Those names resolve and draw the little grey truck
+icon you see in the tabs.</p>
+<p>Repointing them at a unique name and shipping the PNG produces an <strong>empty
+tab</strong>. The other image fields do resolve shipped files; these two do not.</p>
+<p>Inherit the glyph for your vehicle&rsquo;s category and leave the fields alone.</p>
+</div>
+<h2 id="composing-the-shot">Composing the shot<a class="headerlink" href="#composing-the-shot" title="Permanent link">#</a></h2>
+<div class="hl"><pre><span></span><code>python F:\Expeditions\Toolkit\vehicle_ui.py --howto
+</code></pre></div>
+
+<p>That prints the whole recipe. In short:</p>
+<ul>
+<li><strong>Three-quarter front</strong>, roughly 30–45° off the nose. Every stock card and
+  every working mod uses that angle.</li>
+<li><strong>Fill the frame.</strong> You cannot zoom in afterwards without losing resolution.</li>
+<li>Keep the vehicle clear of the left-hand truck list and the bottom-right button
+  row.</li>
+<li>The Customize screen (<code>F</code>) is often better lit and has no stats panel over the
+  scene.</li>
+</ul>
+<p>Then:</p>
+<div class="hl"><pre><span></span><code>python vehicle_ui.py mod.pak out.pak --shot shot.png --name Tundra \
+    --box 1500 760 3830 2010 --safe 1560 330 3830 1808 --badge TRD
+</code></pre></div>
+
+<p><code>--box</code> only has to <strong>contain</strong> the vehicle — the tool mattes it and measures the
+real silhouette, so a generous box is safe and a tight one is not. Too small is
+the only real mistake: it clips the roof or the bed, and nothing tells you.</p>
+<div class="admonition warning">
+<p class="admonition-title"><code>--safe</code> is per-shot, and it is where the HUD gets baked in</p>
+<p>The store portraits are cropped from the scene, so any button or label
+inside <code>--safe</code> ends up in the artwork. Where the HUD sits <em>relative to the
+vehicle</em> changes per truck: a long-nosed truck reaches under the <code>M Map</code>
+row, so you crop above it; a short one does not, so you cut the right edge
+instead. Decide it from your own screenshot.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">A scene object touching the bodywork survives the matte</p>
+<p>A crate or post standing against the vehicle shares an edge with it, so
+neither the matte nor a largest-blob filter can tell them apart —
+morphological opening does not sever it either. Paint it out at source with
+<code>--exclude L T R B</code>, which is repeatable.</p>
+</div>
+<h2 id="matching-the-stock-cards">Matching the stock cards<a class="headerlink" href="#matching-the-stock-cards" title="Permanent link">#</a></h2>
+<p><span class="prov prov-unver">measured</span>
+Stock cards are <strong>zoomed in far enough to crop at the bumper</strong>. Fitting the whole
+vehicle inside the frame is the obvious thing to do and it looks visibly small
+next to them.</p>
+<p>The only readable reference is a mod that ships real files instead of inheriting
+atlas sprites: its card is left-aligned, with the content spanning 50% of the
+width and overflowing the frame vertically rather than being fitted inside it.</p>
+<p>Two things follow, and the second one is easy to get wrong in the other
+direction.</p>
+<p><strong>Draw the vehicle about 1.4 frame-heights tall, anchored TOP.</strong> Not centred.
+Centring splits the overflow and crops the windscreen off the top, which looks
+wrong no matter how good the zoom is. Anchoring the top keeps the roof,
+windscreen and grille and drops the whole overflow off the bottom, so the cut
+lands at the bumper. <code>cutout(..., fill=1.4)</code> is the knob.</p>
+<div class="admonition danger">
+<p class="admonition-title">The canvas is 380×92, and a taller one hangs over the border</p>
+<p><span class="prov prov-unver">measured</span>
+The widget is <strong>768×192 — exactly 4:1 — and it scales the image to its
+WIDTH.</strong> A 380×92 card is 4.13:1 and arrives 186px tall, sitting inside the
+box. A 380×110 card is 3.45:1 and arrives <strong>222px tall in a 192px box</strong>, so
+the vehicle visibly hangs over the bottom border.</p>
+<p>Copying the 380×110 from the reference mod is exactly how that happens. Use
+the stock 380×92.</p>
+</div>
+<p>Stock <code>TruckImage</code> names such as <code>don71mchr</code> are <strong>atlas sprites and exist
+nowhere as files</strong>, so you cannot open one to compare. A mod that ships its own
+PNG is the only ground truth available — and, as above, it is not right about
+everything.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../65-vehicles/addons-and-wheels.html"><span>Previous</span>Accessories and tyres</a><a class="seq-next" href="../65-vehicles/skins-and-paint.html"><span>Next</span>Skins and paint</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-fields">The fields</a></li>
+<li><a href="#the-two-rules-that-cost-the-most">The two rules that cost the most</a><ul>
+<li><a href="#a-cut-out-slot-needs-alpha-and-an-opaque-screenshot-renders-as-nothing">A cut-out slot needs alpha, and an opaque screenshot renders as nothing</a></li>
+<li><a href="#a-field-that-is-absent-is-never-fixed-by-substitution">A field that is ABSENT is never fixed by substitution</a></li>
+<li><a href="#the-fleet-tabs-are-shared-and-giving-a-vehicle-its-own-empties-them">The fleet tabs are shared, and giving a vehicle its own empties them</a></li>
+</ul>
+</li>
+<li><a href="#composing-the-shot">Composing the shot</a></li>
+<li><a href="#matching-the-stock-cards">Matching the stock cards</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skins and paint &middot; Expeditions Map Making</title>
+<meta name="description" content="A colour preset does not only carry three colours — it names a material override, which can replace the albedo outright. That is how you get a wrap, chrome or camouflage instead of a repaint."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html" aria-current="page">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Vehicles</p>
+        <h1>Skins and paint</h1>
+<p class="lede">A colour preset does not only carry three colours — it names a material override, which can replace the albedo outright. That is how you get a wrap, chrome or camouflage instead of a repaint.</p>      </div>
+      <article class="prose"><h1 id="skins-and-paint">Skins and paint<a class="headerlink" href="#skins-and-paint" title="Permanent link">#</a></h1>
+<p>A <code>CustomizationPreset</code> is the button the player presses in the garage. It looks
+like it carries three tint colours, and it does, but it also names a
+<strong><code>MaterialOverride</code></strong> — and an override can replace the albedo outright. That is
+the difference between offering a repaint and offering a livery.</p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;MaterialOverride</span><span class="w"> </span><span class="na">AlbedoMap=</span><span class="s">&quot;trucks/carroceria_jungle__d.tga&quot;</span>
+<span class="w">                  </span><span class="na">Name=</span><span class="s">&quot;skin_jungle&quot;</span><span class="w"> </span><span class="na">TargetMaterialName=</span><span class="s">&quot;carroceria&quot;</span>
+<span class="w">                  </span><span class="na">TintMap=</span><span class="s">&quot;trucks/carroceria_notint__d.tga&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+<div class="hl"><pre><span></span><code><span class="nt">&lt;CustomizationPreset</span><span class="w"> </span><span class="na">Id=</span><span class="s">&quot;14&quot;</span><span class="w"> </span><span class="na">MaterialOverrideName=</span><span class="s">&quot;skin_jungle&quot;</span><span class="w"> </span><span class="na">TintColor1=</span><span class="s">&quot;...&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+<h2 id="the-two-rules-that-make-it-work-properly">The two rules that make it work properly<a class="headerlink" href="#the-two-rules-that-make-it-work-properly" title="Permanent link">#</a></h2>
+<h3 id="give-a-pattern-a-tint-mask-with-r0">Give a pattern a tint mask with R=0<a class="headerlink" href="#give-a-pattern-a-tint-mask-with-r0" title="Permanent link">#</a></h3>
+<p>The red channel of the <code>TintMap</code> defines the overall paint zone, so an area with
+no red <strong>never tints</strong>. A camouflage or livery then shows exactly as painted
+instead of being recoloured by whatever the preset&rsquo;s tint happens to be.</p>
+<p>The same mechanism pins a part to a fixed colour. A hard top that should always
+be black gets a black albedo and an R=0 mask, and the garage colour picker then
+cannot touch it while still recolouring the body around it.</p>
+<h3 id="mirror-the-override-onto-every-mesh-that-has-the-others">Mirror the override onto every mesh that has the others<a class="headerlink" href="#mirror-the-override-onto-every-mesh-that-has-the-others" title="Permanent link">#</a></h3>
+<p>Addons, bumpers and racks carry their own <code>MaterialOverride</code> entries. Add a new
+skin only to the body and the body goes camouflage while the bumpers stay
+factory.</p>
+<p>The practical rule: for each mesh, find the materials <code>skin_00</code> already targets,
+and add the new skin for the same ones.</p>
+<div class="admonition warning">
+<p class="admonition-title">Preset Ids must be contiguous from 0</p>
+<p>A gap in the numbering produces buttons that exist and do nothing. If you
+are adding presets, rebuild the whole list rather than appending.</p>
+</div>
+<h2 id="tint-colours-and-what-the-player-actually-sees">Tint colours and what the player actually sees<a class="headerlink" href="#tint-colours-and-what-the-player-actually-sees" title="Permanent link">#</a></h2>
+<p><span class="prov prov-unver">measured</span>
+<code>TintMap</code> has no separate green or blue paint zones on most truck bodies — only
+the red channel is a real zone. A preset that sets <code>TintColor1</code>, <code>2</code> and <code>3</code> to
+three different colours therefore advertises a two- or three-tone that will not
+happen.</p>
+<p>If the vehicle has no multi-zone mask, set all three the same so the garage
+swatch shows exactly what you get.</p>
+<h2 id="chrome">Chrome<a class="headerlink" href="#chrome" title="Permanent link">#</a></h2>
+<p>An override can also change <code>ShadingMap</code>, which is where chrome comes from: very
+high metalness, very low roughness. Because the preset still tints it, <strong>one
+chrome skin gives you gold, blue and black chrome from three presets</strong> rather
+than needing three textures.</p>
+<div class="admonition note">
+<p class="admonition-title">Gloss lives in the shading map, not the colour</p>
+<p><code>ShadingMap</code> is R metalness, G roughness, B ambient occlusion. A flat
+roughness around 160 reads matte and makes every colour look cheap;
+automotive paint wants roughly 40–60. If your colours look flat and plasticky,
+that is the first thing to check — not the albedo.</p>
+</div>
+<h2 id="camouflage-from-a-real-pattern">Camouflage from a real pattern<a class="headerlink" href="#camouflage-from-a-real-pattern" title="Permanent link">#</a></h2>
+<p>A generated pattern is fine. A real one looks better, and Wikimedia Commons
+carries clean swatches.</p>
+<div class="admonition note">
+<p class="admonition-title">Licensing is in your favour, but check each file</p>
+<p>Images of U.S. military patterns are public domain as works of the U.S.
+Government — no attribution, no share-alike, safe to redistribute inside a
+mod. The same search also returns CC BY-SA uploads whose terms are awkward
+for one. Check the licence on each file rather than the search.</p>
+</div>
+<p>A photographed swatch is not a texture. Three things need fixing, and
+<code>camo_from_source.py</code> does all three:</p>
+<p><strong>The lighting gradient.</strong> Any photographed fabric is brighter on one side.
+Divide by a heavily blurred copy of itself and re-centre on the mean, or the
+pattern reads as dirty across one flank of the vehicle.</p>
+<p><strong>The edges do not meet.</strong> Offset the image by half in both axes and blend the
+cross seam that exposes. Mirror-tiling is also seamless but produces obvious
+symmetry, which camouflage shows badly.</p>
+<p><strong>The scale is wrong.</strong> A swatch photographed at life size is far too coarse once
+wrapped onto a body panel. Tile it two or three times across the texture.</p>
+<div class="admonition warning">
+<p class="admonition-title">A hue shift keeps the original lightness</p>
+<p>Recolouring a desert pattern to woodland by rotating hue gives a pale mint
+green, because desert tan is light and a hue rotation preserves that. Pull
+the value down to about 0.6 and raise saturation as well.</p>
+</div>
+<h2 id="before-you-generate-anything">Before you generate anything<a class="headerlink" href="#before-you-generate-anything" title="Permanent link">#</a></h2>
+<p>Everything on this page writes textures, which means it is downstream of the one
+rule that governs every texture in this game:</p>
+<div class="admonition danger">
+<p class="admonition-title">TGA rows go bottom-up</p>
+<p>Write them top-down and every texture is vertically flipped — <strong>invisible</strong>
+on a flat colour and on a tiled camouflage pattern, and catastrophic on a
+real UV atlas.</p>
+<p>A generated-skin vehicle therefore looks perfect while carrying the bug,
+and hands it to you later on the first truck with genuine artwork. See
+<a href="porting-a-truck.html">Porting a SnowRunner truck</a>.</p>
+</div></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../65-vehicles/store-and-garage-images.html"><span>Previous</span>Store and garage artwork</a><a class="seq-next" href="../65-vehicles/diagnosing.html"><span>Next</span>Diagnosing a vehicle</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-two-rules-that-make-it-work-properly">The two rules that make it work properly</a><ul>
+<li><a href="#give-a-pattern-a-tint-mask-with-r0">Give a pattern a tint mask with R=0</a></li>
+<li><a href="#mirror-the-override-onto-every-mesh-that-has-the-others">Mirror the override onto every mesh that has the others</a></li>
+</ul>
+</li>
+<li><a href="#tint-colours-and-what-the-player-actually-sees">Tint colours and what the player actually sees</a></li>
+<li><a href="#chrome">Chrome</a></li>
+<li><a href="#camouflage-from-a-real-pattern">Camouflage from a real pattern</a></li>
+<li><a href="#before-you-generate-anything">Before you generate anything</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>

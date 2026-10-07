@@ -148,7 +148,25 @@
       <h2>Vehicles</h2>
       <ul>
         <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
           <a href="../65-vehicles/porting-a-truck.html" aria-current="page">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
         </li>
       </ul>
     </section>
@@ -185,6 +203,12 @@
         <h1>Porting a SnowRunner truck</h1>
 <p class="lede">SnowRunner and Expeditions share the mod format, so a SnowRunner vehicle&#39;s meshes load untouched. Its textures do not, and that is why ported trucks come out solid black.</p>      </div>
       <article class="prose"><h1 id="porting-a-snowrunner-truck">Porting a SnowRunner truck<a class="headerlink" href="#porting-a-snowrunner-truck" title="Permanent link">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Doing a port? Start with the runbook.</p>
+<p><a href="porting-runbook.html">Porting runbook, start to finish</a> is the ordered
+procedure with every trap at the step where it bites. This page explains
+<strong>why</strong> the big one happens, and is worth reading once.</p>
+</div>
 <p>Expeditions and SnowRunner are both Saber engine games and they share one mod
 format. Saber&rsquo;s own documentation covers truck modding for both titles in a
 single section, which tells you how close they are.</p>
@@ -225,6 +249,48 @@ BC3 with a mip chain but is swizzled or proprietary; a correct BC3 decode scores
 under 15 mean error against a known source image, and every byte offset in the
 file scores about 66, which is noise. <code>--extract-textures</code> also returns nothing
 useful. You do not need to decode anything — you re-encode instead.</p>
+<h2 id="first-check-whether-you-need-to-re-encode-at-all">First check whether you need to re-encode at all<a class="headerlink" href="#first-check-whether-you-need-to-re-encode-at-all" title="Permanent link">#</a></h2>
+<p>Not every mod you download is SnowRunner-encoded. Some are already Expeditions
+mods, and some have been converted before you got them — and re-encoding one of
+those from generated flat colours would <strong>destroy the artist&rsquo;s livery</strong> to fix a
+problem it does not have.</p>
+<p><span class="prov prov-unver">measured</span>
+You can tell without launching anything, because <strong>the two encoders differ by a
+constant 10 bytes on the same source</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>texture</th>
+<th>SnowRunner</th>
+<th>Expeditions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rim_scout_narrow_1__d_a</code></td>
+<td>349,712</td>
+<td>349,702</td>
+</tr>
+<tr>
+<td><code>rim_scout_narrow_1__n_d</code></td>
+<td>1,398,296</td>
+<td>1,398,286</td>
+</tr>
+<tr>
+<td><code>tire_scout_narrow_3__d_a</code></td>
+<td>699,232</td>
+<td>699,222</td>
+</tr>
+</tbody>
+</table>
+<p>So file size alone classifies a <code>.pct</code>, given a reference set from each game.
+The game&rsquo;s own sample mod provides the Expeditions set for free.</p>
+<p>On one 111-texture mod this showed 98 exact Expeditions matches, 2 more sitting
+at SnowRunner-minus-10, 11 <code>_uncmp</code> variants in a separate format class, and
+<strong>zero</strong> SnowRunner-encoded files. The entire re-encode step was skipped and the
+author&rsquo;s artwork was left untouched.</p>
+<p>Do not skip this check because the header looks right. The container header is
+byte-identical between the games, as above — the payload length is the signal.</p>
 <h2 id="the-fix">The fix<a class="headerlink" href="#the-fix" title="Permanent link">#</a></h2>
 <p>Hand Expeditions textures that <strong>its own encoder</strong> produced. The game ships that
 encoder: <code>Sources\Bin\ResourceConverter.exe</code>.</p>
@@ -351,62 +417,24 @@ schema does not list it — check what the game&rsquo;s own content does.</p>
 <p>A screenshot makes a perfectly good store image. Frame the vehicle, crop out the
 HUD, and fit it to a dark canvas at each size.</p>
 <p><code>port_vehicle.py analyze</code> reports all of this.</p>
+<div class="admonition warning">
+<p class="admonition-title">Two of these fields behave differently, and both are easy to get wrong</p>
+<p><code>TruckImage</code> must be an RGBA <strong>cut-out</strong>, zoomed so the vehicle crops at the
+bumper — an opaque screenshot there renders as nothing, and a whole vehicle
+fitted inside the frame looks visibly small next to the stock cards.</p>
+<p><code>UiIcon40x40</code> and <code>UiIcon30x30</code> must keep the <strong>shared category glyph</strong>.
+Giving a vehicle its own empties the fleet tab.</p>
+<p>The full table, with sizes and the shot recipe, is in
+<a href="store-and-garage-images.html">Store and garage artwork</a>, or run
+<code>python vehicle_ui.py --howto</code>.</p>
+</div>
 <h2 id="adding-skins-camo-chrome-a-livery">Adding skins: camo, chrome, a livery<a class="headerlink" href="#adding-skins-camo-chrome-a-livery" title="Permanent link">#</a></h2>
 <p>A colour preset does not only carry three colours. It names a <strong>MaterialOverride</strong>,
-and an override can replace the albedo outright. That is how a truck offers a
-wrap rather than just a repaint — pick the scheme, get the livery.</p>
-<div class="hl"><pre><span></span><code><span class="nt">&lt;MaterialOverride</span><span class="w"> </span><span class="na">AlbedoMap=</span><span class="s">&quot;trucks/carroceria_jungle__d.tga&quot;</span>
-<span class="w">                  </span><span class="na">Name=</span><span class="s">&quot;skin_jungle&quot;</span><span class="w"> </span><span class="na">TargetMaterialName=</span><span class="s">&quot;carroceria&quot;</span>
-<span class="w">                  </span><span class="na">TintMap=</span><span class="s">&quot;trucks/carroceria_notint__d.tga&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<div class="hl"><pre><span></span><code><span class="nt">&lt;CustomizationPreset</span><span class="w"> </span><span class="na">Id=</span><span class="s">&quot;14&quot;</span><span class="w"> </span><span class="na">MaterialOverrideName=</span><span class="s">&quot;skin_jungle&quot;</span><span class="w"> </span><span class="na">TintColor1=</span><span class="s">&quot;...&quot;</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="nt">/&gt;</span>
-</code></pre></div>
-
-<p>Two things make this work properly:</p>
-<p><strong>Give a pattern a tint mask with R=0.</strong> The red channel defines the overall
-paint zone, so an area with no red never tints. A camo or livery then shows
-exactly as painted instead of being recoloured by whatever the preset&rsquo;s tint
-happens to be.</p>
-<p><strong>Mirror the override onto every mesh that has the others.</strong> Addons, bumpers and
-racks carry their own <code>MaterialOverride</code> entries. Add the new skin only to the
-body and the body goes camo while the bumpers stay factory. The practical rule
-is: for each mesh, find the materials <code>skin_00</code> already targets and add the new
-skin for the same ones.</p>
-<p>An override can also change <code>ShadingMap</code>, which is how you get chrome — high
-metalness, very low roughness — while still letting the preset tint it, so one
-chrome skin gives you gold, blue and black chrome from three presets.</p>
-<h3 id="using-a-real-camouflage-pattern">Using a real camouflage pattern<a class="headerlink" href="#using-a-real-camouflage-pattern" title="Permanent link">#</a></h3>
-<p>A generated pattern is fine; a real one looks better. Wikimedia Commons carries
-clean swatches of military patterns, and <strong>images of U.S. military patterns are
-public domain as works of the U.S. Government</strong> — no attribution, no share-alike,
-safe to redistribute inside a mod. Check the licence on each file: the same
-search also returns CC BY-SA uploads whose terms are awkward for a mod.</p>
-<p>A photographed swatch is not a texture. Three things need fixing, and
-<code>camo_from_source.py</code> does all of them:</p>
-<p><strong>The lighting gradient.</strong> Any photographed fabric is brighter on one side.
-Divide by a heavily blurred copy of itself and re-centre on the mean, or the
-pattern reads as dirty across one flank of the vehicle.</p>
-<p><strong>The edges do not meet.</strong> Offset the image by half in both axes and blend the
-cross seam that exposes. Mirror-tiling is also seamless but produces obvious
-symmetry, which camouflage shows badly.</p>
-<p><strong>The scale is wrong.</strong> A swatch photographed at life size is far too coarse once
-wrapped onto a body panel. Tile it two or three times across the texture.</p>
-<div class="admonition warning">
-<p class="admonition-title">A hue shift keeps the original lightness</p>
-<p>Recolouring a desert pattern to woodland by rotating hue gives a pale mint
-green, because desert tan is light and the shift preserves that. Pull the
-value down to about 0.6 and raise saturation as well.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Gloss lives in the shading map, not the colour</p>
-<p><code>ShadingMap</code> is R metalness, G roughness, B ambient occlusion. A flat
-roughness around 160 looks matte and makes every colour look cheap;
-automotive paint wants roughly 40-60. If your colours look flat, that is the
-first thing to check.</p>
-</div>
-<p><code>make_truck_skins.py</code> generates the textures and <code>add_truck_skins.js</code> injects the
-overrides and rebuilds the preset list.</p>
+and an override can replace the albedo outright, which is how a truck offers a
+wrap rather than just a repaint.</p>
+<p>That, tint masks, chrome via the shading map, and turning a photographed
+camouflage swatch into a tiling texture are all in
+<a href="skins-and-paint.html">Skins and paint</a>.</p>
 <h2 id="the-errors-you-can-ignore">The errors you can ignore<a class="headerlink" href="#the-errors-you-can-ignore" title="Permanent link">#</a></h2>
 <div class="hl"><pre><span></span><code>Mesh| Cant find material&#39;s part by name &#39;negrochasis&#39; in trucks_&lt;name&gt;_&lt;modid&gt;
 </code></pre></div>
@@ -429,7 +457,7 @@ loaded it, and its silence then means nothing.</p>
 </div></article>
 
       <nav class="seq" aria-label="Previous and next page">
-<a class="seq-prev" href="../60-custom/fob-modules.html"><span>Previous</span>Custom FOB modules</a><a class="seq-next" href="../70-shipping/packing.html"><span>Next</span>Packing your map</a>      </nav>
+<a class="seq-prev" href="../65-vehicles/porting-runbook.html"><span>Previous</span>Porting runbook, start to finish</a><a class="seq-next" href="../65-vehicles/addons-and-wheels.html"><span>Next</span>Accessories and tyres</a>      </nav>
   </main>
 
   <aside class="onthispage" aria-label="On this page">
@@ -438,6 +466,7 @@ loaded it, and its silence then means nothing.</p>
 <ul>
 <li><a href="#the-one-thing-that-breaks">The one thing that breaks</a></li>
 <li><a href="#what-is-not-the-cause">What is not the cause</a></li>
+<li><a href="#first-check-whether-you-need-to-re-encode-at-all">First check whether you need to re-encode at all</a></li>
 <li><a href="#the-fix">The fix</a><ul>
 <li><a href="#with-the-tool">With the tool</a></li>
 <li><a href="#by-hand">By hand</a></li>
@@ -446,10 +475,7 @@ loaded it, and its silence then means nothing.</p>
 <li><a href="#always-test-the-encoder-before-you-trust-it">Always test the encoder before you trust it</a></li>
 <li><a href="#what-you-will-and-will-not-get">What you will and will not get</a></li>
 <li><a href="#the-store-and-garage-artwork-which-survives-a-successful-port">The store and garage artwork, which survives a successful port</a></li>
-<li><a href="#adding-skins-camo-chrome-a-livery">Adding skins: camo, chrome, a livery</a><ul>
-<li><a href="#using-a-real-camouflage-pattern">Using a real camouflage pattern</a></li>
-</ul>
-</li>
+<li><a href="#adding-skins-camo-chrome-a-livery">Adding skins: camo, chrome, a livery</a></li>
 <li><a href="#the-errors-you-can-ignore">The errors you can ignore</a></li>
 <li><a href="#checking-your-work">Checking your work</a></li>
 </ul>
