@@ -19,7 +19,7 @@ store and look.
 | field | size | kind | where it shows | stock trucks declaring it |
 |---|---|---|---|---|
 | `TruckImage` | 380×92 | **cut-out, RGBA** | the card in the truck list | 44 / 44 |
-| `TruckImageSmall` | 124×52 | **cut-out, RGBA** | compact list variant | 1 / 44 |
+| `TruckImageSmall` | 124×52 | **cut-out, RGBA** | fleet tab, top of truck selection | 1 / 44 |
 | `UiIcon328x458` | 328×458 | scene photo | store list thumbnail | 42 / 44 |
 | `UiIcon576x640` | 576×640 | scene photo | large store preview | 43 / 44 |
 | `uiIcon576x640Bw` | 576×640 | scene photo, greyscale | greyscale variant | 1 / 44 |
@@ -43,6 +43,23 @@ one of those slots and the card is simply blank — no error, no fallback.
 
 The store slots are the opposite: they are ordinary opaque photographs, exactly
 like every stock truck's.
+
+### A field that is ABSENT is never fixed by substitution
+
+!!! danger "`TruckImage*` live on `<TruckData>`, and 43 of 44 stock trucks omit `TruckImageSmall`"
+    Tooling that repoints image fields usually substitutes `field="..."` where it
+    finds it. That silently does nothing when the field is **absent**, and the
+    result is a pak that ships the PNG with no field pointing at it — no error,
+    no fallback, just an empty slot.
+
+    `UiIcon*` go on `<UiDesc>`; `TruckImage` and `TruckImageSmall` go on
+    `<TruckData>`. Insert into the right element, anchored on the tag that
+    already carries `TruckImage` — a truck class can hold several `<TruckData>`
+    elements and only one of them is the right one.
+
+    <span class="prov prov-unver">measured</span>
+    Diffing a mod whose fleet image works against one whose does not left
+    exactly this difference: the working one declares `TruckImageSmall`.
 
 ### The fleet tabs are shared, and giving a vehicle its own empties them
 
