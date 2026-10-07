@@ -7,6 +7,11 @@ summary: SnowRunner and Expeditions share the mod format, so a SnowRunner vehicl
 
 # Porting a SnowRunner truck
 
+!!! note "Doing a port? Start with the runbook."
+    [Porting runbook, start to finish](porting-runbook.html) is the ordered
+    procedure with every trap at the step where it bites. This page explains
+    **why** the big one happens, and is worth reading once.
+
 Expeditions and SnowRunner are both Saber engine games and they share one mod
 format. Saber's own documentation covers truck modding for both titles in a
 single section, which tells you how close they are.

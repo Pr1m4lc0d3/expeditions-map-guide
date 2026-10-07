@@ -139,8 +139,48 @@ writes source `.tga` maps, encodes them with the game's own converter, rebuilds
 | `--skip-self-test` | skip the encoder verification. Do not |
 
 It verifies the encoder against a file the game itself produced before it changes
-anything, and refuses to continue if that check fails. The full explanation is in
-[Porting a SnowRunner truck](../65-vehicles/porting-a-truck.html).
+anything, and refuses to continue if that check fails. The ordered procedure is
+the [porting runbook](../65-vehicles/porting-runbook.html); the explanation of
+the big failure is [Porting a SnowRunner truck](../65-vehicles/porting-a-truck.html).
+
+### `restore_addons.py` — give a ported truck back its stock accessories
+
+```
+python restore_addons.py analyze <main.pak> --pc <pc.pak>
+python restore_addons.py fix     <main.pak> <out.pak> --pc <pc.pak> [--synthesize]
+```
+
+Bumpers, side steps and the spare wheel are separate addon classes, installed
+only because a socket names one in `DefaultAddon`. A port loses them two ways:
+the class lives in the donor game, or the mod dropped the default outright.
+Neither logs anything.
+
+Pairs the mod's truck class to the donor's on **socket names, not filenames** —
+a mod renames the class file but cannot rename `CJ7FrontBumper`. Refuses to
+enable an addon whose mesh is absent, and reports textures with no encoded
+`.pct`. A truck with no confident donor match is reported as **not checked**
+rather than as passing.
+
+`--synthesize` rebuilds a class neither game ships, from the donor's template
+for that kind. Mesh-less addons only — cloning geometry between trucks bolts on
+the wrong part.
+
+### `vehicle_ui.py` — store and garage artwork
+
+```
+python vehicle_ui.py --howto
+python vehicle_ui.py mod.pak out.pak --shot shot.png --name Tundra \
+    --box L T R B [--safe L T R B] [--exclude L T R B] [--badge TRD]
+```
+
+`--howto` prints how to compose the screenshots and what every image field is
+for. `--box` only has to **contain** the vehicle — the tool mattes it and
+measures the real silhouette. `--exclude` paints out a scene object standing
+against the bodywork, which otherwise survives the matte because it shares an
+edge with the vehicle.
+
+Full field table in
+[Store and garage artwork](../65-vehicles/store-and-garage-images.html).
 
 ## Conventions these scripts follow
 
