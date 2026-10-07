@@ -18,7 +18,7 @@ store and look.
 
 | field | size | kind | where it shows | stock trucks declaring it |
 |---|---|---|---|---|
-| `TruckImage` | 380×110 | **cut-out, RGBA** | the card in the truck list | 44 / 44 |
+| `TruckImage` | 380×92 | **cut-out, RGBA** | the card in the truck list | 44 / 44 |
 | `TruckImageSmall` | 124×52 | **cut-out, RGBA** | compact list variant | 1 / 44 |
 | `UiIcon328x458` | 328×458 | scene photo | store list thumbnail | 42 / 44 |
 | `UiIcon576x640` | 576×640 | scene photo | large store preview | 43 / 44 |
@@ -105,19 +105,29 @@ vehicle inside the frame is the obvious thing to do and it looks visibly small
 next to them.
 
 The only readable reference is a mod that ships real files instead of inheriting
-atlas sprites. Its card:
+atlas sprites: its card is left-aligned, with the content spanning 50% of the
+width and overflowing the frame vertically rather than being fitted inside it.
 
-| | |
-|---|---|
-| canvas | 380×110 |
-| content width | 50% of the canvas, left-aligned |
-| vertical | **touches both top and bottom** — the vehicle overflows |
-| bottom row | 109 of 380 pixels filled, i.e. cut straight through the wheels |
+Two things follow, and the second one is easy to get wrong in the other
+direction.
 
-That works out to drawing the vehicle about **1.5 frame-heights tall**, anchored
-left and centred vertically so it crops evenly at the roof and the bumper. The
-toolkit does this by default; `cutout(..., fill=1.5)` is the knob.
+**Draw the vehicle about 1.4 frame-heights tall, anchored TOP.** Not centred.
+Centring splits the overflow and crops the windscreen off the top, which looks
+wrong no matter how good the zoom is. Anchoring the top keeps the roof,
+windscreen and grille and drops the whole overflow off the bottom, so the cut
+lands at the bumper. `cutout(..., fill=1.4)` is the knob.
+
+!!! danger "The canvas is 380×92, and a taller one hangs over the border"
+    <span class="prov prov-unver">measured</span>
+    The widget is **768×192 — exactly 4:1 — and it scales the image to its
+    WIDTH.** A 380×92 card is 4.13:1 and arrives 186px tall, sitting inside the
+    box. A 380×110 card is 3.45:1 and arrives **222px tall in a 192px box**, so
+    the vehicle visibly hangs over the bottom border.
+
+    Copying the 380×110 from the reference mod is exactly how that happens. Use
+    the stock 380×92.
 
 Stock `TruckImage` names such as `don71mchr` are **atlas sprites and exist
 nowhere as files**, so you cannot open one to compare. A mod that ships its own
-PNG is the only ground truth available.
+PNG is the only ground truth available — and, as above, it is not right about
+everything.
