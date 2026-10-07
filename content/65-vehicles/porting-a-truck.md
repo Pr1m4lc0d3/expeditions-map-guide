@@ -192,6 +192,18 @@ HUD, and fit it to a dark canvas at each size.
 
 `port_vehicle.py analyze` reports all of this.
 
+!!! warning "Two of these fields behave differently, and both are easy to get wrong"
+    `TruckImage` must be an RGBA **cut-out**, zoomed so the vehicle crops at the
+    bumper — an opaque screenshot there renders as nothing, and a whole vehicle
+    fitted inside the frame looks visibly small next to the stock cards.
+
+    `UiIcon40x40` and `UiIcon30x30` must keep the **shared category glyph**.
+    Giving a vehicle its own empties the fleet tab.
+
+    The full table, with sizes and the shot recipe, is in
+    [Store and garage artwork](store-and-garage-images.html), or run
+    `python vehicle_ui.py --howto`.
+
 ## Adding skins: camo, chrome, a livery
 
 A colour preset does not only carry three colours. It names a **MaterialOverride**,
