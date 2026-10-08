@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lessons that transfer to other games &middot; Expeditions Map Making</title>
+<meta name="description" content="None of this game&#39;s file formats carry over to another game&#39;s editor. The working method does, and so do the specific ways an AI agent fails silently against a closed toolchain."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html" aria-current="page">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">AI tools</p>
+        <h1>Lessons that transfer to other games</h1>
+<p class="lede">None of this game&#39;s file formats carry over to another game&#39;s editor. The working method does, and so do the specific ways an AI agent fails silently against a closed toolchain.</p>      </div>
+      <article class="prose"><h1 id="lessons-that-transfer-to-other-games">Lessons that transfer to other games<a class="headerlink" href="#lessons-that-transfer-to-other-games" title="Permanent link">#</a></h1>
+<p>Nothing in the formats carries over. A different game has different containers,
+a different scene graph, a different height encoding, and its own undocumented
+rules. Reading this guide teaches you nothing reusable about <em>Farming Simulator</em>
+or <em>Cities: Skylines</em>.</p>
+<p>The method carries over completely. So does the failure catalog, because the
+failures are not caused by this game. They are caused by an agent that writes
+confidently into a format it cannot execute, against an editor that reports
+nothing when it disagrees.</p>
+<p>Every number below was measured on this project.</p>
+<h2 id="the-docs-almost-certainly-already-answer-it">The docs almost certainly already answer it<a class="headerlink" href="#the-docs-almost-certainly-already-answer-it" title="Permanent link">#</a></h2>
+<p>A full day went into carving roads into a heightmap. The editor has a road tool.
+It is called Overlay, it was in the official documentation the whole time, and
+the query was never made. A second day went to reimplementing a smoothing
+filter that the Geometry Smooth brush already was.</p>
+<p>So the first move on any new game is to get its documentation into a form the
+agent can query, and the second is to query it before building.</p>
+<p><strong>Then test the search with a question, not a keyword.</strong> Searching &ldquo;overlay&rdquo;
+finds the overlay page. That is useless, because you only search &ldquo;overlay&rdquo; once
+you already know the answer. Asking &ldquo;how do I make a road&rdquo; returned nothing for
+months. A search tool validated on terms you already know will pass every test
+and fail every real use.</p>
+<h2 id="the-editor-is-the-tool-scripts-are-for-what-it-cannot-do">The editor is the tool; scripts are for what it cannot do<a class="headerlink" href="#the-editor-is-the-tool-scripts-are-for-what-it-cannot-do" title="Permanent link">#</a></h2>
+<p>The hand tools win by default. They are the thing the format was designed
+around, and anything they produce is correct by construction.</p>
+<p>Script only the operations the hand tools structurally cannot perform. In this
+game that list is short and specific: a bench that holds a constant grade while
+descending a hillside, because the Flatten tool levels to one horizontal height
+and there is no graded-bench tool at all. Everything whose target varies
+continuously along a path. Bulk work across a whole network.</p>
+<p>That test transfers. Ask what the hand tool cannot express, not what would be
+faster to script.</p>
+<h2 id="find-the-write-path-before-writing-anything">Find the write path before writing anything<a class="headerlink" href="#find-the-write-path-before-writing-anything" title="Permanent link">#</a></h2>
+<p>A mud-painting tool was written, tested, and reported success. The editor
+produced no mud, because the two files it wrote, <code>extrude_map.dds</code> and
+<code>_merge_mud_wetness.tga</code>, are <strong>build outputs</strong>. The editor overwrites them. The
+writable layer was somewhere else entirely.</p>
+<p>Worse, the same class of error produced a confident lie. A water-seating tool
+reported &ldquo;84.8% to 0.00% floating&rdquo; while writing files the editor could not
+read. It had measured its own intent.</p>
+<p>Two rules come out of that, and both transfer:</p>
+<ul>
+<li><strong>A toolchain has inputs, working state, and outputs. Identify which is which
+  before you write.</strong> Here the editor compiles from per-tile files under
+  <code>data/&lt;col&gt;_&lt;row&gt;/</code>, never from the full-resolution masters, and it reads them
+  <strong>when the map is opened</strong>, not when you press Rebuild Terrain. An agent that
+  writes tiles while the map is open watches its work get discarded.</li>
+<li><strong>Measure the artifact, not the operation.</strong> &ldquo;I wrote the file&rdquo; is not &ldquo;the
+  game changed&rdquo;.</li>
+</ul>
+<h2 id="a-zero-result-is-a-claim">A zero-result is a claim<a class="headerlink" href="#a-zero-result-is-a-claim" title="Permanent link">#</a></h2>
+<p>This is the highest-value habit on the list, and it is free.</p>
+<p>A search for a string returned no matches in three files that contained it,
+because the search tool skipped hidden directories by default. A whole
+ruled-out table got built on that absence.</p>
+<p><strong>Run a positive control before citing a zero.</strong> Search for something you know
+is there, in the same place, with the same tool. If the control fails, the zero
+means nothing.</p>
+<h2 id="the-peak-a-constant-that-was-right-on-one-map-in-twelve">The peak: a constant that was right on one map in twelve<a class="headerlink" href="#the-peak-a-constant-that-was-right-on-one-map-in-twelve" title="Permanent link">#</a></h2>
+<p>Three tools that move and re-seat 3D objects each carried this line:</p>
+<div class="hl"><pre><span></span><code><span class="n">MAX_HEIGHT</span> <span class="o">=</span> <span class="mf">256.0</span>
+</code></pre></div>
+
+<p>Heights are stored normalised from 0 to 1 and multiplied by the map&rsquo;s own
+maximum elevation. Across the twelve maps on disk that value is 512 on five of
+them, 256 on exactly one, and 244, 200, 184 or 64 on the rest. So the ground was
+being evaluated at half its true elevation on the large maps and at four times
+on the small ones.</p>
+<p>Here is what makes it the lesson rather than a bug report. Asked to find objects
+floating above the ground or buried in it, the tool reported:</p>
+<div class="hl"><pre><span></span><code>0 buried, 0 floating, worst 0.00 m   -- across 16,589 models
+</code></pre></div>
+
+<p>A clean bill of health. After reading the elevation from the map descriptor
+instead of assuming it, the same command on the same unchanged files reported
+<strong>6,637 buried over 0.30 m and 2,425 floating over 0.10 m, worst 2.12 m.</strong></p>
+<p>The bug had been silently corrupting object placement across eleven of twelve
+maps for as long as the tools existed, and it had been reporting zero defects
+the whole time. Nothing crashed. Nothing warned.</p>
+<p><strong>So: no magic numbers, ever. Read every geometric constant out of the project
+file.</strong> An agent will happily hard-code the first value it sees working, and that
+value will be correct on the map in front of it.</p>
+<h2 id="your-libraries-will-quietly-rewrite-your-data">Your libraries will quietly rewrite your data<a class="headerlink" href="#your-libraries-will-quietly-rewrite-your-data" title="Permanent link">#</a></h2>
+<p>Python&rsquo;s <code>zipfile</code> normalises backslashes to forward slashes <strong>when it reads an
+archive</strong>. On an untouched shipped map file, 19 of 31 member names come back
+different from the bytes on disk. Rebuild that archive by copying the names
+through and the game stops finding those members, and the map disappears from
+the level list with no error, no log line and no crash dump.</p>
+<p>The fix was to stop asking the library and parse the container directly. It then
+turned out the real naming convention is mixed on purpose: all-backslash under
+one prefix, all-forward under another, first-forward-then-backslash everywhere
+else. A rule derived from the raw bytes reproduced 49 of 49 names across four
+shipped files. Any attempt to tidy it would have broken the map.</p>
+<p><strong>When you are matching a closed format, read the bytes, and copy the working
+spelling instead of normalising it.</strong></p>
+<h2 id="repeat-until-clean-is-an-assumption-not-a-method">&ldquo;Repeat until clean&rdquo; is an assumption, not a method<a class="headerlink" href="#repeat-until-clean-is-an-assumption-not-a-method" title="Permanent link">#</a></h2>
+<p>A road grader was asked to iterate until the surface was smooth. Measured by
+count of remaining defects, per pass:</p>
+<table>
+<thead>
+<tr>
+<th>pass</th>
+<th>humps</th>
+<th>RMS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>9</td>
+<td>0.116</td>
+</tr>
+<tr>
+<td>2</td>
+<td>18</td>
+<td>0.126</td>
+</tr>
+<tr>
+<td>3</td>
+<td>27</td>
+<td>0.136</td>
+</tr>
+<tr>
+<td>4</td>
+<td>31</td>
+<td>0.149</td>
+</tr>
+</tbody>
+</table>
+<p>Each pass re-derived its target from terrain the previous pass had moved, so it
+chased its own output. The process diverges, and one pass is the best it gets.</p>
+<p>Two things transfer. <strong>Write the measurement before the fix</strong>, so &ldquo;better&rdquo; is a
+number rather than an impression. And know the floor: heights here are 16-bit
+floats over the map&rsquo;s elevation, which puts the smallest representable step at
+25 cm on a 512 m map, so a perfectly graded road still measures about 0.12 m of
+roughness. Four of those passes were spent chasing quantisation.</p>
+<h2 id="one-backup-is-correct-for-one-change-and-wrong-for-a-loop">One backup is correct for one change and wrong for a loop<a class="headerlink" href="#one-backup-is-correct-for-one-change-and-wrong-for-a-loop" title="Permanent link">#</a></h2>
+<p>The grader wrote one backup per file under a fixed name, overwritten each run.
+That is the right pattern for a single edit, and it is why four passes left no
+way back: the original heightmap was overwritten four times and is gone.</p>
+<p><strong>Take one immutable snapshot before a loop starts, outside whatever backup slot
+the tool manages.</strong> Related, from the same week: this editor has no autosave, and
+a crash cost two hours of hand placement that no script could reconstruct.</p>
+<h2 id="make-the-humans-example-into-the-test">Make the human&rsquo;s example into the test<a class="headerlink" href="#make-the-humans-example-into-the-test" title="Permanent link">#</a></h2>
+<p>The pattern that produced the most reliable tools here:</p>
+<ol>
+<li>Snapshot the files before the person touches anything.</li>
+<li>They build one example by hand, in the editor, and save.</li>
+<li>Diff for the transfer function: footprint, magnitude, whether it cuts or
+   fills, what it leaves alone.</li>
+<li>Write the tool, and write an acceptance test that reproduces their example
+   within a tolerance.</li>
+</ol>
+<p>One stroke of a smoothing brush yielded a complete filter specification that
+way, down to which wavelengths it attenuated and the fact that it only ever cut.</p>
+<p><strong>Never ship a generator with no reference to check it against.</strong> The reference
+is what separates a tool from a confident guess, and a closed toolchain will not
+supply one.</p>
+<h2 id="the-shortest-version">The shortest version<a class="headerlink" href="#the-shortest-version" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before building</td>
+<td>query the docs; test your search with a question</td>
+</tr>
+<tr>
+<td>Before scripting</td>
+<td>name what the hand tool structurally cannot do</td>
+</tr>
+<tr>
+<td>Before writing</td>
+<td>identify input vs working state vs build output</td>
+</tr>
+<tr>
+<td>Before claiming</td>
+<td>run a positive control on every zero</td>
+</tr>
+<tr>
+<td>Before trusting a constant</td>
+<td>read it from the project file</td>
+</tr>
+<tr>
+<td>Before trusting a library</td>
+<td>read the bytes</td>
+</tr>
+<tr>
+<td>Before iterating</td>
+<td>write the measurement, and find the floor</td>
+</tr>
+<tr>
+<td>Before a loop</td>
+<td>take one immutable snapshot</td>
+</tr>
+<tr>
+<td>Before shipping a tool</td>
+<td>build the acceptance test from a hand-made example</td>
+</tr>
+</tbody>
+</table>
+<p>The common thread is that a closed toolchain fails silently. It does not raise,
+it does not log, and it does not refuse. It accepts the write, discards it, and
+loads the old map, which is why every item above is a way of getting a number
+out of the artifact instead of out of the agent.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../80-ai-tools/toolkit.html"><span>Previous</span>The toolkit</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-docs-almost-certainly-already-answer-it">The docs almost certainly already answer it</a></li>
+<li><a href="#the-editor-is-the-tool-scripts-are-for-what-it-cannot-do">The editor is the tool; scripts are for what it cannot do</a></li>
+<li><a href="#find-the-write-path-before-writing-anything">Find the write path before writing anything</a></li>
+<li><a href="#a-zero-result-is-a-claim">A zero-result is a claim</a></li>
+<li><a href="#the-peak-a-constant-that-was-right-on-one-map-in-twelve">The peak: a constant that was right on one map in twelve</a></li>
+<li><a href="#your-libraries-will-quietly-rewrite-your-data">Your libraries will quietly rewrite your data</a></li>
+<li><a href="#repeat-until-clean-is-an-assumption-not-a-method">&ldquo;Repeat until clean&rdquo; is an assumption, not a method</a></li>
+<li><a href="#one-backup-is-correct-for-one-change-and-wrong-for-a-loop">One backup is correct for one change and wrong for a loop</a></li>
+<li><a href="#make-the-humans-example-into-the-test">Make the human&rsquo;s example into the test</a></li>
+<li><a href="#the-shortest-version">The shortest version</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+</body>
+</html>
