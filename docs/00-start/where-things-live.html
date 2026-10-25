@@ -143,6 +143,9 @@
           <a href="../60-custom/items.html">Custom inventory items</a>
 <span class="pill pill-outline">outline</span>        </li>
         <li>
+          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
+        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
 <span class="pill pill-outline">outline</span>        </li>
       </ul>
@@ -201,6 +204,47 @@
         </li>
       </ul>
     </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+        </li>
+      </ul>
+    </section>
   </nav>
 
   <main id="main">
@@ -215,7 +259,7 @@ every &ldquo;it worked yesterday&rdquo;. Learn this page and you will skip a cat
 problem entirely.</p>
 <h2 id="the-three-copies">The three copies<a class="headerlink" href="#the-three-copies" title="Permanent link">#</a></h2>
 <p>All three live under <code>Documents\My Games\Expeditions\Media\</code>.</p>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>Folder</th>
@@ -244,7 +288,7 @@ problem entirely.</p>
 <td><strong>The game</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Read that last column again. <strong>The game only ever reads the <code>.pak</code>.</strong> Nothing you
 do in <code>prebuild</code> or <code>levels</code> changes what you see when you press Deploy until you
 pack again.</p>
@@ -463,5 +507,41 @@ clone at all.</p>
 })();
 </script>
 
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
 </body>
 </html>

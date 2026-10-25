@@ -31,6 +31,20 @@ import re
 import shutil
 import sys
 
+
+def wrap_tables(html: str) -> str:
+    """Put each table in its own scroll container.
+
+    A table cannot be its own scroll box: making it display:block forces thead
+    and tbody to be separate display:table boxes, which size their columns
+    INDEPENDENTLY, so a header never lines up with the data under it. The
+    container scrolls; the table stays one table.
+    """
+    return re.sub(r"<table>(.*?)</table>",
+                  lambda m: '<div class="table-scroll"><table>%s</table></div>' % m.group(1),
+                  html, flags=re.S)
+
+
 try:
     import markdown
     import yaml
@@ -93,6 +107,7 @@ def collect():
                 continue
             md = markdown.Markdown(extensions=MD_EXT, extension_configs=MD_CFG)
             rendered = md.convert(body)
+            rendered = wrap_tables(rendered)
             pages.append(dict(
                 meta=meta,
                 title=meta["title"],

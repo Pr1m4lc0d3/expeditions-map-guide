@@ -37,7 +37,7 @@ alone.
 ## 1. Analyse before you build
 
 ```
-python F:\Expeditions\Toolkit\port_vehicle.py analyze <mod.zip|mod.pak>
+python port_vehicle.py analyze <mod.zip|mod.pak>
 ```
 
 Reports the materials, which ones it has colours for, which ones the author

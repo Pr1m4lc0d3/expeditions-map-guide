@@ -185,5 +185,41 @@
 })();
 </script>
 
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
 </body>
 </html>

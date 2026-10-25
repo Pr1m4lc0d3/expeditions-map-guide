@@ -143,6 +143,9 @@
           <a href="../60-custom/items.html">Custom inventory items</a>
 <span class="pill pill-outline">outline</span>        </li>
         <li>
+          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
+        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
 <span class="pill pill-outline">outline</span>        </li>
       </ul>
@@ -198,6 +201,47 @@
         </li>
         <li>
           <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
         </li>
       </ul>
     </section>
@@ -263,7 +307,7 @@ problem it does not have.</p>
 <p><span class="prov prov-unver">measured</span>
 You can tell without launching anything, because <strong>the two encoders differ by a
 constant 10 bytes on the same source</strong>:</p>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>texture</th>
@@ -288,7 +332,7 @@ constant 10 bytes on the same source</strong>:</p>
 <td>699,222</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>So file size alone classifies a <code>.pct</code>, given a reference set from each game.
 The game&rsquo;s own sample mod provides the Expeditions set for free.</p>
 <p>On one 111-texture mod this showed 98 exact Expeditions matches, 2 more sitting
@@ -304,8 +348,8 @@ encoder: <code>Sources\Bin\ResourceConverter.exe</code>.</p>
 a source <code>.tga</code> for each one, run them through the converter, put the results
 back into <code>pc.pak</code>, and install.</p>
 <h3 id="with-the-tool">With the tool<a class="headerlink" href="#with-the-tool" title="Permanent link">#</a></h3>
-<div class="hl"><pre><span></span><code>python F:\Expeditions\Toolkit\port_vehicle.py analyze &lt;mod.zip&gt;
-python F:\Expeditions\Toolkit\port_vehicle.py port &lt;mod.zip&gt; --id &lt;modid&gt; --name &quot;My Truck&quot;
+<div class="hl"><pre><span></span><code>python port_vehicle.py analyze &lt;mod.zip&gt;
+python port_vehicle.py port &lt;mod.zip&gt; --id &lt;modid&gt; --name &quot;My Truck&quot;
 </code></pre></div>
 
 <p>Run <code>analyze</code> first. It tells you how many materials it has a colour for, which
@@ -382,7 +426,7 @@ truck you ported. Check what the image actually depicts — open it — rather t
 trusting the filename.</p>
 <p><strong>The large store preview is blank.</strong> There are two store image fields and they
 are different sizes:</p>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>field</th>
@@ -412,7 +456,7 @@ are different sizes:</p>
 <td>manufacturer badge</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><span class="prov prov-unver">measured</span>
 Of the game&rsquo;s 44 stock truck classes, <strong>42 declare <code>UiIcon328x458</code> and 43 declare
 <code>UiIcon576x640</code></strong>. A SnowRunner mod often declares only the first, so the big
@@ -584,5 +628,41 @@ loaded it, and its silence then means nothing.</p>
 })();
 </script>
 
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
 </body>
 </html>

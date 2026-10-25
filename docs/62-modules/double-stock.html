@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Essentials storage &middot; Expeditions Map Making</title>
+<meta name="description" content="Doubles the cargo the base can hold. Documented for custom modules."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
+        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+<span class="pill pill-outline">outline</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+<span class="pill pill-outline">outline</span>        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+        </li>
+        <li>
+          <a href="../62-modules/double-stock.html" aria-current="page">Essentials storage</a>
+        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Appendix A - base modules</p>
+        <h1>Essentials storage</h1>
+<p class="lede">Doubles the cargo the base can hold. Documented for custom modules.</p>      </div>
+      <article class="prose"><h1 id="essentials-storage">Essentials storage<a class="headerlink" href="#essentials-storage" title="Permanent link">#</a></h1>
+<p><img alt="Essentials storage store card" src="../assets/bases/double-stock_card.png" /></p>
+<p>Doubles the cargo the base can hold.</p>
+<h2 id="in-game">In game<a class="headerlink" href="#in-game" title="Permanent link">#</a></h2>
+<p><strong>The purchase card.</strong> This is what a player sees before buying.</p>
+<p><img alt="Essentials storage purchase card" src="../assets/bases/double-stock_buy.png" /></p>
+<p>Below the description it shows: Four figures: <strong>26 gal, 200 spare parts, 2 wheels, 5 kWmin</strong>.</p>
+<p>That comes from one icon per non-null <code>ConsumablesSlot</code>: <code>fuelSlotSettings</code>, <code>repairsSlotSettings</code>, <code>wheelsSlotSettings</code>, <code>electroSlotSettings</code>, each showing its <code>quantity</code>. Change the number and the card changes with it.</p>
+<p><strong>The module once built.</strong> This is the panel the player opens at the base.</p>
+<p><img alt="Essentials storage in use" src="../assets/bases/double-stock_owned.png" /></p>
+<p>If your module does not produce a panel like this one, it is not configured correctly. The numbers here and the numbers on the purchase card are the same values, read from the same place.</p>
+<div class="admonition note">
+<p class="admonition-title">Documented for custom modules</p>
+<p>Saber&rsquo;s own documentation lists this module&rsquo;s zoneProperty and says these props exist to configure CUSTOM FOB modules.
+Use the property named below, not one you inferred from a symbol name.</p>
+</div>
+<h2 id="identity">Identity<a class="headerlink" href="#identity" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>zoneProperty.moduleId</code></td>
+<td><code>DOUBLE_STOCK</code></td>
+</tr>
+<tr>
+<td>Zone property</td>
+<td><code>ZonePropertyFobModuleStorage</code></td>
+</tr>
+<tr>
+<td>Its members</td>
+<td>moduleId + all inventory members</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="models">Models<a class="headerlink" href="#models" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Slot</th>
+<th>Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>modelId</code> (main base)</td>
+<td><code>models_fob_module_double_stock</code></td>
+</tr>
+<tr>
+<td><code>modelIdAdditional</code> (outpost)</td>
+<td><code>models_fob_module_small_double_stock</code></td>
+</tr>
+<tr>
+<td><code>modelAnimated</code></td>
+<td><code>models_fob_module_double_stock_objective</code></td>
+</tr>
+<tr>
+<td><code>modelAdditionalAnimated</code></td>
+<td><code>models_fob_module_small_double_stock_objective</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="artwork-every-image-slot">Artwork: every image slot<a class="headerlink" href="#artwork-every-image-slot" title="Permanent link">#</a></h2>
+<p>Six images appear per module, in six different places. They are
+separate images, not one picture reused.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Where you see it</th>
+<th>Field</th>
+<th>Falls back to</th>
+<th>Symbol for this module</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Store sidebar, the list row</td>
+<td><code>bg</code></td>
+<td><code>moduleSlotContent</code></td>
+<td><code>moduleDoubleStock</code></td>
+</tr>
+<tr>
+<td>Store card, when you select it</td>
+<td><code>popupModuleBg</code></td>
+<td>(none)</td>
+<td><code>moduleDoubleStockPopup</code></td>
+</tr>
+<tr>
+<td>Right card, when the module is used</td>
+<td><code>bgRight</code></td>
+<td><code>moduleSlotContentRight</code></td>
+<td><code>moduleDoubleStockRight</code></td>
+</tr>
+<tr>
+<td>HUD strip of deployed modules</td>
+<td><code>bgSmall</code></td>
+<td><code>moduleSlotContentSmall</code></td>
+<td><code>moduleDoubleStockSmall</code></td>
+</tr>
+<tr>
+<td><strong>On the map</strong></td>
+<td><code>iconMap40</code></td>
+<td>(none)</td>
+<td><code>moduleDoubleStockMap40</code></td>
+</tr>
+<tr>
+<td>Trade panel glyph</td>
+<td><code>iconTrade</code></td>
+<td>(none)</td>
+<td><code>moduleDoubleStock48</code></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition warning">
+<p class="admonition-title">How much of that is confirmed</p>
+<p>The <strong>fallbacks</strong> are the engine schema defaults, so they are fact.
+The <strong>symbols</strong> in the last column are confirmed to exist in the
+game&rsquo;s UI bundle. Which field each one is wired to is <strong>inferred
+from its suffix</strong> and has not been verified against a module proven
+to work. Treat the last column as a strong lead, not as settled.</p>
+</div>
+<h3 id="replacing-them">Replacing them<a class="headerlink" href="#replacing-them" title="Permanent link">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">There is a template for this</p>
+<p><a href="../assets/downloads/expeditions-module-art-template.zip">expeditions-module-art-template.zip</a> — the four
+canvases at the right sizes, named correctly, with the cropped and
+covered areas marked.</p>
+</div>
+<p>The four background images may be your own PNGs. Ship them at
+<code>ui/textures/&lt;name&gt;.png</code> and name them in the descriptor <strong>without the
+folder and without <code>.png</code></strong>. These are the sizes mods on disk ship:</p>
+<div class="hl"><pre><span></span><code>ui/textures/mymodule_bg.png       -&gt;  &quot;bg&quot;: &quot;mymodule_bg&quot;             380 x 92
+ui/textures/mymodule_popup.png    -&gt;  &quot;popupModuleBg&quot;: &quot;...&quot;          380 x 92
+ui/textures/mymodule_right.png    -&gt;  &quot;bgRight&quot;: &quot;...&quot;                760 x 90
+ui/textures/mymodule_small.png    -&gt;  &quot;bgSmall&quot;: &quot;...&quot;                124 x 52
+</code></pre></div>
+
+<p>⛔ The two icons may not be your own files. <code>iconMap40</code> and <code>iconTrade</code>
+take a symbol from the game&rsquo;s bundle; a PNG in an icon field does not
+render. Borrow a vanilla symbol instead.</p>
+<div class="admonition note">
+<p class="admonition-title">The other five image fields</p>
+<p><code>icon20</code>, <code>icon40</code>, <code>iconModuleBg</code>, <code>tradeArrowsSpecialIcon</code> and
+<code>uiDescTradeHeaderIcon</code> are unset on every module examined, and take
+symbols only.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">popupModuleBg is not validated, and has failed in practice</p>
+<p>The module checker tests <code>bg</code>, <code>bgSmall</code> and <code>bgRight</code> but not this
+field, and a shipped mod has shown a broken-image placeholder here —
+a yellow square with a red mountain. If you see that, the name did
+not resolve.</p>
+</div>
+<h3 id="the-four-background-images-rebuilt">The four background images, rebuilt<a class="headerlink" href="#the-four-background-images-rebuilt" title="Permanent link">#</a></h3>
+<p>Where each one is drawn, on the real screens:</p>
+<p><img alt="Essentials storage slot placement" src="../assets/bases/double-stock_placement.png" /></p>
+<p>The originals live inside the game&rsquo;s UI bundle and cannot be
+extracted, so these are rebuilt from in-game captures. <strong>Every one
+below is a transparent PNG at the slot aspect — the same thing you
+have to author.</strong> The game supplies the brown row, the slate card and
+the tan bar; your file supplies only the model.</p>
+<div class="admonition warning">
+<p class="admonition-title">These are FOUR separate images, not one image reused</p>
+<p>Do not render your model once and drop the same picture into all
+four fields. Across the vanilla set the four differ in <strong>crop,
+framing and left-to-right orientation</strong>.</p>
+<p><strong>Three of the twelve are flipped in the store row</strong>: Expanded
+parking, Cargo drone and Service station. The other nine run the
+same way in both slots.</p>
+<p>Those three have one thing in common. The feature that identifies
+the module sits on the LEFT of the purchase card — the parking
+barrier and cabinet, the drone itself, the hoist gantry — and the
+store row clips its left edge. Flipping is what saves that detail
+from the crop.</p>
+<p><strong>So the rule is: flip when the detail that identifies your module
+would otherwise be cropped away.</strong> Decide it per slot by looking at
+what survives, not by reusing one render four times.</p>
+</div>
+<p>The slot sizes below are measured, not quoted: 762 x 184, 762 x 184,
+1530 x 184 and 248 x 104 in a 2160p frame, which is exactly the
+documented 380 x 92, 380 x 92, 760 x 90 and 124 x 52 doubled.</p>
+<div class="admonition note">
+<p class="admonition-title">Why bg shows the whole model when the game clips it</p>
+<p>In game the store row cuts off the left of this art. That is the
+game drawing it, not your file — you author the complete model and
+let the row clip. The example below is the complete image.</p>
+</div>
+<p><code>bg</code> — 380 x 92 — the store row <strong>and</strong> the sell dialog. Fills the row height and <strong>clips off the left edge</strong>.</p>
+<p><img alt="Essentials storage bg" src="../assets/bases/double-stock_bg.png" /></p>
+<p>This store-row art runs the <strong>same way</strong> as the purchase card.</p>
+<p><code>popupModuleBg</code> — 380 x 92 — the purchase card. The <strong>whole model</strong>, nothing cropped.</p>
+<p><img alt="Essentials storage popup" src="../assets/bases/double-stock_popup.png" /></p>
+<p><code>bgRight</code> — 760 x 90 — the banner above the module card when it is in use. The artwork is <strong>aligned to the RIGHT</strong>; the icon and name sit on the tan bar to its left.</p>
+<p><img alt="Essentials storage bgRight" src="../assets/bases/double-stock_right.png" /></p>
+<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. A <strong>tight, centred crop</strong> that fills the chip, cropped on every side — not the same fit as <code>bg</code>.</p>
+<p><img alt="Essentials storage bgSmall" src="../assets/bases/double-stock_small.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Composition</p>
+<p>Vanilla rows are <strong>left-anchored</strong>, fill the row height, and clip
+off the left edge. A centred picture with margins reads as too
+small and floats. Match the framing, not just the pixel size.</p>
+</div>
+<h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
+<p>Use <strong><code>ZonePropertyFobModuleStorage</code></strong>, the property Saber&rsquo;s documentation names for 
+this module. A property guessed from the symbol name gives a module that builds and then does nothing.</p>
+<p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
+<p>See <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a> for the full field list.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../62-modules/extra-storage.html"><span>Previous</span>Warehouse</a><a class="seq-next" href="../62-modules/workshop.html"><span>Next</span>Workshop</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#in-game">In game</a></li>
+<li><a href="#identity">Identity</a></li>
+<li><a href="#models">Models</a></li>
+<li><a href="#artwork-every-image-slot">Artwork: every image slot</a><ul>
+<li><a href="#replacing-them">Replacing them</a></li>
+<li><a href="#the-four-background-images-rebuilt">The four background images, rebuilt</a></li>
+</ul>
+</li>
+<li><a href="#building-your-own">Building your own</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

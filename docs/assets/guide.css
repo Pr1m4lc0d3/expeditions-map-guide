@@ -273,11 +273,24 @@ body {
 }
 
 /* tables: always allowed to scroll inside themselves */
+/* The table is ONE table. It was display:block with thead and tbody each set
+   to display:table -- two independent tables, sizing their columns
+   independently, so no header could ever line up with the data beneath it.
+   The wrapper scrolls instead. */
+.prose .table-scroll { overflow-x: auto; max-width: 100%; margin-top: 1.15rem; }
 .prose table {
   border-collapse: collapse; width: 100%; font-size: .9375rem;
-  display: block; overflow-x: auto; white-space: normal;
 }
-.prose thead, .prose tbody { display: table; width: 100%; }
+/* An identifier that wraps mid-token reads as two different names. These
+   columns are field names and symbols -- keep each one whole, and let the
+   table scroll sideways if that will not fit. */
+.prose :is(td, th) code {
+  white-space: nowrap; overflow-wrap: normal;
+  padding-left: 0; margin-left: -0.02em;   /* sit flush with the column edge */
+}
+.prose td:first-child, .prose th:first-child { padding-right: 1.6rem; }
+.prose td + td, .prose th + th { padding-right: 1.4rem; }
+.prose tbody tr:hover td { background: var(--lift); }
 .prose th {
   text-align: left; font-family: var(--mono); font-weight: 500;
   font-size: .69rem; letter-spacing: .09em; text-transform: uppercase;
@@ -425,3 +438,60 @@ body {
 .hl .nt { color: var(--flag); }
 .hl .na { color: var(--signal); }
 .hl .mi, .hl .mf { color: var(--signal); }
+
+/* Images must never exceed their column. Without this a full-size crop
+   overflows the body and lands on top of the on-this-page rail. */
+article img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.2rem 0;
+  border-radius: 3px;
+}
+
+/* module artwork: show the asset box */
+/* These assets are mostly transparent. Without a frame the reader cannot see
+   where the image actually ends, which is the whole point when the brief is
+   "author a 380x92 PNG". The checker board makes transparency unambiguous. */
+article img[src*="/bases/"] {
+  border: 1px solid #6c7a7a;
+  background-color: #2a3030;
+  background-image:
+    linear-gradient(45deg, #333b3b 25%, transparent 25%, transparent 75%, #333b3b 75%),
+    linear-gradient(45deg, #333b3b 25%, transparent 25%, transparent 75%, #333b3b 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  image-rendering: auto;
+}
+
+/* A reading measure belongs on PROSE, not on the whole article. Capping the
+   article squeezed every table into the text width -- long field names broke
+   mid-token (popupModul / eBg) -- while the column beside them sat empty.
+   Text keeps its measure; tables, images and the store card get the column. */
+.prose { max-width: none; }
+.prose > :is(p, ul, ol, dl, blockquote, h1, h2, h3, h4, pre, .admonition, .step, .seq) {
+  max-width: var(--measure);
+}
+.prose > :is(table, figure, .table-scroll) { max-width: 100%; }
+
+/* the store card: its own space at the top right, clear of the text */
+.prose > p:has(> img[src$="_card.png"]) {
+  float: right;
+  width: clamp(15rem, 31%, 21rem);
+  max-width: none;
+  margin: .25rem 0 1.75rem 2.5rem;
+}
+article img[src$="_card.png"] {
+  width: 100%;
+  margin: 0;
+  border: 1px solid #6c7a7a;
+  border-radius: 2px;
+  background: none;
+}
+/* A block box does not shrink for a float -- only its inline content does, so
+   a panel with a background slides UNDER the card. Establishing a block
+   formatting context makes the box itself keep clear. */
+.prose .admonition, .prose pre, .prose blockquote { display: flow-root; }
+@media (max-width: 760px) {
+  article img[src$="_card.png"] { float: none; width: 100%; max-width: 360px; margin: 1rem 0; }
+}

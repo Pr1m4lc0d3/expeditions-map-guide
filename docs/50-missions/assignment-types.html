@@ -143,6 +143,9 @@
           <a href="../60-custom/items.html">Custom inventory items</a>
 <span class="pill pill-outline">outline</span>        </li>
         <li>
+          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
+        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
 <span class="pill pill-outline">outline</span>        </li>
       </ul>
@@ -198,6 +201,47 @@
         </li>
         <li>
           <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
         </li>
       </ul>
     </section>
@@ -271,7 +315,7 @@ x and y values at zero. An explicit zero is fine. Nothing is not.</p>
 to do anything extra to keep it off the map.</p>
 <h3 id="minigameinfo">minigameInfo<a class="headerlink" href="#minigameinfo" title="Permanent link">#</a></h3>
 <p>Play a minigame. Five kinds exist in the engine:</p>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>Minigame</th>
@@ -300,7 +344,7 @@ to do anything extra to keep it off the map.</p>
 <td>inspect marked points on an object</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="seismograph">Seismograph<a class="headerlink" href="#seismograph" title="Permanent link">#</a></h3>
 <p>Trigger seismic readings at zones that are deliberately not shown on the map, so
 the player has to find them.</p>
@@ -319,7 +363,7 @@ copying someone else&rsquo;s map as a starting point.</p>
 <p>These are in the editor&rsquo;s type schema <strong>and</strong> referenced in the shipped game code,
 so they are real features. They are simply missing from the official guides, and as
 far as is known nobody has used them in a custom map.</p>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>Field</th>
@@ -340,7 +384,7 @@ far as is known nobody has used them in a custom map.</p>
 <td>a puzzle, with a starting zone and a list of puzzle properties</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><span class="prov prov-schema">schema only</span></p>
 <p>Treat these as worth an experiment, not as something to build a map around. If you
 do get one working, that is genuinely new information for everyone.</p>
@@ -350,7 +394,7 @@ is deliberately hidden from mod tools.</p>
 <h2 id="the-field-name-the-guides-get-wrong">The field name the guides get wrong<a class="headerlink" href="#the-field-name-the-guides-get-wrong" title="Permanent link">#</a></h2>
 <p>Every assignment points at a zone, and the official guides call that field
 <code>globalZoneId</code> throughout. The actual files do not agree:</p>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>Assignment</th>
@@ -371,7 +415,7 @@ is deliberately hidden from mod tools.</p>
 <td><code>globalZoneDeliveryId</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>If you are editing JSON by hand, or writing anything that reads these files, expect
 all three spellings.</p>
 <h2 id="the-failure-they-all-share">The failure they all share<a class="headerlink" href="#the-failure-they-all-share" title="Permanent link">#</a></h2>
@@ -503,5 +547,41 @@ character.</p></article>
 })();
 </script>
 
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
 </body>
 </html>

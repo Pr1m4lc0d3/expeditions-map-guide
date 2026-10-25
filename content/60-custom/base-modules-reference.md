@@ -177,19 +177,13 @@ because a wrong name does not fail loudly — it draws a placeholder.
 
 A list row is **778 × 255 px** in a 3840 × 2160 frame: a title strip about 55 px
 tall carrying the name, the price and the small glyph, with the `bg` artwork
-filling the roughly 200 px beneath it. These are the stock rows:
+filling the roughly 200 px beneath it. The stock rows are down the left of this
+capture (1), and the card in the middle (2) is what `popupModuleBg` fills:
 
-![Repair station](../assets/bases/row_repair_station.png)
+![Stock store rows and the Repair station build card](../assets/bases/repair-station_placement.png)
 
-![Expanded parking](../assets/bases/row_expanded_parking.png)
-
-![Generator](../assets/bases/row_generator.png)
-
-![Service station](../assets/bases/row_service_station.png)
-
-And the card, which is what `popupModuleBg` fills:
-
-![The Generator build card](../assets/bases/card_generator.png)
+Every built-in module's own rows and card are on its page in
+[Appendix A](../62-modules/gas-station.html).
 
 !!! warning "Composition, not just size"
     The artwork is **left-anchored and fills the row height**, and it clips off

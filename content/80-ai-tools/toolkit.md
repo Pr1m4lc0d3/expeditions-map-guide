@@ -7,9 +7,39 @@ summary: The scripts that read and write map and vehicle files directly. Plain P
 
 # The toolkit
 
-`F:\Expeditions\Toolkit` is a folder of Python scripts that read and write the
-game's files directly. An agent uses them, but there is nothing AI about them —
-run them yourself from a terminal.
+The toolkit is a set of Python scripts that read and write the game's files
+directly. An agent uses them, but there is nothing AI about them — run them
+yourself from a terminal.
+
+## Getting it
+
+> **[DOWNLOAD LOCATION NEEDED]** — the toolkit is not yet published. When it is,
+> this is where the link goes, and the commands below work as written.
+
+Once you have it, put the folder anywhere you like and work from inside it. Every
+command on this page is written as if your terminal is **in the toolkit folder**:
+
+```
+cd <wherever you put the toolkit>
+python wiki.py howto road
+```
+
+### What you need first
+
+- **Python 3.11 or newer**, with `pip install pillow numpy requests`
+- **The game installed**, because the scripts read its paks and call its
+  converter
+- **Blender 4.0 or newer**, only if you are importing your own 3D models
+
+The scripts find your game and your mod folder on their own. If they cannot,
+they say so and tell you what to set.
+
+!!! note "Run one thing first"
+    ```
+    python wiki.py howto road
+    ```
+    If that prints a list of documentation pages, everything is wired up. If it
+    cannot find the game, it will say which path it tried.
 
 They exist for the work the editor structurally cannot do: operations whose
 target changes continuously along a path, and operations over a whole network at

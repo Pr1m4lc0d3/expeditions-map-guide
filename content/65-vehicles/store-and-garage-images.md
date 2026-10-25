@@ -86,7 +86,7 @@ like every stock truck's.
 ## Composing the shot
 
 ```
-python F:\Expeditions\Toolkit\vehicle_ui.py --howto
+python vehicle_ui.py --howto
 ```
 
 That prints the whole recipe. In short:

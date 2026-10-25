@@ -143,6 +143,9 @@
           <a href="../60-custom/items.html">Custom inventory items</a>
 <span class="pill pill-outline">outline</span>        </li>
         <li>
+          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
+        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
 <span class="pill pill-outline">outline</span>        </li>
       </ul>
@@ -201,6 +204,47 @@
         </li>
       </ul>
     </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+        </li>
+      </ul>
+    </section>
   </nav>
 
   <main id="main">
@@ -209,9 +253,35 @@
         <h1>The toolkit</h1>
 <p class="lede">The scripts that read and write map and vehicle files directly. Plain Python, runnable by hand, no AI required.</p>      </div>
       <article class="prose"><h1 id="the-toolkit">The toolkit<a class="headerlink" href="#the-toolkit" title="Permanent link">#</a></h1>
-<p><code>F:\Expeditions\Toolkit</code> is a folder of Python scripts that read and write the
-game&rsquo;s files directly. An agent uses them, but there is nothing AI about them —
-run them yourself from a terminal.</p>
+<p>The toolkit is a set of Python scripts that read and write the game&rsquo;s files
+directly. An agent uses them, but there is nothing AI about them — run them
+yourself from a terminal.</p>
+<h2 id="getting-it">Getting it<a class="headerlink" href="#getting-it" title="Permanent link">#</a></h2>
+<blockquote>
+<p><strong>[DOWNLOAD LOCATION NEEDED]</strong> — the toolkit is not yet published. When it is,
+this is where the link goes, and the commands below work as written.</p>
+</blockquote>
+<p>Once you have it, put the folder anywhere you like and work from inside it. Every
+command on this page is written as if your terminal is <strong>in the toolkit folder</strong>:</p>
+<div class="hl"><pre><span></span><code>cd &lt;wherever you put the toolkit&gt;
+python wiki.py howto road
+</code></pre></div>
+
+<h3 id="what-you-need-first">What you need first<a class="headerlink" href="#what-you-need-first" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Python 3.11 or newer</strong>, with <code>pip install pillow numpy requests</code></li>
+<li><strong>The game installed</strong>, because the scripts read its paks and call its
+  converter</li>
+<li><strong>Blender 4.0 or newer</strong>, only if you are importing your own 3D models</li>
+</ul>
+<p>The scripts find your game and your mod folder on their own. If they cannot,
+they say so and tell you what to set.</p>
+<div class="admonition note">
+<p class="admonition-title">Run one thing first</p>
+<p><code>python wiki.py howto road</code>
+If that prints a list of documentation pages, everything is wired up. If it
+cannot find the game, it will say which path it tried.</p>
+</div>
 <p>They exist for the work the editor structurally cannot do: operations whose
 target changes continuously along a path, and operations over a whole network at
 once. <strong>Do not reimplement the editor&rsquo;s brushes.</strong> Use the editor for sculpting
@@ -236,7 +306,7 @@ because it was only ever tested with words that were already known to be in
 it.</p>
 </div>
 <h2 id="terrain-and-roads">Terrain and roads<a class="headerlink" href="#terrain-and-roads" title="Permanent link">#</a></h2>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>need</th>
@@ -277,7 +347,7 @@ it.</p>
 <td><code>build_map.py</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <div class="admonition warning">
 <p class="admonition-title">A push into tiles is a merge, never a copy</p>
 <p>Tiles hold hand sculpting done after the master was written. Protect water
@@ -287,7 +357,7 @@ channels and take explicit no-go areas for ground you reshaped by hand.</p>
 produced 30 m embankments, and a surface 30 m different from its surroundings has
 a cliff at every boundary.</p>
 <h2 id="models">Models<a class="headerlink" href="#models" title="Permanent link">#</a></h2>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>need</th>
@@ -312,7 +382,7 @@ a cliff at every boundary.</p>
 <td><code>verify_model.py</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><code>verify_model.py</code> exists because <code>ResourceConverter --mod-convert -s</code> only tells
 you the files parse. Twenty-nine models passed it and then crashed the editor on
 placement. The script converts, keeps the output, and inspects the artifact the
@@ -324,7 +394,7 @@ scale distribution across a different mix of brands once turned a 6.84 m
 boulder into a 227 m potato stuck to a cliff.</p>
 </div>
 <h2 id="missions-and-zones">Missions and zones<a class="headerlink" href="#missions-and-zones" title="Permanent link">#</a></h2>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>need</th>
@@ -341,13 +411,13 @@ boulder into a 227 m potato stuck to a cliff.</p>
 <td><code>build_missions.py</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>Run <code>check_objectives.py</code> before every pack. Objective errors are silent: a stage
 where every substage is optional is prohibited and errors, a null
 <code>localOffsetScoutingAreaRelativeZone</code> crashes, and a dangling <code>globalZoneId</code>
 hangs Deploy with no popup and no log line.</p>
 <h2 id="packing-and-checking">Packing and checking<a class="headerlink" href="#packing-and-checking" title="Permanent link">#</a></h2>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>need</th>
@@ -372,7 +442,7 @@ hangs Deploy with no popup and no log line.</p>
 <td><code>check_pack.py &lt;Level&gt;</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong><code>check_pack.py</code> comes before any theory.</strong> When a map misbehaves, run it first
 and read what it says, rather than reasoning about what might be wrong.</p>
 <div class="admonition danger">
@@ -382,7 +452,7 @@ week and must not be run. Older notes that tell you to run it after every
 pack are out of date.</p>
 </div>
 <h2 id="custom-content">Custom content<a class="headerlink" href="#custom-content" title="Permanent link">#</a></h2>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>need</th>
@@ -399,7 +469,7 @@ pack are out of date.</p>
 <td><code>pack_fob_module.py</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>An invalid <code>$type</code> in a FOB module is <strong>silently nulled at pack time</strong>, which is
 why a validator exists.</p>
 <h2 id="vehicles">Vehicles<a class="headerlink" href="#vehicles" title="Permanent link">#</a></h2>
@@ -410,7 +480,7 @@ python port_vehicle.py port &lt;mod.zip&gt; --id &lt;modid&gt; --name &quot;My T
 <p>Brings a SnowRunner vehicle into Expeditions: works out the required textures,
 writes source <code>.tga</code> maps, encodes them with the game&rsquo;s own converter, rebuilds
 <code>pc.pak</code>, installs and registers the mod.</p>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>flag</th>
@@ -439,7 +509,7 @@ writes source <code>.tga</code> maps, encodes them with the game&rsquo;s own con
 <td>skip the encoder verification. Do not</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>It verifies the encoder against a file the game itself produced before it changes
 anything, and refuses to continue if that check fails. The ordered procedure is
 the <a href="../65-vehicles/porting-runbook.html">porting runbook</a>; the explanation of
@@ -491,6 +561,10 @@ bug wearing two faces.</p></article>
     <p>On this page</p>
     <div class="toc">
 <ul>
+<li><a href="#getting-it">Getting it</a><ul>
+<li><a href="#what-you-need-first">What you need first</a></li>
+</ul>
+</li>
 <li><a href="#read-the-documentation-first">Read the documentation first</a></li>
 <li><a href="#terrain-and-roads">Terrain and roads</a></li>
 <li><a href="#models">Models</a></li>
@@ -603,5 +677,41 @@ bug wearing two faces.</p></article>
 })();
 </script>
 
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
 </body>
 </html>

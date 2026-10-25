@@ -1,0 +1,6 @@
+{
+  "bg":            "MODNAME_bg",
+  "popupModuleBg": "MODNAME_popup",
+  "bgRight":       "MODNAME_right",
+  "bgSmall":       "MODNAME_small"
+}

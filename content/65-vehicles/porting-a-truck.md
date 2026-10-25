@@ -106,8 +106,8 @@ back into `pc.pak`, and install.
 ### With the tool
 
 ```
-python F:\Expeditions\Toolkit\port_vehicle.py analyze <mod.zip>
-python F:\Expeditions\Toolkit\port_vehicle.py port <mod.zip> --id <modid> --name "My Truck"
+python port_vehicle.py analyze <mod.zip>
+python port_vehicle.py port <mod.zip> --id <modid> --name "My Truck"
 ```
 
 Run `analyze` first. It tells you how many materials it has a colour for, which
