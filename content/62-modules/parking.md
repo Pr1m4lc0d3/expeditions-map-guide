@@ -2,7 +2,7 @@
 title: Expanded parking
 part: Appendix A - base modules
 order: 908
-summary: Raises how many trucks the deploy zone holds. Documented for custom modules.
+summary: Makes recovering a truck to this base cheaper, and holds spare wheels. Documented for custom modules.
 verdict: untested
 verdict_text: "No custom expanded parking has been built and tested in game."
 ---
@@ -11,7 +11,14 @@ verdict_text: "No custom expanded parking has been built and tested in game."
 
 ![Expanded parking store card](../assets/bases/parking_card.png)
 
-Raises how many trucks the deploy zone holds.
+Makes recovering a truck to this base cheaper, and holds spare wheels. The game's own card says it "significantly lowers the cost of evacuation" to a base that has it, and that its wheels are resupplied between deployments.
+
+!!! warning "It does not add truck slots"
+    Despite the name, no setting of this module changes how many trucks the base holds. That number is the deploy zone's `maxTrucksNum`, set by the map maker; see [Deploy zones](../40-zones/deploy-zones.html).
+    Saber's documentation gives `ZonePropertyParking` only the storage settings plus two of its own:
+
+    - `recoveryDiscount`: the discount on recovering a truck to this base, from `0` to `1` (`0.2` is 20% off).
+    - `additionalRepairAndRefuelAmount`: extra repair and fuel given to a truck recovered here. With a Tow truck module at the same base, the two amounts add together.
 
 ## In game
 

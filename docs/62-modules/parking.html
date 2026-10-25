@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Expanded parking &middot; Expeditions Map Making</title>
-<meta name="description" content="Raises how many trucks the deploy zone holds. Documented for custom modules."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Makes recovering a truck to this base cheaper, and holds spare wheels. Documented for custom modules."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -290,10 +290,19 @@
           <span class="verdict-label">As a custom module: NOT YET TESTED</span>
           <span class="verdict-text">No custom expanded parking has been built and tested in game.</span>
         </div>
-<p class="lede">Raises how many trucks the deploy zone holds. Documented for custom modules.</p>      </div>
+<p class="lede">Makes recovering a truck to this base cheaper, and holds spare wheels. Documented for custom modules.</p>      </div>
       <article class="prose"><h1 id="expanded-parking">Expanded parking<a class="headerlink" href="#expanded-parking" title="Permanent link">#</a></h1>
 <p><img alt="Expanded parking store card" src="../assets/bases/parking_card.png" /></p>
-<p>Raises how many trucks the deploy zone holds.</p>
+<p>Makes recovering a truck to this base cheaper, and holds spare wheels. The game&rsquo;s own card says it &ldquo;significantly lowers the cost of evacuation&rdquo; to a base that has it, and that its wheels are resupplied between deployments.</p>
+<div class="admonition warning">
+<p class="admonition-title">It does not add truck slots</p>
+<p>Despite the name, no setting of this module changes how many trucks the base holds. That number is the deploy zone&rsquo;s <code>maxTrucksNum</code>, set by the map maker; see <a href="../40-zones/deploy-zones.html">Deploy zones</a>.
+Saber&rsquo;s documentation gives <code>ZonePropertyParking</code> only the storage settings plus two of its own:</p>
+<ul>
+<li><code>recoveryDiscount</code>: the discount on recovering a truck to this base, from <code>0</code> to <code>1</code> (<code>0.2</code> is 20% off).</li>
+<li><code>additionalRepairAndRefuelAmount</code>: extra repair and fuel given to a truck recovered here. With a Tow truck module at the same base, the two amounts add together.</li>
+</ul>
+</div>
 <h2 id="in-game">In game<a class="headerlink" href="#in-game" title="Permanent link">#</a></h2>
 <p><strong>The purchase card.</strong> This is what a player sees before buying.</p>
 <p><img alt="Expanded parking purchase card" src="../assets/bases/parking_buy.png" /></p>
