@@ -128,7 +128,7 @@ All 34 authorable members of `BaseUpgradeDesc`, from the engine schema.
 
 | Field | Type | Default | What it is |
 |---|---|---|---|
-| `isInteractive` | bool | `True` | **`False` makes the module inert** — it builds and does nothing |
+| `isInteractive` | bool | `True` | must match the `zoneProperty` type, per Saber's "Interaction with Player" table: `True` for storage, parking, workshop and drone delivery; `False` for service station, tow truck and antenna. The module checker flags a mismatch. What a mismatch does in game hasn't been tested |
 | `isLockedByDefault` | bool | `False` | hidden until unlocked |
 | `isOnlyOneAvailableAtDeployZone` | bool | `False` | one per zone |
 | `availableViaDroneDelivery` | bool | `True` | orderable by drone |
@@ -235,20 +235,23 @@ The engine knows 72 zone-property types. These are the ones a base module uses:
 | `ZonePropertyBaseBuilding` | `modelPlacementZone` | where a module may be placed |
 | `ZonePropertyDeploy` | `fobModulesZones`, `defaultDeployPoint`, `maxTrucksNum` | the deploy zone itself |
 
-!!! danger "Most of these are engine-keyed and inert for a mod"
-    `ZonePropertyFuelStation`, `ZonePropertyServiceStation` and
-    `ZonePropertyFobModuleDefault` are wired to built-in behaviour. A **mod**
-    using them gets a module that builds and then does nothing at all.
+!!! danger "Only three of these are proven to work for a mod"
+    What has actually been tested in game with a custom module:
 
-    Measured: a custom fuel station built on `ZonePropertyFuelStation` was
-    completely inert. Rebuilt on `ZonePropertyFobModuleStorage` with a single
-    fuel slot, it worked.
+    | Type | For a mod | Tested with |
+    |---|---|---|
+    | `ZonePropertyFobModuleStorage` | ✅ works | PebbleGas, a fuel station with a single fuel slot |
+    | `ZonePropertyWorkshop` | ✅ works | Platt's Gate Works |
+    | `ZonePropertyDroneDelivery` | ✅ works | Nom Nom's Drone Delivery Service |
+    | `ZonePropertyGenerator` | ⛔ broken | six builds; each one emptied the module store and froze the game on exit to headquarters |
+    | `AntennaUpgradeDesc` (with `ZonePropertyFobModuleDefault`) | ⛔ broken | builds and sells, never reveals an air drop, even with the game's script patched. See [Intelligence center](../62-modules/com-center.html#building-your-own-the-ability-does-not-work) |
+    | `ZonePropertyHelicopter`, `ZonePropertyServiceStation` | ⚠ not yet tested | one of each worked in March 2025; neither has been reproduced since |
+    | `ZonePropertyFuelStation`, the others | ⚠ not yet tested | no custom module on them has been checked in game |
 
-    The antenna is the same story in a different place: an `AntennaUpgradeDesc`
-    mod builds and sells but never reveals an air drop, even with the game's
-    script patched. See [Intelligence center](../62-modules/com-center.html#building-your-own-the-ability-does-not-work).
-
-    ⇒ **For a mod, use `ZonePropertyFobModuleStorage` and shape it with slots.**
+    ⇒ **For a mod, start from one of the three that work.** A fuel station
+    built as `ZonePropertyFobModuleStorage` with one fuel slot is proven; see
+    the recipe below. Each module page in [Appendix A](../62-modules/index.html)
+    opens with the same verdict.
 
 ### Shaping a storage module
 

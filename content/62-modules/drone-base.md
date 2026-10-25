@@ -171,8 +171,8 @@ and you can see it directly.
 
 ## Building your own
 
-Use **`ZonePropertyDroneDelivery`**, the property Saber's documentation names for 
-this module. A property guessed from the symbol name gives a module that builds and then does nothing.
+Saber's documentation names **`ZonePropertyDroneDelivery`** for this module.
+A custom cargo drone built on it works: Nom Nom's Drone Delivery Service uses it and was tested in game.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

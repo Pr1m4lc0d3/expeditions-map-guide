@@ -171,8 +171,8 @@ and you can see it directly.
 
 ## Building your own
 
-Use **`ZonePropertyParking`**, the property Saber's documentation names for 
-this module. A property guessed from the symbol name gives a module that builds and then does nothing.
+Saber's documentation names **`ZonePropertyParking`** for this module.
+No custom module built on it has been tested in game yet. This is Saber's documented setting, not a proven one.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

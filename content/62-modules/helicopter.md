@@ -169,8 +169,8 @@ This store-row art runs the **same way** as the purchase card.
 
 ## Building your own
 
-Use **`ZonePropertyHelicopter`**, the property Saber's documentation names for 
-this module. A property guessed from the symbol name gives a module that builds and then does nothing.
+Saber's documentation names **`ZonePropertyHelicopter`** for this module.
+A custom module built on it worked once, in March 2025, and nobody has reproduced that since. Treat it as untested.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

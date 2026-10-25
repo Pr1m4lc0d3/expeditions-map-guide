@@ -169,8 +169,8 @@ This store-row art runs the **same way** as the purchase card.
 
 ## Building your own
 
-Use **`ZonePropertyFobModuleStorage`**, the property Saber's documentation names for 
-this module. A property guessed from the symbol name gives a module that builds and then does nothing.
+Saber's documentation names **`ZonePropertyFobModuleStorage`** for this module.
+A custom gas station built on it works: PebbleGas uses it with a single fuel slot and was tested in game.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

@@ -169,8 +169,8 @@ This store-row art runs the **same way** as the purchase card.
 
 ## Building your own
 
-Use **`ZonePropertyGenerator`**, the property Saber's documentation names for 
-this module. A property guessed from the symbol name gives a module that builds and then does nothing.
+Saber's documentation names **`ZonePropertyGenerator`** for this module.
+⛔ **Don't build a mod on it.** Every custom generator built on it emptied the module store and froze the game on exit to headquarters, including one that matched Saber's own generator field for field. No working alternative has been found.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

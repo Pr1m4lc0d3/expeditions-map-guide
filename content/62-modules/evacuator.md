@@ -169,8 +169,8 @@ This store-row art runs the **same way** as the purchase card.
 
 ## Building your own
 
-Use **`ZonePropertyTowTruck`**, the property Saber's documentation names for 
-this module. A property guessed from the symbol name gives a module that builds and then does nothing.
+Saber's documentation names **`ZonePropertyTowTruck`** for this module.
+No custom module built on it has been tested in game yet. This is Saber's documented setting, not a proven one.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

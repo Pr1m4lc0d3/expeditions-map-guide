@@ -169,8 +169,8 @@ This store-row art runs the **same way** as the purchase card.
 
 ## Building your own
 
-Use **`ZonePropertyFobModuleStorage`**, the property Saber's documentation names for 
-this module. A property guessed from the symbol name gives a module that builds and then does nothing.
+Saber's documentation names **`ZonePropertyFobModuleStorage`** for this module.
+The type itself works for a mod (PebbleGas is built on it), but no custom repair station has been tested in game doing this module's job.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 
