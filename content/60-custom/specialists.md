@@ -21,6 +21,13 @@ loads, hires and works, and simply shows nothing in one place.
 Everything below was measured against the shipped game and confirmed on the hire
 screen with several custom specialists, unless a line says otherwise.
 
+!!! note "Appendix B lists every shipped specialist"
+    [Every specialist](../64-specialists/index.html) has the six classes, all 25
+    shipped specialists with their exact values, every
+    [descriptor setting](../64-specialists/descriptor.html), and
+    [every ability](../64-specialists/modifiers.html) with its fields and the
+    shipped specialists that carry it.
+
 ## What a specialist mod contains
 
 ```

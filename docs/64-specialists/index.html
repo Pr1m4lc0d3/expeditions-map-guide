@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every specialist &middot; Expeditions Map Making</title>
+<meta name="description" content="The six specialist classes and all 25 shipped specialists, with their costs and abilities, read from the game&#39;s own data."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html" aria-current="page">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Appendix B - specialists</p>
+        <h1>Every specialist</h1>
+<p class="lede">The six specialist classes and all 25 shipped specialists, with their costs and abilities, read from the game&#39;s own data.</p>      </div>
+      <article class="prose"><h1 id="every-specialist">Every specialist<a class="headerlink" href="#every-specialist" title="Permanent link">#</a></h1>
+<p>The game ships <strong>25 specialists</strong> in <strong>six classes</strong>. This appendix lists them
+all, with the exact values the game uses, so you can copy what works and beat
+it on purpose. To make your own, start with
+<a href="../60-custom/specialists.html">Custom specialists</a>.</p>
+<ul>
+<li><a href="descriptor.html">Descriptor settings</a>: every field of a specialist file.</li>
+<li><a href="modifiers.html">Every ability</a>: all 47 modifier types, their fields,
+  and which shipped specialists carry them.</li>
+</ul>
+<p>Every number here was read from the game: the specialists from
+<code>initial.cache_block</code> inside <code>preload/paks/client/initial.pak</code>, the names and
+class descriptions from the game&rsquo;s English strings, and the fields from the
+editor&rsquo;s type definitions.</p>
+<h2 id="the-six-classes">The six classes<a class="headerlink" href="#the-six-classes" title="Permanent link">#</a></h2>
+<p>The class is the tab a specialist is listed under. The saved file stores the
+number in the first column. It decides nothing else: any class can carry any
+ability.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th><code>speciality</code></th>
+<th>Class</th>
+<th>Schema name</th>
+<th>Shipped</th>
+<th>The game&rsquo;s description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><a href="mechanic.html">Mechanic</a></td>
+<td><code>MECHANIC</code></td>
+<td>5</td>
+<td>Mechanics keep the trucks running throughout the expeditions and improve the effectiveness of anchors</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td><a href="logistician.html">Logistician</a></td>
+<td><code>LOGISTICS_SPECIALIST</code></td>
+<td>4</td>
+<td>Logistics reduce the cost of deploy and allow you to use binoculars more efficiently</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><a href="hydrologist.html">Hydrologist</a></td>
+<td><code>HYDROLOGIST</code></td>
+<td>4</td>
+<td>Hydrologists open access to special equipment and help the engine run longer underwater</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td><a href="jaeger.html">Jaeger</a></td>
+<td><code>JAEGER</code></td>
+<td>4</td>
+<td>Jaegers are real experts in survival in extreme conditions; they find paths and pave new ones</td>
+</tr>
+<tr>
+<td><code>4</code></td>
+<td><a href="operator.html">Operator</a></td>
+<td><code>OPERATOR</code></td>
+<td>4</td>
+<td>Operators open access to the drone and help to use it more efficiently</td>
+</tr>
+<tr>
+<td><code>5</code></td>
+<td><a href="manager.html">Manager</a></td>
+<td><code>MANAGER</code></td>
+<td>4</td>
+<td>Managers help to earn more money for completing expeditions, can increase the amount of prepayment</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>6</code> is <code>NONE</code>. Saber documents that it crashes the game. Never use it.</p>
+<div class="admonition note">
+<p class="admonition-title">Spelling</p>
+<p>Saber&rsquo;s guide writes <code>LOGISTIC_SPECIALIST</code>. The editor schema and the
+game&rsquo;s own data say <code>LOGISTICS_SPECIALIST</code>; the game calls the class
+Logistician on screen.</p>
+</div>
+<h2 id="all-25-shipped-specialists">All 25 shipped specialists<a class="headerlink" href="#all-25-shipped-specialists" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Class</th>
+<th>Cost</th>
+<th>Abilities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mike Nixon</td>
+<td><a href="mechanic.html">Mechanic</a></td>
+<td>600</td>
+<td><a href="modifiers.html#anchorsupplies"><code>AnchorSupplies</code></a>, <a href="modifiers.html#anchorradius"><code>AnchorRadius</code></a>, <a href="modifiers.html#truckdamage"><code>TruckDamage</code></a></td>
+</tr>
+<tr>
+<td>Dmytro Koval</td>
+<td><a href="mechanic.html">Mechanic</a></td>
+<td>800</td>
+<td><a href="modifiers.html#armorcapacity"><code>ArmorCapacity</code></a>, <a href="modifiers.html#armorrestoreeverywhere"><code>ArmorRestoreEverywhere</code></a>, <a href="modifiers.html#fuelconsumption"><code>FuelConsumption</code></a></td>
+</tr>
+<tr>
+<td>Thomas Stevenson</td>
+<td><a href="mechanic.html">Mechanic</a></td>
+<td>1,200</td>
+<td><a href="modifiers.html#electricityconsumption"><code>ElectricityConsumption</code></a>, <a href="modifiers.html#wheeldronetorque"><code>WheelDroneTorque</code></a>, <a href="modifiers.html#wheeldronearmor"><code>WheelDroneArmor</code></a>, <a href="modifiers.html#wheeldronearmorrestoreeverywhere"><code>WheelDroneArmorRestoreEverywhere</code></a></td>
+</tr>
+<tr>
+<td>Michelle Redrock</td>
+<td><a href="mechanic.html">Mechanic</a></td>
+<td>1,400</td>
+<td><a href="modifiers.html#repairconsumption"><code>RepairConsumption</code></a>, <a href="modifiers.html#truckdamage"><code>TruckDamage</code></a>, <a href="modifiers.html#fuelconsumption"><code>FuelConsumption</code></a></td>
+</tr>
+<tr>
+<td>Marcus Kingsley</td>
+<td><a href="mechanic.html">Mechanic</a></td>
+<td>1,500</td>
+<td><a href="modifiers.html#emergencywinch"><code>EmergencyWinch</code></a>, <a href="modifiers.html#repairbuildingconsumption"><code>RepairBuildingConsumption</code></a>, <a href="modifiers.html#truckdamage"><code>TruckDamage</code></a></td>
+</tr>
+<tr>
+<td>Connor Eriksen</td>
+<td><a href="logistician.html">Logistician</a></td>
+<td>500</td>
+<td><a href="modifiers.html#additionaldeployresources"><code>AdditionalDeployResources</code></a>, <a href="modifiers.html#binocularradius"><code>BinocularRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Angela Mayer</td>
+<td><a href="logistician.html">Logistician</a></td>
+<td>900</td>
+<td><a href="modifiers.html#guaranteedairdropresource"><code>GuaranteedAirdropResource</code></a>, <a href="modifiers.html#additionaladdonsupplies"><code>AdditionalAddonSupplies</code></a>, <a href="modifiers.html#binocularradius"><code>BinocularRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Justin Goodman</td>
+<td><a href="logistician.html">Logistician</a></td>
+<td>1,000</td>
+<td><a href="modifiers.html#emergencystocksupplies"><code>EmergencyStockSupplies</code></a>, <a href="modifiers.html#additionaladdonsupplies"><code>AdditionalAddonSupplies</code></a>, <a href="modifiers.html#binocularradius"><code>BinocularRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Park Won-shin</td>
+<td><a href="logistician.html">Logistician</a></td>
+<td>1,000</td>
+<td><a href="modifiers.html#wheeldronezone"><code>WheelDroneZone</code></a>, <a href="modifiers.html#wheeldronefriction"><code>WheelDroneFriction</code></a>, <a href="modifiers.html#wheeldronescoutradius"><code>WheelDroneScoutRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Anwar Farsi</td>
+<td><a href="hydrologist.html">Hydrologist</a></td>
+<td>600</td>
+<td><a href="modifiers.html#engineunderwaterdamage"><code>EngineUnderwaterDamage</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Dayaana Tumusova</td>
+<td><a href="hydrologist.html">Hydrologist</a></td>
+<td>1,000</td>
+<td><a href="modifiers.html#echolotmodecone"><code>EcholotModeCone</code></a>, <a href="modifiers.html#engineunderwaterdamage"><code>EngineUnderwaterDamage</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Benjamin Anchor</td>
+<td><a href="hydrologist.html">Hydrologist</a></td>
+<td>1,200</td>
+<td><a href="modifiers.html#echolotmodesnow"><code>EcholotModeSnow</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Bruce Brown</td>
+<td><a href="hydrologist.html">Hydrologist</a></td>
+<td>1,500</td>
+<td><a href="modifiers.html#echolotmodeaura"><code>EcholotModeAura</code></a>, <a href="modifiers.html#underwateranchorsetup"><code>UnderwaterAnchorSetup</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Brian Wilson</td>
+<td><a href="jaeger.html">Jaeger</a></td>
+<td>700</td>
+<td><a href="modifiers.html#jackscrewsupplies"><code>JackscrewSupplies</code></a>, <a href="modifiers.html#fogofwartranspradius"><code>FogOfWarTranspRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Eric Miller</td>
+<td><a href="jaeger.html">Jaeger</a></td>
+<td>900</td>
+<td><a href="modifiers.html#truckdamage"><code>TruckDamage</code></a>, <a href="modifiers.html#binocularradius"><code>BinocularRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Solveig Friedenlund</td>
+<td><a href="jaeger.html">Jaeger</a></td>
+<td>1,100</td>
+<td><a href="modifiers.html#improvewinchedtruck"><code>ImproveWinchedTruck</code></a>, <a href="modifiers.html#fogofwartranspradius"><code>FogOfWarTranspRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Mitch Goodman</td>
+<td><a href="jaeger.html">Jaeger</a></td>
+<td>1,300</td>
+<td><a href="modifiers.html#winchimprove"><code>WinchImprove</code></a>, <a href="modifiers.html#fogofwartranspradius"><code>FogOfWarTranspRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Akane Ishida</td>
+<td><a href="operator.html">Operator</a></td>
+<td>600</td>
+<td><a href="modifiers.html#droneradius"><code>DroneRadius</code></a>, <a href="modifiers.html#droneheight"><code>DroneHeight</code></a>, <a href="modifiers.html#dronescoutradius"><code>DroneScoutRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a>, <a href="modifiers.html#droneacceleration"><code>DroneAcceleration</code></a>, <a href="modifiers.html#dronecontrollability"><code>DroneControllability</code></a></td>
+</tr>
+<tr>
+<td>Lance Silva</td>
+<td><a href="operator.html">Operator</a></td>
+<td>900</td>
+<td><a href="modifiers.html#dronetrade"><code>DroneTrade</code></a>, <a href="modifiers.html#droneradius"><code>DroneRadius</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a>, <a href="modifiers.html#droneacceleration"><code>DroneAcceleration</code></a>, <a href="modifiers.html#dronecontrollability"><code>DroneControllability</code></a></td>
+</tr>
+<tr>
+<td>Naval Desayi</td>
+<td><a href="operator.html">Operator</a></td>
+<td>1,200</td>
+<td><a href="modifiers.html#dronemaxspeed"><code>DroneMaxSpeed</code></a>, <a href="modifiers.html#dronescoutradius"><code>DroneScoutRadius</code></a>, <a href="modifiers.html#droneradius"><code>DroneRadius</code></a>, <a href="modifiers.html#dronecontrollability"><code>DroneControllability</code></a>, <a href="modifiers.html#droneacceleration"><code>DroneAcceleration</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>Alicia Silverwood</td>
+<td><a href="operator.html">Operator</a></td>
+<td>1,200</td>
+<td><a href="modifiers.html#droneitemsetup"><code>DroneItemSetup</code></a>, <a href="modifiers.html#dronemaxspeed"><code>DroneMaxSpeed</code></a>, <a href="modifiers.html#dronemaxspeed"><code>DroneMaxSpeed</code></a>, <a href="modifiers.html#dronecontrollability"><code>DroneControllability</code></a>, <a href="modifiers.html#maydiscoverzones"><code>MayDiscoverZones</code></a></td>
+</tr>
+<tr>
+<td>David Simmons</td>
+<td><a href="manager.html">Manager</a></td>
+<td>700</td>
+<td><a href="modifiers.html#treasureitemsellprice"><code>TreasureItemSellPrice</code></a></td>
+</tr>
+<tr>
+<td>Zarema Abdurafieva</td>
+<td><a href="manager.html">Manager</a></td>
+<td>1,500</td>
+<td><a href="modifiers.html#freeevacuation"><code>FreeEvacuation</code></a>, <a href="modifiers.html#itemcost"><code>ItemCost</code></a>, <a href="modifiers.html#itemsellprice"><code>ItemSellPrice</code></a></td>
+</tr>
+<tr>
+<td>Philip de Fichent</td>
+<td><a href="manager.html">Manager</a></td>
+<td>2,000</td>
+<td><a href="modifiers.html#airdropreroll"><code>AirdropReroll</code></a>, <a href="modifiers.html#itemsellprice"><code>ItemSellPrice</code></a></td>
+</tr>
+<tr>
+<td>Henry McOir</td>
+<td><a href="manager.html">Manager</a></td>
+<td>3,000</td>
+<td><a href="modifiers.html#additionalreward"><code>AdditionalReward</code></a>, <a href="modifiers.html#additionaltreasureitems"><code>AdditionalTreasureItems</code></a></td>
+</tr>
+</tbody>
+</table></div>
+<p>Every shipped specialist except one starts locked and is unlocked through play.
+A custom specialist should leave <code>isLocked</code> false; see
+<a href="../60-custom/specialists.html#locking">Locking</a>.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../62-modules/evacuator.html"><span>Previous</span>Tow truck</a><a class="seq-next" href="../64-specialists/mechanic.html"><span>Next</span>Mechanics</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-six-classes">The six classes</a></li>
+<li><a href="#all-25-shipped-specialists">All 25 shipped specialists</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

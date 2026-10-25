@@ -2,7 +2,6 @@
 title: Custom FOB modules
 part: Custom content
 order: 630
-status: draft
 summary: Adding your own buildable base module.
 ---
 
@@ -19,7 +18,7 @@ and each vanilla module has its own page in
 [Appendix A](../62-modules/index.html) with its settings, models and art slots.
 Copy from those pages; this one tells you when.
 
-!!! note "This page is a draft"
+!!! note "Where this comes from"
     Everything written here comes from Saber's documentation or from modules
     built and tested in game in October 2026. A few parts are still unknown, and
     they are listed at the end under [What is not known yet](#what-is-not-known-yet)

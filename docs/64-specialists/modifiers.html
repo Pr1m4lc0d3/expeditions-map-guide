@@ -1,0 +1,1567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Every ability &middot; Expeditions Map Making</title>
+<meta name="description" content="All 47 specialist modifier types: what each does, every field with its type and default, and the shipped specialists that carry it."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-untested">untested</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html" aria-current="page">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Appendix B - specialists</p>
+        <h1>Every ability</h1>
+<p class="lede">All 47 specialist modifier types: what each does, every field with its type and default, and the shipped specialists that carry it.</p>      </div>
+      <article class="prose"><h1 id="every-ability">Every ability<a class="headerlink" href="#every-ability" title="Permanent link">#</a></h1>
+<p>The engine defines <strong>47 modifier types</strong>. In a descriptor each is
+written as <code>SpecialistModifier</code> plus the name below. Field names must be copied
+exactly, misspellings included (<code>Consumpion</code>, <code>Suspencion</code>, <code>Inceased</code>,
+<code>Guaranted</code>); a correctly spelled field is ignored.</p>
+<p>Each type also has a label field for every value (the field name plus
+<code>UiDesc</code>). Those control the text on the card, and any ability may also carry
+<code>overrideUiDesc</code> to replace its card line with your own text. Both are covered under
+<a href="../60-custom/specialists.html#when-an-ability-works-but-never-appears-on-the-card">When an ability never appears on the card</a>.</p>
+<p>Types and defaults are from the editor&rsquo;s type definitions. &ldquo;Shipped values&rdquo;
+lists every vanilla specialist that carries the ability.</p>
+<h2 id="additionaladdonsupplies">AdditionalAddonSupplies<a class="headerlink" href="#additionaladdonsupplies" title="Permanent link">#</a></h2>
+<p>More fuel, parts, wheels in consumable addons</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additionalAddonFuelCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>additionalAddonRepairsCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>additionalAddonWheelsCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Angela Mayer (<code>additionalAddonFuelCount</code> 10); Justin Goodman (<code>additionalAddonRepairsCount</code> 20)</p>
+<h2 id="additionaldeployresources">AdditionalDeployResources<a class="headerlink" href="#additionaldeployresources" title="Permanent link">#</a></h2>
+<p>More fuel, parts, wheels at every open deploy zone</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additionalDeployFuelCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>additionalDeployRepairsCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>additionalDeployWheelsCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Connor Eriksen (<code>additionalDeployFuelCount</code> 100, <code>additionalDeployRepairsCount</code> 200)</p>
+<h2 id="additionalreward">AdditionalReward<a class="headerlink" href="#additionalreward" title="Permanent link">#</a></h2>
+<p>Bigger money rewards</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additionalRewardExpeditionIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>additionalRewardSideQuestsIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>additionalRewardTasksIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Henry McOir (<code>additionalRewardExpeditionIncreasedPercent</code> 20, <code>additionalRewardSideQuestsIncreasedPercent</code> 20, <code>additionalRewardTasksIncreasedPercent</code> 30)</p>
+<h2 id="additionaltreasureitems">AdditionalTreasureItems<a class="headerlink" href="#additionaltreasureitems" title="Permanent link">#</a></h2>
+<p>Extra treasure items in resource zones</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>additionalTreasureItemsCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>additionalItem</code></td>
+<td>mod</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Henry McOir (<code>additionalTreasureItemsCount</code> 1)</p>
+<h2 id="airdropreroll">AirdropReroll<a class="headerlink" href="#airdropreroll" title="Permanent link">#</a></h2>
+<p>Pay to reroll an airdrop</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>airdropRerollCost</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>airdropRerollLootLists</code></td>
+<td>LootList</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Philip de Fichent (<code>airdropRerollCost</code> 2000)</p>
+<h2 id="anchorradius">AnchorRadius<a class="headerlink" href="#anchorradius" title="Permanent link">#</a></h2>
+<p>Bigger anchor placement radius</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>anchorIDs</code></td>
+<td>string</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>anchorRadiusIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Mike Nixon (<code>anchorRadiusIncreasedPercent</code> 100)</p>
+<h2 id="anchorsupplies">AnchorSupplies<a class="headerlink" href="#anchorsupplies" title="Permanent link">#</a></h2>
+<p>More anchor charges</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>anchorIDs</code></td>
+<td>string</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>anchorMaxLimitCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Mike Nixon (<code>anchorMaxLimitCount</code> 5)</p>
+<h2 id="armorcapacity">ArmorCapacity<a class="headerlink" href="#armorcapacity" title="Permanent link">#</a></h2>
+<p>Raises the armor cap on four truck parts</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>armorEngineIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>armorGearboxIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>armorGasTankIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>armorSuspencionIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Dmytro Koval (<code>armorEngineIncreasedPercent</code> 30, <code>armorGearboxIncreasedPercent</code> 30, <code>armorGasTankIncreasedPercent</code> 30, <code>armorSuspencionIncreasedPercent</code> 30)</p>
+<h2 id="armorrestoreeverywhere">ArmorRestoreEverywhere<a class="headerlink" href="#armorrestoreeverywhere" title="Permanent link">#</a></h2>
+<p>Add armor anywhere (no fields)</p>
+<p>No fields: carrying the modifier is the ability.</p>
+<p><strong>Shipped values:</strong> Dmytro Koval (no fields)</p>
+<h2 id="binocularradius">BinocularRadius<a class="headerlink" href="#binocularradius" title="Permanent link">#</a></h2>
+<p>Bigger binocular reveal</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>binocularPartRadiusIncreasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>binocularFullRadiusIncreasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Connor Eriksen (<code>binocularPartRadiusIncreasedMeters</code> 150); Angela Mayer (<code>binocularPartRadiusIncreasedMeters</code> 100); Justin Goodman (<code>binocularPartRadiusIncreasedMeters</code> 100); Eric Miller (<code>binocularFullRadiusIncreasedMeters</code> 100)</p>
+<h2 id="droneacceleration">DroneAcceleration<a class="headerlink" href="#droneacceleration" title="Permanent link">#</a></h2>
+<p>Faster air drone</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>droneAccelerationIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>droneAccelerationHeightIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Akane Ishida (<code>droneAccelerationIncreasedPercent</code> 30, <code>droneAccelerationHeightIncreasedPercent</code> 30); Lance Silva (<code>droneAccelerationIncreasedPercent</code> 30, <code>droneAccelerationHeightIncreasedPercent</code> 30); Naval Desayi (<code>droneAccelerationIncreasedPercent</code> 70, <code>droneAccelerationHeightIncreasedPercent</code> 70)</p>
+<h2 id="dronecontrollability">DroneControllability<a class="headerlink" href="#dronecontrollability" title="Permanent link">#</a></h2>
+<p>Air drone handling</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>droneControllabilityResForceIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>droneControllabilityResForceRotationIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>droneControllabilityForceRotationIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Akane Ishida (<code>droneControllabilityResForceIncreasedPercent</code> 20, <code>droneControllabilityResForceRotationIncreasedPercent</code> 20, <code>droneControllabilityForceRotationIncreasedPercent</code> 20); Lance Silva (<code>droneControllabilityResForceIncreasedPercent</code> 20, <code>droneControllabilityResForceRotationIncreasedPercent</code> 20, <code>droneControllabilityForceRotationIncreasedPercent</code> 20); Naval Desayi (<code>droneControllabilityResForceIncreasedPercent</code> 30, <code>droneControllabilityResForceRotationIncreasedPercent</code> 30, <code>droneControllabilityForceRotationIncreasedPercent</code> 30); Alicia Silverwood (<code>droneControllabilityResForceIncreasedPercent</code> 50, <code>droneControllabilityResForceRotationIncreasedPercent</code> 50, <code>droneControllabilityForceRotationIncreasedPercent</code> 50)</p>
+<h2 id="dronediscoverscoutzones">DroneDiscoverScoutZones<a class="headerlink" href="#dronediscoverscoutzones" title="Permanent link">#</a></h2>
+<p>No fields. <strong>No vanilla specialist uses it; never observed.</strong></p>
+<p>No fields: carrying the modifier is the ability.</p>
+<p><strong>Shipped values:</strong> no shipped specialist carries it.</p>
+<h2 id="droneheight">DroneHeight<a class="headerlink" href="#droneheight" title="Permanent link">#</a></h2>
+<p>Higher air drone ceiling</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>droneHeightIncreasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Akane Ishida (<code>droneHeightIncreasedMeters</code> 20)</p>
+<h2 id="droneitemsetup">DroneItemSetup<a class="headerlink" href="#droneitemsetup" title="Permanent link">#</a></h2>
+<p>Air drone item placement</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>droneItemSetupSettings</code></td>
+<td>mod</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Alicia Silverwood (no fields)</p>
+<h2 id="dronemaxspeed">DroneMaxSpeed<a class="headerlink" href="#dronemaxspeed" title="Permanent link">#</a></h2>
+<p>Higher air drone top speed</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>droneMaxSpeedIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Naval Desayi (<code>droneMaxSpeedIncreasedPercent</code> 70); Alicia Silverwood (<code>droneMaxSpeedIncreasedPercent</code> 25); Alicia Silverwood (<code>droneMaxSpeedIncreasedPercent</code> 25)</p>
+<h2 id="droneradius">DroneRadius<a class="headerlink" href="#droneradius" title="Permanent link">#</a></h2>
+<p>Longer air drone range</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>droneRadiusIncreasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Akane Ishida (<code>droneRadiusIncreasedMeters</code> 200); Lance Silva (<code>droneRadiusIncreasedMeters</code> 50); Naval Desayi (<code>droneRadiusIncreasedMeters</code> 50)</p>
+<h2 id="dronescoutradius">DroneScoutRadius<a class="headerlink" href="#dronescoutradius" title="Permanent link">#</a></h2>
+<p>Bigger air drone reveal</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>droneFullScoutRadiusIncreasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>dronePartScoutRadiusIncreasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Akane Ishida (<code>droneFullScoutRadiusIncreasedMeters</code> 0, <code>dronePartScoutRadiusIncreasedMeters</code> 50); Naval Desayi (<code>droneFullScoutRadiusIncreasedMeters</code> 50)</p>
+<h2 id="dronetrade">DroneTrade<a class="headerlink" href="#dronetrade" title="Permanent link">#</a></h2>
+<p>Trade by air drone (no fields)</p>
+<p>No fields: carrying the modifier is the ability.</p>
+<p><strong>Shipped values:</strong> Lance Silva (no fields)</p>
+<h2 id="echolotmodeaura">EcholotModeAura<a class="headerlink" href="#echolotmodeaura" title="Permanent link">#</a></h2>
+<p>Echo sounder becomes an aura around the truck</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>echolotRadiusOverrideMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>echolotStepCountOverride</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>echolotApplicationAdditionalTime</code></td>
+<td>float</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Bruce Brown (no fields)</p>
+<h2 id="echolotmodecone">EcholotModeCone<a class="headerlink" href="#echolotmodecone" title="Permanent link">#</a></h2>
+<p>Echo sounder becomes a cone ahead</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>echolotRadiusOverrideMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>echolotStepCountOverride</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>echolotConeAngle</code></td>
+<td>float</td>
+<td>360</td>
+</tr>
+<tr>
+<td><code>echolotApplicationAdditionalTime</code></td>
+<td>float</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Dayaana Tumusova (<code>echolotConeAngle</code> 45, <code>echolotApplicationAdditionalTime</code> 1)</p>
+<h2 id="echolotmodesnow">EcholotModeSnow<a class="headerlink" href="#echolotmodesnow" title="Permanent link">#</a></h2>
+<p>Echo sounder measures snow</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>echolotRadiusOverrideMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>echolotStepCountOverride</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Benjamin Anchor (<code>echolotRadiusOverrideMeters</code> 20, <code>echolotStepCountOverride</code> 20)</p>
+<h2 id="electricityconsumption">ElectricityConsumption<a class="headerlink" href="#electricityconsumption" title="Permanent link">#</a></h2>
+<p>Less charge used</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wheelDroneElectricityConsumptionReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>wheelDroneAbilityElectricityConsumptionReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>metaldetectorElectricityConsumptionReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>radarElectricityConsumptionReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Thomas Stevenson (<code>wheelDroneElectricityConsumptionReducedPercent</code> 30, <code>wheelDroneAbilityElectricityConsumptionReducedPercent</code> 30, <code>metaldetectorElectricityConsumptionReducedPercent</code> 30, <code>radarElectricityConsumptionReducedPercent</code> 30)</p>
+<h2 id="emergencystocksupplies">EmergencyStockSupplies<a class="headerlink" href="#emergencystocksupplies" title="Permanent link">#</a></h2>
+<p>Bigger emergency stock in the truck</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>emergencyStockFuel</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>emergencyStockRepairs</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>emergencyStockWheels</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Justin Goodman (<code>emergencyStockRepairs</code> 50, <code>emergencyStockWheels</code> 2)</p>
+<h2 id="emergencywinch">EmergencyWinch<a class="headerlink" href="#emergencywinch" title="Permanent link">#</a></h2>
+<p>Winch with the engine off but not broken</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>winchFuelPerMinute</code></td>
+<td>float</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Marcus Kingsley (<code>winchFuelPerMinute</code> 20)</p>
+<h2 id="engineunderwaterdamage">EngineUnderwaterDamage<a class="headerlink" href="#engineunderwaterdamage" title="Permanent link">#</a></h2>
+<p>Less engine damage underwater</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>engineUnderwaterDamageReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Anwar Farsi (<code>engineUnderwaterDamageReducedPercent</code> 100); Dayaana Tumusova (<code>engineUnderwaterDamageReducedPercent</code> 50)</p>
+<h2 id="fogofwartranspradius">FogOfWarTranspRadius<a class="headerlink" href="#fogofwartranspradius" title="Permanent link">#</a></h2>
+<p>Bigger reveal around the truck</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fogOfWarRadiusInceasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>fogOfWarTranspRadiusInceasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Brian Wilson (<code>fogOfWarTranspRadiusInceasedMeters</code> 10); Mitch Goodman (<code>fogOfWarTranspRadiusInceasedMeters</code> 10); Solveig Friedenlund (<code>fogOfWarTranspRadiusInceasedMeters</code> 20)</p>
+<h2 id="freeevacuation">FreeEvacuation<a class="headerlink" href="#freeevacuation" title="Permanent link">#</a></h2>
+<p>Free evacuations</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>freeEvacuationMaxLimitCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Zarema Abdurafieva (<code>freeEvacuationMaxLimitCount</code> 1)</p>
+<h2 id="fuelconsumption">FuelConsumption<a class="headerlink" href="#fuelconsumption" title="Permanent link">#</a></h2>
+<p>Less fuel used</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fuelConsumpionReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Michelle Redrock (<code>fuelConsumpionReducedPercent</code> 15); Dmytro Koval (<code>fuelConsumpionReducedPercent</code> 20)</p>
+<h2 id="guaranteedairdropresource">GuaranteedAirdropResource<a class="headerlink" href="#guaranteedairdropresource" title="Permanent link">#</a></h2>
+<p>Airdrops always hold some resources</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>guarantedAirdropFuelCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>guarantedAirdropRepairCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>guarantedAirdropWheelCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Angela Mayer (<code>guarantedAirdropFuelCount</code> 50)</p>
+<h2 id="improvewinchedtruck">ImproveWinchedTruck<a class="headerlink" href="#improvewinchedtruck" title="Permanent link">#</a></h2>
+<p>A driverless truck being winched gets stronger</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>engineResponsivenessIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>torqueIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>onModelFrictionIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>bodyFrictionAsphaltIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>substanceFrictionIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>bodyFrictionIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>fuelConsumptionReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Solveig Friedenlund (<code>engineResponsivenessIncreasedPercent</code> 30, <code>torqueIncreasedPercent</code> 30, <code>onModelFrictionIncreasedPercent</code> 30, <code>bodyFrictionAsphaltIncreasedPercent</code> 30, <code>substanceFrictionIncreasedPercent</code> 30, <code>bodyFrictionIncreasedPercent</code> 30, <code>fuelConsumptionReducedPercent</code> 30)</p>
+<h2 id="itemcost">ItemCost<a class="headerlink" href="#itemcost" title="Permanent link">#</a></h2>
+<p>Cheaper items</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemCostReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Zarema Abdurafieva (<code>itemCostReducedPercent</code> 10)</p>
+<h2 id="itemsellprice">ItemSellPrice<a class="headerlink" href="#itemsellprice" title="Permanent link">#</a></h2>
+<p>Items sell for more</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>itemSellPriceIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Zarema Abdurafieva (<code>itemSellPriceIncreasedPercent</code> 30); Philip de Fichent (<code>itemSellPriceIncreasedPercent</code> 30)</p>
+<h2 id="jackscrewsupplies">JackscrewSupplies<a class="headerlink" href="#jackscrewsupplies" title="Permanent link">#</a></h2>
+<p>More jack screw charges</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jackscrewMaxLimitCount</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Brian Wilson (<code>jackscrewMaxLimitCount</code> 2)</p>
+<h2 id="maydiscoverzones">MayDiscoverZones<a class="headerlink" href="#maydiscoverzones" title="Permanent link">#</a></h2>
+<p>Can identify zones flagged for this class</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mayDiscoverZonesByBinocular</code></td>
+<td>bool</td>
+<td>False</td>
+</tr>
+<tr>
+<td><code>mayDiscoverZonesByDrone</code></td>
+<td>bool</td>
+<td>False</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Connor Eriksen (no fields); Angela Mayer (no fields); Justin Goodman (no fields); Park Won-shin (no fields); Anwar Farsi (no fields); Bruce Brown (no fields); Dayaana Tumusova (no fields); Benjamin Anchor (no fields); Brian Wilson (no fields); Eric Miller (no fields); Mitch Goodman (no fields); Solveig Friedenlund (no fields); Akane Ishida (no fields); Lance Silva (no fields); Naval Desayi (no fields); Alicia Silverwood (no fields)</p>
+<h2 id="repairbuildingconsumption">RepairBuildingConsumption<a class="headerlink" href="#repairbuildingconsumption" title="Permanent link">#</a></h2>
+<p>Fewer parts to repair bridges and clear debris</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>repairBuildingConsumptionReducedPercent</code></td>
+<td>float</td>
+<td>20</td>
+</tr>
+<tr>
+<td><code>repairBuildingConsumptionDesc</code></td>
+<td>mod</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Marcus Kingsley (<code>repairBuildingConsumptionReducedPercent</code> 40)</p>
+<h2 id="repairconsumption">RepairConsumption<a class="headerlink" href="#repairconsumption" title="Permanent link">#</a></h2>
+<p>Fewer parts per repair</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>repairConsumpionReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Michelle Redrock (<code>repairConsumpionReducedPercent</code> 30)</p>
+<h2 id="treasureitemsellprice">TreasureItemSellPrice<a class="headerlink" href="#treasureitemsellprice" title="Permanent link">#</a></h2>
+<p>Treasure sells for more</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>treasureItemSellPriceIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> David Simmons (<code>treasureItemSellPriceIncreasedPercent</code> 50)</p>
+<h2 id="truckdamage">TruckDamage<a class="headerlink" href="#truckdamage" title="Permanent link">#</a></h2>
+<p>Less damage to truck parts</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>truckDamageEngineReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>truckDamageGearboxReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>truckDamageGasTankReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>truckDamageSuspensionReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>truckDamageWheelReducedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Mike Nixon (<code>truckDamageEngineReducedPercent</code> 30, <code>truckDamageGearboxReducedPercent</code> 30, <code>truckDamageGasTankReducedPercent</code> 30, <code>truckDamageSuspensionReducedPercent</code> 30); Michelle Redrock (<code>truckDamageEngineReducedPercent</code> 15, <code>truckDamageGearboxReducedPercent</code> 15, <code>truckDamageGasTankReducedPercent</code> 15, <code>truckDamageSuspensionReducedPercent</code> 15); Marcus Kingsley (<code>truckDamageEngineReducedPercent</code> 10, <code>truckDamageGearboxReducedPercent</code> 10, <code>truckDamageGasTankReducedPercent</code> 10, <code>truckDamageSuspensionReducedPercent</code> 10, <code>truckDamageWheelReducedPercent</code> 10); Eric Miller (<code>truckDamageWheelReducedPercent</code> 50)</p>
+<h2 id="underwateranchorsetup">UnderwaterAnchorSetup<a class="headerlink" href="#underwateranchorsetup" title="Permanent link">#</a></h2>
+<p>Place anchors underwater (no fields)</p>
+<p>No fields: carrying the modifier is the ability.</p>
+<p><strong>Shipped values:</strong> Bruce Brown (no fields)</p>
+<h2 id="wheeldronearmor">WheelDroneArmor<a class="headerlink" href="#wheeldronearmor" title="Permanent link">#</a></h2>
+<p>Armor on the ground drone</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wheelDroneArmorEngineIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>wheelDroneArmorBatteryIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>wheelDroneArmorSuspencionIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Thomas Stevenson (<code>wheelDroneArmorEngineIncreasedPercent</code> 30, <code>wheelDroneArmorBatteryIncreasedPercent</code> 30, <code>wheelDroneArmorSuspencionIncreasedPercent</code> 30)</p>
+<h2 id="wheeldronearmorrestoreeverywhere">WheelDroneArmorRestoreEverywhere<a class="headerlink" href="#wheeldronearmorrestoreeverywhere" title="Permanent link">#</a></h2>
+<p>Repair ground drone armor anywhere (no fields)</p>
+<p>No fields: carrying the modifier is the ability.</p>
+<p><strong>Shipped values:</strong> Thomas Stevenson (no fields)</p>
+<h2 id="wheeldronefriction">WheelDroneFriction<a class="headerlink" href="#wheeldronefriction" title="Permanent link">#</a></h2>
+<p>Ground drone grip</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wheelDroneOnModelFrictionIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>wheelDroneBodyFrictionAsphaltIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>wheelDroneSubstanceFrictionIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>wheelDroneBodyFrictionIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Park Won-shin (<code>wheelDroneOnModelFrictionIncreasedPercent</code> 200, <code>wheelDroneBodyFrictionAsphaltIncreasedPercent</code> 200, <code>wheelDroneSubstanceFrictionIncreasedPercent</code> 200, <code>wheelDroneBodyFrictionIncreasedPercent</code> 200)</p>
+<h2 id="wheeldronescoutradius">WheelDroneScoutRadius<a class="headerlink" href="#wheeldronescoutradius" title="Permanent link">#</a></h2>
+<p>Ground drone reveal</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wheelDroneFullScoutRadiusIncreasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>wheelDronePartScoutRadiusIncreasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Park Won-shin (<code>wheelDroneFullScoutRadiusIncreasedMeters</code> 100, <code>wheelDronePartScoutRadiusIncreasedMeters</code> 100)</p>
+<h2 id="wheeldronetorque">WheelDroneTorque<a class="headerlink" href="#wheeldronetorque" title="Permanent link">#</a></h2>
+<p>Ground drone torque</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wheelDroneTorqueIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Thomas Stevenson (<code>wheelDroneTorqueIncreasedPercent</code> 50)</p>
+<h2 id="wheeldronezone">WheelDroneZone<a class="headerlink" href="#wheeldronezone" title="Permanent link">#</a></h2>
+<p>Bigger signal zones on the map</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wheelDroneZoneIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Park Won-shin (<code>wheelDroneZoneIncreasedPercent</code> 50)</p>
+<h2 id="winchimprove">WinchImprove<a class="headerlink" href="#winchimprove" title="Permanent link">#</a></h2>
+<p>Longer, stronger winch</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>winchLengthIncreasedMeters</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>winchPowerIncreasedPercent</code></td>
+<td>int</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Shipped values:</strong> Mitch Goodman (<code>winchLengthIncreasedMeters</code> 10, <code>winchPowerIncreasedPercent</code> 30)</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../64-specialists/descriptor.html"><span>Previous</span>Descriptor settings</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#additionaladdonsupplies">AdditionalAddonSupplies</a></li>
+<li><a href="#additionaldeployresources">AdditionalDeployResources</a></li>
+<li><a href="#additionalreward">AdditionalReward</a></li>
+<li><a href="#additionaltreasureitems">AdditionalTreasureItems</a></li>
+<li><a href="#airdropreroll">AirdropReroll</a></li>
+<li><a href="#anchorradius">AnchorRadius</a></li>
+<li><a href="#anchorsupplies">AnchorSupplies</a></li>
+<li><a href="#armorcapacity">ArmorCapacity</a></li>
+<li><a href="#armorrestoreeverywhere">ArmorRestoreEverywhere</a></li>
+<li><a href="#binocularradius">BinocularRadius</a></li>
+<li><a href="#droneacceleration">DroneAcceleration</a></li>
+<li><a href="#dronecontrollability">DroneControllability</a></li>
+<li><a href="#dronediscoverscoutzones">DroneDiscoverScoutZones</a></li>
+<li><a href="#droneheight">DroneHeight</a></li>
+<li><a href="#droneitemsetup">DroneItemSetup</a></li>
+<li><a href="#dronemaxspeed">DroneMaxSpeed</a></li>
+<li><a href="#droneradius">DroneRadius</a></li>
+<li><a href="#dronescoutradius">DroneScoutRadius</a></li>
+<li><a href="#dronetrade">DroneTrade</a></li>
+<li><a href="#echolotmodeaura">EcholotModeAura</a></li>
+<li><a href="#echolotmodecone">EcholotModeCone</a></li>
+<li><a href="#echolotmodesnow">EcholotModeSnow</a></li>
+<li><a href="#electricityconsumption">ElectricityConsumption</a></li>
+<li><a href="#emergencystocksupplies">EmergencyStockSupplies</a></li>
+<li><a href="#emergencywinch">EmergencyWinch</a></li>
+<li><a href="#engineunderwaterdamage">EngineUnderwaterDamage</a></li>
+<li><a href="#fogofwartranspradius">FogOfWarTranspRadius</a></li>
+<li><a href="#freeevacuation">FreeEvacuation</a></li>
+<li><a href="#fuelconsumption">FuelConsumption</a></li>
+<li><a href="#guaranteedairdropresource">GuaranteedAirdropResource</a></li>
+<li><a href="#improvewinchedtruck">ImproveWinchedTruck</a></li>
+<li><a href="#itemcost">ItemCost</a></li>
+<li><a href="#itemsellprice">ItemSellPrice</a></li>
+<li><a href="#jackscrewsupplies">JackscrewSupplies</a></li>
+<li><a href="#maydiscoverzones">MayDiscoverZones</a></li>
+<li><a href="#repairbuildingconsumption">RepairBuildingConsumption</a></li>
+<li><a href="#repairconsumption">RepairConsumption</a></li>
+<li><a href="#treasureitemsellprice">TreasureItemSellPrice</a></li>
+<li><a href="#truckdamage">TruckDamage</a></li>
+<li><a href="#underwateranchorsetup">UnderwaterAnchorSetup</a></li>
+<li><a href="#wheeldronearmor">WheelDroneArmor</a></li>
+<li><a href="#wheeldronearmorrestoreeverywhere">WheelDroneArmorRestoreEverywhere</a></li>
+<li><a href="#wheeldronefriction">WheelDroneFriction</a></li>
+<li><a href="#wheeldronescoutradius">WheelDroneScoutRadius</a></li>
+<li><a href="#wheeldronetorque">WheelDroneTorque</a></li>
+<li><a href="#wheeldronezone">WheelDroneZone</a></li>
+<li><a href="#winchimprove">WinchImprove</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>
