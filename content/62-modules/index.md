@@ -24,7 +24,7 @@ To build a module of your own, start with
 | [Repair station](repair-station.html) | **✅ Works** | Stocks spare parts and wheels for trucks to take. |
 | [Service station](service-station.html) | **✅ Works** | Lets trucks in its area spend spare parts on armor, up to +20%. |
 | [Generator](generator.html) | **⛔ Broken** | Converts fuel into electricity. |
-| [Helipad](helicopter.html) | **⚠ Not yet tested** | Transports the player between discovered zones. |
+| [Helipad](helicopter.html) | **✅ Works** | Transports the player between discovered zones. |
 | [Expanded parking](parking.html) | **⚠ Not yet tested** | Raises how many trucks the deploy zone holds. |
 | [Cargo drone](drone-base.html) | **✅ Works** | Recovers ground drones at the deploy zone. |
 | [Intelligence center](com-center.html) | **⛔ Broken** | Marks nearby air drops on the map. |

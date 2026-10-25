@@ -255,7 +255,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:
     | `ZonePropertyGenerator` | ⛔ broken | six builds; each one emptied the module store and froze the game on exit to headquarters |
     | `AntennaUpgradeDesc` (with `ZonePropertyFobModuleDefault`) | ⛔ broken | builds and sells, never reveals an air drop, even with the game's script patched. See [Intelligence center](../62-modules/com-center.html#building-your-own-the-ability-does-not-work) |
     | `ZonePropertyServiceStation` | ✅ works | A custom service station: trucks in its area can add armor up to +20%, as vanilla. Tested October 2026 |
-    | `ZonePropertyHelicopter` | ⚠ not yet tested | one worked in March 2025 and it hasn't been reproduced since |
+    | `ZonePropertyHelicopter` | ✅ works | A custom helipad, `transferCost` 30. Tested October 2026 |
     | `ZonePropertyFuelStation`, the others | ⚠ not yet tested | no custom module on them has been checked in game |
 
     ⇒ **For a mod, start from one of the four that work.** A fuel station

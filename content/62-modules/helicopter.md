@@ -3,8 +3,8 @@ title: Helipad
 part: Appendix A - base modules
 order: 907
 summary: Transports the player between discovered zones. Documented for custom modules.
-verdict: untested
-verdict_text: "A custom one worked in March 2025, and nobody has been able to reproduce it since. Treat it as untested."
+verdict: works
+verdict_text: "A custom helipad was built and tested in game in October 2026 and works."
 ---
 
 # Helipad
@@ -170,7 +170,7 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyHelicopter`** for this module.
-A custom module built on it worked once, in March 2025, and nobody has reproduced that since. Treat it as untested.
+A custom helipad built on it works in game (tested October 2026). The test build used Saber's own helipad models and artwork, its own mod name as `moduleId`, `transferCost` 30 (the card shows 8 gal, as vanilla), `isInteractive` true as on Saber's live helipad, one per deploy zone, and not available by drone delivery. A version with a custom model hasn't been tested, and its model would stay on the map after a sale, like every custom model.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 
