@@ -3,8 +3,8 @@ title: Essentials storage
 part: Appendix A - base modules
 order: 902
 summary: Doubles the cargo the base can hold. Documented for custom modules.
-verdict: untested
-verdict_text: "A custom copy loads and keeps an inventory in a save, but nobody has checked in game that it actually adds capacity."
+verdict: works
+verdict_text: "A custom essentials storage was built and tested in game in October 2026. It works and behaves identically to the vanilla module."
 ---
 
 # Essentials storage
@@ -170,7 +170,7 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyFobModuleStorage`** for this module.
-The type itself works for a mod (a custom fuel station is built on it), but no custom essentials storage has been tested in game doing this module's job.
+A custom essentials storage built on it works in game and behaves identically to the vanilla one (tested October 2026). The test build used Saber's own models and artwork, its own mod name as `moduleId`, `alwaysSpawn` on, and four consumable slots matching the vanilla card: `fuelSlotSettings` 100, `repairsSlotSettings` 200, `wheelsSlotSettings` 2 and `electroSlotSettings` 5, each with `tradeFromTruckToZone` on. A version with a custom model hasn't been tested, and its model would stay on the map after a sale, like every custom model.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

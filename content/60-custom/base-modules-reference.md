@@ -249,7 +249,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:
 
     | Type | For a mod | Tested with |
     |---|---|---|
-    | `ZonePropertyFobModuleStorage` | ✅ works | A custom fuel station with a single fuel slot, a custom repair station, and a custom warehouse (8 slots, 4 heavy) |
+    | `ZonePropertyFobModuleStorage` | ✅ works | A custom fuel station with a single fuel slot, a custom repair station, a custom warehouse (8 slots, 4 heavy), and a custom essentials storage (fuel, parts, wheels and power slots) |
     | `ZonePropertyWorkshop` | ✅ works | A custom workshop that crafts, recycles and starts stocked |
     | `ZonePropertyDroneDelivery` | ✅ works | A custom cargo drone base |
     | `ZonePropertyGenerator` | ⛔ broken | six builds; each one emptied the module store and froze the game on exit to headquarters |

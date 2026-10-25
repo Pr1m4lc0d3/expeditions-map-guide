@@ -19,7 +19,7 @@ To build a module of your own, start with
 |---|---|---|
 | [Gas station](gas-station.html) | **✅ Works** | Sells fuel to a truck parked at the zone. |
 | [Warehouse](extra-storage.html) | **✅ Works** | Holds cargo at the base. |
-| [Essentials storage](double-stock.html) | **⚠ Not yet tested** | Holds some fuel, wheels and spare parts, resupplied between deployments. |
+| [Essentials storage](double-stock.html) | **✅ Works** | Holds some fuel, wheels and spare parts, resupplied between deployments. |
 | [Workshop](workshop.html) | **✅ Works** | Crafts items from spare parts; refills only by recycling items. |
 | [Repair station](repair-station.html) | **✅ Works** | Stocks spare parts and wheels for trucks to take. |
 | [Service station](service-station.html) | **✅ Works** | Lets trucks in its area spend spare parts on armor, up to +20%. |
