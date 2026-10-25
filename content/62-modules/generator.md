@@ -4,7 +4,7 @@ part: Appendix A - base modules
 order: 906
 summary: Converts fuel into electricity. Documented for custom modules.
 verdict: broken
-verdict_text: "A custom generator empties the Base modules store and freezes the game on exit to headquarters. Six builds failed, including one that matched Saber's own generator field for field."
+verdict_text: "A custom generator empties the Base modules store and freezes the game on exit to headquarters. Seven builds failed the same way, including one that matched Saber's own generator field for field and one using its own name as moduleId, as Saber's documentation asks."
 ---
 
 # Generator
@@ -170,7 +170,7 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyGenerator`** for this module.
-⛔ **Don't build a mod on it.** Every custom generator built on it emptied the module store and froze the game on exit to headquarters, including one that matched Saber's own generator field for field. No working alternative has been found.
+⛔ **Don't build a mod on it.** Every custom generator built on it emptied the module store and froze the game on exit to headquarters, including one that matched Saber's own generator field for field. A seventh build in October 2026 changed only the `moduleId` to the module's own name, the setup that made every other module type work; it failed identically. The game dies in its own script while the store builds its list (`ZonePropertyInventoryStorage.InitZoneInventory`, called from `ZonePropertyGenerator.GenerateInventory`), before the module can even be bought, and no module setting tried so far changes that. No working alternative has been found.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

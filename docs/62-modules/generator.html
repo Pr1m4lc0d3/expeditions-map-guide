@@ -288,7 +288,7 @@
         <h1>Generator</h1>
         <div class="verdict verdict-broken" role="note">
           <span class="verdict-label">As a custom module: BROKEN</span>
-          <span class="verdict-text">A custom generator empties the Base modules store and freezes the game on exit to headquarters. Six builds failed, including one that matched Saber&#39;s own generator field for field.</span>
+          <span class="verdict-text">A custom generator empties the Base modules store and freezes the game on exit to headquarters. Seven builds failed the same way, including one that matched Saber&#39;s own generator field for field and one using its own name as moduleId, as Saber&#39;s documentation asks.</span>
         </div>
 <p class="lede">Converts fuel into electricity. Documented for custom modules.</p>      </div>
       <article class="prose"><h1 id="generator">Generator<a class="headerlink" href="#generator" title="Permanent link">#</a></h1>
@@ -499,7 +499,7 @@ small and floats. Match the framing, not just the pixel size.</p>
 </div>
 <h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyGenerator</code></strong> for this module.
-⛔ <strong>Don&rsquo;t build a mod on it.</strong> Every custom generator built on it emptied the module store and froze the game on exit to headquarters, including one that matched Saber&rsquo;s own generator field for field. No working alternative has been found.</p>
+⛔ <strong>Don&rsquo;t build a mod on it.</strong> Every custom generator built on it emptied the module store and froze the game on exit to headquarters, including one that matched Saber&rsquo;s own generator field for field. A seventh build in October 2026 changed only the <code>moduleId</code> to the module&rsquo;s own name, the setup that made every other module type work; it failed identically. The game dies in its own script while the store builds its list (<code>ZonePropertyInventoryStorage.InitZoneInventory</code>, called from <code>ZonePropertyGenerator.GenerateInventory</code>), before the module can even be bought, and no module setting tried so far changes that. No working alternative has been found.</p>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
 <p>See <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a> for the full field list.</p></article>
 
