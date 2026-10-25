@@ -215,10 +215,10 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/extra-storage.html">Warehouse</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/double-stock.html">Essentials storage</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/workshop.html">Workshop</a>
 <span class="pill pill-v-works">works</span>        </li>
@@ -233,7 +233,7 @@
 <span class="pill pill-v-broken">broken</span>        </li>
         <li>
           <a href="../62-modules/helicopter.html">Helipad</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/parking.html">Expanded parking</a>
 <span class="pill pill-v-untested">untested</span>        </li>
@@ -889,7 +889,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:<
 </tbody>
 </table></div>
 <div class="admonition danger">
-<p class="admonition-title">Only four module types are proven to work for a mod</p>
+<p class="admonition-title">Only five module types are proven to work for a mod</p>
 <p>What has actually been tested in game with a custom module:</p>
 <div class="table-scroll"><table>
 <thead>
@@ -903,7 +903,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:<
 <tr>
 <td><code>ZonePropertyFobModuleStorage</code></td>
 <td>✅ works</td>
-<td>A custom fuel station with a single fuel slot, and a custom repair station</td>
+<td>A custom fuel station with a single fuel slot, a custom repair station, a custom warehouse (8 slots, 4 heavy), and a custom essentials storage (fuel, parts, wheels and power slots)</td>
 </tr>
 <tr>
 <td><code>ZonePropertyWorkshop</code></td>
@@ -932,8 +932,8 @@ The engine knows 72 zone-property types. These are the ones a base module uses:<
 </tr>
 <tr>
 <td><code>ZonePropertyHelicopter</code></td>
-<td>⚠ not yet tested</td>
-<td>one worked in March 2025 and it hasn&rsquo;t been reproduced since</td>
+<td>✅ works</td>
+<td>A custom helipad, <code>transferCost</code> 30. Tested October 2026</td>
 </tr>
 <tr>
 <td><code>ZonePropertyFuelStation</code>, the others</td>
@@ -942,7 +942,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:<
 </tr>
 </tbody>
 </table></div>
-<p>⇒ <strong>For a mod, start from one of the four that work.</strong> A fuel station
+<p>⇒ <strong>For a mod, start from one of the five that work.</strong> A fuel station
 built as <code>ZonePropertyFobModuleStorage</code> with one fuel slot is proven; see
 the recipe below. Each module page in <a href="../62-modules/index.html">Appendix A</a>
 opens with the same verdict.</p>
