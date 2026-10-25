@@ -3,8 +3,8 @@ title: Warehouse
 part: Appendix A - base modules
 order: 901
 summary: Holds cargo at the base. Documented for custom modules.
-verdict: untested
-verdict_text: "No custom warehouse has been tested in game. It uses the same module type as two that work, which is a reason to expect it to work, not proof."
+verdict: works
+verdict_text: "A custom warehouse was built and tested in game in October 2026 and works. It used Saber's own warehouse models, 8 slots and 4 heavy slots, and its own mod name as the moduleId."
 ---
 
 # Warehouse
@@ -170,7 +170,7 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyFobModuleStorage`** for this module.
-The type itself works for a mod (a custom fuel station is built on it), but no custom warehouse has been tested in game doing this module's job.
+A custom warehouse built on it works in game (tested October 2026). The test build used Saber's own warehouse models and artwork, `capacity` 8, `heavyInvCapacity` 4, `alwaysSpawn` on, and its own mod name as `moduleId`. A warehouse with a custom model hasn't been tested, and its model would stay on the map after a sale, like every custom model.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 
