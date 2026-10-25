@@ -213,7 +213,7 @@ is not known. Don't spend time on the range; it isn't the cause.
 - **Give it a job that works for a mod.** Storage, fuel and repair modules
   built on `ZonePropertyFobModuleStorage` do work. See
   [What the module does](../60-custom/base-modules-reference.html#what-the-module-does-zoneproperty).
-- **Or make it about money,** as Gimbo's Resource Scanner now is: `cost`
+- **Or make it about money,** as Gimbo's Intel Scanner now is: `cost`
   1,000 and `sellPrice` 500,000, with a description that owns the joke. A
   sold custom module leaves its model standing on the map (true of every
   module with a custom model), but the cash arrives every time.
