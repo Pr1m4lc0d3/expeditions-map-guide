@@ -183,7 +183,7 @@ capture (1), and the card in the middle (2) is what `popupModuleBg` fills:
 ![Stock store rows and the Repair station build card](../assets/bases/repair-station_placement.png)
 
 Every built-in module's own rows and card are on its page in
-[Appendix A](../62-modules/gas-station.html).
+[Appendix A](../62-modules/index.html).
 
 !!! warning "Composition, not just size"
     The artwork is **left-anchored and fills the row height**, and it clips off
