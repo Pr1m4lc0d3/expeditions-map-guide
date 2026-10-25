@@ -3,6 +3,8 @@ title: Cargo drone
 part: Appendix A - base modules
 order: 909
 summary: Recovers ground drones at the deploy zone. Documented for custom modules.
+verdict: works
+verdict_text: "Nom Nom's Drone Delivery Service moves items between drone and base and holds 100 gallons of fuel. Tested in game by the owner."
 ---
 
 # Cargo drone

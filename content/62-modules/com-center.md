@@ -3,6 +3,8 @@ title: Intelligence center
 part: Appendix A - base modules
 order: 910
 summary: Extends the signal radius around the base. Documented for custom modules.
+verdict: broken
+verdict_text: "It builds, sells and pays its refund, but it never marks a single air drop, even with the game's own script patched. Don't promise the ability."
 ---
 
 # Intelligence center

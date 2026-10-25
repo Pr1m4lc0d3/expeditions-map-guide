@@ -51,6 +51,7 @@
         <li>
           <a href="{{ root }}{{ p.url }}"{% if p.url == page.url %} aria-current="page"{% endif %}>{{ p.title }}</a>
           {% if p.status != 'done' %}<span class="pill pill-{{ p.status }}">{{ p.status }}</span>{% endif %}
+          {% if p.meta.verdict %}<span class="pill pill-v-{{ p.meta.verdict }}">{{ {'works': 'works', 'broken': 'broken', 'partly': 'partly', 'untested': 'untested'}[p.meta.verdict] }}</span>{% endif %}
         </li>
         {% endfor %}
       </ul>
@@ -65,6 +66,12 @@
       <div class="page-head">
         <p class="eyebrow">{{ page.part }}</p>
         <h1>{{ page.title }}</h1>
+        {% if page.meta.verdict %}
+        <div class="verdict verdict-{{ page.meta.verdict }}" role="note">
+          <span class="verdict-label">As a custom module: {{ {'works': 'WORKS', 'broken': 'BROKEN', 'partly': 'PARTLY WORKS', 'untested': 'NOT YET TESTED'}[page.meta.verdict] }}</span>
+          <span class="verdict-text">{{ page.meta.verdict_text }}</span>
+        </div>
+        {% endif %}
         {% if page.summary %}<p class="lede">{{ page.summary }}</p>{% endif %}
       </div>
       {% if page.status != 'done' %}

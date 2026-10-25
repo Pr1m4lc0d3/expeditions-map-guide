@@ -3,6 +3,8 @@ title: Warehouse
 part: Appendix A - base modules
 order: 901
 summary: Holds cargo at the base. Documented for custom modules.
+verdict: untested
+verdict_text: "No custom warehouse has been tested in game. It uses the same module type as two that work, which is a reason to expect it to work, not proof."
 ---
 
 # Warehouse

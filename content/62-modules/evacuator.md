@@ -3,6 +3,8 @@ title: Tow truck
 part: Appendix A - base modules
 order: 912
 summary: Recovers a stranded truck back to the base. Documented for custom modules.
+verdict: untested
+verdict_text: "No custom tow truck has been built and tested in game."
 ---
 
 # Tow truck

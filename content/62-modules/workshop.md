@@ -3,6 +3,8 @@ title: Workshop
 part: Appendix A - base modules
 order: 903
 summary: Repairs and upgrades trucks. Documented for custom modules.
+verdict: works
+verdict_text: "Platt's Gate Works builds at a main base, opens the Workshop menu, holds spare parts and crafts. Not yet checked: building at an outpost, and reloading a save."
 ---
 
 # Workshop

@@ -216,6 +216,23 @@ body {
   max-width: var(--measure); margin: .7rem 0 0; text-wrap: pretty;
 }
 
+/* the custom-module verdict, first thing under a module page's title */
+.verdict {
+  display: block; margin: 1rem 0 0; padding: .9rem 1.1rem;
+  max-width: var(--measure); border-left: 6px solid; font-size: 1.0625rem;
+}
+.verdict-label { display: block; font-family: var(--display); font-weight: 800; font-size: 1.25rem; letter-spacing: .02em; }
+.verdict-text { display: block; margin-top: .3rem; }
+.verdict-works    { border-color: var(--ok);     background: var(--ok-bg); }
+.verdict-works    .verdict-label { color: var(--ok); }
+.verdict-broken   { border-color: var(--signal); background: var(--signal-bg); }
+.verdict-broken   .verdict-label { color: var(--signal); }
+.verdict-partly, .verdict-untested { border-color: var(--warn); background: var(--warn-bg); }
+.verdict-partly   .verdict-label, .verdict-untested .verdict-label { color: var(--warn); }
+.pill-v-works { color: var(--ok); }
+.pill-v-broken { color: var(--signal); }
+.pill-v-partly, .pill-v-untested { color: var(--warn); }
+
 .banner {
   border-left: 3px solid var(--warn); background: var(--warn-bg);
   padding: .8rem 1.1rem; margin-bottom: 2rem;

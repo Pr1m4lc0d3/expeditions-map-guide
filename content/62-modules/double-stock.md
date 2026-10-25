@@ -3,6 +3,8 @@ title: Essentials storage
 part: Appendix A - base modules
 order: 902
 summary: Doubles the cargo the base can hold. Documented for custom modules.
+verdict: untested
+verdict_text: "A custom copy (Essentials Storage) loads and keeps an inventory in a save, but nobody has checked in game that it actually adds capacity."
 ---
 
 # Essentials storage

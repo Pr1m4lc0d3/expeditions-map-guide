@@ -3,6 +3,8 @@ title: Repair station
 part: Appendix A - base modules
 order: 904
 summary: Restores truck condition. Documented for custom modules.
+verdict: untested
+verdict_text: "Doc Windsor EMT builds and shows its model at a main base and an outpost, but nobody has tested whether it repairs a truck."
 ---
 
 # Repair station

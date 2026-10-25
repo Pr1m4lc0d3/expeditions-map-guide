@@ -3,6 +3,8 @@ title: Expanded parking
 part: Appendix A - base modules
 order: 908
 summary: Raises how many trucks the deploy zone holds. Documented for custom modules.
+verdict: untested
+verdict_text: "No custom expanded parking has been built and tested in game."
 ---
 
 # Expanded parking

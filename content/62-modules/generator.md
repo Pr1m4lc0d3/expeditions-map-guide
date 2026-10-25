@@ -3,6 +3,8 @@ title: Generator
 part: Appendix A - base modules
 order: 906
 summary: Converts fuel into electricity. Documented for custom modules.
+verdict: broken
+verdict_text: "A custom generator empties the Base modules store and freezes the game on exit to headquarters. Six builds failed, including one that matched Saber's own generator field for field."
 ---
 
 # Generator

@@ -7,24 +7,29 @@ summary: The twelve modules that ship with the game, one page each, with their s
 
 # Every base module
 
-One page for each of the twelve modules that ship with the game. Each page
+One page for each of the twelve modules that ship with the game. The first thing on each page is whether a custom module of that kind works in game, and the table below gives all twelve at once. Each page
 shows the module in game, its identity, its models, and all of its artwork
 slots, so you can copy what works when you build your own.
 
 To build a module of your own, start with
 [Every base module, and every surface you can edit](../60-custom/base-modules-reference.html).
 
-| Module | What it does |
-|---|---|
-| [Gas station](gas-station.html) | Sells fuel to a truck parked at the zone. |
-| [Warehouse](extra-storage.html) | Holds cargo at the base. |
-| [Essentials storage](double-stock.html) | Doubles the cargo the base can hold. |
-| [Workshop](workshop.html) | Repairs and upgrades trucks. |
-| [Repair station](repair-station.html) | Restores truck condition. |
-| [Service station](service-station.html) | Combined refuel, repair and tyre service. |
-| [Generator](generator.html) | Converts fuel into electricity. |
-| [Helipad](helicopter.html) | Transports the player between discovered zones. |
-| [Expanded parking](parking.html) | Raises how many trucks the deploy zone holds. |
-| [Cargo drone](drone-base.html) | Recovers ground drones at the deploy zone. |
-| [Intelligence center](com-center.html) | Marks nearby air drops on the map. ⛔ A custom copy never does: [read why](com-center.html#building-your-own-the-ability-does-not-work). |
-| [Tow truck](evacuator.html) | Recovers a stranded truck back to the base. |
+| Module | As a custom module | What it does |
+|---|---|---|
+| [Gas station](gas-station.html) | **✅ Works** | Sells fuel to a truck parked at the zone. |
+| [Warehouse](extra-storage.html) | **⚠ Not yet tested** | Holds cargo at the base. |
+| [Essentials storage](double-stock.html) | **⚠ Not yet tested** | Doubles the cargo the base can hold. |
+| [Workshop](workshop.html) | **✅ Works** | Repairs and upgrades trucks. |
+| [Repair station](repair-station.html) | **⚠ Not yet tested** | Restores truck condition. |
+| [Service station](service-station.html) | **⚠ Not yet tested** | Combined refuel, repair and tyre service. |
+| [Generator](generator.html) | **⛔ Broken** | Converts fuel into electricity. |
+| [Helipad](helicopter.html) | **⚠ Not yet tested** | Transports the player between discovered zones. |
+| [Expanded parking](parking.html) | **⚠ Not yet tested** | Raises how many trucks the deploy zone holds. |
+| [Cargo drone](drone-base.html) | **✅ Works** | Recovers ground drones at the deploy zone. |
+| [Intelligence center](com-center.html) | **⛔ Broken** | Marks nearby air drops on the map. |
+| [Tow truck](evacuator.html) | **⚠ Not yet tested** | Recovers a stranded truck back to the base. |
+
+Every verdict comes from a test recorded in the toolkit's logs. "Not yet tested" means nobody has checked in game that a custom one does its job, so nothing is claimed either way.
+
+!!! warning "True of every custom module that uses its own model"
+    Selling it frees the slot and pays the refund, but the model stays standing on the map. This can't be fixed.

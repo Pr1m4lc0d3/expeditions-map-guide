@@ -3,6 +3,8 @@ title: Gas station
 part: Appendix A - base modules
 order: 900
 summary: Sells fuel to a truck parked at the zone. Documented for custom modules.
+verdict: works
+verdict_text: "Works when you build it as a storage module with a single fuel slot, the way PebbleGas does. Selling it leaves its model on the map."
 ---
 
 # Gas station

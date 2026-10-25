@@ -3,6 +3,8 @@ title: Service station
 part: Appendix A - base modules
 order: 905
 summary: Combined refuel, repair and tyre service. Documented for custom modules.
+verdict: untested
+verdict_text: "A custom one worked in March 2025, and nobody has been able to reproduce it since. Treat it as untested."
 ---
 
 # Service station
