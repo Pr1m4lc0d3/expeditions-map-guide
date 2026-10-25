@@ -3,8 +3,8 @@ title: Expanded parking
 part: Appendix A - base modules
 order: 908
 summary: Makes recovering a truck to this base cheaper, and holds spare wheels. Documented for custom modules.
-verdict: untested
-verdict_text: "No custom expanded parking has been built and tested in game."
+verdict: works
+verdict_text: "A custom expanded parking was built and tested in game in October 2026. Its recovery discount works: at 10% it cut a 1,000 recovery to 900."
 ---
 
 # Expanded parking
@@ -179,7 +179,10 @@ and you can see it directly.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyParking`** for this module.
-No custom module built on it has been tested in game yet. This is Saber's documented setting, not a proven one.
+A custom expanded parking built on it works in game (tested October 2026). With `recoveryDiscount` 0.1, recovering a truck to that base cost 900 instead of 1,000. The test build used Saber's own parking models and artwork, its own mod name as `moduleId`, `alwaysSpawn` and `isAtDeployZone` on, one per deploy zone, `additionalRepairAndRefuelAmount` 0, and `wheelsSlotSettings` 8 with `tradeFromTruckToZone` off, as the vanilla panel shows. The vanilla module's own discount hasn't been measured.
+
+!!! note "The discount needs a price to cut"
+    A recovery's price is the truck's `RecoveryPrice`, set in the truck's XML (most vanilla trucks charge 1,000 to 3,000). Saber's documentation says the price doesn't apply in the first region, Little Colorado. Where recovery is free, this module's discount has nothing to take off.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

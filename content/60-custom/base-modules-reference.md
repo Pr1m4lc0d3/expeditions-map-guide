@@ -244,7 +244,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:
 | `ZonePropertyBaseBuilding` | `modelPlacementZone` | where a module may be placed |
 | `ZonePropertyDeploy` | `fobModulesZones`, `defaultDeployPoint`, `maxTrucksNum` | the deploy zone itself |
 
-!!! danger "Only five module types are proven to work for a mod"
+!!! danger "Only six module types are proven to work for a mod"
     What has actually been tested in game with a custom module:
 
     | Type | For a mod | Tested with |
@@ -256,9 +256,10 @@ The engine knows 72 zone-property types. These are the ones a base module uses:
     | `AntennaUpgradeDesc` (with `ZonePropertyFobModuleDefault`) | ⛔ broken | builds and sells, never reveals an air drop, even with the game's script patched. See [Intelligence center](../62-modules/com-center.html#building-your-own-the-ability-does-not-work) |
     | `ZonePropertyServiceStation` | ✅ works | A custom service station: trucks in its area can add armor up to +20%, as vanilla. Tested October 2026 |
     | `ZonePropertyHelicopter` | ✅ works | A custom helipad, `transferCost` 30. Tested October 2026 |
+    | `ZonePropertyParking` | ✅ works | A custom expanded parking: `recoveryDiscount` 0.1 cut a 1,000 recovery to 900. Tested October 2026 |
     | `ZonePropertyFuelStation`, the others | ⚠ not yet tested | no custom module on them has been checked in game |
 
-    ⇒ **For a mod, start from one of the five that work.** A fuel station
+    ⇒ **For a mod, start from one of the six that work.** A fuel station
     built as `ZonePropertyFobModuleStorage` with one fuel slot is proven; see
     the recipe below. Each module page in [Appendix A](../62-modules/index.html)
     opens with the same verdict.

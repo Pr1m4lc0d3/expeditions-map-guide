@@ -236,7 +236,7 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/parking.html" aria-current="page">Expanded parking</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/drone-base.html">Cargo drone</a>
 <span class="pill pill-v-works">works</span>        </li>
@@ -286,9 +286,9 @@
       <div class="page-head">
         <p class="eyebrow">Appendix A - base modules</p>
         <h1>Expanded parking</h1>
-        <div class="verdict verdict-untested" role="note">
-          <span class="verdict-label">As a custom module: NOT YET TESTED</span>
-          <span class="verdict-text">No custom expanded parking has been built and tested in game.</span>
+        <div class="verdict verdict-works" role="note">
+          <span class="verdict-label">As a custom module: WORKS</span>
+          <span class="verdict-text">A custom expanded parking was built and tested in game in October 2026. Its recovery discount works: at 10% it cut a 1,000 recovery to 900.</span>
         </div>
 <p class="lede">Makes recovering a truck to this base cheaper, and holds spare wheels. Documented for custom modules.</p>      </div>
       <article class="prose"><h1 id="expanded-parking">Expanded parking<a class="headerlink" href="#expanded-parking" title="Permanent link">#</a></h1>
@@ -510,7 +510,11 @@ small and floats. Match the framing, not just the pixel size.</p>
 </div>
 <h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyParking</code></strong> for this module.
-No custom module built on it has been tested in game yet. This is Saber&rsquo;s documented setting, not a proven one.</p>
+A custom expanded parking built on it works in game (tested October 2026). With <code>recoveryDiscount</code> 0.1, recovering a truck to that base cost 900 instead of 1,000. The test build used Saber&rsquo;s own parking models and artwork, its own mod name as <code>moduleId</code>, <code>alwaysSpawn</code> and <code>isAtDeployZone</code> on, one per deploy zone, <code>additionalRepairAndRefuelAmount</code> 0, and <code>wheelsSlotSettings</code> 8 with <code>tradeFromTruckToZone</code> off, as the vanilla panel shows. The vanilla module&rsquo;s own discount hasn&rsquo;t been measured.</p>
+<div class="admonition note">
+<p class="admonition-title">The discount needs a price to cut</p>
+<p>A recovery&rsquo;s price is the truck&rsquo;s <code>RecoveryPrice</code>, set in the truck&rsquo;s XML (most vanilla trucks charge 1,000 to 3,000). Saber&rsquo;s documentation says the price doesn&rsquo;t apply in the first region, Little Colorado. Where recovery is free, this module&rsquo;s discount has nothing to take off.</p>
+</div>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
 <p>See <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a> for the full field list.</p></article>
 

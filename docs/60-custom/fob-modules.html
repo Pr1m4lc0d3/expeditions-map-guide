@@ -236,7 +236,7 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/parking.html">Expanded parking</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/drone-base.html">Cargo drone</a>
 <span class="pill pill-v-works">works</span>        </li>
@@ -383,7 +383,7 @@ short:</p>
 <tr>
 <td>storage-type modules (<code>ZonePropertyFobModuleStorage</code>): a fuel station with one fuel slot, a repair station, a warehouse, an essentials storage</td>
 <td>generator (<code>ZonePropertyGenerator</code>): empties the module store and freezes the game on exit to headquarters</td>
-<td>expanded parking, tow truck</td>
+<td>tow truck</td>
 </tr>
 <tr>
 <td>workshop (<code>ZonePropertyWorkshop</code>)</td>
@@ -402,6 +402,11 @@ short:</p>
 </tr>
 <tr>
 <td>helipad (<code>ZonePropertyHelicopter</code>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>expanded parking (<code>ZonePropertyParking</code>)</td>
 <td></td>
 <td></td>
 </tr>
@@ -880,8 +885,7 @@ workaround.</p>
 <li><strong>Unlocking a custom module as an objective reward.</strong> Documented by Saber,
   not tested with a custom module, and which identifier the reward wants (the
   <code>name</code> or the <code>moduleId</code>) is not confirmed.</li>
-<li><strong>Two module types</strong> have never been checked as custom modules: expanded
-  parking and tow truck.</li>
+<li><strong>The tow truck</strong> has never been checked as a custom module.</li>
 <li><strong>Map-side custom module zones.</strong> Saber describes FOB module zones on a map
   that carry their own <code>moduleId</code> to tie a zone to one custom module. That has
   not been tested here.</li>
