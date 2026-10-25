@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html" aria-current="page">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,25 +256,341 @@
         <h1>Deploy zones and FOBs</h1>
 <p class="lede">Where trucks arrive, and how a base with a store, a workshop and a fuel pump is actually assembled.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>A deploy zone is the one zone type every map must have. Building a base around it is
-more involved than it looks, because each module is a <strong>pair</strong> of zones.</p>
-<p>Planned for this page:</p>
+      <article class="prose"><p>A deploy zone is the one zone type every map must have. It is where the player&rsquo;s
+trucks arrive at the start of an expedition. Building a base around it is more
+involved than it looks, because each module the player can build there is a <strong>pair</strong>
+of zones.</p>
+<div class="admonition note">
+<p class="admonition-title">What on this page has been tested</p>
+<p>A deploy zone carrying <code>ZonePropertyDeploy</code>, set up as on
+<a href="../00-start/map-that-loads.html">Make a map that loads</a>, is proven: maps built
+that way load and deploy. The Base module, Store, FOB module zones, Recovery and
+outposts are described from Saber&rsquo;s guides and from the settings of working
+maps, and are labelled where they have not been checked in game by this guide.</p>
+</div>
+<h2 id="the-deploy-property">The deploy property<a class="headerlink" href="#the-deploy-property" title="Permanent link">#</a></h2>
+<p>Give a zone <code>ZonePropertyDeploy</code> and it becomes a deploy point.
+<span class="prov prov-doc">documented</span> A map can have several. The first is
+the main base; Saber calls the others <strong>outposts</strong>. If there are several, the player
+can choose more than one of them to deploy trucks to.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+<th>A sensible value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>defaultDeployPoint</code></td>
+<td>selected by default when the player picks where to deploy. Also picks which FOB model is built here, see below</td>
+<td><code>true</code> on your main base</td>
+</tr>
+<tr>
+<td><code>maxTrucksNum</code></td>
+<td>how many trucks can be deployed here at once</td>
+<td>your choice. 4 on one working map, 1 on another</td>
+</tr>
+<tr>
+<td><code>fogOfWarUnlockRadius</code></td>
+<td>radius of fully explored ground around the zone after deploying</td>
+<td>100 on working maps</td>
+</tr>
+<tr>
+<td><code>fogOfWarUnlockRadiusTransparent</code></td>
+<td>radius of partly explored ground</td>
+<td>150 on working maps</td>
+</tr>
+<tr>
+<td><code>warningRadius</code></td>
+<td>how far the player can go before the &ldquo;insufficient equipment&rdquo; warning, if the expedition requires equipment</td>
+<td>5 on working maps</td>
+</tr>
+<tr>
+<td><code>zoneDiscoverability</code></td>
+<td>whether the player can see the zone yet. Leave it empty for a zone that is simply available</td>
+<td>empty</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>optional model that is &ldquo;built&rdquo; when the zone appears, for a deploy zone opened as a reward</td>
+<td>empty</td>
+</tr>
+<tr>
+<td><code>mainBaseModuleInteractionZone</code></td>
+<td>enables the Base module. Link to <strong>this same zone</strong></td>
+<td>see below</td>
+</tr>
+<tr>
+<td><code>supplyShopModuleInteractionZone</code></td>
+<td>enables the Store. Link to <strong>this same zone</strong></td>
+<td>see below</td>
+</tr>
+<tr>
+<td><code>fobModulesZones</code></td>
+<td>the list of places the player can build modules</td>
+<td>see below</td>
+</tr>
+<tr>
+<td><code>deployCostMultiplier</code></td>
+<td><strong>not used.</strong> Saber&rsquo;s guide says so</td>
+<td>leave at 1</td>
+</tr>
+</tbody>
+</table></div>
+<p>The &ldquo;working maps&rdquo; values are those found on every deploy zone in the maps this
+guide was built from; they are not Saber&rsquo;s recommendations.</p>
+<h3 id="sit-it-slightly-above-the-ground">Sit it slightly above the ground<a class="headerlink" href="#sit-it-slightly-above-the-ground" title="Permanent link">#</a></h3>
+<p>Saber&rsquo;s guide says deploy zones should sit a little <strong>above</strong> the terrain, so
+arriving trucks do not collide with the ground. <span class="prov prov-doc">documented</span>
+Put them on reasonably flat ground too. The working maps use a locator 10 m by
+10 m with a <code>Height</code> of 2.</p>
+<h3 id="medium-or-small-defaultdeploypoint-picks-the-model">Medium or small: <code>defaultDeployPoint</code> picks the model<a class="headerlink" href="#medium-or-small-defaultdeploypoint-picks-the-model" title="Permanent link">#</a></h3>
+<p>Every FOB module has two models: a medium one for a main base and a small one for an
+outpost, which usually has less room. A module built at a deploy zone with
+<code>defaultDeployPoint</code> <strong>on</strong> gets the medium model; with it <strong>off</strong>, the small one.
+<span class="prov prov-doc">documented</span> <span class="prov prov-unver">unverified</span>
+in game for an outpost.</p>
+<p>So this one switch decides two things. Turn it on for the main base only.</p>
+<h3 id="more-than-one-deploy-zone">More than one deploy zone<a class="headerlink" href="#more-than-one-deploy-zone" title="Permanent link">#</a></h3>
+<p>A second deploy zone does not have to be open from the start. Saber documents two
+ways to open it later: <span class="prov prov-doc">documented</span></p>
 <ul>
-<li>the deploy property, the default deploy point, and the truck limit</li>
-<li>the default deploy point also selects which FOB model is used, medium or small</li>
-<li>sit deploy zones slightly <strong>above</strong> the terrain to avoid collision problems</li>
-<li>the base module needs a storage property on the deploy zone itself, flagged as being
-  at the deploy zone and as always spawning, plus a link back to the deploy zone</li>
-<li>the store needs its own link, also back to the deploy zone</li>
-<li><strong>every buildable FOB module is two zones.</strong> A placement zone, which carries no
-  properties at all and defines where the model goes, and an interaction zone, which
-  carries a base-building property linking to the placement zone</li>
-<li>placement zone dimensions: 10 x 10 m for a main base, 7 x 7 m for a secondary outpost</li>
-<li>the full list of module ids</li>
+<li>leave it <code>NOT_EXPLORED</code> in its <code>zoneDiscoverability</code>, so the player has to find it
+  (see <a href="discoverability.html">Hiding and revealing zones</a>)</li>
+<li>open it as a reward with <code>ObjectiveRewardOpenZoneProperties</code>
+  (see <a href="../50-missions/building-a-story.html">Building a story</a>)</li>
+</ul>
+<p>Both are the author&rsquo;s design choice. If you are fixing someone else&rsquo;s map and an
+outpost seems &ldquo;missing&rdquo;, check whether it is meant to be discovered before you strip
+its discovery settings.</p>
+<h2 id="the-base-module-and-the-store">The Base module and the Store<a class="headerlink" href="#the-base-module-and-the-store" title="Permanent link">#</a></h2>
+<p>These two are not built by the player. They live on the deploy zone itself, and each
+is switched on by a link from the deploy property back to <strong>the same zone</strong>.
+<span class="prov prov-doc">documented</span></p>
+<p><strong>The Base module</strong> needs three things on the deploy zone:</p>
+<ol>
+<li>add a <code>ZonePropertyInventoryStorage</code> prop to the deploy zone, alongside
+   <code>ZonePropertyDeploy</code></li>
+<li>in that storage prop, turn on <code>isAtDeployZone</code> and <code>alwaysSpawn</code>, and set
+   <code>capacity</code> above its default of 0</li>
+<li>in <code>ZonePropertyDeploy</code>, set <code>mainBaseModuleInteractionZone</code> to the deploy zone</li>
+</ol>
+<p><code>isAtDeployZone</code> gives the Base module its proper header on the trade screen and,
+according to Saber, keeps items the player puts there for the next expedition on
+this map. <code>alwaysSpawn</code> makes sure it appears every time. A capacity of 0 shows no
+inventory even when items are configured. The contents are set the same way as any
+storage zone; see <a href="storage-zones.html">Loot, storage and airdrops</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Saber&rsquo;s guides disagree on what survives between expeditions</p>
+<p>The storage page says items in an <code>isAtDeployZone</code> storage are saved for the
+next expedition. The expeditions page says FOB module contents refresh and only
+the Warehouse (<code>EXTRA_STORAGE</code>) keeps what the player stored.
+<span class="prov prov-unver">unverified</span> which is right for the Base
+module. Test it before you design around it.</p>
+</div>
+<p><strong>The Store</strong> needs only one thing: set <code>supplyShopModuleInteractionZone</code> in
+<code>ZonePropertyDeploy</code> to the deploy zone.</p>
+<p>A deploy zone with both, plus Recovery, therefore carries three props:
+<code>ZonePropertyDeploy</code>, <code>ZonePropertyInventoryStorage</code> and <code>ZonePropertyRecovery</code>.</p>
+<h2 id="every-module-is-two-zones">Every module is two zones<a class="headerlink" href="#every-module-is-two-zones" title="Permanent link">#</a></h2>
+<p>Everything else at a base is a module the player chooses to build. You cannot place
+a module that is already built. You can only mark the places where one may be built.
+<span class="prov prov-doc">documented</span></p>
+<p>Each of those places is <strong>two zones</strong>:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Props</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Placement zone</strong></td>
+<td>none at all</td>
+<td>where the module&rsquo;s model appears when it is built</td>
+</tr>
+<tr>
+<td><strong>Interaction zone</strong></td>
+<td><code>ZonePropertyBaseBuilding</code>, with <code>modelPlacementZone</code> linking to the placement zone</td>
+<td>where the player stands to use the module</td>
+</tr>
+</tbody>
+</table></div>
+<p>Then the deploy zone has to know about the pair. In <code>ZonePropertyDeploy</code>, add one
+record to <code>fobModulesZones</code> for each place, and fill in:</p>
+<ul>
+<li><code>modulePlacementZone</code>, the placement zone</li>
+<li><code>moduleInteractionZone</code>, the interaction zone</li>
+</ul>
+<p>Saber&rsquo;s guide requires all three links: interaction to placement, and the deploy
+zone to both. What happens when one is missing has not been tested here.</p>
+<h3 id="how-big-to-make-the-placement-zone">How big to make the placement zone<a class="headerlink" href="#how-big-to-make-the-placement-zone" title="Permanent link">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Base</th>
+<th>Placement zone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main base</td>
+<td>10 x 10 m</td>
+</tr>
+<tr>
+<td>Outpost</td>
+<td>7 x 7 m</td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="prov prov-doc">documented</span> These match the medium and small
+models.</p>
+<h3 id="which-module-goes-where">Which module goes where<a class="headerlink" href="#which-module-goes-where" title="Permanent link">#</a></h3>
+<p>The map does not decide that. The pair is a slot; the player picks which module to
+build in it. Custom modules from mods appear at the same zones as the vanilla ones.
+<span class="prov prov-doc">documented</span> That is why a custom module needs no
+map changes: it uses the slots your map already provides.</p>
+<p>Do <strong>not</strong> put a module&rsquo;s own prop, such as <code>ZonePropertyWorkshop</code> or
+<code>ZonePropertyFobModuleStorage</code>, on either zone of the pair. Those props belong in a
+custom module&rsquo;s descriptor, and Saber warns that putting them on an ordinary zone
+may crash the game. See <a href="what-is-a-zone.html#props-you-should-not-add-by-hand">What a zone is</a>.</p>
+<h2 id="the-module-ids">The module ids<a class="headerlink" href="#the-module-ids" title="Permanent link">#</a></h2>
+<p>Each vanilla module has an id. As a map maker you meet these when you give a module
+as an objective reward. <span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>In game</th>
+<th><code>moduleId</code></th>
+<th>Its zone prop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base module</td>
+<td><code>BASE_MODULE</code></td>
+<td><code>ZonePropertyFobModuleStorage</code></td>
+</tr>
+<tr>
+<td>Store</td>
+<td><code>SUPPLY_SHOP</code></td>
+<td><code>ZonePropertySupplyShop</code></td>
+</tr>
+<tr>
+<td>Gas station</td>
+<td><code>GAS_STATION</code></td>
+<td><code>ZonePropertyFobModuleStorage</code></td>
+</tr>
+<tr>
+<td>Warehouse</td>
+<td><code>EXTRA_STORAGE</code></td>
+<td><code>ZonePropertyFobModuleStorage</code></td>
+</tr>
+<tr>
+<td>Repair station</td>
+<td><code>REPAIR_ZONE</code></td>
+<td><code>ZonePropertyFobModuleStorage</code></td>
+</tr>
+<tr>
+<td>Tow truck</td>
+<td><code>TOW_TRUCK</code></td>
+<td><code>ZonePropertyTowTruck</code></td>
+</tr>
+<tr>
+<td>Essentials storage</td>
+<td><code>DOUBLE_STOCK</code></td>
+<td><code>ZonePropertyFobModuleStorage</code></td>
+</tr>
+<tr>
+<td>Expanded parking</td>
+<td><code>PARKING</code></td>
+<td><code>ZonePropertyParking</code></td>
+</tr>
+<tr>
+<td>Workshop</td>
+<td><code>WORKSHOP</code></td>
+<td><code>ZonePropertyWorkshop</code></td>
+</tr>
+<tr>
+<td>Service station</td>
+<td><code>SERVICE_STATION</code></td>
+<td><code>ZonePropertyServiceStation</code></td>
+</tr>
+<tr>
+<td>Cargo drone</td>
+<td><code>DRONE_BASE</code></td>
+<td><code>ZonePropertyDroneDelivery</code></td>
+</tr>
+<tr>
+<td>Helipad</td>
+<td><code>HELICOPTER</code></td>
+<td><code>ZonePropertyHelicopter</code></td>
+</tr>
+<tr>
+<td>Generator</td>
+<td><code>GENERATOR</code></td>
+<td><code>ZonePropertyGenerator</code></td>
+</tr>
+<tr>
+<td>Intelligence center</td>
+<td><code>ANTENNA</code></td>
+<td>none</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each module has its own page in <a href="../62-modules/index.html">Appendix A</a>, and the
+descriptor fields are on
+<a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>.</p>
+<h2 id="recovery">Recovery<a class="headerlink" href="#recovery" title="Permanent link">#</a></h2>
+<p>A base does not offer Recovery unless you add it. Put a <code>ZonePropertyRecovery</code> prop
+on the deploy zone. In Expeditions this prop is for deploy zones only.
+<span class="prov prov-doc">documented</span> <span class="prov prov-unver">unverified</span>
+in game by this guide.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fullyRepairTruck</code></td>
+<td>fully repair a truck recovered here</td>
+</tr>
+<tr>
+<td><code>refuelTruck</code></td>
+<td>fully refuel it</td>
+</tr>
+<tr>
+<td><code>restoreAddonRepairAndFuel</code></td>
+<td>refill the repair parts and fuel carried in the truck&rsquo;s addons, including what was spent</td>
+</tr>
+<tr>
+<td><code>priority</code></td>
+<td>not used. The player picks where to recover to</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="checklist">Checklist<a class="headerlink" href="#checklist" title="Permanent link">#</a></h2>
+<ul>
+<li>one deploy zone with <code>defaultDeployPoint</code> on, sitting just above flat ground</li>
+<li>an Id with no spaces, identical in the editor and in Zone Settings</li>
+<li><code>zoneDiscoverability</code> left empty unless you mean the player to find the zone</li>
+<li>for a Base module: a storage prop with <code>isAtDeployZone</code>, <code>alwaysSpawn</code> and a
+  capacity above 0, plus <code>mainBaseModuleInteractionZone</code> pointing at the zone itself</li>
+<li>for a Store: <code>supplyShopModuleInteractionZone</code> pointing at the zone itself</li>
+<li>for each module slot: an empty placement zone, an interaction zone with
+  <code>ZonePropertyBaseBuilding</code> linking to it, and a <code>fobModulesZones</code> record naming both</li>
+<li>after packing, check every zone still has its props</li>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
@@ -284,7 +600,23 @@ more involved than it looks, because each module is a <strong>pair</strong> of z
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#the-deploy-property">The deploy property</a><ul>
+<li><a href="#sit-it-slightly-above-the-ground">Sit it slightly above the ground</a></li>
+<li><a href="#medium-or-small-defaultdeploypoint-picks-the-model">Medium or small: defaultDeployPoint picks the model</a></li>
+<li><a href="#more-than-one-deploy-zone">More than one deploy zone</a></li>
+</ul>
+</li>
+<li><a href="#the-base-module-and-the-store">The Base module and the Store</a></li>
+<li><a href="#every-module-is-two-zones">Every module is two zones</a><ul>
+<li><a href="#how-big-to-make-the-placement-zone">How big to make the placement zone</a></li>
+<li><a href="#which-module-goes-where">Which module goes where</a></li>
+</ul>
+</li>
+<li><a href="#the-module-ids">The module ids</a></li>
+<li><a href="#recovery">Recovery</a></li>
+<li><a href="#checklist">Checklist</a></li>
+</ul>
 </div>
 
   </aside>

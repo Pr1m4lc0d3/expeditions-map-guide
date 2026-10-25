@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html" aria-current="page">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -255,22 +255,193 @@
         <p class="eyebrow">Shipping</p>
         <h1>Packing your map</h1>
 <p class="lede">What packing actually does, why it takes 25 minutes, and what it changes behind your back.</p>      </div>
-      <div class="banner">
-        <strong>This page is outline.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
-      <article class="prose"><p>Planned for this page:</p>
+      <article class="prose"><h1 id="packing-your-map">Packing your map<a class="headerlink" href="#packing-your-map" title="Permanent link">#</a></h1>
+<p>The game never reads your source files. It reads <strong>paks</strong>: the archives in
+<code>Documents\My Games\Expeditions\Media\Mods\</code>. Packing is the step that turns the
+map you edit into the files the game loads, and the same is true of a custom
+module, specialist or item.</p>
+<p>The flow runs one way. You edit the source, you pack, the game reads the pak.
+Nothing in the pak flows back into your source, so a fix made only in the pak is
+lost the next time you pack.</p>
+<h2 id="what-the-pack-produces">What the pack produces<a class="headerlink" href="#what-the-pack-produces" title="Permanent link">#</a></h2>
+<h3 id="a-map">A map<a class="headerlink" href="#a-map" title="Permanent link">#</a></h3>
+<p>Pack a map with the editor&rsquo;s <strong>Pack terrain</strong> button. Saber&rsquo;s documentation
+describes two sets of output:</p>
 <ul>
-<li>what the pack step produces, and why there are several files per map</li>
-<li>why it takes around 25 minutes: output is built for six platforms in sequence. A long
-  pack is not a hang</li>
-<li><strong>what the pack rewrites</strong>, which is the part that matters. Zone properties can come
-  back empty</li>
-<li>the check to run every single time, before you spend half an hour testing in game</li>
-<li>distributing a finished map, and one thing never to do to the distribution archive:
-  rebuild it with a general-purpose zip tool. The result stops being recognised</li>
-</ul></article>
+<li><strong><code>.pak</code> files</strong>, for playing the map yourself. They are copied into
+  <code>Media\Mods\</code> automatically.</li>
+<li><strong><code>.zip</code> files</strong>, for uploading to mod.io. They go to <code>Media\levels\</code>.</li>
+</ul>
+<p>There are several files because the game runs on several platforms. A packed
+map on disk looks like this:</p>
+<div class="hl"><pre><span></span><code>Media\Mods\
+    level_&lt;Map&gt;.pak                    the map itself
+    level_&lt;Map&gt;_pc.pak                 one pak per platform
+    level_&lt;Map&gt;_nx64.pak
+    level_&lt;Map&gt;_playstation_4.pak
+    level_&lt;Map&gt;_playstation_5.pak
+    level_&lt;Map&gt;_xbox_one.pak
+    level_&lt;Map&gt;_xbox_series.pak
+Media\levels\
+    level_&lt;Map&gt;_pc.zip                 one zip per platform, for mod.io
+    level_&lt;Map&gt;_nx64.zip               ... and four more
+</code></pre></div>
+
+<p>Each platform zip holds the main map pak and that platform&rsquo;s pak. The main pak
+holds the map&rsquo;s settings as readable JSON (<code>zone_settings.json</code>,
+<code>objective_settings.json</code>, <code>level_desc.json</code> and others), the compiled scene in
+<code>[scene]/</code>, the terrain textures, and any store art.</p>
+<p><strong>Restart the game after packing.</strong> It looks for new paks only at launch. A map
+needs at least one Expedition and one Deploy zone to load; see
+<a href="../00-start/map-that-loads.html">A map that loads</a>.</p>
+<h3 id="a-custom-module-specialist-or-item">A custom module, specialist or item<a class="headerlink" href="#a-custom-module-specialist-or-item" title="Permanent link">#</a></h3>
+<p>These are packed from the <strong>EXP MODs creation</strong> dialog with <strong>File &gt; Pack</strong>,
+not with Pack terrain. The paks go to the root of <code>Media\Mods\</code>. For a base
+module, Saber&rsquo;s documentation puts the zips in the module&rsquo;s own folder there.</p>
+<p>For a base module the toolkit&rsquo;s <code>pack_fob_module.py</code> does the same job without
+the editor, and avoids its traps (below). It writes
+<code>BaseUpgradeDesc_&lt;name&gt;.pak</code> and a <code>BaseUpgradeDesc_&lt;name&gt;_pc.pak</code> carrying the
+textures. The whole module process is on
+<a href="../60-custom/fob-modules.html">Custom FOB modules</a>.</p>
+<h2 id="why-it-takes-around-25-minutes">Why it takes around 25 minutes<a class="headerlink" href="#why-it-takes-around-25-minutes" title="Permanent link">#</a></h2>
+<p>Packing a map takes about 25 minutes on the maps built for this guide. It
+writes output for six platforms, not one. <strong>A long pack is not a hang.</strong> Let it
+finish.</p>
+<p>The 25 minutes is what shapes the way you should work. Every test in the game
+costs a pack, so a trial-and-error loop costs half an hour per attempt. Catch
+mistakes before you pack: <code>check_objectives.py</code> checks the objective layer in a
+second, against the source.</p>
+<div class="hl"><pre><span></span><code>python check_objectives.py &lt;level&gt;
+</code></pre></div>
+
+<p>Saber&rsquo;s own validator writes <code>base\logs\ModMapError.txt</code> at pack time, which is
+too late to save the pack, and on this project it has been empty every time it
+was read.</p>
+<h2 id="what-the-pack-rewrites-behind-your-back">What the pack rewrites behind your back<a class="headerlink" href="#what-the-pack-rewrites-behind-your-back" title="Permanent link">#</a></h2>
+<p>This is the part that matters. The pack is not a plain copy, and several things
+come out different from what you put in. None of them announces itself.</p>
+<h3 id="zone-properties-can-come-back-empty">Zone properties can come back empty<a class="headerlink" href="#zone-properties-can-come-back-empty" title="Permanent link">#</a></h3>
+<p>The editor&rsquo;s pack has twice written a skeleton <code>zone_settings.json</code>, silently
+dropping <strong>every zone property on the map</strong>: loot, deploy, recovery and the
+bridge construction zones. Zone names survive, because they come from the
+objects in your scene, but the settings attached to them are gone. The file is
+still valid JSON and the map still loads. Why it happens is not known.</p>
+<p>The fix is to restore the properties in the <strong>source</strong> and pack again. See
+<a href="troubleshooting.html#my-zone-settings-vanished">My zone settings vanished</a>.</p>
+<h3 id="zone-names-are-baked-in-and-cannot-be-changed-afterwards">Zone names are baked in and cannot be changed afterwards<a class="headerlink" href="#zone-names-are-baked-in-and-cannot-be-changed-afterwards" title="Permanent link">#</a></h3>
+<p>A packed map holds each zone&rsquo;s name twice: in the editable
+<code>zone_settings.json</code>, and in <code>[scene]/data_for_ssl.bin</code>, which is compiled at
+pack time and cannot be edited. The two must match exactly.</p>
+<p>Rename zones in a packed map and the names no longer match the compiled scene.
+If one of them is a deploy zone, the Deploy screen builds empty and the game
+hangs, with no popup, no log line and no crash dump. Fix zone names in the
+source, before packing.</p>
+<p>This collides with a second rule. The editor matches settings to your scene by
+name, and scene names may contain spaces; the game splits item references on
+spaces, so a zone that holds items cannot have one. See
+<a href="troubleshooting.html#loot-and-deliveries-do-nothing">Loot and deliveries do nothing</a>.</p>
+<h3 id="an-invalid-type-is-emptied-not-rejected">An invalid type is emptied, not rejected<a class="headerlink" href="#an-invalid-type-is-emptied-not-rejected" title="Permanent link">#</a></h3>
+<p>A descriptor with an invalid <code>$type</code> is silently nulled at pack time. The source
+looks right and the pak holds nothing. If a fix seems to have no
+effect, compare the packed file with the source before anything else.</p>
+<h3 id="a-module-pack-can-swallow-its-own-output">A module pack can swallow its own output<a class="headerlink" href="#a-module-pack-can-swallow-its-own-output" title="Permanent link">#</a></h3>
+<p>The editor packs a module from its folder, and it writes its platform zips into
+that same folder. The next pack sweeps those zips into the new pak, and the zips
+built around it grow again. One measured pack took a module pak from 2.4 MB to
+73 MB. Nothing errors and the module keeps working.</p>
+<p><strong>Delete the platform zips from the module folder before every pack.</strong> The pack
+rebuilds them, so nothing is lost. <code>check_fob_module.py</code> reports zips in the
+folder as a warning and zips inside the pak as an error.
+<code>pack_fob_module.py</code> packs only what belongs in the pak, so it cannot do this.</p>
+<h2 id="the-check-to-run-every-single-time">The check to run every single time<a class="headerlink" href="#the-check-to-run-every-single-time" title="Permanent link">#</a></h2>
+<p>Before you spend half an hour testing in the game, spend a second checking the
+pack:</p>
+<div class="hl"><pre><span></span><code>python check_pack.py &lt;Level&gt;
+python check_objectives.py &lt;Level&gt; --pak
+</code></pre></div>
+
+<p><code>check_pack.py</code> compares the packed map with your source and reports, on one
+screen:</p>
+<ul>
+<li>how many zones have properties in the source and in the pak, and says plainly
+  if the pack dropped any</li>
+<li>construction zones that existed in the source and are missing from the pak</li>
+<li>zone names missing from the compiled scene, deploy zones first</li>
+<li>zone references that point at nothing, which is what hangs the Deploy screen</li>
+<li>free-roam stages with an empty map field, which makes the game load a
+  different map</li>
+</ul>
+<p>It ends with <code>OK - the pack preserved everything</code> or <code>NOT OK - see above</code>. If the
+pack dropped the zone properties, <code>--restore-source</code> copies a known-good
+snapshot of the zone files back over the source so you can pack again; the
+snapshot folder is set in the script.</p>
+<p>For a module, run <code>check_fob_module.py</code> on the folder or the pak. To check only
+the bytes of any pak against the rules below:</p>
+<div class="hl"><pre><span></span><code>python expeditions_oracle.py pak &lt;file.pak&gt;
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">A clean check is not a working map</p>
+<p>These checks catch the failures that are known. The game is the test.</p>
+</div>
+<h2 id="changing-a-packed-file">Changing a packed file<a class="headerlink" href="#changing-a-packed-file" title="Permanent link">#</a></h2>
+<p>The right fix is in the source, followed by a fresh pack. A change made only in
+the pak works for one test and disappears at the next pack.</p>
+<p>When a single test justifies it, change one member in place with
+<code>patch_member.py</code> or <code>pak_splice.py</code>. Both copy the original pak byte for byte
+and replace only the member you name.</p>
+<div class="admonition danger">
+<p class="admonition-title">Never write a pak while the game is running</p>
+<p>A running game keeps using the pak it already opened. The write appears to
+succeed, the session plays on with the old content, and whatever you
+conclude gets credited to the wrong version. <code>pak_splice.py</code> refuses to run
+while the game is open.</p>
+</div>
+<h2 id="rules-for-any-tool-that-writes-a-pak">Rules for any tool that writes a pak<a class="headerlink" href="#rules-for-any-tool-that-writes-a-pak" title="Permanent link">#</a></h2>
+<p>A pak is an ordinary ZIP archive, but the game is stricter about it than any
+zip tool:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>What breaks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Map paks are <strong>STORED</strong> (uncompressed); mod paks are <strong>DEFLATE</strong></td>
+<td>rebuilding a map pak produces one the game will not list</td>
+</tr>
+<tr>
+<td>No <strong>extra field</strong> in any entry&rsquo;s local header</td>
+<td>the game drops that entry; a 36-byte NTFS timestamp block is enough</td>
+</tr>
+<tr>
+<td>Do not re-encode a map pak; splice the changed member</td>
+<td>a rebuilt map pak is refused even when it looks identical</td>
+</tr>
+</tbody>
+</table></div>
+<p>The extra-field trap catches Python&rsquo;s <code>zipfile</code> in particular: copying an
+entry&rsquo;s <code>extra</code> writes it into the local header as well as the directory, and
+<code>zipfile</code> only ever shows you the directory. <code>pack_fob_module.py</code> builds every
+entry fresh and walks the local headers to check.</p>
+<p>The editor pads paks with zeros to a multiple of 4096 bytes. For a mod pak that
+padding does not matter: the mod paks confirmed working in game are plain
+unpadded zips.</p>
+<h2 id="distributing-a-finished-map">Distributing a finished map<a class="headerlink" href="#distributing-a-finished-map" title="Permanent link">#</a></h2>
+<p>Upload the zips from <code>Media\levels\</code> to mod.io. Saber&rsquo;s instructions: upload
+<strong>each platform&rsquo;s zip as a separate file</strong>, and tick that file&rsquo;s platform on the
+same page. A wrong platform tick produces no error.</p>
+<div class="admonition danger">
+<p class="admonition-title">Never rebuild the distribution zip with a general-purpose zip tool</p>
+<p>Upload the zips exactly as the pack wrote them. A map distribution zip that
+was rebuilt once stopped the map listing in the game. The zip&rsquo;s byte layout
+matters, not only its contents: no extra fields in either header, and the
+compression of each member as the editor wrote it.</p>
+</div>
+<p>To change a published map, change the source and pack again. That produces a
+fresh, matching set of paks and zips.</p></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../65-vehicles/diagnosing.html"><span>Previous</span>Diagnosing a vehicle</a><a class="seq-next" href="../70-shipping/troubleshooting.html"><span>Next</span>Something is broken</a>      </nav>
@@ -279,7 +450,25 @@
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#what-the-pack-produces">What the pack produces</a><ul>
+<li><a href="#a-map">A map</a></li>
+<li><a href="#a-custom-module-specialist-or-item">A custom module, specialist or item</a></li>
+</ul>
+</li>
+<li><a href="#why-it-takes-around-25-minutes">Why it takes around 25 minutes</a></li>
+<li><a href="#what-the-pack-rewrites-behind-your-back">What the pack rewrites behind your back</a><ul>
+<li><a href="#zone-properties-can-come-back-empty">Zone properties can come back empty</a></li>
+<li><a href="#zone-names-are-baked-in-and-cannot-be-changed-afterwards">Zone names are baked in and cannot be changed afterwards</a></li>
+<li><a href="#an-invalid-type-is-emptied-not-rejected">An invalid type is emptied, not rejected</a></li>
+<li><a href="#a-module-pack-can-swallow-its-own-output">A module pack can swallow its own output</a></li>
+</ul>
+</li>
+<li><a href="#the-check-to-run-every-single-time">The check to run every single time</a></li>
+<li><a href="#changing-a-packed-file">Changing a packed file</a></li>
+<li><a href="#rules-for-any-tool-that-writes-a-pak">Rules for any tool that writes a pak</a></li>
+<li><a href="#distributing-a-finished-map">Distributing a finished map</a></li>
+</ul>
 </div>
 
   </aside>

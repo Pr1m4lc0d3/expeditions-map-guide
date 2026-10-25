@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Custom specialists &middot; Expeditions Map Making</title>
-<meta name="description" content="Making your own crew member: the descriptor, the three portrait images, and their exact sizes."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Making your own crew member: the descriptor, its abilities, the three portrait images, their exact sizes, and the silent mistakes that blank a portrait or hide an ability."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html" aria-current="page">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -254,22 +254,983 @@
       <div class="page-head">
         <p class="eyebrow">Custom content</p>
         <h1>Custom specialists</h1>
-<p class="lede">Making your own crew member: the descriptor, the three portrait images, and their exact sizes.</p>      </div>
-      <div class="banner">
-        <strong>This page is outline.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
-      <article class="prose"><p>Planned for this page:</p>
+<p class="lede">Making your own crew member: the descriptor, its abilities, the three portrait images, their exact sizes, and the silent mistakes that blank a portrait or hide an ability.</p>      </div>
+      <article class="prose"><h1 id="custom-specialists">Custom specialists<a class="headerlink" href="#custom-specialists" title="Permanent link">#</a></h1>
+<p>A specialist is a crew member the player hires at the <strong>Team recruitment</strong> screen
+before an expedition. The player has three crew slots. Each specialist carries a
+set of passive abilities (more armor, a longer winch, cheaper repairs, a bigger
+drone range) that apply for the whole run.</p>
+<p>A custom specialist is a small mod: one descriptor file that holds the name, the
+story, the hiring cost and the abilities, plus three PNG portraits. It is the
+simplest custom entity in the game to get working, and also the easiest to get
+<strong>silently</strong> wrong. Almost every mistake on this page produces a specialist that
+loads, hires and works, and simply shows nothing in one place.</p>
+<p>Everything below was measured against the shipped game and confirmed on the hire
+screen with several custom specialists, unless a line says otherwise.</p>
+<h2 id="what-a-specialist-mod-contains">What a specialist mod contains<a class="headerlink" href="#what-a-specialist-mod-contains" title="Permanent link">#</a></h2>
+<div class="hl"><pre><span></span><code>Documents\My Games\Expeditions\Media\Mods\
+  SpecialistDesc_&lt;id&gt;\              source folder the editor saves to
+    SpecialistDesc                  the descriptor (JSON, no file extension)
+    ui\textures\&lt;name&gt;_bage.png     364 x 364  badge portrait
+    ui\textures\&lt;name&gt;_bg.png       380 x 92   list strip
+    ui\textures\&lt;name&gt;_bgSmall.png  124 x 52   slot strip
+  SpecialistDesc_&lt;id&gt;.pak           what the game actually loads
+</code></pre></div>
+
+<p>The <code>.pak</code> is a plain zip of the same files. The game reads the paks in the root of
+<code>Media\Mods</code>; the folder is only the editor&rsquo;s working copy.
+<span class="prov prov-doc">documented</span></p>
+<p>You make one in the editor: <strong>EXP MODs creation</strong> on the toolbar, then
+<strong>File &gt; New Mod &gt; Specialist</strong>, fill in the fields, <strong>File &gt; Save</strong>, then
+<strong>File &gt; Pack</strong>. Restart the game to see a new pak.
+<span class="prov prov-doc">documented</span></p>
+<div class="admonition warning">
+<p class="admonition-title">"Can&rsquo;t open file" on the first save</p>
+<p>The editor does not create <code>Media\Mods</code> by itself. If it does not exist yet,
+the first save fails with <code>Can't open file: ...</code>. Create the folder by hand,
+or pack any map once, which creates it. <span class="prov prov-doc">documented</span></p>
+</div>
+<p>The id you type in the <strong>name</strong> field may use only Latin letters, digits and
+underscores, no spaces. <span class="prov prov-doc">documented</span></p>
+<h2 id="the-descriptor">The descriptor<a class="headerlink" href="#the-descriptor" title="Permanent link">#</a></h2>
+<p>The descriptor is JSON. Its top level names the type, and <code>SslValue</code> holds the
+settings:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;SslType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SpecialistDesc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;SslValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SpecialistSettings&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;speciality&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rang&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1600</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isLocked&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isLockedByDlc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;upgradeToUnlock&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;uiName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What the crew calls them&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;uiDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The story shown on the card.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;bage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myguy_bage&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;bg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myguy_bg&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;bgSmall&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myguy_bgSmall&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;modifiers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>speciality</code></td>
+<td>The class tab the specialist is listed under</td>
+<td>An integer. See the table below. <strong>Never <code>6</code>.</strong></td>
+</tr>
+<tr>
+<td><code>cost</code></td>
+<td>Hiring price</td>
+<td>Vanilla runs from <code>500</code> to <code>3000</code>.</td>
+</tr>
+<tr>
+<td><code>isLocked</code></td>
+<td>Hidden until an objective reward unlocks it</td>
+<td>Leave <code>false</code>. See <a href="#locking">Locking</a>.</td>
+</tr>
+<tr>
+<td><code>isLockedByDlc</code></td>
+<td>Tied to a paid DLC</td>
+<td>Leave <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>rang</code>, <code>upgradeToUnlock</code></td>
+<td>Unused</td>
+<td>Saber marks both as unused and slated for removal. Leave <code>0</code> and <code>""</code>.</td>
+</tr>
+<tr>
+<td><code>uiName</code></td>
+<td>The name on the card</td>
+<td><strong>20 characters</strong> including spaces. This limit is real.</td>
+</tr>
+<tr>
+<td><code>uiDesc</code></td>
+<td>The story on the card</td>
+<td>Saber says 280 characters. That is <strong>not enforced</strong>: a specialist with a 519-character story renders in full.</td>
+</tr>
+<tr>
+<td><code>bage</code>, <code>bg</code>, <code>bgSmall</code></td>
+<td>The three portraits</td>
+<td>The PNG file name, <strong>without</strong> the folder and <strong>without</strong> <code>.png</code>.</td>
+</tr>
+<tr>
+<td><code>modifiers</code></td>
+<td>The abilities</td>
+<td>A list. See <a href="#abilities-the-modifiers">Abilities</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Saber&rsquo;s guide also lists <code>dbg_hided</code>, a debug switch that hides the specialist
+from the recruitment screen and is slated for removal. Do not set it.</p>
+<h3 id="speciality">Speciality<a class="headerlink" href="#speciality" title="Permanent link">#</a></h3>
+<p>The editor shows names; the saved JSON stores the position in this list.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>MECHANIC</code></td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td><code>LOGISTICS_SPECIALIST</code></td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>HYDROLOGIST</code></td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td><code>JAEGER</code></td>
+</tr>
+<tr>
+<td><code>4</code></td>
+<td><code>OPERATOR</code></td>
+</tr>
+<tr>
+<td><code>5</code></td>
+<td><code>MANAGER</code></td>
+</tr>
+<tr>
+<td><code>6</code></td>
+<td><code>NONE</code>: <strong>crashes the game</strong> <span class="prov prov-doc">documented</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>Saber&rsquo;s guide spells the second one <code>LOGISTIC_SPECIALIST</code>. The editor schema and the
+game&rsquo;s own data say <code>LOGISTICS_SPECIALIST</code>.</p>
+<p>The class only decides which tab the specialist sits under. There is no link
+between class and abilities: any class can carry any modifier.
+<span class="prov prov-doc">documented</span></p>
+<div class="admonition danger">
+<p class="admonition-title">Editing only <code>SpecialistDesc.json</code> changes nothing</p>
+<p>The descriptor the game reads is the entry with <strong>no extension</strong>,
+<code>SpecialistDesc</code>. Some paks also carry a <code>SpecialistDesc.json</code> copy, some do
+not. If you edit a pak by hand, write every copy that exists and make sure they
+are identical. Otherwise you change a value, see no effect, and conclude the
+field does not work.</p>
+</div>
+<h2 id="abilities-the-modifiers">Abilities: the modifiers<a class="headerlink" href="#abilities-the-modifiers" title="Permanent link">#</a></h2>
+<p>Each ability is a <strong>modifier</strong>: an object in the <code>modifiers</code> list with a type and
+its own numeric fields. The set of modifier types is fixed by the game. A
+specialist may hold each type <strong>once</strong>. <span class="prov prov-doc">documented</span></p>
+<p>A modifier has three kinds of content:</p>
+<ol>
+<li><strong>The values</strong>, for example <code>armorEngineIncreasedPercent: 95</code>. These are what
+   change the game.</li>
+<li><strong>The label for each value</strong>, a <code>...UiDesc</code> object holding the text the card
+   prints beside the number.</li>
+<li><strong>The group</strong>, the heading and icon the card files the ability under.</li>
+</ol>
+<p>One modifier, written out in full:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SpecialistModifierWheelDroneZone&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SpecialistModifierWheelDroneZone&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SpecialistModifierGroupUiDesc&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon36&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;specAbilityWheels36&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ground Drone&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;overrideUiDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;allSameUiDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;wheelDroneZoneIncreasedPercent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;wheelDroneZoneIncreasedPercentUiDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SpecialistModifierUiDesc&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;hidden&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon30&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Increase zone coverage radius by&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;valuePrefix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; +&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;valueType&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <ul>
-<li>the descriptor file and its fields</li>
-<li>abilities and modifiers, and what values are reasonable</li>
-<li>the <strong>three</strong> images every specialist needs, their exact pixel sizes, and how the
-  portrait is framed inside the badge</li>
-<li>archive-level mistakes that silently blank a portrait or hide an ability</li>
-<li>a portrait sitting high and left with bare card showing is a sizing problem, not an
-  art problem</li>
-</ul></article>
+<li><code>valuePrefix</code> is printed before the number, usually <code>" +"</code> or <code>" -"</code>.</li>
+<li><code>overrideUiDesc</code> replaces all the per-value labels with <strong>one line</strong> for the
+  whole ability. <code>allSameUiDesc</code> is the same idea for a modifier whose values are
+  all equal.</li>
+<li><code>icon36</code> in the group must be one of the game&rsquo;s ability icons, listed below.
+  <code>icon30</code> is left empty in every working custom specialist.</li>
+</ul>
+<p><strong>Suffixes tell you the unit.</strong> <code>...Percent</code> is a percentage, <code>...Meters</code> is in-game
+meters, <code>...Count</code> is a quantity. Fields without one are switches or special
+values. <span class="prov prov-doc">documented</span></p>
+<h3 id="the-ability-icons">The ability icons<a class="headerlink" href="#the-ability-icons" title="Permanent link">#</a></h3>
+<p>These 21 names are valid for <code>group.icon36</code>. Saber never listed them; they come
+from the game&rsquo;s own specialist records.</p>
+<div class="hl"><pre><span></span><code>specAbilityAddonFuel36   specAbilityAirdrop36     specAbilityAnchor36
+specAbilityArmor36       specAbilityBinocular36   specAbilityDrone36
+specAbilityDroneGround36 specAbilityEcho36        specAbilityEngine36
+specAbilityFord36        specAbilityFuel36        specAbilityJackscrew36
+specAbilityMoney36       specAbilityOutposts36    specAbilityRecovery36
+specAbilityRepair36      specAbilityShortcut36    specAbilityTrucks36
+specAbilityUphills36     specAbilityWheels36      specAbilityWinch36
+</code></pre></div>
+
+<h3 id="every-modifier-and-its-fields">Every modifier and its fields<a class="headerlink" href="#every-modifier-and-its-fields" title="Permanent link">#</a></h3>
+<p>The schema defines 47 modifier types. Write the field names <strong>exactly as below</strong>,
+misspellings included: <code>Consumpion</code>, <code>Suspencion</code>, <code>Inceased</code>, <code>Guaranted</code> are the
+real names, and a correctly spelled field is ignored. In the JSON the type is
+<code>SpecialistModifier</code> plus the name in the first column.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>What it does</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AdditionalAddonSupplies</code></td>
+<td>More fuel, parts, wheels in consumable addons</td>
+<td><code>additionalAddonFuelCount</code>, <code>additionalAddonRepairsCount</code>, <code>additionalAddonWheelsCount</code></td>
+</tr>
+<tr>
+<td><code>AdditionalDeployResources</code></td>
+<td>More fuel, parts, wheels at every open deploy zone</td>
+<td><code>additionalDeployFuelCount</code>, <code>additionalDeployRepairsCount</code>, <code>additionalDeployWheelsCount</code></td>
+</tr>
+<tr>
+<td><code>AdditionalReward</code></td>
+<td>Bigger money rewards</td>
+<td><code>additionalRewardExpeditionIncreasedPercent</code>, <code>additionalRewardSideQuestsIncreasedPercent</code> (contracts), <code>additionalRewardTasksIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>AdditionalTreasureItems</code></td>
+<td>Extra treasure items in resource zones</td>
+<td><code>additionalTreasureItemsCount</code>, <code>additionalItem</code></td>
+</tr>
+<tr>
+<td><code>AirdropReroll</code></td>
+<td>Pay to reroll an airdrop</td>
+<td><code>airdropRerollCost</code>, <code>airdropRerollLootLists</code></td>
+</tr>
+<tr>
+<td><code>AnchorRadius</code></td>
+<td>Bigger anchor placement radius</td>
+<td><code>anchorIDs</code>, <code>anchorRadiusIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>AnchorSupplies</code></td>
+<td>More anchor charges</td>
+<td><code>anchorIDs</code>, <code>anchorMaxLimitCount</code></td>
+</tr>
+<tr>
+<td><code>ArmorCapacity</code></td>
+<td>Raises the armor cap on four truck parts</td>
+<td><code>armorEngineIncreasedPercent</code>, <code>armorGearboxIncreasedPercent</code>, <code>armorGasTankIncreasedPercent</code>, <code>armorSuspencionIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>ArmorRestoreEverywhere</code></td>
+<td>Add armor anywhere (no fields)</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>BinocularRadius</code></td>
+<td>Bigger binocular reveal</td>
+<td><code>binocularFullRadiusIncreasedMeters</code>, <code>binocularPartRadiusIncreasedMeters</code></td>
+</tr>
+<tr>
+<td><code>DroneAcceleration</code></td>
+<td>Faster air drone</td>
+<td><code>droneAccelerationIncreasedPercent</code>, <code>droneAccelerationHeightIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>DroneControllability</code></td>
+<td>Air drone handling</td>
+<td><code>droneControllabilityResForceIncreasedPercent</code>, <code>droneControllabilityResForceRotationIncreasedPercent</code>, <code>droneControllabilityForceRotationIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>DroneDiscoverScoutZones</code></td>
+<td>No fields. <strong>No vanilla specialist uses it; never observed.</strong></td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>DroneHeight</code></td>
+<td>Higher air drone ceiling</td>
+<td><code>droneHeightIncreasedMeters</code></td>
+</tr>
+<tr>
+<td><code>DroneItemSetup</code></td>
+<td>Air drone item placement</td>
+<td><code>droneItemSetupSettings</code></td>
+</tr>
+<tr>
+<td><code>DroneMaxSpeed</code></td>
+<td>Higher air drone top speed</td>
+<td><code>droneMaxSpeedIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>DroneRadius</code></td>
+<td>Longer air drone range</td>
+<td><code>droneRadiusIncreasedMeters</code></td>
+</tr>
+<tr>
+<td><code>DroneScoutRadius</code></td>
+<td>Bigger air drone reveal</td>
+<td><code>droneFullScoutRadiusIncreasedMeters</code>, <code>dronePartScoutRadiusIncreasedMeters</code></td>
+</tr>
+<tr>
+<td><code>DroneTrade</code></td>
+<td>Trade by air drone (no fields)</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>EcholotModeAura</code></td>
+<td>Echo sounder becomes an aura around the truck</td>
+<td><code>echolotRadiusOverrideMeters</code>, <code>echolotStepCountOverride</code>, <code>echolotApplicationAdditionalTime</code></td>
+</tr>
+<tr>
+<td><code>EcholotModeCone</code></td>
+<td>Echo sounder becomes a cone ahead</td>
+<td><code>echolotRadiusOverrideMeters</code>, <code>echolotStepCountOverride</code>, <code>echolotConeAngle</code>, <code>echolotApplicationAdditionalTime</code></td>
+</tr>
+<tr>
+<td><code>EcholotModeSnow</code></td>
+<td>Echo sounder measures snow</td>
+<td><code>echolotRadiusOverrideMeters</code>, <code>echolotStepCountOverride</code></td>
+</tr>
+<tr>
+<td><code>ElectricityConsumption</code></td>
+<td>Less charge used</td>
+<td><code>wheelDroneElectricityConsumptionReducedPercent</code>, <code>wheelDroneAbilityElectricityConsumptionReducedPercent</code>, <code>metaldetectorElectricityConsumptionReducedPercent</code>, <code>radarElectricityConsumptionReducedPercent</code></td>
+</tr>
+<tr>
+<td><code>EmergencyStockSupplies</code></td>
+<td>Bigger emergency stock in the truck</td>
+<td><code>emergencyStockFuel</code>, <code>emergencyStockRepairs</code>, <code>emergencyStockWheels</code></td>
+</tr>
+<tr>
+<td><code>EmergencyWinch</code></td>
+<td>Winch with the engine off but not broken</td>
+<td><code>winchFuelPerMinute</code></td>
+</tr>
+<tr>
+<td><code>EngineUnderwaterDamage</code></td>
+<td>Less engine damage underwater</td>
+<td><code>engineUnderwaterDamageReducedPercent</code></td>
+</tr>
+<tr>
+<td><code>FogOfWarTranspRadius</code></td>
+<td>Bigger reveal around the truck</td>
+<td><code>fogOfWarRadiusInceasedMeters</code>, <code>fogOfWarTranspRadiusInceasedMeters</code></td>
+</tr>
+<tr>
+<td><code>FreeEvacuation</code></td>
+<td>Free evacuations</td>
+<td><code>freeEvacuationMaxLimitCount</code></td>
+</tr>
+<tr>
+<td><code>FuelConsumption</code></td>
+<td>Less fuel used</td>
+<td><code>fuelConsumpionReducedPercent</code></td>
+</tr>
+<tr>
+<td><code>GuaranteedAirdropResource</code></td>
+<td>Airdrops always hold some resources</td>
+<td><code>guarantedAirdropFuelCount</code>, <code>guarantedAirdropRepairCount</code>, <code>guarantedAirdropWheelCount</code></td>
+</tr>
+<tr>
+<td><code>ImproveWinchedTruck</code></td>
+<td>A driverless truck being winched gets stronger</td>
+<td><code>engineResponsivenessIncreasedPercent</code>, <code>torqueIncreasedPercent</code>, <code>fuelConsumptionReducedPercent</code>, <code>onModelFrictionIncreasedPercent</code>, <code>bodyFrictionAsphaltIncreasedPercent</code>, <code>substanceFrictionIncreasedPercent</code>, <code>bodyFrictionIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>ItemCost</code></td>
+<td>Cheaper items</td>
+<td><code>itemCostReducedPercent</code></td>
+</tr>
+<tr>
+<td><code>ItemSellPrice</code></td>
+<td>Items sell for more</td>
+<td><code>itemSellPriceIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>JackscrewSupplies</code></td>
+<td>More jack screw charges</td>
+<td><code>jackscrewMaxLimitCount</code></td>
+</tr>
+<tr>
+<td><code>MayDiscoverZones</code></td>
+<td>Can identify zones flagged for this class</td>
+<td><code>mayDiscoverZonesByBinocular</code>, <code>mayDiscoverZonesByDrone</code> (switches)</td>
+</tr>
+<tr>
+<td><code>RepairBuildingConsumption</code></td>
+<td>Fewer parts to repair bridges and clear debris</td>
+<td><code>repairBuildingConsumptionReducedPercent</code>, <code>repairBuildingConsumptionDesc</code></td>
+</tr>
+<tr>
+<td><code>RepairConsumption</code></td>
+<td>Fewer parts per repair</td>
+<td><code>repairConsumpionReducedPercent</code></td>
+</tr>
+<tr>
+<td><code>TreasureItemSellPrice</code></td>
+<td>Treasure sells for more</td>
+<td><code>treasureItemSellPriceIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>TruckDamage</code></td>
+<td>Less damage to truck parts</td>
+<td><code>truckDamageEngineReducedPercent</code>, <code>truckDamageGearboxReducedPercent</code>, <code>truckDamageGasTankReducedPercent</code>, <code>truckDamageSuspensionReducedPercent</code>, <code>truckDamageWheelReducedPercent</code></td>
+</tr>
+<tr>
+<td><code>UnderwaterAnchorSetup</code></td>
+<td>Place anchors underwater (no fields)</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>WheelDroneArmor</code></td>
+<td>Armor on the ground drone</td>
+<td><code>wheelDroneArmorEngineIncreasedPercent</code>, <code>wheelDroneArmorBatteryIncreasedPercent</code>, <code>wheelDroneArmorSuspencionIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>WheelDroneArmorRestoreEverywhere</code></td>
+<td>Repair ground drone armor anywhere (no fields)</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>WheelDroneFriction</code></td>
+<td>Ground drone grip</td>
+<td><code>wheelDroneOnModelFrictionIncreasedPercent</code>, <code>wheelDroneBodyFrictionAsphaltIncreasedPercent</code>, <code>wheelDroneSubstanceFrictionIncreasedPercent</code>, <code>wheelDroneBodyFrictionIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>WheelDroneScoutRadius</code></td>
+<td>Ground drone reveal</td>
+<td><code>wheelDroneFullScoutRadiusIncreasedMeters</code>, <code>wheelDronePartScoutRadiusIncreasedMeters</code></td>
+</tr>
+<tr>
+<td><code>WheelDroneTorque</code></td>
+<td>Ground drone torque</td>
+<td><code>wheelDroneTorqueIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>WheelDroneZone</code></td>
+<td>Bigger signal zones on the map</td>
+<td><code>wheelDroneZoneIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>WinchImprove</code></td>
+<td>Longer, stronger winch</td>
+<td><code>winchLengthIncreasedMeters</code>, <code>winchPowerIncreasedPercent</code></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition warning">
+<p class="admonition-title">Where Saber&rsquo;s guide disagrees with the game</p>
+<p>Saber&rsquo;s modifier page gives several field names the schema does not have. The
+schema is what the game reads; use its names.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Saber&rsquo;s guide</th>
+<th>The real field</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>anchorRadiusID</code></td>
+<td><code>anchorIDs</code></td>
+</tr>
+<tr>
+<td><code>winchFuelPerSecond</code></td>
+<td><code>winchFuelPerMinute</code></td>
+</tr>
+<tr>
+<td><code>droneMaxSpeedInceasedPercent</code></td>
+<td><code>droneMaxSpeedIncreasedPercent</code></td>
+</tr>
+<tr>
+<td><code>echolotModeSnowRadiusOverrideMeters</code>, <code>echolotModeSnowStepOverrideCount</code></td>
+<td><code>echolotRadiusOverrideMeters</code>, <code>echolotStepCountOverride</code></td>
+</tr>
+<tr>
+<td><code>wheelDrone...FrictionIncrecedPercent</code></td>
+<td><code>wheelDrone...FrictionIncreasedPercent</code></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<h3 id="rules-the-game-applies-to-values">Rules the game applies to values<a class="headerlink" href="#rules-the-game-applies-to-values" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Negative values reverse the effect.</strong> <code>anchorRadiusIncreasedPercent: -50</code>
+  shrinks the radius by half. Saber adds that this &ldquo;does not work for all
+  parameters with &hellip;Reduced in their names&rdquo; and does not say which ones.
+  <span class="prov prov-doc">documented</span> Custom specialists with negative
+  values have shipped and play as handicaps, but which <code>...Reduced</code> fields honour a
+  negative has not been checked field by field.</li>
+<li><strong>Truck damage reduction stops at 100%</strong> per part, however many specialists
+  stack it. <span class="prov prov-doc">documented</span></li>
+<li><strong>Echo sounder modes do not stack.</strong> With several echo sounder modifiers in the
+  crew, the game uses the first active specialist&rsquo;s values only.
+  <span class="prov prov-doc">documented</span></li>
+<li><strong>Emergency stock values add up</strong> across specialists.
+  <span class="prov prov-doc">documented</span></li>
+<li><strong><code>MayDiscoverZones</code></strong> only matters on maps whose zones are flagged as
+  discoverable by a class. See <a href="../40-zones/discoverability.html">Discoverability</a>.</li>
+</ul>
+<h3 id="armor-what-the-numbers-mean-in-play">Armor: what the numbers mean in play<a class="headerlink" href="#armor-what-the-numbers-mean-in-play" title="Permanent link">#</a></h3>
+<p><code>ArmorCapacity</code> raises the highest strength the player can repair a part to, above
+the normal 100%. The player adds the armor the same way they repair: open the
+vehicle status panel, pick the part, spend spare parts.</p>
+<p>Measured in game, October 2026, with a custom specialist at <code>+95%</code> on all four
+fields and <strong>no</strong> <code>ArmorRestoreEverywhere</code>:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Where the truck is</th>
+<th>Highest the engine, gearbox, fuel tank and suspension reach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anywhere</td>
+<td>195%</td>
+</tr>
+<tr>
+<td>Inside a Service station&rsquo;s area</td>
+<td>215% (the station adds a fixed +20%)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">ArmorRestoreEverywhere was not needed</p>
+<p>Saber&rsquo;s example reads as if adding armor away from a station requires
+<code>ArmorRestoreEverywhere</code>. In the test above the specialist&rsquo;s +95% could be
+added anywhere without it; only the station&rsquo;s own +20% needed the station. What
+<code>ArmorRestoreEverywhere</code> adds on top has not been tested. See
+<a href="../62-modules/service-station.html">Service station</a>.</p>
+</div>
+<h3 id="how-strong-is-strong-the-vanilla-numbers">How strong is strong: the vanilla numbers<a class="headerlink" href="#how-strong-is-strong-the-vanilla-numbers" title="Permanent link">#</a></h3>
+<p>The 25 shipped specialists are stored as plain text in <code>initial.cache_block</code>
+inside <code>preload/paks/client/initial.pak</code>. They are <strong>not</strong> in
+<code>initial_release.sslbundle</code>, which is where people look and give up. Their names
+are localisation keys (<code>MECHANIC_05_UI_NAME</code>), resolved through
+<code>[strings]/strings_english.str</code> in the same pak, UTF-16LE.</p>
+<p>The highest value any shipped specialist uses, for the common fields:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Vanilla best</th>
+<th>Field</th>
+<th>Vanilla best</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>armor...IncreasedPercent</code> (each)</td>
+<td>30</td>
+<td><code>truckDamage...ReducedPercent</code> (parts)</td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>truckDamageWheelReducedPercent</code></td>
+<td>50</td>
+<td><code>repairConsumpionReducedPercent</code></td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>fuelConsumpionReducedPercent</code></td>
+<td>20</td>
+<td><code>repairBuildingConsumptionReducedPercent</code></td>
+<td>40</td>
+</tr>
+<tr>
+<td><code>winchLengthIncreasedMeters</code></td>
+<td>10</td>
+<td><code>winchPowerIncreasedPercent</code></td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>torqueIncreasedPercent</code> (winched truck)</td>
+<td>30</td>
+<td><code>winchFuelPerMinute</code></td>
+<td>20</td>
+</tr>
+<tr>
+<td><code>droneRadiusIncreasedMeters</code></td>
+<td>200</td>
+<td><code>droneHeightIncreasedMeters</code></td>
+<td>20</td>
+</tr>
+<tr>
+<td><code>droneMaxSpeedIncreasedPercent</code></td>
+<td>70</td>
+<td><code>droneAccelerationIncreasedPercent</code></td>
+<td>70</td>
+</tr>
+<tr>
+<td><code>binocularPartRadiusIncreasedMeters</code></td>
+<td>150</td>
+<td><code>binocularFullRadiusIncreasedMeters</code></td>
+<td>100</td>
+</tr>
+<tr>
+<td><code>wheelDroneTorqueIncreasedPercent</code></td>
+<td>50</td>
+<td><code>wheelDrone...FrictionIncreasedPercent</code></td>
+<td>200</td>
+</tr>
+<tr>
+<td><code>wheelDroneZoneIncreasedPercent</code></td>
+<td>50</td>
+<td><code>wheelDroneArmor...IncreasedPercent</code></td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>additionalDeployRepairsCount</code></td>
+<td>200</td>
+<td><code>additionalDeployFuelCount</code></td>
+<td>100</td>
+</tr>
+<tr>
+<td><code>guarantedAirdropFuelCount</code></td>
+<td>50</td>
+<td><code>emergencyStockRepairs</code></td>
+<td>50</td>
+</tr>
+<tr>
+<td><code>itemSellPriceIncreasedPercent</code></td>
+<td>30</td>
+<td><code>additionalRewardTasksIncreasedPercent</code></td>
+<td>30</td>
+</tr>
+<tr>
+<td><code>anchorMaxLimitCount</code></td>
+<td>5</td>
+<td><code>jackscrewMaxLimitCount</code></td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<p>Costs run from <code>500</code> to <code>3000</code>. 24 of the 25 are locked behind progression.</p>
+<div class="admonition tip">
+<p class="admonition-title">Balancing that has held up</p>
+<p>The tested custom specialists were balanced against those numbers with two
+rules that worked:</p>
+<ul>
+<li><strong>Trade, don&rsquo;t just add.</strong> A specialist strong on one axis and weaker than
+  vanilla on another (a negative value) is a choice, not a free upgrade. Two
+  specialists built as a pair, one holding a field at <code>+90</code> and the other at
+  <code>-40</code>, net <code>+50</code> only when both seats are filled.</li>
+<li><strong>Run-deciding stats stay closest to vanilla.</strong> Torque and armor decide
+  whether a crossing works, so a pair&rsquo;s combined value sat near 2x vanilla&rsquo;s
+  best there. Information (reveal radius, guaranteed airdrops) went nearer 2.5x.</li>
+</ul>
+<p>Two specialists holding the same field by accident is a clash, not a feature.
+Check what a new character is <strong>for</strong> against the roster, not only which
+fields it writes: two pairs with no shared fields can still be doing the same
+job.</p>
+</div>
+<h2 id="when-an-ability-works-but-never-appears-on-the-card">When an ability works but never appears on the card<a class="headerlink" href="#when-an-ability-works-but-never-appears-on-the-card" title="Permanent link">#</a></h2>
+<p>The specialist hires, the stat applies in the run, and the hire screen draws no
+line for it. No error, no placeholder. From inside the game a missing label looks
+exactly like an ability you forgot to add. There are four causes.</p>
+<h3 id="1-the-label-fields-name-is-misspelled-by-saber">1. The label field&rsquo;s name is misspelled, by Saber<a class="headerlink" href="#1-the-label-fields-name-is-misspelled-by-saber" title="Permanent link">#</a></h3>
+<p>A label whose field name the schema does not define is thrown away on load.
+<strong>Never build a label name as <code>field + "UiDesc"</code>.</strong> Saber misspelled three of them,
+so the obvious spelling is the broken one:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Value field</th>
+<th>Its label field, as the schema spells it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>winchLengthIncreasedMeters</code></td>
+<td><code>winchLenghtIncreasedMetersUiDesc</code> (&ldquo;Lenght&rdquo;)</td>
+</tr>
+<tr>
+<td><code>additionalAddonFuelCount</code></td>
+<td><code>additionalAddonFuelCountCountUiDesc</code></td>
+</tr>
+<tr>
+<td><code>additionalAddonWheelsCount</code></td>
+<td><code>additionalAddonWheelsCountCountUiDesc</code></td>
+</tr>
+<tr>
+<td><code>additionalAddonRepairsCount</code></td>
+<td><code>additionalAddonRepairsCountUiDesc</code> (normal, which is what makes it a trap)</td>
+</tr>
+</tbody>
+</table></div>
+<p>A sweep of thirteen specialists found 21 invented label names, three of them
+carrying text that had never once been drawn.</p>
+<h3 id="2-the-value-has-no-label-at-all">2. The value has no label at all<a class="headerlink" href="#2-the-value-has-no-label-at-all" title="Permanent link">#</a></h3>
+<p>A numeric field with no <code>...UiDesc</code> still takes effect and never shows. A <code>group</code>
+alone is not enough.</p>
+<h3 id="3-the-modifier-will-not-draw-per-value-labels">3. The modifier will not draw per-value labels<a class="headerlink" href="#3-the-modifier-will-not-draw-per-value-labels" title="Permanent link">#</a></h3>
+<p>Three modifiers ignore per-value labels however correct they are. Each needs the
+shape vanilla uses:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>What works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ImproveWinchedTruck</code></td>
+<td>One <code>overrideUiDesc</code> line, no per-value labels. Its schema has no per-value label fields at all.</td>
+</tr>
+<tr>
+<td><code>EmergencyWinch</code></td>
+<td>A <code>group</code> and no value label.</td>
+</tr>
+<tr>
+<td><code>RepairBuildingConsumption</code></td>
+<td>The label goes in <code>repairBuildingConsumptionDesc</code>, a field with a non-standard name.</td>
+</tr>
+</tbody>
+</table></div>
+<p>That list is <strong>what was seen on cards, not a rule</strong>. Other modifiers that vanilla
+also writes with <code>overrideUiDesc</code> (<code>WinchImprove</code>, <code>ArmorCapacity</code>,
+<code>DroneAcceleration</code>, <code>BinocularRadius</code>) draw per-value labels perfectly on custom
+specialists. Why those three differ is not known. Do not extend the list by
+analogy; add to it only after seeing a card with the line missing.</p>
+<h3 id="4-an-empty-prefix-prints-junk">4. An empty prefix prints junk<a class="headerlink" href="#4-an-empty-prefix-prints-junk" title="Permanent link">#</a></h3>
+<p><code>valuePrefix: ""</code> does not mean &ldquo;no number&rdquo;. It means &ldquo;a number with no prefix&rdquo;, so
+the game prints its separator and whatever it finds. Seen on cards:</p>
+<div class="hl"><pre><span></span><code>Empowers the vehicle in tow,null
+Drone armor repairs anywhere,
+</code></pre></div>
+
+<p>For a line that shows no number (a switch, or an override sentence), leave
+<code>valuePrefix</code> and <code>valueType</code> <strong>out</strong> of the label entirely. Vanilla&rsquo;s own
+switch-only modifiers carry no prefix or type at all.</p>
+<div class="admonition note">
+<p class="admonition-title">Some vanilla values are deliberately unlabelled</p>
+<p>Vanilla leaves some values off the card on purpose, for example both
+<code>WinchImprove</code> values and the echo sounder&rsquo;s added time. Adding a label there
+is a design choice, not a fix.</p>
+</div>
+<h2 id="the-three-portraits">The three portraits<a class="headerlink" href="#the-three-portraits" title="Permanent link">#</a></h2>
+<p>Each specialist needs three PNG images, all with transparency, all in
+<code>ui\textures\</code> inside the mod.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Canvas</th>
+<th>Where it appears</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bage</code></td>
+<td><strong>364 x 364</strong></td>
+<td>The badge on the recruitment card</td>
+</tr>
+<tr>
+<td><code>bg</code></td>
+<td><strong>380 x 92</strong></td>
+<td>The specialist list at Team recruitment, and the team list at Expedition setup</td>
+</tr>
+<tr>
+<td><code>bgSmall</code></td>
+<td><strong>124 x 52</strong></td>
+<td>The row of crew slots at the top of the recruitment screen</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition danger">
+<p class="admonition-title">The badge is 364 x 364, not the 293 x 293 Saber&rsquo;s guide says</p>
+<p>The slot grew in an update and the guide never caught up. Every vanilla badge
+in the game&rsquo;s UI library measures 364 x 364.</p>
+<p>The game draws the badge <strong>at its own pixel size, anchored top left, and never
+scales it.</strong> A 293 px badge covers about 80% of the slot and sits <strong>high and
+left, with bare card showing on the right and below.</strong> That looks like bad
+framing. It is the wrong canvas. Make it 364 x 364 and it fills the slot.</p>
+</div>
+<p><code>bg</code> at 380 x 92 and <code>bgSmall</code> at 124 x 52 are correct as documented.</p>
+<h3 id="all-three-need-alpha">All three need alpha<a class="headerlink" href="#all-three-need-alpha" title="Permanent link">#</a></h3>
+<p>An opaque image renders as a solid photo block filling the slot.</p>
+<p>Save as 32-bit RGBA even when the art has few colours. Across the mods on the
+test install, every image confirmed showing in game (34 of them, every specialist
+portrait and item icon among them) is RGBA, and the images that never appeared
+were 8-bit palettised. <span class="prov prov-unver">unverified</span> That is a
+correlation, not a test of a palettised portrait on its own, but RGBA costs nothing.</p>
+<h3 id="framing-the-badge">Framing the badge<a class="headerlink" href="#framing-the-badge" title="Permanent link">#</a></h3>
+<ul>
+<li>The <strong>whole bust</strong> is in frame.</li>
+<li><strong>Both shoulders inside</strong> the canvas, with backdrop visible either side.</li>
+<li>A margin of empty backdrop <strong>above the head</strong>.</li>
+<li>The bust runs down to the <strong>bottom edge</strong>.</li>
+</ul>
+<p>The failure this prevents: a badge cropped so tight the head fills the frame and
+both shoulders run off the sides.</p>
+<h3 id="framing-the-two-strips">Framing the two strips<a class="headerlink" href="#framing-the-two-strips" title="Permanent link">#</a></h3>
+<p>The strips are not the badge scaled down. Each is a tighter crop of the head,
+sitting in a small <strong>content box</strong> at the left of a mostly transparent canvas:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Canvas</th>
+<th>Content box</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bg</code></td>
+<td>380 x 92</td>
+<td><strong>115 x 92</strong>, at x 23, y 0</td>
+</tr>
+<tr>
+<td><code>bgSmall</code></td>
+<td>124 x 52</td>
+<td><strong>67 x 52</strong>, at x 27, y 0</td>
+</tr>
+</tbody>
+</table></div>
+<p>Everything outside the box stays transparent. That is how the shipped strips are
+built.</p>
+<ul>
+<li><strong>Cut one crop and resample it for both strips.</strong> Two separately cropped strips
+  disagree with each other. Strip pairs that look right match each other almost
+  exactly (a 0.99 correlation was measured), which is how they were made.</li>
+<li><strong>Size the crop by the head&rsquo;s height</strong>, with the head at about <strong>80% of the
+  content box&rsquo;s height</strong>, and let the width follow the box&rsquo;s shape. Do not size it
+  by the head&rsquo;s width: a hard hat and a pair of goggles give wildly different
+  widths, and the same rule then gives a tiny face in one portrait and a face
+  clipped at the chin in the next.</li>
+<li><strong>Measure the head&rsquo;s width only across the crown-to-brow band</strong>, not at chin
+  level, where a broad character&rsquo;s shoulders are already in the row.</li>
+<li><strong>Take the top of the head from the image</strong>, the topmost opaque row above the
+  face, not from a guess about how tall the headgear is.</li>
+</ul>
+<p>Check the result against a checkerboard background and look at it. Automated
+&ldquo;defect&rdquo; counters have reported thousands of fringe pixels that turned out to be
+freckles and a copper wire coil.</p>
+<h3 id="getting-art-that-matches-the-game">Getting art that matches the game<a class="headerlink" href="#getting-art-that-matches-the-game" title="Permanent link">#</a></h3>
+<p>The vanilla portraits sit between photoreal and cartoon: painted, believable,
+restrained lighting. What was learned getting there with an image generator:</p>
+<ul>
+<li><strong>Describing the style in words does not work.</strong> The wording lands on photoreal
+  or on animated-film cartoon, never between.</li>
+<li><strong>Restyle against references instead.</strong> Give the generator two existing badges in
+  the target style plus the portrait to redraw, with a short instruction (about
+  sixty words): match the rendering of images 1 and 2, keep the person, pose and
+  clothing of image 3. Long descriptions drown the references.</li>
+<li><strong>Say what you want, never what you don&rsquo;t.</strong> There is no negative channel;
+  naming a thing tends to draw it.</li>
+<li><strong>Generate on a flat pale grey backdrop</strong>, then cut it out. Cutting off a dark
+  backdrop drags its colour into the hair edges and leaves grey hair muddy.</li>
+<li><strong>Ban lettering several ways.</strong> Caps, patches and hi-vis are where text sneaks
+  in.</li>
+<li><strong>Do not reuse a visual shorthand</strong> (the same grease smear, the same prop) across
+  characters, or they come out looking like a matched set.</li>
+</ul>
+<h2 id="building-a-pak-yourself">Building a pak yourself<a class="headerlink" href="#building-a-pak-yourself" title="Permanent link">#</a></h2>
+<p>The editor&rsquo;s <strong>Pack</strong> writes correct paks. If you build or edit a pak with your own
+tools instead, two things matter.</p>
+<div class="admonition danger">
+<p class="admonition-title">A zip extra field in the local headers blanks every portrait</p>
+<p>Python&rsquo;s <code>zipfile</code> writes <code>ZipInfo.extra</code> into each file&rsquo;s <strong>local</strong> header as
+well as the central directory. The game&rsquo;s reader does not skip the local extra
+field, so it starts reading 36 bytes early and the image fails to decode.</p>
+<p>The symptom is <strong>not</strong> &ldquo;the mod is broken&rdquo;. The descriptor happens to carry no
+extra field, so the specialist appears with the right name, story, cost and
+every ability, and <strong>only the three picture slots are empty.</strong> That reads as an
+art problem and sends you looking in the wrong place.</p>
+<p>Never copy <code>extra</code> when rewriting entries. <code>zipfile</code> only shows you the central
+directory, so a check built on it will pass this defect; walk the local headers
+to verify.</p>
+</div>
+<ul>
+<li>Keep the extensionless <code>SpecialistDesc</code> and any <code>SpecialistDesc.json</code> twin
+  identical.</li>
+</ul>
+<h2 id="locking">Locking<a class="headerlink" href="#locking" title="Permanent link">#</a></h2>
+<p><code>isLocked: true</code> hides the specialist until an objective grants it with an unlock
+reward. Saber&rsquo;s guide says to lock a specialist only when it ships as a linked mod
+alongside the map that unlocks it. <span class="prov prov-doc">documented</span></p>
+<p><strong>A locked specialist with no reward wired to it can never be hired.</strong> Leave it
+<code>false</code> unless you have the objective. Locking and unlocking a custom specialist
+has not been tested here. See <a href="../50-missions/rewards.html">Rewards</a>.</p>
+<p>An unlocked custom specialist is on the first recruitment screen, with no rank or
+unlock. Since 24 of the 25 vanilla specialists are locked, that availability is
+itself worth something: a specialist that only matches a vanilla one still lets
+the player have it twenty hours earlier.</p>
+<h2 id="publishing">Publishing<a class="headerlink" href="#publishing" title="Permanent link">#</a></h2>
+<p><strong>Pack</strong> writes six zips, one per platform, each holding the same pak plus a
+zero-byte marker file named after the platform. Saber&rsquo;s guide says uploading works
+the same way as for truck mods. <span class="prov prov-doc">documented</span> For what
+packing does in general, see <a href="../70-shipping/packing.html">Packing your map</a>.</p>
+<ul>
+<li>The names do not match across the chain: the zip suffix and marker <code>pc</code> is
+  <code>windows</code> in mod.io&rsquo;s API, <code>nx64</code> is <code>switch</code>, <code>playstation_4</code> is <code>ps4</code>,
+  <code>playstation_5</code> is <code>ps5</code>, <code>xbox_one</code> is <code>xboxone</code>, <code>xbox_series</code> is
+  <code>xboxseriesx</code>. A file tagged with the wrong platform uploads with no error.</li>
+<li>Console files go to Saber&rsquo;s review queue rather than going live.</li>
+<li>mod.io&rsquo;s tag for this type is <code>Specialist</code>.</li>
+</ul>
+<h2 id="checklist-when-something-is-missing">Checklist when something is missing<a class="headerlink" href="#checklist-when-something-is-missing" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>You see</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name, story and abilities fine, all three portraits empty</td>
+<td>Zip extra field in the local headers (hand-built pak). Also check the PNGs are RGBA.</td>
+</tr>
+<tr>
+<td>Badge sits high and left with bare card showing</td>
+<td>Badge is 293 x 293; make it 364 x 364</td>
+</tr>
+<tr>
+<td>Portrait is a solid rectangle</td>
+<td>No transparency</td>
+</tr>
+<tr>
+<td>You edit a value and nothing changes</td>
+<td>You edited <code>SpecialistDesc.json</code>; the game reads <code>SpecialistDesc</code></td>
+</tr>
+<tr>
+<td>An ability works but has no line on the card</td>
+<td>Misspelled or missing label, or one of the three modifiers that need vanilla&rsquo;s shape</td>
+</tr>
+<tr>
+<td>A line ends in <code>,null</code> or a bare comma</td>
+<td><code>valuePrefix: ""</code> on a line with no number</td>
+</tr>
+<tr>
+<td>Game crashes when the specialist loads</td>
+<td><code>speciality</code> is <code>6</code> (<code>NONE</code>)</td>
+</tr>
+<tr>
+<td>Specialist never appears for hire</td>
+<td><code>isLocked: true</code> with no reward that unlocks it</td>
+</tr>
+</tbody>
+</table></div></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../50-missions/building-a-story.html"><span>Previous</span>Building a story</a><a class="seq-next" href="../60-custom/items.html"><span>Next</span>Custom inventory items</a>      </nav>
@@ -278,7 +1239,39 @@
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#what-a-specialist-mod-contains">What a specialist mod contains</a></li>
+<li><a href="#the-descriptor">The descriptor</a><ul>
+<li><a href="#speciality">Speciality</a></li>
+</ul>
+</li>
+<li><a href="#abilities-the-modifiers">Abilities: the modifiers</a><ul>
+<li><a href="#the-ability-icons">The ability icons</a></li>
+<li><a href="#every-modifier-and-its-fields">Every modifier and its fields</a></li>
+<li><a href="#rules-the-game-applies-to-values">Rules the game applies to values</a></li>
+<li><a href="#armor-what-the-numbers-mean-in-play">Armor: what the numbers mean in play</a></li>
+<li><a href="#how-strong-is-strong-the-vanilla-numbers">How strong is strong: the vanilla numbers</a></li>
+</ul>
+</li>
+<li><a href="#when-an-ability-works-but-never-appears-on-the-card">When an ability works but never appears on the card</a><ul>
+<li><a href="#1-the-label-fields-name-is-misspelled-by-saber">1. The label field&rsquo;s name is misspelled, by Saber</a></li>
+<li><a href="#2-the-value-has-no-label-at-all">2. The value has no label at all</a></li>
+<li><a href="#3-the-modifier-will-not-draw-per-value-labels">3. The modifier will not draw per-value labels</a></li>
+<li><a href="#4-an-empty-prefix-prints-junk">4. An empty prefix prints junk</a></li>
+</ul>
+</li>
+<li><a href="#the-three-portraits">The three portraits</a><ul>
+<li><a href="#all-three-need-alpha">All three need alpha</a></li>
+<li><a href="#framing-the-badge">Framing the badge</a></li>
+<li><a href="#framing-the-two-strips">Framing the two strips</a></li>
+<li><a href="#getting-art-that-matches-the-game">Getting art that matches the game</a></li>
+</ul>
+</li>
+<li><a href="#building-a-pak-yourself">Building a pak yourself</a></li>
+<li><a href="#locking">Locking</a></li>
+<li><a href="#publishing">Publishing</a></li>
+<li><a href="#checklist-when-something-is-missing">Checklist when something is missing</a></li>
+</ul>
 </div>
 
   </aside>

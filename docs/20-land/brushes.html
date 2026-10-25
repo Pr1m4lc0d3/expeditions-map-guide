@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html" aria-current="page">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -255,22 +255,181 @@
         <p class="eyebrow">The land</p>
         <h1>The brushes</h1>
 <p class="lede">Size, falloff and strength, and why a soft brush where a hard one belongs turns a road into a row of domes.</p>      </div>
-      <div class="banner">
-        <strong>This page is outline.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
-      <article class="prose"><p>Every terrain brush has three controls, and the middle one does most of the work.</p>
-<p>Planned for this page:</p>
+      <article class="prose"><p>A brush is how you change the ground by hand in the editor. You pick one in the
+Scene View, set three numbers, and paint. Almost every brush in the editor works
+the same way, so learning one teaches you most of them.</p>
+<h2 id="how-painting-works">How painting works<a class="headerlink" href="#how-painting-works" title="Permanent link">#</a></h2>
+<p>Select a brush by selecting its node in the Scene View. The Geometry node and its
+sub-nodes are the terrain brushes. <span class="prov prov-doc">documented</span></p>
 <ul>
-<li><strong>Size, Falloff and Strength</strong> on every brush</li>
-<li>falloff 0 is hard: flat top, vertical sides. This is what builds benches and walls</li>
-<li>falloff 1 is a soft dome, which makes bumps</li>
-<li>the classic failure: using a soft brush to lay a road, which produces a line of domes</li>
-<li>the Geometry Smooth brush, what it actually filters, and the fact that it only cuts</li>
-<li>when the editor&rsquo;s hand tools are right, and when a script is genuinely the only
-  option. A bench that holds a constant grade down a hillside has no hand tool</li>
-</ul></article>
+<li><strong>Hold the right mouse button</strong> and move to paint.</li>
+<li><strong>Click the left mouse button</strong> to apply what you painted.</li>
+<li><strong>Undo Current Changes</strong> in the brush dialog throws away everything since your
+  last right-click.</li>
+<li>Then <strong>rebuild</strong> to see the result: right-click the scene and choose Rebuild
+  Terrain, or Rebuild visible / Selection for part of it. The toolbar&rsquo;s
+  <strong>Enable autorebuild terrain</strong> rebuilds each time you switch brushes.</li>
+</ul>
+<p><span class="prov prov-doc">documented</span></p>
+<h2 id="the-three-controls">The three controls<a class="headerlink" href="#the-three-controls" title="Permanent link">#</a></h2>
+<p>Every brush has the same three controls. <span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>control</th>
+<th>what it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Size</strong></td>
+<td>the brush&rsquo;s size, in metres</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>how hard each pass pushes, and in which direction. Negative values are allowed: on the height brush, positive raises and negative digs</td>
+</tr>
+<tr>
+<td><strong>Falloff</strong></td>
+<td>how soft the brush&rsquo;s edge is. <code>0</code> is a completely hard edge. <code>1</code> starts fading straight from the centre</td>
+</tr>
+</tbody>
+</table></div>
+<p>Two more appear on many brushes:</p>
+<ul>
+<li><strong>Autofade</strong> weakens the stroke depending on the direction you draw. Saber
+  suggests it for ruts and mud.</li>
+<li><strong>Randomize</strong> varies the strength randomly within a range, for rough,
+  chaotic ground.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Some brushes do nothing at their default value</p>
+<p>On brushes whose Value runs from <code>0</code> to <code>1</code>, a value above <code>0.50</code> paints and
+a value below <code>0.50</code> removes. The default is usually <code>0.50</code>, which does
+nothing until you move it. <span class="prov prov-doc">documented</span></p>
+</div>
+<h3 id="falloff-is-the-control-that-matters-most">Falloff is the control that matters most<a class="headerlink" href="#falloff-is-the-control-that-matters-most" title="Permanent link">#</a></h3>
+<p><strong>Falloff 0 is a hard brush.</strong> It changes the whole circle by the same amount,
+so it leaves a flat top with steep sides. That is what you want for a bench, a
+wall, a step or a road bed.</p>
+<p><strong>Falloff 1 is a soft brush.</strong> The effect fades from the centre outwards, so each
+dab leaves a rounded dome. That makes bumps and mounds.</p>
+<div class="admonition danger">
+<p class="admonition-title">A soft brush on a road makes a row of domes</p>
+<p>Dragging a soft brush along a road leaves one rounded dab after another, and
+the road comes out as a line of humps rather than a bench. If you are
+building something with a flat top, use a hard brush.</p>
+<p>On the same stretch of road, a hard brush removed 42% of the roughness and a
+soft one 32%. <span class="prov prov-unver">measured</span></p>
+</div>
+<p><strong>Size</strong> has its own trap: too big, and it erases the shape of the land along
+with the defect you were aiming at. <strong>Value times the number of passes</strong> is how
+thorough the job is. More gentle passes give you more control than one strong
+one.</p>
+<h2 id="the-main-geometry-brush">The main Geometry brush<a class="headerlink" href="#the-main-geometry-brush" title="Permanent link">#</a></h2>
+<p>Select the Geometry node itself and the brush has three modes.
+<span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>mode</th>
+<th>what it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Height</strong></td>
+<td>raises the ground, or lowers it with a negative Value</td>
+</tr>
+<tr>
+<td><strong>Flatten</strong></td>
+<td>levels the area to the height <strong>under the centre of the brush</strong> when you click</td>
+</tr>
+<tr>
+<td><strong>Smooth</strong></td>
+<td>evens out height differences. Saber recommends Falloff close to <code>0</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="what-smooth-actually-does">What Smooth actually does<a class="headerlink" href="#what-smooth-actually-does" title="Permanent link">#</a></h3>
+<p>Smooth sounds like a blur. It is not. One hand stroke of the Smooth brush along
+<code>203 m</code> of road was saved and compared with a copy taken seconds before:
+<span class="prov prov-unver">measured</span></p>
+<ul>
+<li><strong>It only cut.</strong> <code>9,174</code> pixels were lowered and <strong>none</strong> were raised. That
+  is not a one-sided filter. On a road that slopes across, the
+  average height inside a round brush sits below the crown, so the brush pulls
+  the road down into the hill. On a sidehill, that benches the road, which is
+  what a real road is.</li>
+<li><strong>It removes a narrow band of bumps.</strong> The strongest effect was on bumps
+  <code>2.4</code> to <code>2.9 m</code> long. Anything longer than about <code>5 m</code> came through intact.
+  So it takes the washboard off a road and leaves the road&rsquo;s shape alone.</li>
+<li><strong>The brush was small</strong>, a radius of about <code>1</code> to <code>1.5 m</code>.</li>
+<li>Roughness fell from <code>27.3 cm</code> to <code>17.6 cm</code>, and the worst step from <code>62.5 cm</code>
+  to <code>37.5 cm</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Smooth cannot fix a hump</p>
+<p>Because Smooth leaves anything longer than about <code>5 m</code> alone, it will not
+touch a hump that is tens of metres long. That needs a deliberate cut. See
+<a href="roads.html">roads</a>.</p>
+</div>
+<p>Smooth also cannot take the ground below the smallest step the height format can
+store. See <a href="terrain.html">how terrain works</a>.</p>
+<h2 id="sculpting-is-iterative">Sculpting is iterative<a class="headerlink" href="#sculpting-is-iterative" title="Permanent link">#</a></h2>
+<p>Real terrain work is a sequence: raise a shoulder, flatten its top, smooth where
+it meets the hill, then lower part of it because the first pass overshot.</p>
+<p><strong>Measure between strokes.</strong> In one recorded sequence, the third stroke made the
+road rougher (<code>5.7</code> to <code>6.3 cm</code>), and only measuring caught it.
+<span class="prov prov-unver">measured</span></p>
+<h2 id="when-a-script-is-genuinely-the-only-option">When a script is genuinely the only option<a class="headerlink" href="#when-a-script-is-genuinely-the-only-option" title="Permanent link">#</a></h2>
+<p>Use the editor&rsquo;s brushes. Do not rewrite them in a script. Script only what the
+hand tools structurally cannot do.</p>
+<p>The clearest case: <strong>Flatten levels to one horizontal height.</strong> A road down a
+hillside needs a bench that <em>descends</em> at a steady grade, and there is no hand
+brush for that. You can only approximate it with many short flat steps.</p>
+<p>Other cases where a script earns its place:</p>
+<ul>
+<li>switchbacks laid at a constant gradient</li>
+<li>anything whose target height changes continuously along a path</li>
+<li>the same operation over a whole road network</li>
+</ul>
+<p>The toolkit&rsquo;s <code>sculpt_roads.py</code> runs the three-stroke sequence measured from hand
+work over a whole network: flatten to a target that descends along the road,
+then a small hard cut-only smooth, then a wider soft smooth to blend the
+shoulder into the hill. On one road it took roughness from <code>26.0</code> to <code>9.5 cm</code>
+with about <code>1.7 m</code> of cut, measured in the map files. Nobody has yet driven the
+result in game. <span class="prov prov-unver">not checked in game</span> It
+protects water, takes no-go circles for hand-sculpted ground, and limits how far
+it moves the ground (<code>--max-move</code>, default <code>3 m</code>).</p>
+<div class="hl"><pre><span></span><code>python sculpt_roads.py level_&lt;name&gt;
+python sculpt_roads.py level_&lt;name&gt; --protect-circle &lt;x,z,radius&gt; --apply
+</code></pre></div>
+
+<p>Like every toolkit script it dry-runs unless you pass <code>--apply</code>. Close the map in
+the editor before writing, because the editor reads the terrain tiles when the
+map opens. See <a href="../80-ai-tools/toolkit.html">the toolkit</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Turn a hand stroke into a tool</p>
+<p>The most reliable way to script a brush is to copy one. Snapshot the tiles,
+make one stroke by hand, save, and compare the two. That gives you the
+footprint, the strength and whether it cut or filled. Build the tool from
+that, and keep the hand stroke as its test: the tool must reproduce it.</p>
+</div>
+<h2 id="the-other-geometry-brushes">The other Geometry brushes<a class="headerlink" href="#the-other-geometry-brushes" title="Permanent link">#</a></h2>
+<p>The sub-nodes under Geometry work the same way and paint other layers.
+<span class="prov prov-doc">documented</span> A few are easy to confuse:</p>
+<ul>
+<li><strong>Water</strong> does not create water. It paints foam, speed and flow on water you
+  have already added. See <a href="water.html">rivers and lakes</a>.</li>
+<li><strong>WaterMud</strong> only changes the colour of a river, blending its clean and muddy
+  colours. It does not make ground muddy.</li>
+<li><strong>Mud</strong> and <strong>Wetness</strong> are separate brushes. Saber says the wetter a surface,
+  the more a vehicle gets stuck, even where no mud is painted.</li>
+</ul>
+<p>Saber&rsquo;s pages cover each one. With the toolkit:</p>
+<div class="hl"><pre><span></span><code>python wiki.py howto terrain
+</code></pre></div></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../20-land/terrain.html"><span>Previous</span>How terrain actually works</a><a class="seq-next" href="../20-land/roads.html"><span>Next</span>Roads are not carved terrain</a>      </nav>
@@ -279,7 +438,20 @@
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#how-painting-works">How painting works</a></li>
+<li><a href="#the-three-controls">The three controls</a><ul>
+<li><a href="#falloff-is-the-control-that-matters-most">Falloff is the control that matters most</a></li>
+</ul>
+</li>
+<li><a href="#the-main-geometry-brush">The main Geometry brush</a><ul>
+<li><a href="#what-smooth-actually-does">What Smooth actually does</a></li>
+</ul>
+</li>
+<li><a href="#sculpting-is-iterative">Sculpting is iterative</a></li>
+<li><a href="#when-a-script-is-genuinely-the-only-option">When a script is genuinely the only option</a></li>
+<li><a href="#the-other-geometry-brushes">The other Geometry brushes</a></li>
+</ul>
 </div>
 
   </aside>

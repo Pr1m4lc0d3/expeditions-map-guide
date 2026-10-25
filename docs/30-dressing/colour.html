@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html" aria-current="page">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,19 +256,178 @@
         <h1>Colour and textures</h1>
 <p class="lede">Terrain texture layers, tint maps, and getting the colour of a real place right.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>Planned for this page:</p>
+      <article class="prose"><p>The colour of a map comes from three separate systems, and it helps to know which one
+you are looking at before trying to change it:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>Where it comes from</th>
+<th>Painted with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the ground&rsquo;s texture: sand, gravel, grass, rock</td>
+<td><strong>PBR materials</strong> and their layers</td>
+<td>the PbrMaterials brush</td>
+</tr>
+<tr>
+<td>a colour cast over that texture</td>
+<td><strong>tint</strong></td>
+<td>the Colorization brush</td>
+</tr>
+<tr>
+<td>roads and tracks</td>
+<td><strong>overlays</strong>, which carry their own texture</td>
+<td>the Overlay tool</td>
+</tr>
+</tbody>
+</table></div>
+<p>Water colour is a fourth, set per river. See
+<a href="../20-land/water.html">Rivers, lakes and waterfalls</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">How much of this is tested</p>
+<p>Materials, layers, the Colorization brush and the overlay limit are from Saber&rsquo;s
+guides. The tint file layout and the colour derivation come from work on a real
+map. Custom ground textures have been worked out from the shipped files but not
+built as a finished workflow, and are labelled.</p>
+</div>
+<h2 id="terrain-texture-layers">Terrain texture layers<a class="headerlink" href="#terrain-texture-layers" title="Permanent link">#</a></h2>
+<p>Ground textures are painted with <strong>PBR materials</strong>. <span class="prov prov-doc">documented</span></p>
+<p>Right-click the terrain (or the <strong>PbrMaterials</strong> section of the Scene View) and choose
+<strong>Add PbrMaterial</strong>. Each material has <strong>4 layers</strong>, and a map can have at most
+<strong>4 materials</strong>. Each layer is a texture: sand, gravel, rock, grass and so on.</p>
+<h3 id="two-levels-of-painting">Two levels of painting<a class="headerlink" href="#two-levels-of-painting" title="Permanent link">#</a></h3>
+<p>This is the part that is easy to miss. <span class="prov prov-doc">documented</span></p>
+<ol>
+<li><strong>Opacity mode</strong> paints which <strong>material</strong> a terrain block uses. It works per
+   24 m block, and each block can use <strong>one</strong> material only.</li>
+<li>Then the <strong>layer</strong> modes paint that material&rsquo;s layers within the blocks.</li>
+</ol>
+<p>With more than one material, do the Opacity painting first. Because a block holds
+one material, the boundary between two materials falls on a block edge and can show
+as a hard line. Saber&rsquo;s fix: use the <strong>same textures</strong> as layers on both sides of a
+boundary, so the blocks blend across it.</p>
+<p>As with the other brushes, holding the right mouse button paints; a Value above
+<code>0.50</code> adds the layer and below <code>0.50</code> erases it.</p>
+<h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">#</a></h3>
+<p>Saber recommends nearly the same settings on every material of a level, so that
+painting is predictable and boundaries do not jump. <span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+<th>Saber&rsquo;s suggestion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AlbedoWetnessMult</code></td>
+<td>how much wetness darkens the ground</td>
+<td><code>2</code> summer and autumn, <code>1</code> winter</td>
+</tr>
+<tr>
+<td><code>RoughnessWetnessMult</code></td>
+<td>how much wetness changes its roughness</td>
+<td><code>0.5</code> summer and autumn, <code>1</code> winter</td>
+</tr>
+<tr>
+<td>Tiling scale (per layer)</td>
+<td>how often the texture repeats</td>
+<td>grass, earth, sand <code>5</code>; gravel <code>3</code>; snow <code>2.2</code>; rock <code>1</code></td>
+</tr>
+<tr>
+<td>HM blending contrast (per layer)</td>
+<td>how sharp the border is where layers blend</td>
+<td>soft surfaces <code>0.7</code> to <code>0.8</code>; hard <code>0.8</code> to <code>0.9</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>On snowy maps the third layer should always be <code>snow_layer</code>, and materials ending
+<code>_snowy</code> are made for winter.</p>
+<h3 id="what-a-ground-layer-carries-besides-colour">What a ground layer carries besides colour<a class="headerlink" href="#what-a-ground-layer-carries-besides-colour" title="Permanent link">#</a></h3>
+<p>Each layer texture is backed by a class under <code>classes\terrain_layers\</code>, and that
+class does more than look like gravel. The shipped <code>arizona_gravel</code> names the grass
+brush that grows on it, its driving sound, its impact and skid sounds, and whether it
+takes wheel tracks; <code>arizona_sand</code> adds drag and dust. So choosing a layer also
+chooses how the ground sounds and behaves.</p>
+<h3 id="your-own-ground-textures">Your own ground textures<a class="headerlink" href="#your-own-ground-textures" title="Permanent link">#</a></h3>
+<p>Saber documents custom materials in the PDF <em>Custom Level Entities: Models, Overlays
+and PbrMaterials</em>. Once installed correctly and the editor restarted, a custom texture
+appears in the layer&rsquo;s file picker with a <code>\Media</code> suffix.
+<span class="prov prov-doc">documented</span></p>
+<p>Read from the shipped files, a custom layer needs a diffuse and a relief texture in
+<code>Media\textures\tiles\</code> (<code>&lt;name&gt;__d_a.tga</code> and <code>&lt;name&gt;_relief__d_a.tga</code>), a class at
+<code>Media\classes\terrain_layers\&lt;name&gt;.xml</code>, and a layer entry in the map&rsquo;s
+<code>PbrMaterial</code>. <span class="prov prov-unver">unverified</span> as a finished workflow.</p>
+<h2 id="tint">Tint<a class="headerlink" href="#tint" title="Permanent link">#</a></h2>
+<p>The <strong>Colorization</strong> brush (under Geometry) paints a colour cast onto the terrain.
+Pick the colour with <strong>Set</strong>; the slider sets the strength. Right of centre paints,
+left of centre erases, dead centre does nothing. <span class="prov prov-doc">documented</span></p>
+<p>On disk, tint lives in each terrain tile as two images that work together:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_tint.tga</code></td>
+<td>the <strong>strength</strong> of the tint. R and G carry the same value; B is unused</td>
+</tr>
+<tr>
+<td><code>_base_tints.tga</code></td>
+<td>the <strong>colour</strong> applied at that strength, as RGB</td>
+</tr>
+</tbody>
+</table></div>
+<p>That the Colorization brush writes these two files is
+<span class="prov prov-unver">unverified</span>, though it is the only tint brush.</p>
+<h3 id="colour-and-lightness-are-separate">Colour and lightness are separate<a class="headerlink" href="#colour-and-lightness-are-separate" title="Permanent link">#</a></h3>
+<p>A tint is a colour, and colour has two parts: how light it is, and how much hue it
+carries (its <strong>chroma</strong>). Brightness alone only makes the same colour lighter or
+darker.</p>
+<p>That matters when you derive a tint from imagery. On one map, a pasture tint made by
+subtracting the image&rsquo;s <strong>average</strong> came out a neutral grey, (153, 155, 146), because
+removing the average removed the hue along with the lightness. Subtracting each
+pixel&rsquo;s own lightness instead, keeping the direction of its colour, and re-centring
+on 128 gave (121, 170, 92), which reads as grass.</p>
+<p>So when a tint looks washed out or grey, check that the hue survived, not just the
+brightness.</p>
+<h2 id="road-overlays-carry-their-own-colour">Road overlays carry their own colour<a class="headerlink" href="#road-overlays-carry-their-own-colour" title="Permanent link">#</a></h2>
+<p>A road is an <strong>Overlay</strong> object laid along a curve, not a change to the terrain&rsquo;s
+layers. Its look comes from its own texture, so repainting the ground under a road
+does not change the road. <span class="prov prov-doc">documented</span></p>
+<p>Saber notes that Expeditions uses ordinary road overlays much less than SnowRunner,
+and has its own: <code>animal_tracks</code>, <code>cracked_mud</code> and <code>log_road</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Only one road texture shows per terrain block</p>
+<p>The engine renders only <strong>one textural overlay per terrain block</strong>. Put two road
+types in one block and part of one becomes invisible.
+<span class="prov prov-doc">documented</span> A textural overlay and a 3D one,
+such as a road and wires, can share a block.</p>
+<p>To join two road types, keep each type&rsquo;s main stretch in its own blocks, and at
+the junction paint the ground with a PBR material that uses a similar texture as
+one of its layers. Or hide the junction under snow or mud.</p>
+</div>
+<p>Click the terrain to see a block&rsquo;s border as a red cube. How to lay roads is covered
+on <a href="../20-land/roads.html">Roads are not carved terrain</a>.</p>
+<h2 id="what-is-not-written-yet">What is not written yet<a class="headerlink" href="#what-is-not-written-yet" title="Permanent link">#</a></h2>
+<p>Two points planned for this page have no source yet, so they are left out rather
+than guessed at:</p>
 <ul>
-<li>terrain texture layers and how they blend</li>
-<li>tint maps, and separating colour from lightness. Two surfaces should usually differ in
-  <strong>chroma</strong>, not only in brightness</li>
-<li>a caution when matching a real place: satellite imagery providers disagree with each
-  other substantially on hue, and ground photographs are a better reference than any
-  single provider</li>
-<li>road overlays carry their own colour, separately from the terrain layers</li>
+<li>a general rule that two surfaces should differ in chroma, not only in brightness,
+  beyond the tint example above</li>
+<li>a caution that satellite imagery providers disagree with each other on hue when
+  matching a real place, and that ground photographs are the better reference</li>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
@@ -278,7 +437,21 @@
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#terrain-texture-layers">Terrain texture layers</a><ul>
+<li><a href="#two-levels-of-painting">Two levels of painting</a></li>
+<li><a href="#settings">Settings</a></li>
+<li><a href="#what-a-ground-layer-carries-besides-colour">What a ground layer carries besides colour</a></li>
+<li><a href="#your-own-ground-textures">Your own ground textures</a></li>
+</ul>
+</li>
+<li><a href="#tint">Tint</a><ul>
+<li><a href="#colour-and-lightness-are-separate">Colour and lightness are separate</a></li>
+</ul>
+</li>
+<li><a href="#road-overlays-carry-their-own-colour">Road overlays carry their own colour</a></li>
+<li><a href="#what-is-not-written-yet">What is not written yet</a></li>
+</ul>
 </div>
 
   </aside>

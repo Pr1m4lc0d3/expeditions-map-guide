@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html" aria-current="page">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,21 +256,187 @@
         <h1>Hiding and revealing zones</h1>
 <p class="lede">Fog of war, and the setting that will accidentally hide a zone you wanted available.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>Planned for this page:</p>
+      <article class="prose"><p>Most zone props carry a <code>zoneDiscoverability</code> block. It decides whether the player
+can see the zone when the expedition starts, and if not, how they get to find it: by
+driving there, by flying a drone over it, or by spotting it through binoculars.</p>
+<p>Used on purpose it is one of the best tools a map has, because finding things is the
+point of an expedition. Used by accident, it hides a zone you meant to be open and
+gives you no hint why.</p>
+<div class="admonition note">
+<p class="admonition-title">What on this page has been tested</p>
+<p>That a zone with <strong>no</strong> discoverability block is simply available is proven:
+deploy zones set up that way on working maps load and deploy. The rest is from
+Saber&rsquo;s guides and from the settings in working maps. It has not been tested
+state by state in game, and the specialist requirements and discovery rewards
+are untested.</p>
+</div>
+<h2 id="leave-it-empty-unless-you-mean-it">Leave it empty unless you mean it<a class="headerlink" href="#leave-it-empty-unless-you-mean-it" title="Permanent link">#</a></h2>
+<p><strong>A zone with no discoverability settings is simply available.</strong> Its marker is
+there from the start, and nothing has to be found. This is the right answer far more
+often than people expect: a deploy zone, a store, a delivery target the briefing
+already tells the player about.</p>
+<p>In Zone Settings an unused block is <code>null</code>. On the working maps this guide was built
+from, every main deploy zone has it <code>null</code>.</p>
+<h2 id="the-states">The states<a class="headerlink" href="#the-states" title="Permanent link">#</a></h2>
+<p><code>state</code> is where the zone stands at the moment it spawns.
+<span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>State</th>
+<th>What the player sees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NOT_EXPLORED</code></td>
+<td>nothing. The zone is not on the map</td>
+</tr>
+<tr>
+<td><code>SEEN_BY_OPTCS_QUESTION_MARK</code></td>
+<td>a question mark on the map. Partly discovered</td>
+</tr>
+<tr>
+<td><code>SEEN_BY_OPTCS_DISCOVERED</code></td>
+<td>the full marker, as if found with binoculars</td>
+</tr>
+<tr>
+<td><code>EXPLORED_BY_DRONE_FLIGHT_IN</code></td>
+<td>the full marker, as if found by drone</td>
+</tr>
+<tr>
+<td><code>EXPLORED_BY_TRUCK</code></td>
+<td>the full marker, as if found by truck</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>SEEN_BY_OPTCS</code> is Saber&rsquo;s spelling, and the one the game uses.</p>
+<h2 id="the-trap-copying-a-block">The trap: copying a block<a class="headerlink" href="#the-trap-copying-a-block" title="Permanent link">#</a></h2>
+<p>The block is easy to copy from another zone, and that is where the trouble starts.
+On the working maps examined, <strong>every</strong> zone that has a discoverability block at all
+has the same state value, <code>0</code>, and it belongs to zones the player is meant to find.
+That value is the first in the list, which reads as <code>NOT_EXPLORED</code>.
+<span class="prov prov-unver">unverified</span> that <code>0</code> is <code>NOT_EXPLORED</code>.</p>
+<p>So copying a block from a typical existing zone onto one you want open usually
+copies &ldquo;not explored&rdquo;, and <strong>hides</strong> it. The zone works perfectly and the player
+never sees it.</p>
+<p>If a zone you expected on the map is missing, look at its <code>zoneDiscoverability</code>
+before anything else. Delete the block if the zone should simply be available.</p>
+<div class="admonition warning">
+<p class="admonition-title">Do not strip discovery from someone else&rsquo;s design</p>
+<p>The reverse is also a mistake. A secondary deploy zone left <code>NOT_EXPLORED</code> is one
+of Saber&rsquo;s two documented ways to open an outpost later, and it is meant to be
+found. <span class="prov prov-doc">documented</span> Removing the block to &ldquo;fix&rdquo;
+a missing outpost destroys that design.</p>
+</div>
+<h2 id="how-a-zone-can-be-found">How a zone can be found<a class="headerlink" href="#how-a-zone-can-be-found" title="Permanent link">#</a></h2>
+<p>Three switches say which methods can discover the zone:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Discovered by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>discoverableByTruck</code></td>
+<td>driving to it</td>
+</tr>
+<tr>
+<td><code>discoverableByDrone</code></td>
+<td>the drone</td>
+</tr>
+<tr>
+<td><code>discoverableByBinocular</code></td>
+<td>binoculars</td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="prov prov-doc">documented</span> Turn off the ones you do not want.
+A zone the player must physically reach, for example, would keep only the truck.</p>
+<h3 id="requiring-a-specialist">Requiring a specialist<a class="headerlink" href="#requiring-a-specialist" title="Permanent link">#</a></h3>
+<p>Two more fields require a particular kind of specialist for a method to work:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requiredSpecialistDrone</code></td>
+<td>the specialist type needed to discover this zone by drone</td>
+</tr>
+<tr>
+<td><code>requiredSpecialistBinocular</code></td>
+<td>the specialist type needed to discover it with binoculars</td>
+</tr>
+</tbody>
+</table></div>
+<p>The value <strong><code>NONE</code></strong> switches the requirement off. <span class="prov prov-doc">documented</span></p>
+<p>In the saved file these are stored as numbers, not names. Which number is which
+specialist type is not documented, and has not been worked out here. Choose the
+value in the Zone Settings plugin, which shows the names, rather than typing a number.
+<span class="prov prov-unver">unverified</span> how either requirement behaves in game.</p>
+<h2 id="messages-and-rewards-for-finding-it">Messages and rewards for finding it<a class="headerlink" href="#messages-and-rewards-for-finding-it" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>discoveryMessage</code></td>
+<td>text shown when the player discovers the zone</td>
+</tr>
+<tr>
+<td><code>discoveryRewardMoney</code></td>
+<td>a reward paid on discovery</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>discoveryRewardMoney</code> offers two reward classes. Use <code>ObjectiveRewardMoney</code>. Saber
+says the other, <code>ContestResultRewards</code>, should not be used here, and elsewhere in
+Expeditions it never pays out. <span class="prov prov-doc">documented</span>
+<span class="prov prov-unver">unverified</span> in game.</p>
+<h2 id="other-ways-a-zone-becomes-visible">Other ways a zone becomes visible<a class="headerlink" href="#other-ways-a-zone-becomes-visible" title="Permanent link">#</a></h2>
+<p>Discoverability is not the only thing that reveals a zone.</p>
 <ul>
-<li>the discoverability block, and what each state means</li>
-<li><strong>a zone with no discoverability settings at all is simply available.</strong> This is the
-  right answer far more often than people expect</li>
-<li>the trap: copying another zone&rsquo;s discoverability block onto a zone you want available
-  will usually <strong>hide</strong> it, because the state you copied is &ldquo;not explored&rdquo;</li>
-<li>requiring a specific specialist&rsquo;s drone or binoculars, and the value that disables
-  that requirement</li>
-<li>discovery messages and discovery rewards</li>
-<li>how all of this interacts with scouting objectives</li>
+<li><strong>Deploying.</strong> Trucks arriving at a deploy zone uncover the ground around it:
+  <code>fogOfWarUnlockRadius</code> fully, <code>fogOfWarUnlockRadiusTransparent</code> partly. See
+  <a href="deploy-zones.html">Deploy zones and FOBs</a>.</li>
+<li><strong>Rewards.</strong> <code>ObjectiveRewardOpenZoneProperties</code> opens a zone with new props as an
+  objective reward. The locator has to be on the map already; the reward reveals it,
+  it does not create it. See <a href="../50-missions/building-a-story.html">Building a story</a>.</li>
+<li><strong>Exploration persists.</strong> Ground the player has explored stays explored in later
+  expeditions on the same map. <span class="prov prov-doc">documented</span></li>
+</ul>
+<h2 id="scouting-objectives">Scouting objectives<a class="headerlink" href="#scouting-objectives" title="Permanent link">#</a></h2>
+<p>A <code>scoutingInfo</code> assignment asks the player to explore an area around a target
+zone. In current versions that target zone hides itself automatically; older guides
+said to add a <code>ZonePropertyHiddenHint</code> with discovery switched off, and that is no
+longer needed. <span class="prov prov-doc">documented</span></p>
+<p>The catch Saber points out: do not use the same zone in another objective that could
+make it visible, or the hidden centre of the search area appears on the map. Give a
+scouting target its own zone. The assignment itself is covered on
+<a href="../50-missions/assignment-types.html#scoutinginfo">The assignment types</a>.</p>
+<p>To show the player a search circle rather than an exact marker on any assignment, use
+<code>radiusSett</code> on the target. See
+<a href="../50-missions/stages.html#hiding-the-target">Stages and substages</a>.</p>
+<h2 id="what-is-not-known-yet">What is not known yet<a class="headerlink" href="#what-is-not-known-yet" title="Permanent link">#</a></h2>
+<ul>
+<li>which stored number corresponds to which state and which specialist type</li>
+<li>whether each state behaves exactly as Saber describes in a running game</li>
+<li>how the specialist requirements behave in game</li>
+<li>whether <code>discoveryRewardMoney</code> pays out</li>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
@@ -280,7 +446,19 @@
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#leave-it-empty-unless-you-mean-it">Leave it empty unless you mean it</a></li>
+<li><a href="#the-states">The states</a></li>
+<li><a href="#the-trap-copying-a-block">The trap: copying a block</a></li>
+<li><a href="#how-a-zone-can-be-found">How a zone can be found</a><ul>
+<li><a href="#requiring-a-specialist">Requiring a specialist</a></li>
+</ul>
+</li>
+<li><a href="#messages-and-rewards-for-finding-it">Messages and rewards for finding it</a></li>
+<li><a href="#other-ways-a-zone-becomes-visible">Other ways a zone becomes visible</a></li>
+<li><a href="#scouting-objectives">Scouting objectives</a></li>
+<li><a href="#what-is-not-known-yet">What is not known yet</a></li>
+</ul>
 </div>
 
   </aside>

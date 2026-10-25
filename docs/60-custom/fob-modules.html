@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html" aria-current="page">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,26 +256,640 @@
         <h1>Custom FOB modules</h1>
 <p class="lede">Adding your own buildable base module.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>Planned for this page:</p>
+      <article class="prose"><h1 id="custom-fob-modules">Custom FOB modules<a class="headerlink" href="#custom-fob-modules" title="Permanent link">#</a></h1>
+<p>A custom FOB module is a base module the player can buy and build at a deploy
+zone, like the vanilla repair station or workshop, but defined by you: its
+name, its price, what it does, what it looks like and the pictures in the store.</p>
+<p>This page is the whole process, start to finish, in the order you do it. The
+field-by-field reference is
+<a href="base-modules-reference.html">Module descriptor reference</a>,
+and each vanilla module has its own page in
+<a href="../62-modules/index.html">Appendix A</a> with its settings, models and art slots.
+Copy from those pages; this one tells you when.</p>
+<div class="admonition note">
+<p class="admonition-title">This page is a draft</p>
+<p>Everything written here comes from Saber&rsquo;s documentation or from modules
+built and tested in game in October 2026. A few parts are still unknown, and
+they are listed at the end under <a href="#what-is-not-known-yet">What is not known yet</a>
+rather than guessed at.</p>
+</div>
+<h2 id="what-a-custom-module-is">What a custom module is<a class="headerlink" href="#what-a-custom-module-is" title="Permanent link">#</a></h2>
+<p>A module is <strong>one JSON file</strong> named <code>BaseUpgradeDesc</code>, shipped inside a pak named
+<code>BaseUpgradeDesc_&lt;identifier&gt;.pak</code> in <code>Documents\My Games\Expeditions\Media\Mods\</code>.
+The smallest working modules contain nothing else, because they use the game&rsquo;s own
+models. A module with its own look also carries models, textures and store art.</p>
+<p>The file has three parts at the top: <code>SslType</code>, <code>SslValue</code> (every field you set)
+and <code>name</code> (the module&rsquo;s identifier). Two fields inside <code>SslValue</code> decide almost
+everything:</p>
 <ul>
-<li>the module descriptor and its general properties</li>
-<li>supplying the 3D model and its build states</li>
-<li>the zone pair a module needs, which is the same pattern as a built-in one</li>
-<li>granting your module as an objective reward</li>
+<li><strong><code>zoneProperty</code></strong> decides what the module <em>does</em>: hold goods, sell fuel, craft,
+  launch drones. Its type is chosen from a fixed list.</li>
+<li><strong>the four model fields</strong> decide what it <em>looks like</em> when built.</li>
+</ul>
+<p>A module needs <strong>no work on the map</strong>. Saber&rsquo;s documentation says a custom module
+is available &ldquo;in the same zones as the original ones&rdquo;: any deploy zone set up
+for base modules will offer it. Those zones are the map maker&rsquo;s job, and each one
+is a pair, a placement zone and an interaction zone, listed in the deploy zone&rsquo;s
+<code>fobModulesZones</code>. See <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>.</p>
+<h2 id="first-decision-where-the-model-comes-from">First decision: where the model comes from<a class="headerlink" href="#first-decision-where-the-model-comes-from" title="Permanent link">#</a></h2>
+<p>There are three ways to give a module its look. Choose before you start, because
+the choice decides what happens when a player sells the module.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th>Model source</th>
+<th>Effort</th>
+<th>Disappears from the map when sold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Vanilla, as is</strong></td>
+<td>point the four model fields at the game&rsquo;s own models</td>
+<td>none</td>
+<td><strong>yes</strong>, like any vanilla module</td>
+</tr>
+<tr>
+<td><strong>2. Vanilla, recoloured</strong></td>
+<td>the vanilla shape in another colour, shipped in your mod</td>
+<td>one command</td>
+<td><strong>no</strong></td>
+</tr>
+<tr>
+<td><strong>3. Fully custom</strong></td>
+<td>your own 3D model, for example made in Meshy</td>
+<td>an afternoon, following the recipe below</td>
+<td><strong>no</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition warning">
+<p class="admonition-title">Only option 1 vanishes when sold</p>
+<p>A module whose model comes from your mod, recoloured or fully custom, leaves
+that model standing on the map after the player sells it. The sale itself
+completes normally: the record is removed, the slot is freed and can be
+built on again, and the refund is paid. Only the model stays.</p>
+<p>This was tested with a recolour whose geometry is byte-identical to the
+vanilla mesh, and the model still stayed, so it is not about how the model
+was built. Seven fixes were tried and none worked. Saber ended support for
+Expeditions in September 2026, so it will not be patched. Treat it as
+permanent and <a href="#tell-players-about-the-sold-module-limit">tell your players</a>.</p>
+</div>
+<h2 id="step-1-decide-what-it-does">Step 1. Decide what it does<a class="headerlink" href="#step-1-decide-what-it-does" title="Permanent link">#</a></h2>
+<p>The <code>zoneProperty</code> type is the module&rsquo;s function. Not every type works for a
+mod. Each module page in Appendix A opens with the verdict for its type; in
+short:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Works for a mod, tested in game</th>
+<th>Broken for a mod</th>
+<th>Not yet tested</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage-type modules (<code>ZonePropertyFobModuleStorage</code>): a fuel station with one fuel slot, a repair station</td>
+<td>generator (<code>ZonePropertyGenerator</code>): empties the module store and freezes the game on exit to headquarters</td>
+<td>warehouse, essentials storage, helipad, expanded parking, tow truck</td>
+</tr>
+<tr>
+<td>workshop (<code>ZonePropertyWorkshop</code>)</td>
+<td>intelligence center (<code>AntennaUpgradeDesc</code>): builds and sells, but never reveals anything</td>
+<td></td>
+</tr>
+<tr>
+<td>cargo drone (<code>ZonePropertyDroneDelivery</code>)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>service station (<code>ZonePropertyServiceStation</code>)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Start from a type that works, and copy the vanilla module you are imitating.</strong>
+Open its page in Appendix A and take its settings as they are, then change one
+value at a time. A module that is cloned from the wrong vanilla module carries
+the wrong behaviour with it.</p>
+<div class="admonition warning">
+<p class="admonition-title">A repair-station-like module must copy the repair station, not the gas station</p>
+<p>A module cloned from the gas station keeps the fuel-pump icons and has no
+wheels slot. Copy the vanilla repair station&rsquo;s settings instead:
+<code>alwaysSpawn</code> true, <code>chance</code> 1.0 and <code>tradeFromTruckToZone</code> true on the
+parts slot, a wheels slot, and the repair-station icons. The full table is on
+the <a href="../62-modules/repair-station.html#building-your-own">Repair station</a> page.</p>
+</div>
+<p>A few behaviours are fixed by the game and cannot be changed by a mod:</p>
+<ul>
+<li><strong>The service station&rsquo;s +20% armor</strong> is a game-wide value compiled into the
+  game. A custom service station can differ only in price, models and art. See
+  <a href="../62-modules/service-station.html">Service station</a>.</li>
+<li><strong>The workshop is refilled only by recycling.</strong> A truck cannot hand it spare
+  parts; the game answers &ldquo;Can&rsquo;t be transferred&rdquo;. A custom workshop may start
+  stocked through <code>repairsInitialAmount</code>. See
+  <a href="../62-modules/workshop.html">Workshop</a>.</li>
+</ul>
+<p><code>isInteractive</code> must match the type, following Saber&rsquo;s table: true for storage,
+parking, workshop and drone delivery; false for the service station, the tow
+truck and the intelligence center. The module checker flags a mismatch.</p>
+<div class="admonition note">
+<p class="admonition-title">Slot chance is 0 to 1</p>
+<p><code>chance</code> on a <code>ConsumablesSlot</code> is a probability from 0 to 1, not a
+percentage. The vanilla repair station uses 1.0.</p>
+</div>
+<h2 id="step-2-create-the-descriptor">Step 2. Create the descriptor<a class="headerlink" href="#step-2-create-the-descriptor" title="Permanent link">#</a></h2>
+<p>There are two ways to make the file.</p>
+<p><strong>In the editor.</strong> Click <strong>EXP MODs creation</strong> on the toolbar (a gold shield
+with a black star, fourth from the right end). In its dialog choose
+<strong>File &gt; New Mod &gt; Base Module</strong>, fill in the <code>name</code> field and pick the class
+<code>BaseUpgradeDesc</code>, then set the properties and <strong>File &gt; Save</strong>. The file lands in
+<code>Media\Mods\BaseUpgradeDesc_&lt;name&gt;\BaseUpgradeDesc</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">The first save can fail</p>
+<p>Saber documents that the first save may say &ldquo;Can&rsquo;t open file&rdquo; because the
+editor does not create <code>Media\Mods</code> itself. Create the folder by hand and
+save again.</p>
+</div>
+<p>Saber&rsquo;s rule for <code>name</code> is Latin letters, digits and underscores, no spaces.
+Some modules tested in game do have spaces in their identifier, but Saber&rsquo;s rule
+is the safe one.</p>
+<p><strong>With the toolkit.</strong> <code>make_fob_module.py</code> writes a descriptor for any of the
+fourteen module types straight from the engine&rsquo;s own schema, with every field at
+its documented default. It refuses fields the schema does not declare. See
+<a href="../80-ai-tools/toolkit.html">The toolkit</a>.</p>
+<div class="hl"><pre><span></span><code>python make_fob_module.py --list
+python make_fob_module.py WORKSHOP &quot;My_Workshop&quot; --uiname &quot;My Workshop&quot; --desc &quot;...&quot; --cost 20000
+</code></pre></div>
+
+<p>A schema-valid descriptor is not proof of a working module. The tool flags the
+types known to break, and the game is still the test.</p>
+<h3 id="give-it-an-identity-no-other-mod-uses">Give it an identity no other mod uses<a class="headerlink" href="#give-it-an-identity-no-other-mod-uses" title="Permanent link">#</a></h3>
+<p><code>moduleId</code> is the module&rsquo;s identity. It is not at the top of the file; it sits
+at <code>SslValue.zoneProperty.moduleId</code>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Reusing an id another mod holds empties the whole Base modules panel</p>
+<p>If two mods share a <code>moduleId</code>, the Base modules panel comes up completely
+blank with the raw key <code>UI_BASE_BUILDING_SUBHEADER</code> as its heading. No
+crash and nothing in the log.</p>
+<p>Never clone a descriptor and keep its <code>moduleId</code>. Two shapes are known to
+work: an id of your own, such as your mod&rsquo;s name, or no <code>moduleId</code> at all.
+Reusing a vanilla id such as <code>DOUBLE_STOCK</code> has worked for weeks in testing,
+but it shares identity with the stock module and is not recommended.</p>
+</div>
+<p>Saber&rsquo;s documentation says <code>moduleId</code> should equal the module&rsquo;s <code>name</code>. A
+unique id of your own also works, tested in game.</p>
+<h3 id="name-text-and-price">Name, text and price<a class="headerlink" href="#name-text-and-price" title="Permanent link">#</a></h3>
+<p>Set <code>uiName</code> (the name in the store) and <code>uiDesc</code> (the paragraph on the card).
+If nothing on the built module shows what it does, as with a service station,
+say in <code>uiDesc</code> what the player does.</p>
+<p>Set <code>cost</code> (the build price) and <code>sellPrice</code> (the refund). Look at what the
+vanilla module that does the same job costs, and price yours against it.
+Every vanilla module refunds 90% of its cost. These are the vanilla prices, read
+from the running game:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Module</th>
+<th><code>cost</code></th>
+<th><code>sellPrice</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gas station</td>
+<td>50,000</td>
+<td>45,000</td>
+</tr>
+<tr>
+<td>Cargo drone</td>
+<td>50,000</td>
+<td>45,000</td>
+</tr>
+<tr>
+<td>Helipad</td>
+<td>40,000</td>
+<td>36,000</td>
+</tr>
+<tr>
+<td>Tow truck</td>
+<td>30,000</td>
+<td>27,000</td>
+</tr>
+<tr>
+<td>Workshop</td>
+<td>20,000</td>
+<td>18,000</td>
+</tr>
+<tr>
+<td>Repair station</td>
+<td>20,000</td>
+<td>18,000</td>
+</tr>
+<tr>
+<td>Generator</td>
+<td>20,000</td>
+<td>18,000</td>
+</tr>
+<tr>
+<td>Expanded parking</td>
+<td>15,000</td>
+<td>13,500</td>
+</tr>
+<tr>
+<td>Warehouse</td>
+<td>10,000</td>
+<td>9,000</td>
+</tr>
+<tr>
+<td>Essentials storage</td>
+<td>10,000</td>
+<td>9,000</td>
+</tr>
+<tr>
+<td>Service station</td>
+<td>10,000</td>
+<td>9,000</td>
+</tr>
+<tr>
+<td>Intelligence center</td>
+<td>10,000</td>
+<td>9,000</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="locking-it-behind-an-objective">Locking it behind an objective<a class="headerlink" href="#locking-it-behind-an-objective" title="Permanent link">#</a></h3>
+<p>By default a custom module is available from the start. <code>isLockedByDefault</code>
+hides it until an objective unlocks it with an <code>ObjectiveRewardBaseUpgrade</code>
+reward, documented by Saber. Saber adds that locking should be used only for a
+module shipped as a linked mod, and that linked mods &ldquo;do not always work&rdquo;.
+Unlocking a custom module this way has not been tested here; see
+<a href="../50-missions/rewards.html">Rewards</a>.</p>
+<h2 id="step-3-the-models">Step 3. The models<a class="headerlink" href="#step-3-the-models" title="Permanent link">#</a></h2>
+<p>A module has four model fields. Which pair the player sees depends on whether
+they build it at a main base or an outpost; <code>defaultDeployPoint</code> on the deploy
+zone decides.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>modelId</code></td>
+<td>the medium model, at a main base</td>
+</tr>
+<tr>
+<td><code>modelIdAdditional</code></td>
+<td>the <strong>small</strong> model, at an outpost</td>
+</tr>
+<tr>
+<td><code>modelAnimated</code></td>
+<td>the medium build animation</td>
+</tr>
+<tr>
+<td><code>modelAdditionalAnimated</code></td>
+<td>the small build animation</td>
+</tr>
+</tbody>
+</table></div>
+<p>Fill only <code>modelId</code> and every outpost shows the vanilla model instead of yours.
+Each field holds the name of a model class without <code>.xml</code>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Never delete a model from a mod once it has been built in a save</p>
+<p>A level&rsquo;s saved state names every standing model. If a save refers to a
+model your mod no longer contains, the game crashes while loading that save.
+To retire a model, stop pointing the descriptor at it and leave its files in
+the pak.</p>
+</div>
+<h3 id="option-1-a-vanilla-model-as-is">Option 1: a vanilla model as is<a class="headerlink" href="#option-1-a-vanilla-model-as-is" title="Permanent link">#</a></h3>
+<p>Name the game&rsquo;s own model classes. Their files are already in the game, so the
+mod is the descriptor alone. For a workshop:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&quot;modelId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fob_module_workshop&quot;</span><span class="p">,</span>
+<span class="nt">&quot;modelIdAdditional&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fob_module_small_workshop&quot;</span><span class="p">,</span>
+<span class="nt">&quot;modelAnimated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fob_module_workshop_objective&quot;</span><span class="p">,</span>
+<span class="nt">&quot;modelAdditionalAnimated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fob_module_small_workshop_objective&quot;</span><span class="p">,</span>
+<span class="nt">&quot;animationStagesProgress&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;stage_0&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;stage_1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">},</span>
+<span class="nt">&quot;animationAdditionalStagesProgress&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;stage_0&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;stage_1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>The other families follow the same pattern: <code>fob_module_&lt;family&gt;</code>, a <code>small_</code>
+prefix for the outpost model, an <code>_objective</code> suffix for the build animation.
+The storage family has no small twin. Each module page lists its four models.</p>
+<p>This is the only option whose model disappears when the module is sold.</p>
+<h3 id="option-2-a-vanilla-model-in-another-colour">Option 2: a vanilla model in another colour<a class="headerlink" href="#option-2-a-vanilla-model-in-another-colour" title="Permanent link">#</a></h3>
+<p><code>recolor_fob.py</code> rebuilds a vanilla module in another colour. The geometry is
+copied byte for byte; only the textures change. The colour shift is calibrated
+against Saber&rsquo;s own red recolour of a module texture, so the result reads as a
+different object, not as a photo filter.</p>
+<div class="hl"><pre><span></span><code>python recolor_fob.py sheet                       # see all 8 colours first
+python recolor_fob.py maps  &lt;module&gt;              # what that module paints with
+python recolor_fob.py build &lt;module&gt; &lt;colour&gt; --out &lt;dir&gt; \
+    --descriptor-from &lt;a working .pak&gt; --ui-name &quot;My Module&quot;
+</code></pre></div>
+
+<p>The colours are <code>red orange green blue purple black white grey</code>. <code>build</code> does
+the whole family, medium, small and both build animations, then runs the game&rsquo;s
+own texture converter and stops if a texture did not come out.</p>
+<div class="hl"><pre><span></span><code>python check_recolor.py --self-test
+</code></pre></div>
+
+<p>The recolour is mod-delivered, so it stays on the map when sold.</p>
+<h3 id="option-3-your-own-3d-model">Option 3: your own 3D model<a class="headerlink" href="#option-3-your-own-3d-model" title="Permanent link">#</a></h3>
+<p>This is the recipe that works in game, at a main base and at an outpost. Each
+step is there because skipping it broke a real build. It needs a Meshy account
+with API credits (one generation is 30 credits, one remesh 5) and Blender.</p>
+<div class="hl"><pre><span></span><code># 1. Generate with Meshy&#39;s default High Detail model, through the API
+python meshy.py models\source\&lt;name&gt;_01.png --name &lt;name&gt;
+
+# 2. Remesh THAT task to 30,000 triangles. The remesh keeps the original skin
+python meshy.py --remesh &lt;task_id&gt; --name &lt;name&gt;_rm --polycount 30000
+
+# 3. Check the base of the model, and fix it
+python check_model_base.py &lt;name&gt;_rm.glb
+python check_model_base.py &lt;name&gt;_rm.glb --fix &lt;name&gt;_clean.glb [--floor LO HI]
+
+# 4. Import. Every flag matters, and --check is mandatory
+python glb_to_fbx.py &lt;name&gt;_clean.glb --name &lt;brand&gt; --apply --check --collider hull ^
+    --length 12.5 --sink 0.3 --need-preload --two-sided
+
+# 5. Repeat 1 to 4 for the outpost model, or reuse the main model for both
+
+# 6. Install into the mod folder
+python install_model_to_mod.py &quot;&lt;Mods&gt;\BaseUpgradeDesc_&lt;name&gt;&quot; &lt;brand&gt; [&lt;small_brand&gt;]
+</code></pre></div>
+
+<p>Then set the descriptor: <code>modelId</code> to your brand, <code>modelIdAdditional</code> to the
+small brand (or the main brand again), and <strong>both animated fields to <code>""</code></strong>.</p>
+<p>Why the steps are the way they are:</p>
+<ul>
+<li><strong>High Detail, not Smart Topology.</strong> Smart Topology paints a new, lower-quality
+  skin. Remeshing the High Detail result keeps the original one. Never decimate
+  a Meshy model in Blender; it scrambles the texture.</li>
+<li><strong>The base check</strong> removes slivers hanging below the model (it floats) and a
+  floor that Meshy stored twice (black triangles on the ground). The slivers
+  are found on their own; the doubled floor is removed only in the height band
+  you name with <code>--floor</code>.</li>
+<li><strong><code>--length</code>, not <code>--height</code>.</strong> An awning or mast eats a height budget and the
+  body comes out small. Main-base modules are about 12.5 m long with <code>--sink 0.3</code>;
+  outpost models 5 to 6 m with <code>--sink 0.1</code>. Every vanilla main-base module
+  reaches a little below the ground, so uneven terrain shows no gap.</li>
+<li><strong><code>--two-sided</code>.</strong> Meshy models are single-sided, and without it you can see
+  through the walls from inside.</li>
+<li><strong><code>--need-preload</code>.</strong> Saber requires <code>NeedPreload="true"</code> on every custom
+  module model.</li>
+<li><strong>Empty animated fields.</strong> A custom build animation turns nearby trucks
+  ghostly while the model rises. With <code>""</code> the module simply appears.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">The back-face check is enforced, not optional</p>
+<p><code>--check</code> renders Meshy&rsquo;s model and your built model from eight directions
+and measures how much of the surface the player would see from behind. A
+face seen from behind shows in game as a sharp dark wedge or a scrambled
+patch that no texture fix can cure.</p>
+<p>The build fails if the built model shows more than Meshy&rsquo;s original plus
+0.25 points, or more than 1.0% at all. <code>install_model_to_mod.py</code> refuses
+any model that has not passed, and there is no override. If a model fails,
+fix the model; never loosen the numbers.</p>
+<p>To look at a model by hand: <code>python check_backfacing.py &lt;glb&gt; [&lt;fbx&gt;] --out &lt;dir&gt;</code>.</p>
+</div>
+<p>What the install step does for you, and why it matters:</p>
+<div class="admonition warning">
+<p class="admonition-title">The game reads .pct textures, never .tga</p>
+<p>Ship only source TGAs and every surface renders <strong>flat, detail-free red</strong>.
+It looks like a colour bug and is a missing file. <code>install_model_to_mod.py</code>
+runs the game&rsquo;s converter to publish the <code>.pct</code> files and stops if any is
+missing.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Ship .pct only, never .pct_header</p>
+<p>With the header files beside the <code>.pct</code>, the game draws only the smallest
+versions of each texture: a blurry, smeared surface with scrambled lettering
+at every distance. The install step deletes them and the packer never packs
+them.</p>
+</div>
+<p>The editor cannot draw a custom model&rsquo;s textures at all, so a model that looks
+white in the editor means nothing. Judge it in the game.</p>
+<h2 id="step-4-store-art">Step 4. Store art<a class="headerlink" href="#step-4-store-art" title="Permanent link">#</a></h2>
+<p>A module shows pictures in several places: the store row, the purchase card,
+the banner when it is in use, and a chip on the HUD strip. Your mod may supply
+three of them as its own PNGs:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Size</th>
+<th>Framing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bg</code></td>
+<td>380 x 92</td>
+<td>fills the height, anchored left; the store row clips the left edge</td>
+</tr>
+<tr>
+<td><code>bgRight</code></td>
+<td>760 x 90</td>
+<td>fills the height, aligned right; the icon and name cover the left end</td>
+</tr>
+<tr>
+<td><code>bgSmall</code></td>
+<td>124 x 52</td>
+<td>the whole model, scaled so it just fills the chip, as every vanilla chip is</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ship them at <code>ui/textures/&lt;name&gt;.png</code> and name each in the descriptor without the
+folder and without <code>.png</code>, for example <code>"bg": "mymodule_bg"</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">popupModuleBg cannot take your own picture</p>
+<p>The game loads a mod&rsquo;s PNGs only for <code>bg</code>, <code>bgSmall</code> and <code>bgRight</code>. A custom
+PNG in <code>popupModuleBg</code> shows a placeholder, a yellow square with a red
+mountain. Set it to <code>""</code> or to a vanilla symbol. The module checker treats a
+custom popup as an error.</p>
+<p>Some pages in this guide still list <code>popupModuleBg</code> among the custom
+images; this finding is newer and comes from the game&rsquo;s own code.</p>
+</div>
+<p>The icon fields (<code>iconMap40</code>, <code>iconTrade</code> and the rest) take only symbols from
+the game&rsquo;s UI bundle. Borrow the vanilla module&rsquo;s symbols, copied exactly from
+its page; never build a symbol name by pasting parts together.</p>
+<p>The toolkit makes all three images from one transparent render of your model:</p>
+<div class="hl"><pre><span></span><code>blender -b -P fob_projects\render_cutout.py -- &lt;model.glb&gt; &lt;cutout.png&gt; [azimuth] [elevation]
+python fob_projects\menu_art.py &lt;cutout.png&gt; &quot;&lt;Mods&gt;\BaseUpgradeDesc_&lt;name&gt;&quot; &lt;prefix&gt;
+</code></pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">bgSmall shows the whole module</p>
+<p>Zooming in on part of the model for the chip reads as far too big next to
+the vanilla chips. Every vanilla chip shows the complete module at a size
+that just touches the chip&rsquo;s edges.</p>
+</div>
+<p>There is also a hand-painting
+<a href="../assets/downloads/expeditions-module-art-template.zip">template</a> with the
+canvases at the right sizes. The framing rules and the vanilla art are on each
+module&rsquo;s page in Appendix A.</p>
+<h2 id="step-5-pack-and-check">Step 5. Pack and check<a class="headerlink" href="#step-5-pack-and-check" title="Permanent link">#</a></h2>
+<div class="hl"><pre><span></span><code>python pack_fob_module.py &quot;&lt;Mods&gt;\BaseUpgradeDesc_&lt;name&gt;&quot; -o &quot;&lt;Mods&gt;&quot;
+python check_fob_module.py &quot;&lt;Mods&gt;\BaseUpgradeDesc_&lt;name&gt;&quot;
+</code></pre></div>
+
+<p>The packer writes two files: <code>BaseUpgradeDesc_&lt;name&gt;.pak</code> with the descriptor,
+art, model classes and converted meshes, and <code>BaseUpgradeDesc_&lt;name&gt;_pc.pak</code> with
+the <code>.pct</code> textures (empty for a module that uses vanilla models). It refuses to
+pack a descriptor the checker reports an error in. The checker must report the
+module clean.</p>
+<p>What packing does, and the traps in it, are on <a href="../70-shipping/packing.html">Packing</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Close the game before you pack</p>
+<p>A running game keeps using the pak it already opened. Write a new one under
+it and you test the old version without knowing.</p>
+</div>
+<h2 id="step-6-test-in-the-game">Step 6. Test in the game<a class="headerlink" href="#step-6-test-in-the-game" title="Permanent link">#</a></h2>
+<p>Restart the game so it finds the new pak, then check, in this order:</p>
+<ol>
+<li>The Base modules panel lists modules. An empty panel with
+   <code>UI_BASE_BUILDING_SUBHEADER</code> as its heading is an id collision (Step 2).</li>
+<li>The module builds at a <strong>main base</strong> and at an <strong>outpost</strong>, and each shows
+   the right model.</li>
+<li>Look at it up close and from about 30 m, in daylight and with headlights at
+   night. Crop and brighten a screenshot before you judge it; a dark screenshot
+   has hidden a blurred texture before.</li>
+<li>It does its job: open its panel, trade, craft, add armor, whatever the
+   vanilla module does.</li>
+<li>Sell it. The refund arrives and the slot frees. For options 2 and 3 the model
+   stays; that is the known limit, not your bug.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Can&rsquo;t be transferred usually means the truck is full</p>
+<p>The red &ldquo;Can&rsquo;t be transferred&rdquo; under spare parts at a repair-style module
+appears when the truck has no room left for parts. The vanilla repair
+station shows the same message to a full truck. Check the truck before the
+module.</p>
+</div>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flat red surfaces</td>
+<td><code>.pct</code> textures missing</td>
+</tr>
+<tr>
+<td>blurry, smeared texture at every distance</td>
+<td><code>.pct_header</code> files shipped</td>
+</tr>
+<tr>
+<td>dark wedges that stay still on the model</td>
+<td>faces seen from behind; the back-face check</td>
+</tr>
+<tr>
+<td>black triangles on the ground under it</td>
+<td>doubled floor; <code>check_model_base.py --floor</code></td>
+</tr>
+<tr>
+<td>floats above the ground</td>
+<td>slivers below the base, or no <code>--sink</code></td>
+</tr>
+<tr>
+<td>see-through walls from inside</td>
+<td>built without <code>--two-sided</code></td>
+</tr>
+<tr>
+<td>half the size it should be</td>
+<td>built with <code>--height</code> instead of <code>--length</code></td>
+</tr>
+<tr>
+<td>right at a main base, vanilla at an outpost</td>
+<td><code>modelIdAdditional</code> not set</td>
+</tr>
+<tr>
+<td>trucks go ghostly while it builds</td>
+<td>an <code>_objective</code> build animation; set both animated fields to <code>""</code></td>
+</tr>
+<tr>
+<td>crash while loading a save</td>
+<td>a model the save names was removed from the mod</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition warning">
+<p class="admonition-title">If a save stops loading, park mods, do not delete them</p>
+<p>A save remembers its modules. A module mod that is present but cannot be
+resolved hangs the load at 100%; one that is absent only prompts. To find
+which one, move module paks out of <code>Media\Mods</code> one at a time and keep them.</p>
+</div>
+<h2 id="tell-players-about-the-sold-module-limit">Tell players about the sold-module limit<a class="headerlink" href="#tell-players-about-the-sold-module-limit" title="Permanent link">#</a></h2>
+<p>If your module uses option 2 or 3, say so in the mod description, not only in a
+readme. Wording that is accurate:</p>
+<blockquote>
+<p>Note: selling this module frees the slot and refunds you normally, but the
+structure itself stays on the map. This affects every custom FOB module in
+Expeditions that uses its own model, not just this one. Saber ended support in
+September 2026, so it will not be patched.</p>
+</blockquote>
+<p>Do not write &ldquo;may&rdquo; or &ldquo;in some cases&rdquo;. It happens every time. Do not claim a
+workaround.</p>
+<h2 id="what-is-not-known-yet">What is not known yet<a class="headerlink" href="#what-is-not-known-yet" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>Unlocking a custom module as an objective reward.</strong> Documented by Saber,
+  not tested with a custom module, and which identifier the reward wants (the
+  <code>name</code> or the <code>moduleId</code>) is not confirmed.</li>
+<li><strong>Several module types</strong> have never been checked as custom modules: the
+  warehouse, essentials storage, helipad, expanded parking and tow truck.</li>
+<li><strong>Map-side custom module zones.</strong> Saber describes FOB module zones on a map
+  that carry their own <code>moduleId</code> to tie a zone to one custom module. That has
+  not been tested here.</li>
+<li><strong>A custom workshop at an outpost, and after reloading a save</strong>, and whether
+  its starting stock refills on a new deployment.</li>
+<li><strong>The source folder beside the pak.</strong> The tested modules were installed with
+  their source folder in <code>Media\Mods</code> next to the pak. An older finding warns
+  that a descriptor in both places can give two objects sharing one id. Which
+  arrangement is safest has not been settled by a direct test.</li>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
-<a class="seq-prev" href="../60-custom/base-modules-reference.html"><span>Previous</span>Every base module, and every surface you can edit</a><a class="seq-next" href="../65-vehicles/vehicles-overview.html"><span>Next</span>Vehicles, and what this part covers</a>      </nav>
+<a class="seq-prev" href="../60-custom/items.html"><span>Previous</span>Custom inventory items</a><a class="seq-next" href="../65-vehicles/vehicles-overview.html"><span>Next</span>Vehicles, and what this part covers</a>      </nav>
   </main>
 
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#what-a-custom-module-is">What a custom module is</a></li>
+<li><a href="#first-decision-where-the-model-comes-from">First decision: where the model comes from</a></li>
+<li><a href="#step-1-decide-what-it-does">Step 1. Decide what it does</a></li>
+<li><a href="#step-2-create-the-descriptor">Step 2. Create the descriptor</a><ul>
+<li><a href="#give-it-an-identity-no-other-mod-uses">Give it an identity no other mod uses</a></li>
+<li><a href="#name-text-and-price">Name, text and price</a></li>
+<li><a href="#locking-it-behind-an-objective">Locking it behind an objective</a></li>
+</ul>
+</li>
+<li><a href="#step-3-the-models">Step 3. The models</a><ul>
+<li><a href="#option-1-a-vanilla-model-as-is">Option 1: a vanilla model as is</a></li>
+<li><a href="#option-2-a-vanilla-model-in-another-colour">Option 2: a vanilla model in another colour</a></li>
+<li><a href="#option-3-your-own-3d-model">Option 3: your own 3D model</a></li>
+</ul>
+</li>
+<li><a href="#step-4-store-art">Step 4. Store art</a></li>
+<li><a href="#step-5-pack-and-check">Step 5. Pack and check</a></li>
+<li><a href="#step-6-test-in-the-game">Step 6. Test in the game</a></li>
+<li><a href="#tell-players-about-the-sold-module-limit">Tell players about the sold-module limit</a></li>
+<li><a href="#what-is-not-known-yet">What is not known yet</a></li>
+</ul>
 </div>
 
   </aside>

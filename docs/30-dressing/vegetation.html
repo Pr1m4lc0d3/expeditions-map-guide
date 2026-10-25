@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html" aria-current="page">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,17 +256,276 @@
         <h1>Vegetation and distributions</h1>
 <p class="lede">Scattering plants and objects across a map without placing every one by hand.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>Planned for this page:</p>
+      <article class="prose"><p>A <strong>distribution</strong> grows plants across an area you paint, instead of placing them
+one at a time. It is how forests, grass, scrub and scattered stones get onto a map.
+<span class="prov prov-doc">documented</span></p>
+<div class="admonition note">
+<p class="admonition-title">How much of this is tested</p>
+<p>Painting distributions with the game&rsquo;s own brushes is Saber&rsquo;s documented
+workflow and is how working maps are dressed. The file layout below was read off
+a working map. Custom plants have been converted and checked standing and swaying
+<strong>in the editor</strong>; whether a packed map carries everything a custom plant needs is
+not yet known.</p>
+</div>
+<h2 id="what-a-distribution-is">What a distribution is<a class="headerlink" href="#what-a-distribution-is" title="Permanent link">#</a></h2>
+<p>A distribution joins two things: <span class="prov prov-doc">documented</span></p>
 <ul>
-<li>what a distribution is, and when to use one instead of hand placement</li>
-<li>controlling density, slope limits and clustering</li>
-<li>keeping scatter out of roads and water</li>
-<li>nothing in nature is evenly spaced, and evenly spaced scatter reads as artificial
-  straight away</li>
+<li>a <strong>map</strong>, an image that records how dense the plants are everywhere on the level</li>
+<li>one or more <strong>brushes</strong>, which say which plants grow there</li>
+</ul>
+<p>You paint the map; the brushes decide what appears. Brushes are not only plants.
+Saber notes that stones and debris are planted the same way.</p>
+<p><strong>Use a distribution</strong> for anything there are many of and whose exact positions do
+not matter: trees, grass, bushes, pebbles. <strong>Place by hand</strong> anything whose position
+matters to the player, anything a truck should meet in one particular spot, or a
+composed scene. See <a href="models.html">Models, rocks and cliffs</a>.</p>
+<h2 id="making-one">Making one<a class="headerlink" href="#making-one" title="Permanent link">#</a></h2>
+<div class="step"><div class="n">1</div><div>
+
+### Add it
+
+Right-click the terrain (or the **Distributions** section of the Scene View) and
+choose **Add Distribution**. An empty one appears.
+
+</div></div>
+
+<div class="step"><div class="n">2</div><div>
+
+### Create its map
+
+Click the **Map** field, then its browse button, and name a new file. The name must
+start with `dstr_` and end with `.tga`, for example `dstr_aspens_1.tga`. Opening it
+creates the file and shows the painting brush.
+
+</div></div>
+
+<div class="step"><div class="n">3</div><div>
+
+### Choose its brushes
+
+Click **[press]** next to **Edit** in the Brushes section, move the brushes you want
+from **Available Brushes** to **Selected Brushes**, and click OK.
+
+</div></div>
+
+<div class="step"><div class="n">4</div><div>
+
+### Paint, then rebuild
+
+Paint the map (see below). Nothing appears until you rebuild: right-click
+**Terrain** in the Scene View and choose **Rebuild Terrain**.
+
+</div></div>
+
+<p><span class="prov prov-doc">documented</span></p>
+<h2 id="painting-density">Painting density<a class="headerlink" href="#painting-density" title="Permanent link">#</a></h2>
+<p>The brush has three modes. <span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>What you paint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Density</strong></td>
+<td>how many plants grow. Value above <code>0.50</code> adds, below <code>0.50</code> erases</td>
+</tr>
+<tr>
+<td><strong>Scale</strong></td>
+<td>how big they are. Value sets the size</td>
+</tr>
+<tr>
+<td><strong>Density subgroup</strong></td>
+<td>density for every distribution in a group at once. Expeditions only, and Saber calls it new and not very stable</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition warning">
+<p class="admonition-title">A value of exactly 0.50 paints nothing</p>
+<p>In Density mode the brush adds above <code>0.50</code>, erases below it, and does nothing
+at exactly <code>0.50</code>. A brush that &ldquo;does not work&rdquo; is often sitting on the middle.
+<span class="prov prov-doc">documented</span></p>
+</div>
+<p>Other brush settings are <strong>Size</strong>, <strong>Value</strong>, <strong>Falloff</strong> (how softly the strength
+drops off from the centre), <strong>Autofade</strong>, <strong>Randomize</strong> (plants unevenly) and
+<strong>Update Material</strong>, which Saber says not to use for distributions.</p>
+<h3 id="sabers-recommended-values">Saber&rsquo;s recommended values<a class="headerlink" href="#sabers-recommended-values" title="Permanent link">#</a></h3>
+<p><span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Painting</th>
+<th>Density Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>plants</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>rocks and debris</td>
+<td><code>0.7</code></td>
+</tr>
+<tr>
+<td>canes</td>
+<td><code>0.6</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Keep <strong>Falloff</strong> close to <code>0</code>. For more chaotic rocks, paint Scale with Size <code>0.6</code>,
+Value <code>1.0</code>, Falloff <code>0.07</code>, Autofade off and Randomize on.</p>
+<p><strong>The higher the mountain, the smaller the trees.</strong> On distant high ground Saber
+suggests mature trees at a lower scale, so they drop out at a greater distance and
+the mountain&rsquo;s silhouette stays visible longer.</p>
+<h2 id="keeping-it-out-of-roads-water-and-mud">Keeping it out of roads, water and mud<a class="headerlink" href="#keeping-it-out-of-roads-water-and-mud" title="Permanent link">#</a></h2>
+<p>Each distribution has three switches: <span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th><code>false</code> (the default)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ignore Overlays</td>
+<td>plants do not grow on roads</td>
+</tr>
+<tr>
+<td>Ignore Water</td>
+<td>plants do not grow under water</td>
+</tr>
+<tr>
+<td>Ignore Mud</td>
+<td>plants do not grow in mud</td>
+</tr>
+</tbody>
+</table></div>
+<p>Leave them <code>false</code> unless you really want grass through a road. This only covers the
+distribution. Rocks and objects placed individually are not kept off roads by it;
+see <a href="models.html#scattering-by-script">Models, rocks and cliffs</a>.</p>
+<h2 id="making-it-look-natural">Making it look natural<a class="headerlink" href="#making-it-look-natural" title="Permanent link">#</a></h2>
+<p><strong>Nothing in nature is evenly spaced, and evenly spaced scatter reads as artificial
+straight away.</strong> Real vegetation clumps where conditions suit it, with gaps between.
+A flat, even density across a hillside looks machine-made however good the plants are.</p>
+<p>What helps:</p>
+<ul>
+<li><strong>Vary the density as you paint.</strong> Denser in hollows, thinner on ridges and dry
+  ground, gaps around rock and clearings. Use <strong>Randomize</strong> for unevenness at small
+  scale.</li>
+<li><strong>Mix brushes on one map.</strong> One distribution can carry several brushes, so one
+  painted area grows trees and small trees together in the brushes&rsquo; own proportions.</li>
+<li><strong>Use several variants of a plant.</strong> A brush picks among its plant types for each
+  instance, so four variants read far better than one repeated.</li>
+<li><strong>Change the Seed to reshuffle.</strong> Each distribution has a <code>Seed</code>. A new one
+  rearranges the plants without repainting.</li>
+<li><strong>Follow the ground&rsquo;s aspect.</strong> Many vanilla brushes come in a green and an autumn
+  version: names ending <code>_g</code> are the green variant, so <code>MaplesGreen</code> is the green
+  form of <code>Maples</code>. On one map, green maple and hemlock on cool north slopes against
+  gold oak on dry south slopes matched what those hills look like in autumn.</li>
+</ul>
+<h3 id="density-is-also-drivability">Density is also drivability<a class="headerlink" href="#density-is-also-drivability" title="Permanent link">#</a></h3>
+<p>A truck cannot push through trees. A forest painted uniformly dense is a map with no
+offroad route through it. Thin the canopy where a player should be able to pick a
+line, and keep it closed where they should not.</p>
+<h3 id="slope">Slope<a class="headerlink" href="#slope" title="Permanent link">#</a></h3>
+<p>No slope limit is documented for a distribution. Two things are available:</p>
+<ul>
+<li>in a brush, <code>Perpendicularity</code> decides whether plants stand upright (<code>1.0</code>) or
+  lean with the ground (<code>0</code>), and <code>Divergence</code> adds random lean</li>
+<li>the density map is a plain image, so it can in principle be generated from a slope
+  or elevation band rather than painted. <span class="prov prov-unver">unverified</span>
+  as a finished workflow</li>
+</ul>
+<h3 id="grass-under-trees">Grass under trees<a class="headerlink" href="#grass-under-trees" title="Permanent link">#</a></h3>
+<p>Expeditions&rsquo; Terrain Properties have an <strong>Obstructed grass persistence multiplier</strong>,
+which affects grass planted by distributions inside large groups of trees.
+<span class="prov prov-doc">documented</span></p>
+<h2 id="where-it-is-all-stored">Where it is all stored<a class="headerlink" href="#where-it-is-all-stored" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Piece</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a brush</td>
+<td>the game&rsquo;s <code>brushes.xml</code>, plus your own in <code>Media\classes\editor\brushes_custom.xml</code>. The editor lists both together</td>
+</tr>
+<tr>
+<td>a distribution</td>
+<td><code>Media\prebuild\&lt;level&gt;\subgroups\Distribution_&lt;name&gt;.xml</code></td>
+</tr>
+<tr>
+<td>its density map</td>
+<td><code>Media\prebuild\&lt;level&gt;\data\&lt;col&gt;_&lt;row&gt;\dstr_&lt;map&gt;.tga</code>, one image per terrain tile</td>
+</tr>
+</tbody>
+</table></div>
+<p>Three things here mislead people:</p>
+<ul>
+<li><strong>Distributions are not in the level XML.</strong> It holds an empty <code>&lt;Distributions/&gt;</code> on
+  every map, shipped ones included. They live in <code>subgroups\</code>. Looking in the level
+  file finds nothing and reads as &ldquo;the editor lost them&rdquo;.</li>
+<li><strong>The map name is free-form, and nothing checks it.</strong> A typo paints into a map no
+  distribution reads, which looks exactly like &ldquo;the plant does not work&rdquo;.</li>
+<li><strong>Close the editor before touching any of these files.</strong> It holds them and writes
+  over your changes when it closes. Subgroup files must also keep LF line endings,
+  and a backup left in <code>subgroups\</code> is loaded as an empty group. See
+  <a href="models.html#where-placed-models-are-stored">Models, rocks and cliffs</a>.</li>
+</ul>
+<p>A brush entry looks like this. <code>PlantsPerBlock</code> is the count per 24 m block at full
+density, and <code>MinSize</code>/<code>MaxSize</code> <strong>multiply</strong> the plant&rsquo;s own size, they do not
+normalise it:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;DistributionBrushes&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Plants&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Mullein</span><span class="w"> </span><span class="na">PlantsPerBlock=</span><span class="s">&quot;700&quot;</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;PlantType</span><span class="w"> </span><span class="na">Brand=</span><span class="s">&quot;mullein_01&quot;</span><span class="w"> </span><span class="na">Divergence=</span><span class="s">&quot;0.08&quot;</span><span class="w"> </span><span class="na">MinSize=</span><span class="s">&quot;0.8&quot;</span>
+<span class="w">                 </span><span class="na">MaxSize=</span><span class="s">&quot;1.2&quot;</span><span class="w"> </span><span class="na">MaxMapScale=</span><span class="s">&quot;0.5&quot;</span><span class="w"> </span><span class="na">Perpendicularity=</span><span class="s">&quot;1.0&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/Mullein&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/Plants&gt;</span>
+<span class="nt">&lt;/DistributionBrushes&gt;</span>
+</code></pre></div>
+
+<h2 id="your-own-plants">Your own plants<a class="headerlink" href="#your-own-plants" title="Permanent link">#</a></h2>
+<p>A plant from outside the game can be added as a brand and given a brush. What has
+been learned building them:</p>
+<ul>
+<li><strong>Foliage is flat cards, not solid geometry.</strong> An image-to-3D generator makes a
+  solid lump with a photo wrapped round it. One generated plant was 58,226 triangles
+  and 18 times the size of the median shipped plant; the same species built from
+  alpha-cut photo cards was 26 triangles. Build plants from cards.</li>
+<li><strong>Export Z-up and rotate nothing.</strong> The engine is Y-up, but the converter does the
+  conversion itself, so give it Blender&rsquo;s native Z-up with no rotation on the nodes.
+  Both obvious &ldquo;fixes&rdquo; laid plants on their sides. The tell is not a missing top: it
+  is upright parts lying flat <strong>and</strong> flat parts standing up.</li>
+<li><strong>A plant at distance is a billboard, which needs two copies.</strong> If a plant looks
+  perfect up close and turns into a <strong>solid red cone</strong> further away, its billboard
+  texture is missing from <code>prebuild\textures\dds\</code>. And a billboard is a render of
+  the mesh, so after rebuilding the mesh, rebuild the billboard too.</li>
+<li><strong>Name the mesh object <code>plant</code></strong>, and give it one more LOD distance than the same
+  geometry would have as a model, because the billboard is generated as an extra LOD.</li>
+<li><strong>Wind is on by default.</strong> Anything marked as foliage sways. <code>WindAnimation="false"</code>
+  is how the game switches it <strong>off</strong>, for debris that must not move.</li>
+<li><strong>Declare real heights.</strong> Because <code>MinSize</code>/<code>MaxSize</code> multiply, variants built at
+  different sizes come out visibly mismatched in one brush.</li>
+</ul>
+<p>The toolkit builds card plants and checks these for you; see
+<a href="../80-ai-tools/toolkit.html">The toolkit</a>.</p>
+<h2 id="what-is-not-known-yet">What is not known yet<a class="headerlink" href="#what-is-not-known-yet" title="Permanent link">#</a></h2>
+<ul>
+<li>what a packed map needs for a custom plant&rsquo;s billboard to appear in game</li>
+<li>whether a scripted density map from a slope band works end to end</li>
+<li>how stable Density subgroup mode is in practice</li>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
@@ -276,7 +535,24 @@
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#what-a-distribution-is">What a distribution is</a></li>
+<li><a href="#making-one">Making one</a></li>
+<li><a href="#painting-density">Painting density</a><ul>
+<li><a href="#sabers-recommended-values">Saber&rsquo;s recommended values</a></li>
+</ul>
+</li>
+<li><a href="#keeping-it-out-of-roads-water-and-mud">Keeping it out of roads, water and mud</a></li>
+<li><a href="#making-it-look-natural">Making it look natural</a><ul>
+<li><a href="#density-is-also-drivability">Density is also drivability</a></li>
+<li><a href="#slope">Slope</a></li>
+<li><a href="#grass-under-trees">Grass under trees</a></li>
+</ul>
+</li>
+<li><a href="#where-it-is-all-stored">Where it is all stored</a></li>
+<li><a href="#your-own-plants">Your own plants</a></li>
+<li><a href="#what-is-not-known-yet">What is not known yet</a></li>
+</ul>
 </div>
 
   </aside>

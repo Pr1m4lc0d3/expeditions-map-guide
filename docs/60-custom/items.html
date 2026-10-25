@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Custom inventory items &middot; Expeditions Map Making</title>
-<meta name="description" content="Your own devices, tools and cargo, and the one flag that decides whether a mission using them can start."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Your own devices, tools and quest items, and the one flag that decides whether a mission using them can start."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html" aria-current="page">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html" aria-current="page">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -254,30 +254,686 @@
       <div class="page-head">
         <p class="eyebrow">Custom content</p>
         <h1>Custom inventory items</h1>
-<p class="lede">Your own devices, tools and cargo, and the one flag that decides whether a mission using them can start.</p>      </div>
+<p class="lede">Your own devices, tools and quest items, and the one flag that decides whether a mission using them can start.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>Planned for this page:</p>
+      <article class="prose"><h1 id="custom-inventory-items">Custom inventory items<a class="headerlink" href="#custom-inventory-items" title="Permanent link">#</a></h1>
+<p>An inventory item is anything that rides in a truck&rsquo;s <strong>Inventory</strong> slots or
+<strong>Sideboard</strong> (cargo) slots: tools like the anchor and jack screw, quest pickups
+like a camera trap or a flight recorder, and valuables the player sells at the end
+of a run. <span class="prov prov-doc">documented</span></p>
+<p>Items do one of two jobs:</p>
 <ul>
-<li>the item descriptor, and the predefined item types</li>
-<li>icons, and the slots an item can occupy</li>
-<li>ability-specific properties, for items that actually do something</li>
-<li><strong>the take-in-HQ flag decides whether the player can load your item at
-  Headquarters.</strong> An expedition that requires an item without it can never be started</li>
-<li>using your item in objectives, as something to collect or to deliver</li>
+<li><strong>Usable items</strong> run a piece of built-in game logic when the player presses
+  <em>Use</em>: place an anchor, lift the truck with a jack screw. You can only reuse
+  logic the game already has, but you can retune its numbers.</li>
+<li><strong>Everything else</strong> has no behaviour of its own. It exists to be found, carried,
+  delivered, crafted, recycled or sold, and objectives give it meaning.</li>
+</ul>
+<p>Fuel, repair parts and spare wheels are <strong>not</strong> inventory items and cannot be made
+as one. Those are consumables, built as truck addons.
+<span class="prov prov-doc">documented</span></p>
+<div class="admonition note">
+<p class="admonition-title">What this page does and does not cover yet</p>
+<p>The descriptor fields, item types, the HQ flag and the Workshop values are
+sourced from Saber&rsquo;s guide, the editor schema and item mods tested in game.
+Several things are <strong>not yet known</strong> and are marked where they come up:
+whether the four-mod HQ limit behaves as documented, whether <code>invId</code> is ever
+read, and every ability class except the jack screw.</p>
+</div>
+<h2 id="what-an-item-mod-contains">What an item mod contains<a class="headerlink" href="#what-an-item-mod-contains" title="Permanent link">#</a></h2>
+<div class="hl"><pre><span></span><code>Documents\My Games\Expeditions\Media\Mods\
+  InventoryItemDesc_&lt;id&gt;\
+    InventoryItemDesc              the descriptor (JSON, no file extension)
+    ui\textures\&lt;name&gt;_20.png      optional custom icons, see Icons
+    ui\textures\&lt;name&gt;_30.png
+    ui\textures\&lt;name&gt;_40.png
+    ui\textures\&lt;name&gt;_60.png
+  InventoryItemDesc_&lt;id&gt;.pak       what the game loads
+</code></pre></div>
+
+<p>Make one in the editor: <strong>EXP MODs creation</strong>, <strong>File &gt; New Mod &gt; Inventory
+Item</strong>, type an id in <strong>name</strong>, choose the class in <strong>InventoryItemDesc</strong>, fill in
+the fields, <strong>File &gt; Save</strong>, <strong>File &gt; Pack</strong>, restart the game.
+<span class="prov prov-doc">documented</span> As with specialists, the first save
+fails with <code>Can't open file</code> if <code>Media\Mods</code> does not exist yet; create it by hand.</p>
+<h3 id="the-id">The id<a class="headerlink" href="#the-id" title="Permanent link">#</a></h3>
+<p>The id is what objectives and loot zones use to refer to the item. Saber allows
+only Latin letters, digits and underscores. <span class="prov prov-doc">documented</span></p>
+<p>Use underscores (<code>Like_This</code>), and do not count on spaces being tolerated. The
+custom items confirmed working on the test install all have underscored ids. Whether
+a space in an item id breaks anything has not been settled, but the game is known
+to split some names on whitespace: a loot zone whose id contains a space cannot be
+looted at all (see <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>).</p>
+<h2 id="the-class-what-the-item-can-do">The class: what the item can do<a class="headerlink" href="#the-class-what-the-item-can-do" title="Permanent link">#</a></h2>
+<p>The class you pick decides which ability logic the item gets, and which extra
+fields appear.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>For</th>
+<th>Vanilla examples</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InventoryItemDesc</code></td>
+<td>No ability: quest items, treasure, GPS tracker</td>
+<td>Memory card, Dinosaur bone, Flight recorder</td>
+<td>Works. Tested.</td>
+</tr>
+<tr>
+<td><code>InventoryItemDescJackScrew</code></td>
+<td>Lifts and re-places the truck</td>
+<td>Jack screw</td>
+<td>Works. Tested.</td>
+</tr>
+<tr>
+<td><code>InventoryItemDescAnchor</code></td>
+<td>A placeable winch point; also the signal amplifier</td>
+<td>Anchor, Removable anchor, Signal amplifier</td>
+<td>Documented. Not tested here in play.</td>
+</tr>
+<tr>
+<td><code>InventoryItemDescDrone</code></td>
+<td>Air drone</td>
+<td>Drone</td>
+<td><strong>Do not make.</strong> Saber says it causes errors.</td>
+</tr>
+<tr>
+<td><code>InventoryItemDescEcholot</code></td>
+<td>Echo sounder</td>
+<td>Echo sounder</td>
+<td><strong>Do not make.</strong> Saber says it causes errors.</td>
+</tr>
+<tr>
+<td><code>InventoryItemDescBinocular</code></td>
+<td>Binoculars</td>
+<td>Binoculars</td>
+<td><strong>Do not make.</strong> Saber says it causes errors.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Saber&rsquo;s warning against drone, echo sounder and binocular items promised a fix in
+a later release. Support ended in September 2026, so the warning stands.
+<span class="prov prov-doc">documented</span></p>
+<p>A usable item also needs <code>baseTypeAbility</code> set to the matching ability. The JSON
+stores it as a number:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Ability</th>
+<th>Value</th>
+<th>Ability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td><code>NONE</code></td>
+<td><code>4</code></td>
+<td><code>JACKSCREW</code></td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td><code>BINOCULAR</code></td>
+<td><code>5</code></td>
+<td><code>ECHOLOT</code></td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><code>ANCHOR</code></td>
+<td><code>10</code></td>
+<td><code>DRONE</code></td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td><code>SIGNAL_AMPLIFIER</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>The schema lists more abilities after these (the drones, portable bridges, tow
+rope and some obsolete test entries). Saber&rsquo;s guide covers only the ones above.
+<span class="prov prov-schema">schema only</span></p>
+<h2 id="the-general-fields">The general fields<a class="headerlink" href="#the-general-fields" title="Permanent link">#</a></h2>
+<p>Every class has these. The JSON below is a working quest item, trimmed to the
+general fields:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;SslType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InventoryItemDesc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;SslValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InventoryItemDesc&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;baseTypeAbility&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;uiName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Item&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;uiDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;One line for the inventory tooltip.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon20&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myitem_20&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;icon30&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myitem_30&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon40&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myitem_40&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;icon60&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myitem_60&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;iconDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;defaultUseCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;craftRepairsCost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;craftUseCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;recycleRepairsCost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isUsable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isHeavyItem&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isTreasure&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;canTakeInHq&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;notForSale&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isRequired&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;notForCoopDel&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;notForDuplicate&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;canBeUsedInCave&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;hasIconOnMinimap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My_Item&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The top-level <code>name</code> is the item&rsquo;s id. <code>SslValue.name</code> is always
+<code>"InventoryItemDesc"</code>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>The item&rsquo;s category. See <a href="#type-the-category-everything-else-matches-on">Type</a>.</td>
+<td><code>BINOCULAR</code> (0)</td>
+</tr>
+<tr>
+<td><code>uiName</code></td>
+<td>Name in the UI. Saber&rsquo;s limit: 20 characters.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>uiDesc</code></td>
+<td>Description. Saber&rsquo;s limit: 80 characters.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>icon20</code> to <code>icon60</code></td>
+<td>The four icons. See <a href="#icons">Icons</a>.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>defaultUseCount</code></td>
+<td>Charges. <code>-1</code> is unlimited. Quest and treasure items use <code>1</code>.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>cost</code></td>
+<td>Price at Headquarters, whole number.</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>craftRepairsCost</code></td>
+<td>Spare parts to craft it at a Workshop. <code>-1</code> means not craftable.</td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>craftUseCount</code></td>
+<td>Charges a crafted copy comes with.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>recycleRepairsCost</code></td>
+<td>Spare parts it recycles into at a Workshop. <code>-1</code> means not recyclable.</td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>isUsable</code></td>
+<td>The player can press <em>Use</em> on it. <code>true</code> for ability items.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>isHeavyItem</code></td>
+<td>Goes in the Sideboard (cargo slots), not Inventory.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>isTreasure</code></td>
+<td>Sold at the end of the expedition; sell-price specialists boost it.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>canTakeInHq</code></td>
+<td>Can be bought at Headquarters before a run. See below.</td>
+<td><strong><code>true</code></strong></td>
+</tr>
+<tr>
+<td><code>notForSale</code></td>
+<td>Saber lists it as &ldquo;TBD&rdquo;. Not tested.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>isRequired</code>, <code>notForCoopDel</code>, <code>notForDuplicate</code>, <code>canBeUsedInCave</code>, <code>hasIconOnMinimap</code></td>
+<td>Present in the schema and in working mods; not described by Saber, not tested here.</td>
+<td><code>false</code>, <code>false</code>, <code>false</code>, <code>true</code>, <code>false</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The defaults are the editor schema&rsquo;s. Saber&rsquo;s limits on <code>uiName</code> and <code>uiDesc</code> are
+not enforced everywhere: a tested custom item showed a 28-character name and a
+150-character description in full in the Workshop panel. Whether longer text
+breaks other screens has not been checked.</p>
+<p>Rules from Saber&rsquo;s guide, all <span class="prov prov-doc">documented</span>:</p>
+<ul>
+<li><strong><code>isUsable</code> and <code>isHeavyItem</code> do not mix.</strong> A usable item can only be used from
+  Inventory or the radial menu, never from the Sideboard. Heavy items that are
+  only delivered (a radio station, say) are fine.</li>
+<li><strong><code>isTreasure</code> and <code>canTakeInHq</code> together crash the game.</strong> Treasure cannot be
+  sold at HQ.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title"><code>canTakeInHq</code> defaults to true</p>
+<p>The schema default for <code>canTakeInHq</code> is <code>true</code>. A treasure item left on the
+default therefore carries the crashing combination. Set <code>canTakeInHq: false</code>
+on every treasure item, as the tested treasure mod does.</p>
+</div>
+<h2 id="type-the-category-everything-else-matches-on">Type: the category everything else matches on<a class="headerlink" href="#type-the-category-everything-else-matches-on" title="Permanent link">#</a></h2>
+<p>Every item has a <code>type</code> from a fixed list. Anchor and Removable anchor are
+different items with the same type. Type does not change how the item behaves; it
+is a <strong>tag</strong>, and objectives and loot zones usually refer to items by type rather
+than by id. <span class="prov prov-doc">documented</span></p>
+<p>So any item with the right type satisfies a requirement for that type. Saber&rsquo;s
+example: a delivery stage that asks for a type accepts <em>any</em> item of that type.
+<span class="prov prov-doc">documented</span></p>
+<div class="admonition warning">
+<p class="admonition-title">Give items you need to tell apart different types</p>
+<p>Objectives, loot slots and required-inventory lists have an id field
+(<code>invId</code>, <code>itemName</code>) as well as a type. Saber&rsquo;s guide marks the id field in
+<code>takeInventory</code>, <code>objectConstruction</code> and required inventory as &ldquo;currently not
+added&rdquo; or &ldquo;not implemented&rdquo;, and support ended without it being finished.
+<span class="prov prov-doc">documented</span></p>
+<p>Whether the game reads it anyway is <strong>not established</strong>. The safe assumption
+is that only <code>type</code> counts. If two of your items must not be mistaken for each
+other (two different quest pickups, say), give them different types.
+The large list of quest types exists for this.</p>
+</div>
+<p>The JSON stores <code>type</code> as a number, its position in the schema&rsquo;s list. These
+values are confirmed against working items in shipped or tested data:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Type</th>
+<th>Confirmed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>4</code></td>
+<td><code>ANCHOR_SETUP</code></td>
+<td>vanilla <code>Anchor</code> in a loot zone</td>
+</tr>
+<tr>
+<td><code>5</code></td>
+<td><code>JACK_SCREW</code></td>
+<td>vanilla <code>Jack_screw</code> in a loot zone</td>
+</tr>
+<tr>
+<td><code>14</code></td>
+<td><code>QUEST_ITEM</code></td>
+<td>a tested custom quest item</td>
+</tr>
+<tr>
+<td><code>44</code></td>
+<td><code>TREASURE</code></td>
+<td>vanilla <code>Arizona_Treasure_1</code></td>
+</tr>
+<tr>
+<td><code>45</code></td>
+<td><code>SCRAP_FOR_WARKSHOP</code></td>
+<td>vanilla <code>Scrap_For_Workshop</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>By counting the same list, <code>QUEST_SUPPLIES</code> is <code>24</code>; that one has not been checked
+against a working item.</p>
+<div class="admonition warning">
+<p class="admonition-title">Count from zero, and check before you trust an index</p>
+<p>The list starts <code>BINOCULAR</code> = <code>0</code>, <code>DRONE</code> = <code>1</code>. In the schema file the
+default value is printed above the list, so a quick scrape comes out <strong>off by
+one</strong>. Check any new index against a known item before relying on it.</p>
+</div>
+<p>Saber&rsquo;s appendix lists every vanilla type with what it is used for. Quest types
+include <code>AMULET</code>, <code>ANIMAL_TRAIL_CAMERA</code>, <code>BATTERY</code>, <code>CANDLES</code>, <code>DINO_BONE</code>,
+<code>EQUIPMENT_BOX</code>, <code>FISH</code>, <code>GOLD_PRILL</code>, <code>MAP</code>, <code>MEMORY_CARD</code>, <code>MUSHROOMS</code>,
+<code>QUEST_ITEM</code> (the universal quest type), <code>QUEST_SUPPLIES</code>, <code>RADIO_STATION</code>,
+<code>VIDEO_CAMERA</code>, <code>WATER_ANALYZIS</code> and more. <code>NONE</code>, <code>FUEL_CANISTER</code>, <code>TOOLKIT</code> and
+<code>PENALTY_ITEM</code> are unused.</p>
+<p>Vanilla item ids worth knowing, for loot zones and objectives:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Anchor</code> (removable), <code>Anchor_not_removable</code></td>
+<td><code>ANCHOR_SETUP</code></td>
+</tr>
+<tr>
+<td><code>SignalAmplifier</code></td>
+<td><code>SIGNAL_AMPLIFIER_SETUP</code></td>
+</tr>
+<tr>
+<td><code>Jack_screw</code>, <code>Jack_screw_strong</code></td>
+<td><code>JACK_SCREW</code></td>
+</tr>
+<tr>
+<td><code>GPS_Tracker</code></td>
+<td><code>GPS_TRACKER</code></td>
+</tr>
+<tr>
+<td><code>Scrap_For_Workshop</code></td>
+<td><code>SCRAP_FOR_WARKSHOP</code></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="the-headquarters-flag">The Headquarters flag<a class="headerlink" href="#the-headquarters-flag" title="Permanent link">#</a></h2>
+<p><code>canTakeInHq</code> decides whether the player can buy the item at <strong>Headquarters</strong>
+while preparing an expedition.</p>
+<div class="admonition danger">
+<p class="admonition-title">An expedition that requires an item without this flag can never start</p>
+<p>If an expedition&rsquo;s <strong>Required inventory</strong> lists an item, that item must be
+available at Headquarters, so a custom item there must have
+<code>canTakeInHq: true</code>. Otherwise the player cannot load it, cannot meet the
+requirement, and the expedition refuses to start without explaining why.
+<span class="prov prov-doc">documented</span></p>
+<p>Required inventory is for expeditions only, not contracts or tasks.
+<span class="prov prov-doc">documented</span></p>
+</div>
+<p>Headquarters has 16 inventory slots and 16 sideboard slots, shared between
+vanilla and modded items. Saber gives a limit of <strong>4 enabled item mods</strong> with
+<code>canTakeInHq: true</code> for inventory items, and 4 for sideboard items, counting local
+paks and mod.io subscriptions together. Past the limit, some of them silently drop
+off the HQ lists. Disable some in the Mod browser, or delete local test paks you
+no longer need. <span class="prov prov-doc">documented</span> Not tested here.</p>
+<h2 id="icons">Icons<a class="headerlink" href="#icons" title="Permanent link">#</a></h2>
+<p>Each item names four icons:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Size</th>
+<th>Where it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>icon20</code></td>
+<td>20 x 20</td>
+<td>Requirements at Headquarters</td>
+</tr>
+<tr>
+<td><code>icon30</code></td>
+<td>30 x 30</td>
+<td>Summary and specialist screens</td>
+</tr>
+<tr>
+<td><code>icon40</code></td>
+<td>40 x 40</td>
+<td>The map</td>
+</tr>
+<tr>
+<td><code>icon60</code></td>
+<td>60 x 60</td>
+<td>The inventory slot</td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="prov prov-doc">documented</span></p>
+<p>There are two ways to fill them.</p>
+<p><strong>Borrow a vanilla icon.</strong> Put the name of a game icon in each field. Saber&rsquo;s
+appendix lists them; most differ only in the size suffix:</p>
+<div class="hl"><pre><span></span><code>toolAnchorImg20 / 30 / 40 / 60            Anchor
+toolAnchorAlternateImg20 ...              Removable anchor
+toolJackScrewImg20 ...                    Jack screw
+toolDroneImg20 ...                        Drone
+objectivesQestItem20 ...                  most quest items
+toolToolkitImg20 ...                      QUEST_ITEM type
+scrapForWorkshop_20 / _30 / _40 / _60     Scrap for Workshop
+treasureArizona1_20 ... treasureCarpathians3_60   the six treasures
+</code></pre></div>
+
+<p>The one irregular name: Portable rig part uses <code>toolPortativeDrillImg20/30/40</code> but
+<code>toolAddonDrillImg60</code>.</p>
+<p><strong>Ship your own PNGs.</strong> Saber&rsquo;s guide says custom item icons are not supported.
+The test install says otherwise: item mods that ship
+<code>ui/textures/&lt;name&gt;_20.png</code> through <code>_60.png</code> at the four sizes, as RGBA, and name
+them in the fields without folder or extension, show their own icons in game.
+<span class="prov prov-unver">measured on one install</span></p>
+<div class="admonition warning">
+<p class="admonition-title">A named icon that is not in the pak renders blank</p>
+<p>If a field names an icon and the pak carries no file of that name (and it is
+not a vanilla icon name), the slot is simply empty. An early build of a tested
+item named its four icons and shipped no textures, and showed an empty
+slot. Save icons as RGBA, not palettised.</p>
+</div>
+<p><code>iconDesc</code> cannot be customised. <span class="prov prov-doc">documented</span></p>
+<h2 id="crafting-and-recycling-at-the-workshop">Crafting and recycling at the Workshop<a class="headerlink" href="#crafting-and-recycling-at-the-workshop" title="Permanent link">#</a></h2>
+<p>A <a href="../62-modules/workshop.html">Workshop</a> turns spare parts into items and items
+into spare parts. An item is <strong>craftable</strong> when <code>craftRepairsCost</code> is not <code>-1</code>, and
+<strong>recyclable</strong> when <code>recycleRepairsCost</code> is not <code>-1</code>. The two are independent.
+<span class="prov prov-doc">documented</span></p>
+<p>A tested custom jack-screw item with <code>craftRepairsCost: 1000</code> appeared in the
+Workshop&rsquo;s craft list, with its own name and description, and showed &ldquo;Not enough
+spare parts: 1000&rdquo; until the Workshop held enough.</p>
+<p>The vanilla values, for pricing your own:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Recycles into</th>
+<th>Costs to craft</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scrap for Workshop</td>
+<td>50</td>
+<td>not craftable</td>
+</tr>
+<tr>
+<td>GPS tracker</td>
+<td>50</td>
+<td>220</td>
+</tr>
+<tr>
+<td>Big portable bridge</td>
+<td>70</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Small portable bridge</td>
+<td>40</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Signal amplifier</td>
+<td>40</td>
+<td>160</td>
+</tr>
+<tr>
+<td>Fixed anchor</td>
+<td>40</td>
+<td>160</td>
+</tr>
+<tr>
+<td>Jack screw</td>
+<td>40</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Tow rope</td>
+<td>20</td>
+<td>50</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recycling pays well under the craft price everywhere in vanilla. An item that
+recycles for more than it crafts for turns the Workshop into a spare-parts
+machine.</p>
+<h2 id="ability-items">Ability items<a class="headerlink" href="#ability-items" title="Permanent link">#</a></h2>
+<p>These fields appear only on the ability classes.</p>
+<h3 id="jack-screw-inventoryitemdescjackscrew">Jack screw: <code>InventoryItemDescJackScrew</code><a class="headerlink" href="#jack-screw-inventoryitemdescjackscrew" title="Permanent link">#</a></h3>
+<p>Tested. A custom jack-screw item with the fields below let the player pick the
+truck up and set it down on a ledge well above it.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+<th>Tested value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>radius</code></td>
+<td>How far from the truck it can be re-placed, meters</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>useIfRolledOverOnly</code></td>
+<td>Only usable on a rolled-over truck. Saber: on by default.</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>jackScrewControllerDesc.modelSetupPreviewControllerDesc.height</code></td>
+<td>Highest placement relative to the truck</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>...maxUserDefinedHeight</code></td>
+<td>How high the player can lift the preview</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>...allowSetupUnderWater</code>, <code>...allowedWaterLevel</code></td>
+<td>Placement in water, and the deepest allowed</td>
+<td><code>true</code>, <code>0</code></td>
+</tr>
+<tr>
+<td><code>...rotationSpeedModifier</code></td>
+<td>Rotation speed of the preview</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>...doPaintModel</code></td>
+<td>Tint the preview green or red. Saber recommends leaving it on.</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Set <code>baseTypeAbility: 4</code>, <code>type: 5</code> (<code>JACK_SCREW</code>), <code>isUsable: true</code>. Saber&rsquo;s
+guide spells the rolled-over switch <code>uselfRolledOverOnly</code>; the schema&rsquo;s name is
+<code>useIfRolledOverOnly</code>.</p>
+<p>The vanilla jack screw is meant to right a rolled truck. Turning off
+<code>useIfRolledOverOnly</code> and raising the radius and heights makes it a short-range
+teleport, which is a large gameplay change; price it accordingly.</p>
+<h3 id="anchor-inventoryitemdescanchor">Anchor: <code>InventoryItemDescAnchor</code><a class="headerlink" href="#anchor-inventoryitemdescanchor" title="Permanent link">#</a></h3>
+<p>Documented by Saber; a custom anchor exists on disk but has not been tested here
+in play. Main fields: <code>setupRadius</code> (meters), <code>controllerDesc</code> (an
+<code>AnchorSetupControllerDesc</code>) holding <code>anchorBrand</code> (<code>test_anchor</code> for the vanilla
+model), <code>previewAnchorModel</code> (<code>models_test_anchor</code>), <code>isRemovableByWinch</code> (<code>true</code>
+on the removable anchor), <code>upDirOffset</code>, <code>scale</code>, and the same placement preview
+block as the jack screw. <span class="prov prov-doc">documented</span></p>
+<div class="admonition warning">
+<p class="admonition-title">Custom anchor models are not supported</p>
+<p>Saber&rsquo;s guide describes how a custom anchor model would be set up
+(<code>NeedPreload="true"</code> on the model class and a <code>&lt;WinchSocket Pos=...&gt;</code> in its
+<code>GameData</code>) and then says custom anchor models are not supported. Use the
+vanilla model. <span class="prov prov-doc">documented</span></p>
+</div>
+<p>A <strong>signal amplifier</strong>, which gives wheeled drones a signal zone, is an anchor-class
+item with <code>type</code> <code>SIGNAL_AMPLIFIER_SETUP</code> and ability <code>SIGNAL_AMPLIFIER</code>. Its radius
+is set in the model&rsquo;s XML (<code>SignalRadius="100.0"</code>), not in the item. Saber points to
+<code>signal_amplifier_dlc06.xml</code> as the example. <span class="prov prov-doc">documented</span>
+Not tested here.</p>
+<h3 id="gps-tracker">GPS tracker<a class="headerlink" href="#gps-tracker" title="Permanent link">#</a></h3>
+<p>A plain <code>InventoryItemDesc</code> with <code>type</code> <code>GPS_TRACKER</code> and no extra fields. Saber:
+items in the inventory are sold when the expedition is completed.
+<span class="prov prov-doc">documented</span> Not tested here.</p>
+<h2 id="using-your-item-in-a-map">Using your item in a map<a class="headerlink" href="#using-your-item-in-a-map" title="Permanent link">#</a></h2>
+<p>Your item reaches the player in three ways: bought at <strong>Headquarters</strong>
+(<code>canTakeInHq</code>), found in a <strong>loot zone</strong> on the map, or <strong>crafted</strong> at a Workshop.
+<span class="prov prov-doc">documented</span></p>
+<p><strong>As loot.</strong> A <code>ZonePropertyInventoryStorage</code> zone lists possible items per slot,
+each with a <code>type</code>, a <code>chance</code> from <code>0</code> to <code>1</code>, and an optional <code>itemName</code>:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZoneItem&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;chance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;itemName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My_Item&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>Set the zone&rsquo;s <code>capacity</code> above <code>0</code> or nothing shows, and give the zone an id with
+<strong>no spaces</strong> or the player cannot take anything from it. See
+<a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>.</p>
+<p><strong>As something to collect or deliver.</strong> A <code>takeInventory</code> stage asks the player to
+pick items up from a zone; an <code>objectConstruction</code> stage asks them to bring items
+to one. Both name the item by <code>type</code> (and an id field that may not be read, see
+above). See <a href="../50-missions/assignment-types.html">The assignment types</a>.</p>
+<p><strong>As a requirement or a reward.</strong> List it in an expedition&rsquo;s Required inventory
+(and set <code>canTakeInHq</code>), or hand it over with <code>ObjectiveRewardItem</code>. See
+<a href="../50-missions/rewards.html">Rewards</a>.</p>
+<p><strong>As a quest item with a visible result.</strong> Saber&rsquo;s camera trap is only a name, an
+icon and a description. Delivering it to a construction zone switches an
+<code>_objective</code> model on the map to its built state, which is what shows the camera
+on the tree. <span class="prov prov-doc">documented</span></p>
+<h2 id="not-yet-known">Not yet known<a class="headerlink" href="#not-yet-known" title="Permanent link">#</a></h2>
+<ul>
+<li>Whether <code>invId</code> / <code>itemName</code> in objectives and required inventory is read at
+  all. Assume not.</li>
+<li>Whether a <code>QUEST_ITEM</code> is accepted as a construction-zone requirement. Every
+  shipped example uses consumable types.</li>
+<li>The four-mod HQ limit, in practice.</li>
+<li>What <code>notForSale</code>, <code>isRequired</code>, <code>notForCoopDel</code>, <code>notForDuplicate</code>,
+  <code>canBeUsedInCave</code>, <code>hasIconOnMinimap</code>, <code>canBeUsedFromDrone</code> and
+  <code>setupRadiusCoefficient</code> do.</li>
+<li>The schema&rsquo;s other abilities (portable bridges, tow rope, the drone spawners).</li>
+<li>Heavy (sideboard) custom items, and custom inventory or cargo slots on trucks.</li>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
-<a class="seq-prev" href="../60-custom/specialists.html"><span>Previous</span>Custom specialists</a><a class="seq-next" href="../60-custom/base-modules-reference.html"><span>Next</span>Every base module, and every surface you can edit</a>      </nav>
+<a class="seq-prev" href="../60-custom/specialists.html"><span>Previous</span>Custom specialists</a><a class="seq-next" href="../60-custom/fob-modules.html"><span>Next</span>Custom FOB modules</a>      </nav>
   </main>
 
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#what-an-item-mod-contains">What an item mod contains</a><ul>
+<li><a href="#the-id">The id</a></li>
+</ul>
+</li>
+<li><a href="#the-class-what-the-item-can-do">The class: what the item can do</a></li>
+<li><a href="#the-general-fields">The general fields</a></li>
+<li><a href="#type-the-category-everything-else-matches-on">Type: the category everything else matches on</a></li>
+<li><a href="#the-headquarters-flag">The Headquarters flag</a></li>
+<li><a href="#icons">Icons</a></li>
+<li><a href="#crafting-and-recycling-at-the-workshop">Crafting and recycling at the Workshop</a></li>
+<li><a href="#ability-items">Ability items</a><ul>
+<li><a href="#jack-screw-inventoryitemdescjackscrew">Jack screw: InventoryItemDescJackScrew</a></li>
+<li><a href="#anchor-inventoryitemdescanchor">Anchor: InventoryItemDescAnchor</a></li>
+<li><a href="#gps-tracker">GPS tracker</a></li>
+</ul>
+</li>
+<li><a href="#using-your-item-in-a-map">Using your item in a map</a></li>
+<li><a href="#not-yet-known">Not yet known</a></li>
+</ul>
 </div>
 
   </aside>

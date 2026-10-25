@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html" aria-current="page">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,23 +256,249 @@
         <h1>Using real-world terrain</h1>
 <p class="lede">Importing real elevation data, and the surprising amount of design work it does for you.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>Planned for this page:</p>
+      <article class="prose"><p>You do not have to invent your landscape. Public survey data gives you the height
+of real ground, and a real place has already solved problems that are hard to
+solve by hand: where the valleys drain, how steep the slopes sit, and where a road
+can climb a hillside.</p>
+<p>This page covers where that data comes from, what it does and does not contain,
+and the checks that catch the mistakes it makes easy.</p>
+<h2 id="where-the-data-comes-from">Where the data comes from<a class="headerlink" href="#where-the-data-comes-from" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>source</th>
+<th>coverage</th>
+<th>resolution</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>USGS 3DEP</strong></td>
+<td>United States</td>
+<td><code>1 m</code></td>
+<td>bare-earth lidar, no API key. Best by far</td>
+</tr>
+<tr>
+<td>global terrain tiles (AWS terrarium set)</td>
+<td>worldwide</td>
+<td>roughly <code>10</code> to <code>30 m</code></td>
+<td>too coarse for roads to show up</td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="prov prov-unver">measured</span></p>
+<p><strong>Bare-earth</strong> means the survey has had trees and buildings removed, leaving the
+ground itself. At <code>1 m</code> that is finer than the map&rsquo;s own height grid, which on a
+full-size map is <code>0.5 m</code> per sample in the built terrain and <code>2 m</code> per sample in
+the import file.</p>
+<p>The 3DEP service refuses very large requests, so a full map is fetched in
+pieces of about <code>2000</code> pixels each and stitched.
+<span class="prov prov-unver">measured</span></p>
+<h3 id="fetching-it-with-the-toolkit">Fetching it with the toolkit<a class="headerlink" href="#fetching-it-with-the-toolkit" title="Permanent link">#</a></h3>
+<p><code>fetch_terrain.py</code> fetches 3DEP for a point, crops it to the map&rsquo;s size and
+writes the import file at the size the editor expects. It also reports the Max
+height to use and the height step that results.</p>
+<div class="hl"><pre><span></span><code>python fetch_terrain.py &lt;lat&gt; &lt;lon&gt; --span 2016 --blocks 84
+python fetch_terrain.py &lt;lat&gt; &lt;lon&gt; --span 2016 --blocks 84 --level level_&lt;name&gt; --apply
+</code></pre></div>
+
+<p>Then open the map in the editor and use <strong>Copy Source Heightmap</strong> to import it.
+Read <a href="terrain.html">how terrain works</a> first: the import replaces the whole
+terrain, and a baked terrain file left from a copied map will hide the result.</p>
+<p>Outside the United States the toolkit&rsquo;s <code>expeditions/dem.py</code> uses the global
+tiles instead. That route has not been tested on a map in this guide.</p>
+<h3 id="precision-follows-real-elevation">Precision follows real elevation<a class="headerlink" href="#precision-follows-real-elevation" title="Permanent link">#</a></h3>
+<p>The height format&rsquo;s smallest step grows with height above zero, not with the
+map&rsquo;s relief. A map whose ground sits at <code>1,600</code> to <code>1,977 m</code> above sea level
+would be stored with far coarser steps than a valley near sea level if those
+heights were kept as they are.
+<strong>Lower the floor</strong> so the lowest point of the map sits near zero. That is what
+buys precision. <span class="prov prov-unver">measured</span></p>
+<h2 id="real-terrain-already-contains-its-roads">Real terrain already contains its roads<a class="headerlink" href="#real-terrain-already-contains-its-roads" title="Permanent link">#</a></h2>
+<p>A road is a physical thing: a cut-and-fill bench in the hillside. Bare-earth
+lidar measures the ground, so it measures the road as part of it.</p>
+<p>That means <strong>the road&rsquo;s design comes with the data.</strong> Its gradient, where the
+switchbacks go and how deep it cuts were solved on the ground by whoever built
+it. You do not need to invent an alignment for a real place.</p>
+<p>It was checked on the Moki Dugway in Utah, by looking only at the elevation for
+flat ribbons hemmed in by steep ground (slope under <code>10</code> degrees, with more than
+<code>20 m</code> of relief within <code>41 m</code>): <span class="prov prov-unver">measured</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>found from elevation alone</th>
+<th>documented</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>about <code>4,065 m</code> of road</td>
+<td><code>4,800 m</code> (3 miles)</td>
+</tr>
+<tr>
+<td>benches spanning <code>311 m</code> of climb</td>
+<td><code>366 m</code> (1,200 ft)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both within about 15%.</p>
+<div class="admonition warning">
+<p class="admonition-title">The terrain contains the road, but cannot say which bench it is</p>
+<p>The same test on a canyon road in Canyonlands, Utah, reported <code>23,518 m</code> of road
+against <code>7,193 m</code> actually mapped, three times too much. Canyonlands <em>is</em>
+benches: mesa tops and rim ledges are natural flat ground between cliffs,
+and they pass the test perfectly. <span class="prov prov-unver">measured</span></p>
+<p>On benched or mesa country, take the route from mapped road data and use the
+elevation only for height. Detecting benches is a way to find candidates,
+not a way to route.</p>
+</div>
+<p>Road centre lines as lines on a map are available from OpenStreetMap or the US
+National Map. The toolkit&rsquo;s <code>fetch_trails.py</code> pulls tracks from OpenStreetMap and
+lays them as <a href="roads.html">overlays</a>, with Flatten on and ApplyOffset off. The
+line comes from the mapping, and the height comes from the terrain, because an
+overlay has no height of its own.</p>
+<div class="hl"><pre><span></span><code>python fetch_trails.py level_&lt;name&gt; &lt;lat&gt; &lt;lon&gt; --span 2016
+python fetch_trails.py level_&lt;name&gt; &lt;lat&gt; &lt;lon&gt; --span 2016 --apply
+</code></pre></div>
+
+<h2 id="getting-the-orientation-right">Getting the orientation right<a class="headerlink" href="#getting-the-orientation-right" title="Permanent link">#</a></h2>
+<p>It is easy to import a real place mirror-imaged, and hard to notice. A valley
+looks like a valley either way round. What gives it away is that two layers built
+from the same place stop agreeing: the roads no longer sit on the benches in the
+ground.</p>
+<p>That exact failure happened. The terrain fetch skipped the step that turns a
+north-up survey image into the map&rsquo;s frame, while the road fetch applied it, so
+terrain and roads were mirror images of each other. Every check on the map passed,
+because <strong>each check looked at one layer on its own</strong>. A check of one layer cannot
+see a disagreement <em>between</em> layers. <span class="prov prov-unver">measured</span></p>
+<p>The check that caught it scores how many road points land on benches found in the
+terrain:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>reading</th>
+<th>road points on a bench</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chance</td>
+<td><code>14.7%</code></td>
+</tr>
+<tr>
+<td>broken map, as built</td>
+<td><code>10.6%</code>, worse than chance</td>
+</tr>
+<tr>
+<td>broken map, flipped east to west</td>
+<td><code>53.5%</code></td>
+</tr>
+<tr>
+<td>after the fix, as built</td>
+<td><code>53.7%</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="prov prov-unver">measured</span></p>
+<p>So: after importing a real place, <strong>overlay the roads on the terrain and confirm
+they agree.</strong> In the toolkit:</p>
+<div class="hl"><pre><span></span><code>python check_new_map.py &lt;name&gt; --relief &lt;metres&gt;
+</code></pre></div>
+
+<p>It takes the map name without the <code>level_</code> prefix and the relief reported by the
+fetch.</p>
+<div class="admonition warning">
+<p class="admonition-title">Do not trust a compass guess</p>
+<p>Work out which way round a map is from evidence, such as where a change you
+made shows up in the files, never from an assumption like &ldquo;west is on the
+left&rdquo;. On one map, the side that had just been edited was at the high-x end,
+the opposite of the obvious guess. <span class="prov prov-unver">measured</span></p>
+</div>
+<h2 id="water-is-never-in-the-elevation-data">Water is never in the elevation data<a class="headerlink" href="#water-is-never-in-the-elevation-data" title="Permanent link">#</a></h2>
+<p>The survey gives you the valley, the banks and the full cross-section. It does
+not give you a riverbed or a lake bed.</p>
 <ul>
-<li>where public elevation data comes from, and what resolution is worth using</li>
-<li><strong>real terrain already contains its roads.</strong> Bare-earth survey data captures a road as
-  the physical thing it is, a cut-and-fill bench in the hillside. Gradient, switchback
-  placement and cut depth are already solved for a real place</li>
-<li>getting orientation right, which is easy to mirror and hard to notice</li>
-<li>a practical check: overlay your imported roads against the imported terrain and
-  confirm they agree. Checking each layer on its own cannot catch a disagreement
-  <em>between</em> layers</li>
-<li>matching colour to a real place, and why a single online imagery source is not a
-  reference</li>
-</ul></article>
+<li>USGS <strong>hydro-flattening</strong> levels every body of water of <code>0.8 ha</code> (2 acres) or
+  more to a flat, level surface, by specification.</li>
+<li>The infrared lidar used does not see through water anyway.</li>
+</ul>
+<p>On the Buffalo River in Arkansas, the valley came through <code>142 m</code> deep with both
+bluffs. The water surface varied by <code>0.092 m</code> across a <code>35 x 36 m</code> patch: a
+plane, not a channel. <span class="prov prov-unver">measured</span></p>
+<p>For the water&rsquo;s <em>course</em>, the US <strong>National Hydrography Dataset (NHD)</strong> gives
+stream centre lines, flow direction, connections and lake outlines, which is what
+a river object needs. It gives no depth.</p>
+<p>For the <em>bed</em>, sources exist but cover only some waters:</p>
+<ul>
+<li>USGS inland bathymetry, for selected lakes, rivers and reservoirs</li>
+<li>existing combined land-and-water surveys for a few large lakes, including Lake
+  Powell, Lake Tahoe and Crater Lake</li>
+<li>US Army Corps of Engineers sonar surveys</li>
+<li>state natural resource departments, several of which publish lake depth data</li>
+<li>for a reservoir, maps made before the dam. The drowned valley floor is the bed</li>
+</ul>
+<p>None of these has been imported into a map in this guide yet. See <a href="water.html">rivers, lakes
+and waterfalls</a> for building the water itself.</p>
+<h2 id="matching-the-colour-of-a-real-place">Matching the colour of a real place<a class="headerlink" href="#matching-the-colour-of-a-real-place" title="Permanent link">#</a></h2>
+<p>Satellite imagery providers disagree with each other, a lot, about colour. Over
+one desert map, four sources gave: <span class="prov prov-unver">measured</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>source</th>
+<th>hue</th>
+<th>reads as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google satellite</td>
+<td><code>11</code> to <code>19</code></td>
+<td>dusty pink</td>
+</tr>
+<tr>
+<td>ground photographs (Street View)</td>
+<td><code>60</code> to <code>75</code></td>
+<td>tan</td>
+</tr>
+<tr>
+<td>USGS NAIP aerial, <code>1 m</code></td>
+<td><code>72</code> to <code>78</code></td>
+<td>warm tan</td>
+</tr>
+<tr>
+<td>Esri World Imagery</td>
+<td>about <code>90</code></td>
+<td>olive tan</td>
+</tr>
+</tbody>
+</table></div>
+<p>The ground was painted to match the first source and came out about 60 degrees
+of hue too pink. Two independent sources, the aerial survey and the ground
+photographs, agreed with each other; the provider the map was matched to was the
+odd one out.</p>
+<p><strong>One imagery source is not a reference.</strong> Compare several from separate
+pipelines, and include photographs taken on the ground.</p>
+<p>Lightness and saturation were already right on that map; only the hue was off.
+The corrected textures were confirmed in the game files but have not yet been
+checked by eye in the editor. More on this in <a href="../30-dressing/colour.html">colour and
+textures</a>.</p>
+<h2 id="not-yet-known">Not yet known<a class="headerlink" href="#not-yet-known" title="Permanent link">#</a></h2>
+<ul>
+<li>The global terrain route outside the United States has not been used for a map
+  here.</li>
+<li>No bed data has been imported for a lake or river yet.</li>
+<li>Whether the colour correction above looks right in the editor and in game.</li>
+<li>Whether a map with Max height above <code>512</code> works.</li>
+</ul>
+<p>Read Saber&rsquo;s pages on terrain first:</p>
+<div class="hl"><pre><span></span><code>python wiki.py howto terrain
+</code></pre></div></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../20-land/water.html"><span>Previous</span>Rivers, lakes and waterfalls</a><a class="seq-next" href="../30-dressing/models.html"><span>Next</span>Models, rocks and cliffs</a>      </nav>
@@ -281,7 +507,18 @@
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#where-the-data-comes-from">Where the data comes from</a><ul>
+<li><a href="#fetching-it-with-the-toolkit">Fetching it with the toolkit</a></li>
+<li><a href="#precision-follows-real-elevation">Precision follows real elevation</a></li>
+</ul>
+</li>
+<li><a href="#real-terrain-already-contains-its-roads">Real terrain already contains its roads</a></li>
+<li><a href="#getting-the-orientation-right">Getting the orientation right</a></li>
+<li><a href="#water-is-never-in-the-elevation-data">Water is never in the elevation data</a></li>
+<li><a href="#matching-the-colour-of-a-real-place">Matching the colour of a real place</a></li>
+<li><a href="#not-yet-known">Not yet known</a></li>
+</ul>
 </div>
 
   </aside>

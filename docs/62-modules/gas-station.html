@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -391,11 +391,10 @@ to work. Treat the last column as a strong lead, not as settled.</p>
 canvases at the right sizes, named correctly, with the cropped and
 covered areas marked.</p>
 </div>
-<p>The four background images may be your own PNGs. Ship them at
+<p>Three of the background images may be your own PNGs. Ship them at
 <code>ui/textures/&lt;name&gt;.png</code> and name them in the descriptor <strong>without the
 folder and without <code>.png</code></strong>. These are the sizes mods on disk ship:</p>
 <div class="hl"><pre><span></span><code>ui/textures/mymodule_bg.png       -&gt;  &quot;bg&quot;: &quot;mymodule_bg&quot;             380 x 92
-ui/textures/mymodule_popup.png    -&gt;  &quot;popupModuleBg&quot;: &quot;...&quot;          380 x 92
 ui/textures/mymodule_right.png    -&gt;  &quot;bgRight&quot;: &quot;...&quot;                760 x 90
 ui/textures/mymodule_small.png    -&gt;  &quot;bgSmall&quot;: &quot;...&quot;                124 x 52
 </code></pre></div>
@@ -410,11 +409,12 @@ render. Borrow a vanilla symbol instead.</p>
 symbols only.</p>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">popupModuleBg is not validated, and has failed in practice</p>
-<p>The module checker tests <code>bg</code>, <code>bgSmall</code> and <code>bgRight</code> but not this
-field, and a shipped mod has shown a broken-image placeholder here —
-a yellow square with a red mountain. If you see that, the name did
-not resolve.</p>
+<p class="admonition-title">popupModuleBg can&rsquo;t be your own PNG</p>
+<p>The game loads mod PNGs only for <code>bg</code>, <code>bgSmall</code> and <code>bgRight</code>. A mod
+PNG named in <code>popupModuleBg</code> draws the broken-image placeholder, a
+yellow square with a red mountain; that was seen in game. Set it to
+<code>""</code> or to a vanilla symbol such as the one in the table above. The
+module checker now reports a custom PNG here as an error.</p>
 </div>
 <h3 id="the-four-background-images-rebuilt">The four background images, rebuilt<a class="headerlink" href="#the-four-background-images-rebuilt" title="Permanent link">#</a></h3>
 <p>Where each one is drawn, on the real screens:</p>
@@ -469,7 +469,7 @@ small and floats. Match the framing, not just the pixel size.</p>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyFobModuleStorage</code></strong> for this module.
 A custom gas station built on it works with a single fuel slot, tested in game.</p>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
-<p>See <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a> for the full field list.</p></article>
+<p>See <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a> for the full field list.</p></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../62-modules/index.html"><span>Previous</span>Every base module</a><a class="seq-next" href="../62-modules/extra-storage.html"><span>Next</span>Warehouse</a>      </nav>

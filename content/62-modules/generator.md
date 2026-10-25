@@ -78,13 +78,12 @@ separate images, not one picture reused.
     canvases at the right sizes, named correctly, with the cropped and
     covered areas marked.
 
-The four background images may be your own PNGs. Ship them at
+Three of the background images may be your own PNGs. Ship them at
 `ui/textures/<name>.png` and name them in the descriptor **without the
 folder and without `.png`**. These are the sizes mods on disk ship:
 
 ```
 ui/textures/mymodule_bg.png       ->  "bg": "mymodule_bg"             380 x 92
-ui/textures/mymodule_popup.png    ->  "popupModuleBg": "..."          380 x 92
 ui/textures/mymodule_right.png    ->  "bgRight": "..."                760 x 90
 ui/textures/mymodule_small.png    ->  "bgSmall": "..."                124 x 52
 ```
@@ -98,11 +97,12 @@ render. Borrow a vanilla symbol instead.
     `uiDescTradeHeaderIcon` are unset on every module examined, and take
     symbols only.
 
-!!! warning "popupModuleBg is not validated, and has failed in practice"
-    The module checker tests `bg`, `bgSmall` and `bgRight` but not this
-    field, and a shipped mod has shown a broken-image placeholder here —
-    a yellow square with a red mountain. If you see that, the name did
-    not resolve.
+!!! warning "popupModuleBg can't be your own PNG"
+    The game loads mod PNGs only for `bg`, `bgSmall` and `bgRight`. A mod
+    PNG named in `popupModuleBg` draws the broken-image placeholder, a
+    yellow square with a red mountain; that was seen in game. Set it to
+    `""` or to a vanilla symbol such as the one in the table above. The
+    module checker now reports a custom PNG here as an error.
 
 ### The four background images, rebuilt
 
@@ -174,4 +174,4 @@ Saber's documentation names **`ZonePropertyGenerator`** for this module.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 
-See [Every base module, and every surface you can edit](../60-custom/base-modules-reference.html) for the full field list.
+See [Module descriptor reference](../60-custom/base-modules-reference.html) for the full field list.

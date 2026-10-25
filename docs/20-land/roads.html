@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html" aria-current="page">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,21 +256,233 @@
         <h1>Roads are not carved terrain</h1>
 <p class="lede">Roads are Overlay objects laid on top of the ground, and two of the defaults are backwards for a usable road.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
       <article class="prose"><p>This is the biggest single time sink for a new map maker: sculpting roads into the
 heightmap by hand when the editor has a road tool.</p>
-<p>Planned for this page:</p>
+<p>A road in Expeditions is an <strong>Overlay</strong>: a curve you draw across the map, carrying
+a road surface that drapes over the ground underneath.
+<span class="prov prov-doc">documented</span> The same tool lays railway track,
+pipes and wires. You do not dig a road. You lay one, and then decide how much it
+should reshape the ground it sits on.</p>
+<p>Expeditions is an off-road game, and Saber notes that ordinary road overlays are
+used much less here than in SnowRunner. The game does ship Expeditions-specific
+ones such as <code>animal_tracks</code>, <code>cracked_mud</code> and <code>log_road</code>.
+<span class="prov prov-doc">documented</span></p>
+<div class="admonition warning">
+<p class="admonition-title">Digging roads by hand goes badly</p>
+<p>Excavating a road into the heightmap produced a bare scar on a sidehill.
+Forcing a drivable gradient across <code>150 m</code> of relief moved <code>30 m</code> of earth,
+which leaves a cliff wherever the cut meets untouched ground.
+<span class="prov prov-unver">measured</span></p>
+</div>
+<h2 id="laying-an-overlay">Laying an overlay<a class="headerlink" href="#laying-an-overlay" title="Permanent link">#</a></h2>
+<ol>
+<li>Right-click the terrain, or the Overlays node in the Scene View, and choose
+   <strong>Add Overlay</strong>.</li>
+<li>Double-click a road type in the window that opens. The overlay appears with
+   two points, numbered from <code>0</code>.</li>
+<li>To add points, select one, right-click it and choose <strong>Add after</strong> or <strong>Add
+   before</strong>.</li>
+<li>Move a point with the arrows, or type its <strong>Position X</strong> and <strong>Position Y</strong>.</li>
+<li>Set the width at each point: drag sideways from the point&rsquo;s centre, or type a
+   <strong>Width</strong>.</li>
+<li>Rebuild Terrain to see the final result. Parts of an overlay outside the
+   camera&rsquo;s view may not update until you do.</li>
+</ol>
+<p><span class="prov prov-doc">documented</span></p>
+<p>The toolbar&rsquo;s <strong>Hide all nodes of rivers and overlays</strong> hides the red point
+markers when they get in the way. Keep <strong>Change rotation basis</strong> off while you
+work on points: Saber warns that it blocks selecting individual overlay points.
+<span class="prov prov-doc">documented</span></p>
+<h2 id="what-an-overlay-is-on-disk">What an overlay is on disk<a class="headerlink" href="#what-an-overlay-is-on-disk" title="Permanent link">#</a></h2>
+<p>The editor saves each overlay as its own file,
+<code>Media\prebuild\&lt;map&gt;\data\Overlay\Overlay_&lt;ID&gt;.xml</code>. This one was written by the
+editor itself: <span class="prov prov-unver">measured</span></p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;Overlay</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;dirt_road_rus_pbr&quot;</span><span class="w"> </span><span class="na">Flatten=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">ApplyOffset=</span><span class="s">&quot;true&quot;</span>
+<span class="w">         </span><span class="na">Brushes=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">Id=</span><span class="s">&quot;2753CAF01DF1&quot;</span><span class="w"> </span><span class="na">isInvisible=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Curve&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Node</span><span class="w"> </span><span class="na">Position=</span><span class="s">&quot;(413.9551; 349.81213)&quot;</span><span class="w"> </span><span class="na">Width=</span><span class="s">&quot;7&quot;</span><span class="w"> </span><span class="na">EraseSnow=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/Curve&gt;</span>
+<span class="nt">&lt;/Overlay&gt;</span>
+</code></pre></div>
+
+<p>Two details matter if you ever write one with a script:</p>
 <ul>
-<li>roads are <strong>Overlay</strong> objects, not terrain modifications</li>
-<li>overlay nodes are 2D. There is no height on a node</li>
-<li>the defaults are wrong for a drivable road. Flatten defaults to off, so the road does
-  not level the ground under it, and the offset defaults to on, which deliberately adds
-  ruts</li>
-<li>how an overlay interacts with the terrain underneath it</li>
-<li>when you want to sculpt as well as overlay</li>
+<li>The points sit inside a <code>&lt;Curve&gt;</code> element. River points do not.</li>
+<li><code>Position</code> has <strong>two</strong> numbers, x and z. <strong>There is no height.</strong> The road
+  follows whatever ground is under it, which is the whole reason it is the right
+  tool.</li>
+</ul>
+<p>Positions are in metres from the centre of the map, so on a full-size map they
+run from <code>-1008</code> to <code>+1008</code>. x runs along the heightmap&rsquo;s columns and z along its
+rows. <span class="prov prov-unver">measured</span></p>
+<h2 id="two-defaults-are-backwards">Two defaults are backwards<a class="headerlink" href="#two-defaults-are-backwards" title="Permanent link">#</a></h2>
+<p>A fresh overlay comes with two settings that suit an abandoned track, not a
+road you mean to drive.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>setting</th>
+<th>default</th>
+<th>what it does</th>
+<th>for a graded road</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Flatten</strong></td>
+<td><code>false</code></td>
+<td>when true, levels the ground <strong>across</strong> the road&rsquo;s width</td>
+<td>set <code>true</code></td>
+</tr>
+<tr>
+<td><strong>ApplyOffset</strong></td>
+<td><code>true</code></td>
+<td>deliberately <strong>adds</strong> ruts, bumps and rises, depending on the road type</td>
+<td>set <code>false</code></td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="prov prov-doc">documented</span></p>
+<p>Leave ApplyOffset on where you want a rough, rutted track. Turn it off where you
+want a road.</p>
+<p>Both need a <strong>Rebuild Terrain</strong> before you see their effect.
+<span class="prov prov-doc">documented</span></p>
+<h3 id="what-flatten-does-and-does-not-do">What Flatten does and does not do<a class="headerlink" href="#what-flatten-does-and-does-not-do" title="Permanent link">#</a></h3>
+<p>Flatten removes <strong>cross-slope</strong>: no more road tilted from one edge to the other.
+It does <strong>not</strong> level the road along its length. Saber is explicit that the road
+may stay uneven lengthwise. <span class="prov prov-doc">documented</span></p>
+<p>Flatten also does not change the heightmap. The levelling is applied when the
+terrain is built, so your height tiles are untouched.
+<span class="prov prov-doc">documented</span></p>
+<p>That has a practical side effect. Once the camber is gone, the only thing left
+varying is the lengthwise profile, so any hump along the road becomes easier to
+feel. <span class="prov prov-unver">measured</span></p>
+<h2 id="one-road-surface-per-terrain-block">One road surface per terrain block<a class="headerlink" href="#one-road-surface-per-terrain-block" title="Permanent link">#</a></h2>
+<p>The engine can draw only <strong>one</strong> textural overlay, a road painted onto the
+ground, in each <code>24 m</code> terrain block. Put two road types in one block and part of
+one of them can vanish. <span class="prov prov-doc">documented</span></p>
+<p>Left-click the terrain and a red cube marks the block&rsquo;s border. Textural and
+non-textural overlays can share a block, so a road plus wires is fine.</p>
+<p>To join two road types:</p>
+<ul>
+<li>keep the main run of each road in its own blocks</li>
+<li>in the junction, paint the ground with a terrain material that uses a similar
+  texture as one of its layers</li>
+<li>or hide the junction under mud or snow</li>
+</ul>
+<p><span class="prov prov-doc">documented</span></p>
+<p>The simplest answer is often one road type for the whole map.</p>
+<h2 id="where-the-humps-come-from">Where the humps come from<a class="headerlink" href="#where-the-humps-come-from" title="Permanent link">#</a></h2>
+<p>On a road network that drove in game, the driver reported large humps, worst on
+the switchbacks. Every overlay already had Flatten on and ApplyOffset off, so
+neither setting was the cause. Measuring them found
+<span class="prov prov-unver">measured</span>:</p>
+<ul>
+<li><strong>12 of 16 humps sat within 15 m of the end of an overlay</strong>, six of them right
+  on the end point.</li>
+<li>The likely reason: Flatten levels each overlay to its own centre line. Where
+  two overlays meet, the two levelled surfaces are worked out separately, do not
+  agree, and the join is a step.</li>
+</ul>
+<p>That suggests drawing a continuous road as <strong>one overlay where you can</strong>, and
+inspecting every place two overlays meet. <span class="prov prov-unver">unverified</span>
+The link between the joins and the humps is a measured pattern; the mechanism
+has not been confirmed.</p>
+<div class="admonition danger">
+<p class="admonition-title">Do not smooth a switchback with a round brush</p>
+<p>The two legs of a hairpin are close together on the map and far apart along
+the road. Averaging the ground inside a circle mixes them. Measured on one
+descent: 42 points had other road within <code>14 m</code> that was more than <code>42 m</code>
+away along the road, with up to <code>14.2 m</code> of height difference inside one
+circle. Smoothing that way doubled the humps from 16 to 34.
+<span class="prov prov-unver">measured</span></p>
+<p>Smooth <strong>along the road</strong>, point by point down its length.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Grade once, not repeatedly</p>
+<p>A grading pass that works out its target from the ground it just moved
+chases its own output. Repeated passes went from 9 humps to 18, 27 and 31.
+Take one pass, measure, stop. Take one untouched snapshot before you start,
+because a tool that overwrites its own backup each pass loses the original.
+<span class="prov prov-unver">measured</span></p>
+</div>
+<p>The humps that remained matched real features in the original survey data,
+already about six times smoother than the raw hillside. Those need a
+deliberate cut at each spot, not more smoothing.
+<span class="prov prov-unver">measured</span></p>
+<h2 id="when-to-sculpt-as-well">When to sculpt as well<a class="headerlink" href="#when-to-sculpt-as-well" title="Permanent link">#</a></h2>
+<p>The overlay paints the road and, with Flatten on, levels it across. It does not
+build a bench into a hillside, and it does not even out the length of the road.
+Sculpt as well when:</p>
+<ul>
+<li><strong>the road crosses a sidehill.</strong> It needs a cut-and-fill bench, or it drapes
+  over the slope. Real survey terrain usually has the bench already; see
+  <a href="real-terrain.html">real-world terrain</a>.</li>
+<li><strong>there is a hump along the road.</strong> A Smooth brush will not touch it, because
+  Smooth leaves anything longer than about <code>5 m</code> alone. Cut it deliberately.
+  See <a href="brushes.html">the brushes</a>.</li>
+<li><strong>the road descends steadily.</strong> The hand Flatten brush levels to one height,
+  so a graded bench down a hill is a job for a script.</li>
+</ul>
+<p>Keep any reshaping small: capped near <code>3 m</code>, as in <a href="terrain.html">how terrain
+works</a>. And route roads low on the map, where the height format is
+most precise.</p>
+<h2 id="measuring-grade">Measuring grade<a class="headerlink" href="#measuring-grade" title="Permanent link">#</a></h2>
+<p>Measure grade over about <code>15 m</code> of road. Over half a metre, the height format&rsquo;s
+smallest step alone reads as a steep slope. <span class="prov prov-unver">measured</span></p>
+<p>Hand-drawn alignments on invented terrain measured <code>101%</code> and <code>160%</code> grade at
+their worst, because a line drawn on a map cannot see the slope it crosses.
+<span class="prov prov-unver">measured</span> Check a road&rsquo;s profile before you
+drive it.</p>
+<h2 id="planning-routes-you-do-not-want-to-show">Planning routes you do not want to show<a class="headerlink" href="#planning-routes-you-do-not-want-to-show" title="Permanent link">#</a></h2>
+<p>Set <strong>IsInvisible</strong> to true on any overlay and, after a rebuild, it disappears
+from the game and the editor. It still exists. The toolbar&rsquo;s <strong>Show all
+overlays</strong> highlights it in blue so you can edit it. This is useful for marking
+planned routes through forests or rivers on a map with no visible roads.
+<span class="prov prov-doc">documented</span></p>
+<h2 id="other-overlay-settings">Other overlay settings<a class="headerlink" href="#other-overlay-settings" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>Brushes</strong> places objects along the overlay, such as lamp posts. Spacing comes
+  from the brush definitions in <code>initial.pak</code>, at
+  <code>[media]\classes\editor\brushes.xml</code>. <span class="prov prov-doc">documented</span></li>
+<li>Do not put points very close together on overlays that are 3D geometry rather
+  than a road surface. Saber warns this can crash.
+  <span class="prov prov-doc">documented</span> Hand-built roads that load were
+  measured with points about <code>11</code> to <code>20 m</code> apart.
+  <span class="prov prov-unver">measured</span></li>
+</ul>
+<p>Road types seen in the editor include <code>arizone_dirt_road_01</code>, <code>dirt_road_can</code>,
+<code>dirt_road_rus_pbr</code>, <code>dirt_road_snowy</code>, <code>log_road</code>, <code>log_road_narrow</code>,
+<code>cracked_mud</code>, <code>animal_tracks_rus_01</code> to <code>03</code>, <code>asphalt_road_double_pbr</code> and
+<code>iron_road_abandoned</code>. <span class="prov prov-unver">measured</span></p>
+<h2 id="with-the-toolkit">With the toolkit<a class="headerlink" href="#with-the-toolkit" title="Permanent link">#</a></h2>
+<p><code>make_overlays.py</code> writes a road network as overlay files with Flatten on,
+ApplyOffset off and one road type. <code>fetch_trails.py</code> does the same from real
+trails mapped in OpenStreetMap. <code>road_profile.py</code> measures the humps along every
+road, so a fix can be checked. Each one dry-runs unless you add <code>--apply</code>.</p>
+<div class="hl"><pre><span></span><code>python make_overlays.py level_&lt;name&gt; --type dirt_road_rus_pbr --width 7
+python fetch_trails.py level_&lt;name&gt; &lt;lat&gt; &lt;lon&gt;
+python road_profile.py &lt;name&gt;
+</code></pre></div>
+
+<p><code>road_profile.py</code> takes the map name without the <code>level_</code> prefix. Close the map
+in the editor before a script writes files. That rule is proven for terrain
+tiles; that overlay files behave the same way is assumed, not tested.
+<span class="prov prov-unver">unverified</span></p>
+<p>Read Saber&rsquo;s pages first; this returns all nine of them:</p>
+<div class="hl"><pre><span></span><code>python wiki.py howto road
+</code></pre></div>
+
+<h2 id="not-yet-known">Not yet known<a class="headerlink" href="#not-yet-known" title="Permanent link">#</a></h2>
+<ul>
+<li>The steepest grade a loaded truck can reliably climb on a custom map has not
+  been measured.</li>
+<li>Whether overlay joins can be made seamless in the editor alone, without a
+  grading script.</li>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
@@ -280,7 +492,22 @@ heightmap by hand when the editor has a road tool.</p>
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#laying-an-overlay">Laying an overlay</a></li>
+<li><a href="#what-an-overlay-is-on-disk">What an overlay is on disk</a></li>
+<li><a href="#two-defaults-are-backwards">Two defaults are backwards</a><ul>
+<li><a href="#what-flatten-does-and-does-not-do">What Flatten does and does not do</a></li>
+</ul>
+</li>
+<li><a href="#one-road-surface-per-terrain-block">One road surface per terrain block</a></li>
+<li><a href="#where-the-humps-come-from">Where the humps come from</a></li>
+<li><a href="#when-to-sculpt-as-well">When to sculpt as well</a></li>
+<li><a href="#measuring-grade">Measuring grade</a></li>
+<li><a href="#planning-routes-you-do-not-want-to-show">Planning routes you do not want to show</a></li>
+<li><a href="#other-overlay-settings">Other overlay settings</a></li>
+<li><a href="#with-the-toolkit">With the toolkit</a></li>
+<li><a href="#not-yet-known">Not yet known</a></li>
+</ul>
 </div>
 
   </aside>

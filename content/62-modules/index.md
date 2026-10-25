@@ -12,7 +12,8 @@ shows the module in game, its identity, its models, and all of its artwork
 slots, so you can copy what works when you build your own.
 
 To build a module of your own, start with
-[Every base module, and every surface you can edit](../60-custom/base-modules-reference.html).
+[Custom FOB modules](../60-custom/fob-modules.html). Every descriptor field is listed in the
+[Module descriptor reference](../60-custom/base-modules-reference.html).
 
 | Module | As a custom module | What it does |
 |---|---|---|

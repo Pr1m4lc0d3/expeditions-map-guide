@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html" aria-current="page">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,23 +256,230 @@
         <h1>Loot, storage and airdrops</h1>
 <p class="lede">Zones that hold things the player can take, and the naming rule that silently breaks all of them.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>Planned for this page:</p>
-<ul>
-<li>the storage property: capacity, what spawns, and whether it always spawns</li>
-<li>airdrops, and how their contents are randomised per expedition</li>
-<li>setting specific custom loot instead of random contents</li>
-<li>the Warehouse is the one storage whose contents survive between expeditions</li>
-</ul>
+      <article class="prose"><p>A storage zone is a zone holding things the player can move into a truck: inventory
+items, fuel, repair parts and spare wheels. Air drops, loot caches, quest item
+stashes and the Base module are all the same property,
+<code>ZonePropertyInventoryStorage</code>. <span class="prov prov-doc">documented</span></p>
 <div class="admonition danger">
 <p class="admonition-title">Read the naming rule first</p>
-<p>A zone whose name contains a <strong>space</strong> can never be looted, because the game splits
-its internal item reference on whitespace. This is covered in full on
-<a href="../00-start/where-things-live.html">Where everything lives</a>.</p>
-</div></article>
+<p>A zone whose Id contains a <strong>space</strong> can never be looted. The items appear, the
+trade screen opens, you press move, and nothing arrives, with no error at all.
+The game splits its internal reference to the zone on whitespace and then looks
+up the wrong name. Verified in game, September 2026: renaming one zone to use
+underscores fixed it immediately. The full story is on
+<a href="../00-start/where-things-live.html#zone-names-spaces-in-the-source-underscores-in-the-pack">Where everything lives</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">What on this page has been tested</p>
+<p>Taking random air drop loot from a zone with a correct Id works in game, and so
+does the consumables slot behaviour described below. Custom (non-random) loot,
+<code>additionalLoot</code>, the specialist perk switches and what survives between
+expeditions have <strong>not</strong> been tested by this guide, and are labelled.</p>
+</div>
+<h2 id="the-settings">The settings<a class="headerlink" href="#the-settings" title="Permanent link">#</a></h2>
+<h3 id="how-much-it-can-hold">How much it can hold<a class="headerlink" href="#how-much-it-can-hold" title="Permanent link">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>capacity</code></td>
+<td>number of slots for ordinary items</td>
+</tr>
+<tr>
+<td><code>heavyInvCapacity</code></td>
+<td>number of slots for heavy items</td>
+</tr>
+</tbody>
+</table></div>
+<p>Both default to <strong>0</strong>, and a storage with <code>capacity</code> 0 shows no inventory at all,
+even when its items are set up correctly. <span class="prov prov-doc">documented</span>
+Changing it is the first thing to do.</p>
+<p>Slots you do not fill with items stay empty, and the player can use them to unload
+things from the truck. If you list more item slots than the capacity allows, the
+list is cut down to fit. <span class="prov prov-doc">documented</span></p>
+<h3 id="what-can-appear-in-it">What can appear in it<a class="headerlink" href="#what-can-appear-in-it" title="Permanent link">#</a></h3>
+<p><code>slotsSettings</code> is a list of slots. Each slot has a list of <code>possibleItems</code>, and
+each possible item has:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td>the kind of item. See <a href="../60-custom/items.html">Custom inventory items</a></td>
+</tr>
+<tr>
+<td><code>chance</code></td>
+<td>the probability it appears, from <code>0</code> to <code>1</code></td>
+</tr>
+<tr>
+<td><code>itemName</code></td>
+<td>optional. Picks one specific item where several share a type</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>chance</code> is a plain probability: <code>0.75</code> is 75%, and <strong><code>1</code> means always</strong>. It
+defaults to <strong>0</strong>, so an item you add and forget to set will never appear.
+<span class="prov prov-doc">documented</span></p>
+<p>Saber advises that at least one slot&rsquo;s chances should add up to <code>1</code>. Otherwise the
+zone can spawn with nothing in it. <span class="prov prov-doc">documented</span></p>
+<h3 id="fuel-repair-parts-and-wheels">Fuel, repair parts and wheels<a class="headerlink" href="#fuel-repair-parts-and-wheels" title="Permanent link">#</a></h3>
+<p>These are not item slots. Each has its own block: <code>fuelSlotSettings</code>,
+<code>repairsSlotSettings</code> and <code>wheelsSlotSettings</code>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quantity</code></td>
+<td>how much is there</td>
+</tr>
+<tr>
+<td><code>chance</code></td>
+<td>probability it appears, <code>0</code> to <code>1</code></td>
+</tr>
+<tr>
+<td><code>tradeFromTruckToZone</code></td>
+<td>whether the player may move this resource <strong>from the truck into the zone</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><code>tradeFromTruckToZone</code> controls only that one direction, truck to zone. It does not
+switch off taking from the zone. Tested in game, October 2026.</p>
+<div class="admonition note">
+<p class="admonition-title">Can&rsquo;t be transferred usually means the truck is full</p>
+<p>When taking spare parts from a storage shows a red &ldquo;Can&rsquo;t be transferred&rdquo;, the
+usual cause is that the truck has no room left for them. Check the truck before
+suspecting the zone. Tested in game, October 2026; see
+<a href="../62-modules/repair-station.html">Repair station</a>.</p>
+</div>
+<h3 id="the-other-switches">The other switches<a class="headerlink" href="#the-other-switches" title="Permanent link">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alwaysSpawn</code></td>
+<td>appear in every expedition. Off means the zone joins the random draw, see below</td>
+</tr>
+<tr>
+<td><code>isAtDeployZone</code></td>
+<td><strong>only</strong> for the Base module&rsquo;s storage on a deploy zone. Off everywhere else</td>
+</tr>
+<tr>
+<td><code>isAffectedByAdditionalAirdropResourcesAbility</code></td>
+<td>specialist perks that add air drop fuel, parts and wheels apply here. Saber: usually on for air drops</td>
+</tr>
+<tr>
+<td><code>isAffectedByAdditionalOutpostResourcesAbility</code></td>
+<td>the equivalent outpost perks apply. Saber: usually on for FOB modules</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>optional model that is visible only while this zone is spawned, for example a crate pile at an air drop. See <a href="construction-zones.html#making-something-appear">Construction zones</a> for how models change state</td>
+</tr>
+<tr>
+<td><code>zoneDiscoverability</code></td>
+<td>whether the player can see the zone yet. See <a href="discoverability.html">Hiding and revealing zones</a></td>
+</tr>
+<tr>
+<td><code>expandedConsumablesCapacity</code></td>
+<td>Saber says this does not work as described yet. Leave it alone</td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="prov prov-doc">documented</span> The two perk switches are
+<span class="prov prov-unver">unverified</span> in game.</p>
+<h2 id="air-drops-random-by-design">Air drops: random by design<a class="headerlink" href="#air-drops-random-by-design" title="Permanent link">#</a></h2>
+<p>At the start of each expedition the game decides which air drops exist and what is
+in them. <span class="prov prov-doc">documented</span></p>
+<div class="step"><div class="n">1</div><div>
+
+**Which zones spawn.** Every storage zone with `alwaysSpawn` **off** goes into a draw.
+The game spawns only as many as `maxInventoryZones` allows. You set that number in
+Zone Settings, in the map's `inventorySettings` section.
+
+</div></div>
+
+<div class="step"><div class="n">2</div><div>
+
+**What is in each one.** Inside a zone that spawned, each item and each consumable
+appears according to its own `chance`.
+
+</div></div>
+
+<div class="step"><div class="n">3</div><div>
+
+**Extra items.** `inventorySettings` also has an `additionalLoot` list. Each entry,
+given by `type` and optionally `itemName`, is added to one of the zones that
+spawned, on top of its random contents. <span class="prov prov-unver">unverified</span>
+in game.
+
+</div></div>
+
+<p>So place more air drop zones than <code>maxInventoryZones</code>, and every expedition on the
+map gets a different set. Air drop locations and contents are drawn again for each
+new expedition. <span class="prov prov-doc">documented</span></p>
+<p>A zone that must always be there, such as a quest stash, gets <code>alwaysSpawn</code> on and
+stays out of the draw.</p>
+<h2 id="specific-loot-instead-of-random">Specific loot instead of random<a class="headerlink" href="#specific-loot-instead-of-random" title="Permanent link">#</a></h2>
+<p>To guarantee what a zone holds, give it <code>alwaysSpawn</code> on, one slot per item, one
+possible item per slot, and <code>chance</code> set to <code>1</code>. Use <code>itemName</code> when the item shares
+its type with others, as the Anchor and the Removable Anchor do.</p>
+<p><span class="prov prov-unver">unverified</span> Fixed loot built this way follows
+directly from the documented fields, but it has not been taken from a zone in game by
+this guide.</p>
+<div class="admonition warning">
+<p class="admonition-title">Only <code>type</code> is known to be read in objectives</p>
+<p>The item-id fields on the <code>takeInventory</code> and <code>objectConstruction</code> objectives are
+marked by Saber as not yet added, so those objectives match items by <code>type</code> only.
+If an objective must tell two of your items apart, give them different types.
+Whether a storage slot&rsquo;s <code>itemName</code> is honoured is a separate question, and is
+untested here.</p>
+</div>
+<h2 id="what-survives-between-expeditions">What survives between expeditions<a class="headerlink" href="#what-survives-between-expeditions" title="Permanent link">#</a></h2>
+<p>Items the player leaves in a storage zone are normally gone next expedition. Saber&rsquo;s
+expeditions page names one exception: items the player puts in the <strong>Warehouse</strong>
+(<code>EXTRA_STORAGE</code>) are still there next time. <span class="prov prov-doc">documented</span></p>
+<p>Saber&rsquo;s storage page also says that <code>isAtDeployZone</code> saves items in the Base module.
+The two pages do not agree, and neither has been tested here.
+<span class="prov prov-unver">unverified</span></p>
+<h2 id="storage-at-a-base-module">Storage at a base module<a class="headerlink" href="#storage-at-a-base-module" title="Permanent link">#</a></h2>
+<p>The Gas station, Repair station, Warehouse, Essentials storage and Base module are all
+storage underneath, wrapped in <code>ZonePropertyFobModuleStorage</code>. That wrapper belongs in
+a custom module&rsquo;s descriptor, <strong>never on a zone you place</strong>. Saber warns it may crash
+the game on an ordinary zone. To shape a module&rsquo;s stock, see
+<a href="../60-custom/base-modules-reference.html#shaping-a-storage-module">Module descriptor reference</a>.</p>
+<h2 id="checklist">Checklist<a class="headerlink" href="#checklist" title="Permanent link">#</a></h2>
+<ul>
+<li>the zone&rsquo;s Id has <strong>no spaces</strong>, in the packed map</li>
+<li><code>capacity</code> (and <code>heavyInvCapacity</code> if needed) is above 0</li>
+<li>every <code>chance</code> you meant to be non-zero is set, and at least one slot adds up to <code>1</code></li>
+<li><code>alwaysSpawn</code> is on for anything that must always exist, off for air drops</li>
+<li><code>maxInventoryZones</code> is set, and is smaller than the number of air drop zones</li>
+<li><code>isAtDeployZone</code> is off unless this is the Base module</li>
+</ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../40-zones/deploy-zones.html"><span>Previous</span>Deploy zones and FOBs</a><a class="seq-next" href="../40-zones/construction-zones.html"><span>Next</span>Construction zones</a>      </nav>
@@ -281,7 +488,20 @@ its internal item reference on whitespace. This is covered in full on
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#the-settings">The settings</a><ul>
+<li><a href="#how-much-it-can-hold">How much it can hold</a></li>
+<li><a href="#what-can-appear-in-it">What can appear in it</a></li>
+<li><a href="#fuel-repair-parts-and-wheels">Fuel, repair parts and wheels</a></li>
+<li><a href="#the-other-switches">The other switches</a></li>
+</ul>
+</li>
+<li><a href="#air-drops-random-by-design">Air drops: random by design</a></li>
+<li><a href="#specific-loot-instead-of-random">Specific loot instead of random</a></li>
+<li><a href="#what-survives-between-expeditions">What survives between expeditions</a></li>
+<li><a href="#storage-at-a-base-module">Storage at a base module</a></li>
+<li><a href="#checklist">Checklist</a></li>
+</ul>
 </div>
 
   </aside>

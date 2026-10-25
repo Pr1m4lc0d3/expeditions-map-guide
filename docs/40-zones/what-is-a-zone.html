@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html" aria-current="page">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -255,23 +255,279 @@
         <p class="eyebrow">Zones</p>
         <h1>What a zone is</h1>
 <p class="lede">A zone is a shape in the world plus a set of properties, and those two halves live in two different programs.</p>      </div>
-      <div class="banner">
-        <strong>This page is outline.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
-      <article class="prose"><p>Read this before the other zone pages. A zone is two things that get edited separately,
-and understanding the split makes everything else obvious.</p>
-<p>Planned for this page:</p>
+      <article class="prose"><p>Read this before the other zone pages. A zone is two things that get edited
+separately, and once you see the split, most zone problems explain themselves.</p>
+<h2 id="two-halves-two-programs">Two halves, two programs<a class="headerlink" href="#two-halves-two-programs" title="Permanent link">#</a></h2>
+<p>Saber&rsquo;s guides describe every zone as a <strong>zone locator</strong> plus its <strong>props</strong>.
+<span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Half</th>
+<th>What it is</th>
+<th>Where you edit it</th>
+<th>Where it is saved</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The locator</strong></td>
+<td>The shape: where the zone is, how big, which way it faces, what it is called on screen</td>
+<td>The map editor itself, in the properties panel after selecting the zone</td>
+<td><code>_zones.xml</code> or <code>subgroups\Zone_&lt;name&gt;.xml</code> under <code>Media\prebuild\&lt;level&gt;\</code></td>
+</tr>
+<tr>
+<td><strong>The props</strong></td>
+<td>The behaviour: what the zone <em>does</em></td>
+<td>The <strong>Zone Settings</strong> plugin, opened from the editor&rsquo;s toolbar</td>
+<td><code>zone_settings.json</code> under <code>Media\levels\&lt;level&gt;\</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>A locator on its own does nothing in game. A zone with an empty props list is only
+a named area, and Saber notes it will not be visible in the game until something
+refers to it, such as an objective. <span class="prov prov-doc">documented</span>
+That is not a fault. Many zones exist only so an objective has a place to point at.</p>
+<h2 id="adding-one">Adding one<a class="headerlink" href="#adding-one" title="Permanent link">#</a></h2>
+<div class="step"><div class="n">1</div><div>
+
+### Place the locator
+
+In the editor, right-click the terrain (or the **Zones** section of the Scene View)
+and choose **Add Zone**. It appears as `no_id`. Move it where you want it, then set
+its **Id** in the properties panel. Save the map.
+
+</div></div>
+
+<div class="step"><div class="n">2</div><div>
+
+### Give it props
+
+Open **Zone Settings** from the toolbar. Expand your map, then
+**TERRAIN LOCATORS LIST**, then your zone. Click the plus next to **props**, pick a
+property type, fill in its fields, and save with Ctrl+S.
+
+</div></div>
+
+<div class="step"><div class="n">3</div><div>
+
+### Pack and test
+
+A map only loads with at least one expedition and one deploy zone, so you need
+those before you can test any other zone. See
+[Make a map that loads](../00-start/map-that-loads.html).
+
+</div></div>
+
+<h2 id="the-id-is-the-only-link-between-the-halves">The Id is the only link between the halves<a class="headerlink" href="#the-id-is-the-only-link-between-the-halves" title="Permanent link">#</a></h2>
+<p>The Zone Settings plugin lists your zones under <strong>TERRAIN LOCATORS LIST</strong> by their
+Id, and that is how it matches a set of props to a locator in the scene.
+<span class="prov prov-doc">documented</span> There is no other connection. If the
+two names differ by one character, the props belong to nothing, and the zone you
+placed has no behaviour.</p>
+<p>This is where most zone problems actually come from: a capital letter, a stray
+space, a rename on one side but not the other. When a zone &ldquo;does nothing&rdquo;, compare
+the two names character by character before you look at anything else.</p>
+<p>Saber&rsquo;s rule for the Id is <strong>lowercase Latin letters, digits and underscores only</strong>,
+for example <code>test_zone_01</code>, and no spaces. <span class="prov prov-doc">documented</span>
+Follow it from the first zone you place. A space in the Id is harmless for a plain
+deploy point but breaks any zone that items pass through, as explained on
+<a href="../00-start/where-things-live.html#zone-names-spaces-in-the-source-underscores-in-the-pack">Where everything lives</a>.</p>
+<p>The <strong>Name</strong> field on the locator (<code>UiName</code> in the file) is separate from the Id.
+It is what the player reads, so it can be a proper title.</p>
+<div class="admonition warning">
+<p class="admonition-title">Zones do not work inside References</p>
+<p>Saber&rsquo;s guide says zones can be added to a Reference, but will not work
+correctly on the map that the Reference is placed into.
+<span class="prov prov-doc">documented</span> Place zones directly on the map.</p>
+</div>
+<h2 id="one-zone-several-props">One zone, several props<a class="headerlink" href="#one-zone-several-props" title="Permanent link">#</a></h2>
+<p>Props combine. A single zone can carry several property types at once, and each one
+adds a function. <span class="prov prov-doc">documented</span> Saber&rsquo;s example is the
+typical deploy zone, which carries three:</p>
 <ul>
-<li>the <strong>shape</strong> is an object you place in the map editor, and it carries an <strong>Id</strong></li>
-<li>the <strong>behaviour</strong> is a set of properties you attach in the zone settings tool</li>
-<li>the two are matched by that Id, character for character. This is where most zone
-  problems actually come from</li>
-<li>one zone can carry several properties at once. A deploy zone that is also a store is
-  a single zone with two properties</li>
-<li>the full list of property types, and which page covers each</li>
-</ul></article>
+<li><code>ZonePropertyDeploy</code>, so trucks can arrive there</li>
+<li><code>ZonePropertyInventoryStorage</code>, for the Base module&rsquo;s storage</li>
+<li><code>ZonePropertyRecovery</code>, so trucks can be recovered to it</li>
+</ul>
+<p>So &ldquo;a deploy zone that is also a store&rdquo; is one zone, not two zones on top of each
+other. Props can also be added to or removed from a zone during play, as an
+objective reward. See <a href="../50-missions/rewards.html">Rewards</a>.</p>
+<h2 id="the-locator-fields-worth-knowing">The locator fields worth knowing<a class="headerlink" href="#the-locator-fields-worth-knowing" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Editor field</th>
+<th>In the file</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Org X, Org Z</td>
+<td><code>Org</code></td>
+<td>position on the map, in metres</td>
+</tr>
+<tr>
+<td>Dir</td>
+<td><code>Dir</code></td>
+<td>the direction the zone faces, drawn as a purple arrow</td>
+</tr>
+<tr>
+<td>Id</td>
+<td><code>Id</code></td>
+<td>the link to Zone Settings, see above</td>
+</tr>
+<tr>
+<td>Name</td>
+<td><code>UiName</code></td>
+<td>the name the player sees</td>
+</tr>
+<tr>
+<td>Is Visible On Minimap</td>
+<td><code>IsVisibleOnMinimap</code></td>
+<td>hides or shows the zone on the in-game map</td>
+</tr>
+<tr>
+<td>Shape Type</td>
+<td><code>ShapeType</code></td>
+<td>rectangle or circle</td>
+</tr>
+<tr>
+<td>Length or diameter, Width</td>
+<td><code>LengthDiameter</code>, <code>Width</code></td>
+<td>size in metres</td>
+</tr>
+<tr>
+<td>Is Wall, Height</td>
+<td><code>IsWall</code>, <code>Height</code></td>
+<td>raise the zone above the surface instead of lying on it</td>
+</tr>
+<tr>
+<td>Icon 30x30, Icon 40x40</td>
+<td><code>Icon30x30</code>, <code>Icon40x40</code></td>
+<td>leave empty, see below</td>
+</tr>
+<tr>
+<td>Distributions group name</td>
+<td><code>DistributionGroupName</code></td>
+<td>SnowRunner only. Not used in Expeditions</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">Leave the icon fields empty</p>
+<p>Expeditions assigns zone icons automatically from the zone&rsquo;s props and the
+objectives that use it. <span class="prov prov-doc">documented</span> The
+exception is a hidden hint zone marking a Climb, Ford or Shortcut, since all
+three use the same prop and would otherwise look identical. Their icons are
+<code>exMountainAccess30</code>/<code>40</code>, <code>exRiverFord30</code>/<code>40</code> and <code>exShortWay30</code>/<code>40</code>.</p>
+</div>
+<h2 id="every-property-type-and-where-it-is-covered">Every property type, and where it is covered<a class="headerlink" href="#every-property-type-and-where-it-is-covered" title="Permanent link">#</a></h2>
+<p>Saber lists these as the props for ordinary zones in Expeditions.
+<span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Property</th>
+<th>What it makes the zone</th>
+<th>Covered on</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ZonePropertyDeploy</code></td>
+<td>a place trucks arrive at the start of an expedition</td>
+<td><a href="deploy-zones.html">Deploy zones and FOBs</a></td>
+</tr>
+<tr>
+<td><code>ZonePropertyRecovery</code></td>
+<td>a target for truck recovery. Deploy zones only</td>
+<td><a href="deploy-zones.html#recovery">Deploy zones and FOBs</a></td>
+</tr>
+<tr>
+<td><code>ZonePropertyBaseBuilding</code></td>
+<td>the interaction zone of a buildable FOB module</td>
+<td><a href="deploy-zones.html#every-module-is-two-zones">Deploy zones and FOBs</a></td>
+</tr>
+<tr>
+<td><code>ZonePropertyInventoryStorage</code></td>
+<td>a store of items, fuel, parts and wheels: air drops, loot, the Base module</td>
+<td><a href="storage-zones.html">Loot, storage and airdrops</a></td>
+</tr>
+<tr>
+<td><code>ZonePropertyObjectConstructionInZone</code></td>
+<td>a delivery point that builds something, with no objective</td>
+<td><a href="construction-zones.html">Construction zones</a></td>
+</tr>
+<tr>
+<td><code>ZonePropertyHiddenHint</code></td>
+<td>a marker for a Climb, Ford or Shortcut, seen by binoculars, drone and on the map</td>
+<td>this page, above</td>
+</tr>
+<tr>
+<td><code>ZonePropertyNotification</code></td>
+<td>a message shown when the player arrives, once (<code>executedOnce</code>) or every time. Invisible in game</td>
+<td>not yet covered. Its message uses the same settings as objective notifications, see <a href="../50-missions/stages.html">Stages and substages</a></td>
+</tr>
+<tr>
+<td><code>ZonePropertyMinigame</code></td>
+<td>a place to play a minigame</td>
+<td><a href="../50-missions/assignment-types.html#minigameinfo">The assignment types</a></td>
+</tr>
+<tr>
+<td><code>ZonePropertyUpgradesGiver</code></td>
+<td>gives the player listed truck upgrades</td>
+<td>not yet covered</td>
+</tr>
+<tr>
+<td><code>ZonePropertyGateway</code></td>
+<td>a link to another map</td>
+<td>not usable yet, see below</td>
+</tr>
+</tbody>
+</table></div>
+<p>Deploy, Base Building, Inventory Storage, Object Construction and Hidden Hint props
+each carry a <code>zoneDiscoverability</code> block, which decides whether the player can see
+the zone before finding it. See <a href="discoverability.html">Hiding and revealing zones</a>.
+The Notification prop has one too, but Saber says not to use it there, since that
+zone is never shown in game.</p>
+<div class="admonition warning">
+<p class="admonition-title">Gateways do not work in Expeditions yet</p>
+<p>Saber&rsquo;s guide says custom regions of several linked maps are not supported in
+Expeditions; only standalone maps are. <span class="prov prov-doc">documented</span></p>
+</div>
+<h3 id="props-you-should-not-add-by-hand">Props you should not add by hand<a class="headerlink" href="#props-you-should-not-add-by-hand" title="Permanent link">#</a></h3>
+<p>Some prop types exist but are not for you to pick.</p>
+<ul>
+<li><strong>Internal technical props</strong>: <code>ZonePropertyFakeVisitZone</code>,
+  <code>ZonePropertyInventoryStorageQuest</code>, <code>ZonePopertyObjectConstruction</code> (Saber&rsquo;s
+  spelling) and <code>ZonePropertyScouting</code>. The game assigns these itself when you
+  configure the matching objective. <span class="prov prov-doc">documented</span></li>
+<li><strong>FOB module props</strong>: <code>ZonePropertyFobModuleStorage</code>, <code>ZonePropertyWorkshop</code>,
+  <code>ZonePropertyServiceStation</code>, <code>ZonePropertyParking</code>, <code>ZonePropertyDroneDelivery</code>,
+  <code>ZonePropertySupplyShop</code>, <code>ZonePropertyTowTruck</code> and the others. These belong
+  inside a <strong>custom FOB module&rsquo;s</strong> descriptor, never on a zone you place on a map.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">FOB module props on a map zone can crash the game</p>
+<p>Saber&rsquo;s guide is explicit: these props must be used only for configuring custom
+FOB modules, and assigning them to ordinary standalone zones &ldquo;might cause a
+crash&rdquo;. <span class="prov prov-doc">documented</span> To give a map a workshop or
+a service station, give the player a place to <strong>build</strong> the module, as described
+on <a href="deploy-zones.html">Deploy zones and FOBs</a>. To make a new kind of module, see
+<a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>.</p>
+</div>
+<h2 id="checking-your-work">Checking your work<a class="headerlink" href="#checking-your-work" title="Permanent link">#</a></h2>
+<p>The packer validates some zone settings. Its errors are written to:</p>
+<div class="hl"><pre><span></span><code>C:\Users\&lt;username&gt;\Documents\My Games\Expeditions\base\logs\ModMapError.txt
+</code></pre></div>
+
+<p>The editor will let you save a zone with wrong props, so read that log after a pack
+that misbehaves. <span class="prov prov-doc">documented</span></p>
+<p>Also confirm your props survived the pack at all. Packing can regenerate the zone
+list with empty settings; see
+<a href="../00-start/where-things-live.html#packing-rewrites-some-of-your-work">Where everything lives</a>.</p></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../30-dressing/sound.html"><span>Previous</span>Music and sound</a><a class="seq-next" href="../40-zones/deploy-zones.html"><span>Next</span>Deploy zones and FOBs</a>      </nav>
@@ -280,7 +536,18 @@ and understanding the split makes everything else obvious.</p>
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#two-halves-two-programs">Two halves, two programs</a></li>
+<li><a href="#adding-one">Adding one</a></li>
+<li><a href="#the-id-is-the-only-link-between-the-halves">The Id is the only link between the halves</a></li>
+<li><a href="#one-zone-several-props">One zone, several props</a></li>
+<li><a href="#the-locator-fields-worth-knowing">The locator fields worth knowing</a></li>
+<li><a href="#every-property-type-and-where-it-is-covered">Every property type, and where it is covered</a><ul>
+<li><a href="#props-you-should-not-add-by-hand">Props you should not add by hand</a></li>
+</ul>
+</li>
+<li><a href="#checking-your-work">Checking your work</a></li>
+</ul>
 </div>
 
   </aside>

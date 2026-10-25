@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html" aria-current="page">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,26 +256,261 @@
         <h1>How terrain actually works</h1>
 <p class="lede">Heightmaps, the tile system, and why editing the file you think is the terrain often changes nothing.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>The editor does not build terrain from the large master images you might expect. It
-builds it from <strong>tiles</strong>, one per chunk of the map, and it reads them <strong>when the map
-is opened</strong> rather than when you press Rebuild Terrain.</p>
-<p>Planned for this page:</p>
+      <article class="prose"><p>Terrain in Expeditions is a grid of heights. The editor turns that grid into the
+ground you drive on. That part is simple. What catches people out is <em>which</em> copy
+of the grid the editor actually reads, <em>when</em> it reads it, and how precisely a
+height can be stored at all.</p>
+<p>This page covers those three things. Get them wrong and you can spend a day
+editing a file the editor never looks at.</p>
+<h2 id="size-and-height-are-fixed-when-you-create-the-map">Size and height are fixed when you create the map<a class="headerlink" href="#size-and-height-are-fixed-when-you-create-the-map" title="Permanent link">#</a></h2>
+<p>A map is measured in <strong>blocks</strong>. Each block is 24 m square.
+<span class="prov prov-doc">documented</span> You set the number of blocks and
+the <strong>Max height</strong> when you create the terrain, and both are read-only in the
+terrain properties afterwards.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>setting</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>block size</td>
+<td><code>24 m</code></td>
+</tr>
+<tr>
+<td>maximum blocks per axis</td>
+<td><code>84</code>, so a full-size map is <code>2016 m</code> square</td>
+</tr>
+<tr>
+<td>minimum recommended</td>
+<td><code>5 x 5</code> blocks, because the edges carry an invisible wall</td>
+</tr>
+<tr>
+<td>drone no-fly zone</td>
+<td><code>150 m</code> from the edge by default, so very small maps are a poor fit</td>
+</tr>
+</tbody>
+</table></div>
+<p>The level name must start with <code>level_</code>. <span class="prov prov-doc">documented</span></p>
+<p>Choose Max height with care, because you cannot change it later. A value of <code>512</code>
+has been used on maps that load and drive in game.
+<span class="prov prov-unver">measured</span> Whether values above <code>512</code> work has
+not been tested.</p>
+<h2 id="where-the-heights-live">Where the heights live<a class="headerlink" href="#where-the-heights-live" title="Permanent link">#</a></h2>
+<p>A map keeps its height in more than one place. Only one of them is what the editor
+builds from.</p>
+<div class="hl"><pre><span></span><code>Media\prebuild\&lt;map&gt;.xml                  descriptor: blocks, Max height, materials
+Media\prebuild\&lt;map&gt;\_height_source.png   a height image you can import (see below)
+Media\prebuild\&lt;map&gt;\data\&lt;col&gt;_&lt;row&gt;\    16 TILES, each with its own _height.dds
+Media\levels\&lt;map&gt;\height_map.dds         the BUILT result
+</code></pre></div>
+
+<p>Every map is split into <strong>16 pieces</strong>, <code>0_0</code> to <code>3_3</code>, whatever its size.
+<span class="prov prov-doc">documented</span> Each piece has a folder under
+<code>data\</code> holding that piece&rsquo;s height, masks and blends. The folder name is
+<strong>column first, then row</strong>. <span class="prov prov-unver">measured</span></p>
+<div class="admonition warning">
+<p class="admonition-title">The editor builds from the tiles, not from the big images</p>
+<p>Editing a full-size master image, or <code>_height_source.png</code>, changes nothing
+in game on its own. The editor builds the terrain from the per-tile files in
+<code>data\&lt;col&gt;_&lt;row&gt;\</code>. The same is true of distribution masks: the editor reads
+the per-tile <code>dstr_*.tga</code>, not the master in <code>fullTexture\</code>.</p>
+<p>On one map, a road was graded in the master and the built terrain was then
+compared to both versions. It matched the old, ungraded master to <code>0.051 m</code>
+and the graded one to only <code>0.241 m</code>. The graded terrain sat on disk being
+ignored. <span class="prov prov-unver">measured</span></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Tiles are read when the map is opened</p>
+<p>The editor reads the tiles <strong>when you open the map</strong>, not when you press
+Rebuild Terrain. If a script writes tiles while the map is open, the rebuild
+ignores them. Close the map, write, then reopen it.
+<span class="prov prov-unver">measured</span></p>
+</div>
+<h3 id="tile-resolutions">Tile resolutions<a class="headerlink" href="#tile-resolutions" title="Permanent link">#</a></h3>
+<p>Different layers are stored at different resolutions. Measured on a full-size
+<code>84 x 84</code> map: <span class="prov prov-unver">measured</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>layer</th>
+<th>pixels per tile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>height, blends, distribution masks</td>
+<td><code>1008</code></td>
+</tr>
+<tr>
+<td>water foam and speed (<code>_water.tga</code>)</td>
+<td><code>651</code></td>
+</tr>
+<tr>
+<td>water mud (<code>_water_mud.tga</code>)</td>
+<td><code>63</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The full-size master is four tiles plus one pixel: <code>1008 x 4 + 1 = 4033</code>. At
+<code>2016 m</code> across that is <code>0.5 m</code> per height sample.</p>
+<h2 id="bringing-in-a-heightmap-from-another-tool">Bringing in a heightmap from another tool<a class="headerlink" href="#bringing-in-a-heightmap-from-another-tool" title="Permanent link">#</a></h2>
+<p>If you build terrain elsewhere, from real survey data or a terrain generator, you
+import it with <strong>Copy Source Heightmap</strong>. Right-click the Geometry node in the
+Scene View to find it. <span class="prov prov-doc">documented</span> It reads
+<code>Media\prebuild\&lt;map&gt;\_height_source.png</code>.</p>
+<p>Three things about that file are not what the name suggests:</p>
 <ul>
-<li>the tile layout, and why the full-texture folder and the height source are not what
-  the game actually uses</li>
-<li>the height source is a quarter of the master&rsquo;s linear resolution</li>
-<li>height is stored at 16-bit float precision, so the smallest possible step is roughly
-  the elevation divided by 2048. About 10 cm at 200 m up, about 2 cm in a valley</li>
-<li>why that floor cannot be filtered away, and why <strong>flattening a road makes the
-  stepping more visible</strong> rather than less</li>
-<li>the practical consequence: route roads low on the map</li>
-<li>pushing edited heights back into tiles is a <strong>merge</strong>, not a copy, because the tiles
-  hold hand sculpting done after the master was written</li>
-</ul></article>
+<li>Saber describes it as a one-channel 16-bit image. On disk the editor&rsquo;s own copy
+  is a <strong>DDS file holding 16-bit floats</strong>, despite the <code>.png</code> extension.
+  <span class="prov prov-unver">measured</span></li>
+<li>The editor creates it at <strong>tile size</strong>, a quarter of the master&rsquo;s width: <code>1008</code>
+  pixels for a <code>4033</code> master, <code>48</code> for a <code>193</code> master.
+  <span class="prov prov-unver">measured</span> Write it at the same size the
+  editor made it.</li>
+<li>Copy Source Heightmap <strong>replaces the whole terrain</strong>. The file must carry every
+  part of the map, including the parts you did not change.
+  <span class="prov prov-unver">measured</span></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">A baked terrain file beats everything</p>
+<p>A map folder copied from another map carries that map&rsquo;s baked <code>data.stg</code>,
+<code>data_editor.stg</code> and <code>data_nx.stg</code>. The editor loads the old baked terrain
+and never looks at your new heights; the symptom is the previous map&rsquo;s ground
+with an empty Scene View. Move the three <code>.stg</code> files aside, reopen the map,
+and answer <strong>Yes</strong> when it offers to create the terrain file.
+<span class="prov prov-unver">measured</span></p>
+</div>
+<h2 id="how-precisely-a-height-can-be-stored">How precisely a height can be stored<a class="headerlink" href="#how-precisely-a-height-can-be-stored" title="Permanent link">#</a></h2>
+<p>This is the fact that most changes how you build roads.</p>
+<p>Height tiles store each height as a <strong>16-bit float</strong>, a fraction of Max height.
+<span class="prov prov-unver">measured</span> A 16-bit float has only about
+three significant figures, and its precision is <strong>relative</strong>: the higher a point
+is above zero, the coarser the smallest step it can take. The step doubles each
+time the elevation doubles.</p>
+<p>The steps for a map with Max height <code>512</code>, calculated from the format and
+matching what was measured on real tiles:
+<span class="prov prov-unver">measured</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>elevation</th>
+<th>smallest possible height step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16 to 32 m</td>
+<td><code>1.6 cm</code></td>
+</tr>
+<tr>
+<td>32 to 64 m</td>
+<td><code>3.1 cm</code></td>
+</tr>
+<tr>
+<td>64 to 128 m</td>
+<td><code>6.3 cm</code></td>
+</tr>
+<tr>
+<td>128 to 256 m</td>
+<td><code>12.5 cm</code></td>
+</tr>
+<tr>
+<td>256 to 512 m</td>
+<td><code>25 cm</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>On an upland road at about 200 m, the profile measured as a literal staircase:
+median tread <code>1.5 m</code>, median riser <code>12.5 cm</code>, the exact step size. That is a
+washboard. <span class="prov prov-unver">measured</span></p>
+<div class="admonition note">
+<p class="admonition-title">Older figures</p>
+<p>Earlier notes gave the step as a smooth <code>elevation / 2048</code>. That is the best
+case, not the rule. The real step jumps at each doubling of elevation and
+sits between <code>elevation / 2048</code> and <code>elevation / 1024</code>.</p>
+</div>
+<h3 id="what-follows-from-that">What follows from that<a class="headerlink" href="#what-follows-from-that" title="Permanent link">#</a></h3>
+<p><strong>No filter can go below the step.</strong> Smoothing, by hand or by script, lands at
+one and a half to three times the step and no lower.
+<span class="prov prov-unver">measured</span></p>
+<p><strong>Flattening a road makes the stepping more visible, not less.</strong> The length of
+each flat tread is the step divided by the grade. A gentler road has longer
+flats and the same-height ledges between them. On rough ground the steps hide in
+the noise; grade the road smooth and they are the only thing left. A grade above
+roughly 4 degrees hides them. <span class="prov prov-unver">measured</span></p>
+<p><strong>Changing Max height does not help.</strong> The step follows the real height of the
+ground above zero. Rescaling cancels out.
+<span class="prov prov-unver">measured</span></p>
+<p><strong>So route roads low.</strong> Valley floors and creek bottoms have the finest
+precision on the map. Below about 64 m the step is <code>3 cm</code> or less.</p>
+<div class="admonition tip">
+<p class="admonition-title">Measure grade over a sensible distance</p>
+<p>A <code>0.2 m</code> step is a 40% grade over half a metre. Measure grade over about
+<code>15 m</code> of road, or you will chase slopes that no truck can feel.
+<span class="prov prov-unver">measured</span></p>
+</div>
+<p>The built <code>levels\&lt;map&gt;\height_map.dds</code> is a 16-bit <strong>integer</strong> image at about
+<code>0.39 cm</code> per step, 32 times finer. The engine can draw smooth ground; the source
+format cannot feed it. <span class="prov prov-unver">measured</span></p>
+<h2 id="writing-heights-back-into-the-tiles">Writing heights back into the tiles<a class="headerlink" href="#writing-heights-back-into-the-tiles" title="Permanent link">#</a></h2>
+<p>If a script edits heights in a master and then pushes them into the tiles, the
+push must be a <strong>merge</strong>, never a straight copy.</p>
+<p>The tiles hold hand sculpting done in the editor after the master was written.
+On one map a rebuilt pond existed in one tile alone, and a road corridor ran
+through it: almost every pixel near the pond was inside the area a road script
+wanted to write, differing by up to <code>4.25 m</code>. A wholesale copy would have erased
+it. <span class="prov prov-unver">measured</span></p>
+<p>A safe push:</p>
+<ul>
+<li>writes only pixels that the edit changed <strong>and</strong> that lie inside the area it
+  meant to change</li>
+<li>protects water channels and their banks, plus a margin</li>
+<li>takes explicit no-go circles for ground you reshaped by hand</li>
+<li>caps how far it moves the ground. Keep it near <code>3 m</code>. Forcing a gradient onto a
+  bad alignment once produced <code>30 m</code> embankments, and ground that differs from
+  its surroundings by that much has a cliff at every edge.
+  <span class="prov prov-unver">measured</span></li>
+</ul>
+<p>The toolkit&rsquo;s <code>push_heights.py</code> works this way for a road network: it writes
+only inside the road corridor, protects water by default, and takes no-go
+circles. It dry-runs by default and only writes with <code>--apply</code>. See <a href="../80-ai-tools/toolkit.html">the
+toolkit</a>.</p>
+<div class="hl"><pre><span></span><code>python push_heights.py level_&lt;name&gt; --protect-circle &lt;x,z,radius&gt;
+python push_heights.py level_&lt;name&gt; --protect-circle &lt;x,z,radius&gt; --apply
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Sometimes the tiles are the stale copy</p>
+<p>The rule &ldquo;the editor builds from the tiles&rdquo; held for small edits to a built
+map. It did not hold everywhere. On one map, a whole column of four tiles
+disagreed with the master by <code>40 m</code> on average while the master was
+continuous across that boundary: the editor had rewritten the other tiles
+that morning and never touched those four. Pushing them back would have
+reverted the night&rsquo;s work. <span class="prov prov-unver">measured</span></p>
+<p>Before treating either copy as the truth, compare the tiles against the
+built <code>height_map.dds</code>.</p>
+</div>
+<h2 id="not-yet-known">Not yet known<a class="headerlink" href="#not-yet-known" title="Permanent link">#</a></h2>
+<ul>
+<li>Why some tiles were left stale in the case above, and how to predict it.</li>
+<li>Whether a full-resolution <code>_height_source.png</code> (<code>4033</code> pixels instead of
+  <code>1008</code>) imports correctly. One set of notes says it scales a quarter of the map
+  over the whole; another says a full-size file loaded. This has not been
+  settled by a clean test.</li>
+<li>Whether Max height above <code>512</code> is accepted.</li>
+<li>Whether neighbouring tiles share an edge pixel. Two measurements disagree.</li>
+</ul>
+<h2 id="before-you-build">Before you build<a class="headerlink" href="#before-you-build" title="Permanent link">#</a></h2>
+<p>Read Saber&rsquo;s own pages for the topic first. With the toolkit:</p>
+<div class="hl"><pre><span></span><code>python wiki.py howto terrain
+</code></pre></div></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../00-start/map-that-loads.html"><span>Previous</span>Make a map that loads</a><a class="seq-next" href="../20-land/brushes.html"><span>Next</span>The brushes</a>      </nav>
@@ -284,7 +519,21 @@ is opened</strong> rather than when you press Rebuild Terrain.</p>
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#size-and-height-are-fixed-when-you-create-the-map">Size and height are fixed when you create the map</a></li>
+<li><a href="#where-the-heights-live">Where the heights live</a><ul>
+<li><a href="#tile-resolutions">Tile resolutions</a></li>
+</ul>
+</li>
+<li><a href="#bringing-in-a-heightmap-from-another-tool">Bringing in a heightmap from another tool</a></li>
+<li><a href="#how-precisely-a-height-can-be-stored">How precisely a height can be stored</a><ul>
+<li><a href="#what-follows-from-that">What follows from that</a></li>
+</ul>
+</li>
+<li><a href="#writing-heights-back-into-the-tiles">Writing heights back into the tiles</a></li>
+<li><a href="#not-yet-known">Not yet known</a></li>
+<li><a href="#before-you-build">Before you build</a></li>
+</ul>
 </div>
 
   </aside>

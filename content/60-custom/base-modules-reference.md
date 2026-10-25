@@ -1,44 +1,47 @@
 ---
-title: Every base module, and every surface you can edit
-part: Custom content
-order: 625
-summary: The fourteen built-in base modules, what each descriptor field does, every image slot and where it appears on screen, and the values the engine actually accepts.
+title: Module descriptor reference
+part: Appendix A - base modules
+order: 898
+summary: Every field of a base module's descriptor, every image slot and where it appears, the twelve vanilla modules' identifiers and art symbols, and which module types work for a mod.
 ---
 
-# Every base module, and every surface you can edit
+# Module descriptor reference
 
 A base module is a thing the player buys at a deploy zone: a repair station, a
-fuel station, a workshop. This page is the reference for all of them — what the
-built-in ones are, which fields you can set, which pictures appear where, and
-what values the engine will accept.
+fuel station, a workshop. Its descriptor (`BaseUpgradeDesc`) sets what it is
+called, what it costs, which models and pictures it uses, and, through
+`zoneProperty`, what it does. This page lists every one of those fields. For the
+step-by-step process of making a module, see
+[Custom FOB modules](fob-modules.html).
 
-Everything on this page was read out of the shipped game — the field names and
-their types come from the editor's own type definitions, and the artwork names
-come from the game's UI bundle. Where something is measured rather than
-documented, it says so.
+Field names and types come from the editor's own type definitions. Identifiers
+and art symbols were read from the running game. Where something is measured
+in game rather than documented, it says so.
 
-## The fourteen built-in modules
+## The twelve vanilla modules
 
-These are the families that ship with a complete set of artwork. The names in
-the right-hand columns are UI symbols, not files — they live inside the
-Scaleform bundle, and a descriptor refers to them by name.
+The game has **twelve modules a player can buy**. Each has its own page in this
+appendix. The names in the art columns are UI symbols inside the game's bundle,
+not files; a descriptor refers to them by name.
 
-| Family | Popup card | List row | Small row | Map icon | Trade icon |
-|---|---|---|---|---|---|
-| Base station | `moduleBaseStationPopup` | `moduleBaseStationRight` | `moduleBaseStationSmall` | — | — |
-| Com center | `moduleComCenterPopup` | `moduleComCenterRight` | `moduleComCenterSmall` | — | — |
-| Double stock | `moduleDoubleStockPopup` | `moduleDoubleStockRight` | `moduleDoubleStockSmall` | `moduleDoubleStockMap40` | `moduleDoubleStock48` |
-| Drone base | `moduleDroneBasePopup` | `moduleDroneBaseRight` | `moduleDroneBaseSmall` | — | — |
-| Evacuator | `moduleEvacuatorPopup` | `moduleEvacuatorRight` | `moduleEvacuatorSmall` | — | — |
-| Extra storage | `moduleExtraStoragePopup` | `moduleExtraStorageRight` | `moduleExtraStorageSmall` | `moduleExtraStorageMap40` | `moduleExtraStorage48` |
-| Gas station | `moduleGasStationPopup` | `moduleGasStationRight` | `moduleGasStationSmall` | `moduleGazStationMap40` | `moduleGazStation48` |
-| Generator | `moduleGeneratorPopup` | `moduleGeneratorRight` | `moduleGeneratorSmall` | `moduleGeneratorMap40` | `moduleGenerator48` |
-| Helicopter | `moduleHelicopterPopup` | `moduleHelicopterRight` | `moduleHelicopterSmall` | `moduleHelicopterMap40` | `moduleHelicopter48` |
-| Parking | `moduleParkingPopup` | `moduleParkingRight` | `moduleParkingSmall` | `moduleParkingMap40` | `moduleParking48` |
-| Repair station | `moduleRepairStationPopup` | `moduleRepairStationRight` | `moduleRepairStationSmall` | `moduleRepairStationMap40` | `moduleRepairStation48` |
-| Resource zone | `moduleResourceZonePopup` | `moduleResourceZoneRight` | `moduleResourceZoneSmall` | — | — |
-| Service station | `moduleServiceStationPopup` | `moduleServiceStationRight` | `moduleServiceStationSmall` | `moduleServiceStationMap40` | — |
-| Workshop | `moduleWorkshopPopup` | `moduleWorkshopRight` | `moduleWorkshopSmall` | `moduleWorkshopMap40` | `moduleWorkshop48` |
+| Module | `moduleId` | `bg` | `bgRight` | `bgSmall` | `popupModuleBg` | `iconMap40` | `iconTrade` |
+|---|---|---|---|---|---|---|---|
+| [Gas station](../62-modules/gas-station.html) | `GAS_STATION` | `moduleGasStation` | `moduleGasStationRight` | `moduleGasStationSmall` | `moduleGasStationPopup` | `moduleGazStationMap40` | `moduleGazStation48` |
+| [Warehouse](../62-modules/extra-storage.html) | `EXTRA_STORAGE` | `moduleExtraStorage` | `moduleExtraStorageRight` | `moduleExtraStorageSmall` | `moduleExtraStoragePopup` | `moduleExtraStorageMap40` | `moduleExtraStorage48` |
+| [Essentials storage](../62-modules/double-stock.html) | `DOUBLE_STOCK` | `moduleDoubleStock` | `moduleDoubleStockRight` | `moduleDoubleStockSmall` | `moduleDoubleStockPopup` | `moduleDoubleStockMap40` | `moduleDoubleStock48` |
+| [Workshop](../62-modules/workshop.html) | `WORKSHOP` | `moduleWorkshop` | `moduleWorkshopRight` | `moduleWorkshopSmall` | `moduleWorkshopPopup` | `moduleWorkshopMap40` | `moduleWorkshop48` |
+| [Repair station](../62-modules/repair-station.html) | `REPAIR_ZONE` | `moduleRepairStation` | `moduleRepairStationRight` | `moduleRepairStationSmall` | `moduleRepairStationPopup` | `moduleRepairStationMap40` | `moduleRepairStation48` |
+| [Service station](../62-modules/service-station.html) | `SERVICE_STATION` | `moduleServiceStation` | `moduleServiceStationRight` | `moduleServiceStationSmall` | `moduleServiceStationPopup` | `moduleServiceStationMap40` | `moduleMapService48` |
+| [Generator](../62-modules/generator.html) | `GENERATOR` | `moduleGenerator` | `moduleGeneratorRight` | `moduleGeneratorSmall` | `moduleGeneratorPopup` | `moduleGeneratorMap40` | `moduleGenerator48` |
+| [Helipad](../62-modules/helicopter.html) | `HELICOPTER` | `moduleHelicopter` | `moduleHelicopterRight` | `moduleHelicopterSmall` | `moduleHelicopterPopup` | `moduleHelicopterMap40` | `moduleHelicopter48` |
+| [Expanded parking](../62-modules/parking.html) | `PARKING` | `moduleParking` | `moduleParkingRight` | `moduleParkingSmall` | `moduleParkingPopup` | `moduleParkingMap40` | `moduleParking48` |
+| [Cargo drone](../62-modules/drone-base.html) | `DRONE_BASE` | `moduleDroneBase` | `moduleDroneBaseRight` | `moduleDroneBaseSmall` | `moduleDroneBasePopup` | `moduleDroneMap40` | `mapDroneZone48` |
+| [Intelligence center](../62-modules/com-center.html) | `ANTENNA` | `moduleComCenter` | `moduleComCenterRight` | `moduleComCenterSmall` | `moduleComCenterPopup` | `moduleRadarMap40` | `moduleRadar48` |
+| [Tow truck](../62-modules/evacuator.html) | `TOW_TRUCK` | `moduleEvacuator` | `moduleEvacuatorRight` | `moduleEvacuatorSmall` | `moduleEvacuatorPopup` | `moduleEvocuationMap40` | `moduleEvocuation48` |
+
+Two more `moduleId` values exist but can't be bought (cost `-1`):
+`BASE_MODULE`, the base station every base starts with, and `SUPPLY_SHOP`, the
+store. Both use the base station's art (`moduleBaseStation…`).
 
 !!! warning "The gas station is spelled two different ways"
     Its backgrounds are `moduleGa**s**Station…` and its icons are
@@ -164,9 +167,9 @@ because a wrong name does not fail loudly — it draws a placeholder.
 | Field | Default | Where it appears |
 |---|---|---|
 | `bg` | `moduleSlotContent` | the wide artwork in the list row |
-| `bgRight` | `moduleSlotContentRight` | the row when the panel is right-aligned |
-| `bgSmall` | `moduleSlotContentSmall` | the compact row |
-| `popupModuleBg` | `""` | the big picture on the build card |
+| `bgRight` | `moduleSlotContentRight` | the banner above the module's card when the player uses it |
+| `bgSmall` | `moduleSlotContentSmall` | the chip in the HUD strip of built modules |
+| `popupModuleBg` | `""` | the big picture on the build card. A vanilla symbol or `""` only, never a mod PNG |
 | `iconMap40` | — | the 40 px marker on the map |
 | `iconTrade` | — | the 48 px icon on the trade panel |
 | `icon20` | — | 20 px, inline |
@@ -207,11 +210,17 @@ A mod ships PNGs in `ui/textures/` and names them in the descriptor **without
 the extension and without the folder**:
 
 ```
-ui/textures/mymodule_bg.png        ->   "bg": "mymodule_bg"
-ui/textures/mymodule_popup.png     ->   "popupModuleBg": "mymodule_popup"
+ui/textures/mymodule_bg.png        ->   "bg": "mymodule_bg"        380 x 92
+ui/textures/mymodule_right.png     ->   "bgRight": "mymodule_right"  760 x 90
+ui/textures/mymodule_small.png     ->   "bgSmall": "mymodule_small"  124 x 52
 ```
 
-!!! danger "Only bg, bgRight, bgSmall and popupModuleBg may be custom PNGs"
+!!! danger "Only bg, bgRight and bgSmall may be custom PNGs"
+    The game loads mod PNGs only for these three fields (`MODULE_BG`,
+    `MODULE_BG_SMALL` and `MODULE_BG_RIGHT` in its image loader). A mod PNG in
+    `popupModuleBg` draws the broken-image placeholder, seen in game; set it to
+    `""` or a vanilla symbol.
+
     The icon fields take **UI symbol names from the game's bundle**, not files.
     Pointing `iconMap40` at a PNG you shipped does not work. Use a vanilla
     symbol from the table at the top of this page.
@@ -235,7 +244,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:
 | `ZonePropertyBaseBuilding` | `modelPlacementZone` | where a module may be placed |
 | `ZonePropertyDeploy` | `fobModulesZones`, `defaultDeployPoint`, `maxTrucksNum` | the deploy zone itself |
 
-!!! danger "Only three of these are proven to work for a mod"
+!!! danger "Only four module types are proven to work for a mod"
     What has actually been tested in game with a custom module:
 
     | Type | For a mod | Tested with |
@@ -245,10 +254,11 @@ The engine knows 72 zone-property types. These are the ones a base module uses:
     | `ZonePropertyDroneDelivery` | ✅ works | A custom cargo drone base |
     | `ZonePropertyGenerator` | ⛔ broken | six builds; each one emptied the module store and froze the game on exit to headquarters |
     | `AntennaUpgradeDesc` (with `ZonePropertyFobModuleDefault`) | ⛔ broken | builds and sells, never reveals an air drop, even with the game's script patched. See [Intelligence center](../62-modules/com-center.html#building-your-own-the-ability-does-not-work) |
-    | `ZonePropertyHelicopter`, `ZonePropertyServiceStation` | ⚠ not yet tested | one of each worked in March 2025; neither has been reproduced since |
+    | `ZonePropertyServiceStation` | ✅ works | A custom service station: trucks in its area can add armor up to +20%, as vanilla. Tested October 2026 |
+    | `ZonePropertyHelicopter` | ⚠ not yet tested | one worked in March 2025 and it hasn't been reproduced since |
     | `ZonePropertyFuelStation`, the others | ⚠ not yet tested | no custom module on them has been checked in game |
 
-    ⇒ **For a mod, start from one of the three that work.** A fuel station
+    ⇒ **For a mod, start from one of the four that work.** A fuel station
     built as `ZonePropertyFobModuleStorage` with one fuel slot is proven; see
     the recipe below. Each module page in [Appendix A](../62-modules/index.html)
     opens with the same verdict.
@@ -267,7 +277,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:
 | `wheelsSlotSettings` | mod | null | tyres |
 | `electroSlotSettings` | mod | null | electricity |
 | `expandedConsumablesCapacity` | float | `3` | |
-| `alwaysSpawn` | bool | `False` | |
+| `alwaysSpawn` | bool | `False` | every vanilla storage-type module sets `True` |
 | `isAtDeployZone` | bool | `False` | set `True` for a base module |
 | `allowPutConsumablesToHeavyInv` | bool | `False` | |
 | `isModelBreakageQuestProp` | bool | `False` | |
@@ -283,15 +293,20 @@ A slot is a `ConsumablesSlot`:
 ```json
 { "$type": "ConsumablesSlot",
   "quantity": 1200,
-  "chance": 1,
-  "tradeFromTruckToZone": false }
+  "chance": 1.0,
+  "tradeFromTruckToZone": true }
 ```
 
-!!! note "`tradeFromTruckToZone` decides which way goods move"
-    `false` — the zone gives to the truck. This is a shop or a fuel pump.
-    `true` — the truck gives to the zone. This is a depot or a delivery target.
+!!! note "What the slot fields mean"
+    `quantity` is how much the slot holds. `chance` is a probability from 0 to
+    1, where `1.0` means always; vanilla modules use `1.0`.
 
-    A fuel station that will not dispense usually has this the wrong way round.
+    `tradeFromTruckToZone` controls only whether the truck may also put goods
+    **back into** the module. The module gives to the truck either way. Every
+    vanilla module sets it `true`. Saber's zone docs describe it the same way.
+
+    If a truck can't take goods and shows "Can't be transferred", check the
+    truck first: the same message appears when the truck has no room left.
 
 **To build a fuel-only module**, set `capacity` to 0, leave `slotsSettings`
 empty, null the repairs, wheels and electro slots, and give it only

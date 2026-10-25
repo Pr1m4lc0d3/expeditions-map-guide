@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html" aria-current="page">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -256,19 +256,256 @@
         <h1>Models, rocks and cliffs</h1>
 <p class="lede">Placing objects, and telling a deliberately buried rock apart from a mistake.</p>      </div>
       <div class="banner">
-        <strong>This page is outline.</strong>
+        <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
         been proven in a running game.
       </div>
-      <article class="prose"><p>Planned for this page:</p>
+      <article class="prose"><p>A model is any single object you place on the map: a rock, a cabin, a fence, a
+wreck. This page covers placing them by hand, the physics types that decide how they
+behave when a truck hits them, rock and cliff work, and bringing in models of your
+own.</p>
+<p>For scattering thousands of plants or stones at once, use a distribution instead.
+See <a href="vegetation.html">Vegetation and distributions</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">How much of this is tested</p>
+<p>Placing, physics types and the Freeze Physics option are from Saber&rsquo;s guides.
+The rock and cliff rules, the subgroup traps and the custom model recipe come
+from work on real maps and are measured. Custom models have been placed and
+checked <strong>in the editor only</strong>, not yet in a running game.</p>
+</div>
+<h2 id="placing-a-model">Placing a model<a class="headerlink" href="#placing-a-model" title="Permanent link">#</a></h2>
+<p>Right-click the terrain (or the <strong>Models</strong> section of the Scene View) and choose
+<strong>Add Model</strong>. The Select Asset window opens; search by name and double-click to
+place. <span class="prov prov-doc">documented</span></p>
+<div class="admonition warning">
+<p class="admonition-title">Skip anything with a red warning sign</p>
+<p>In Expeditions the Select Asset window marks many models with a red warning
+sign. Saber says these are broken and will be removed. Do not use them.
+<span class="prov prov-doc">documented</span></p>
+</div>
+<p>Move and rotate with the arrows and circles drawn around the model. To scale, drag
+the yellow rhomb at the centre of its axes. The same values can be typed into
+<strong>Position</strong>, <strong>Rotation</strong> and <strong>Scale</strong> at the bottom of the Scene View panel.</p>
+<p><strong>Local transform</strong> mode lines the gizmo up with the model&rsquo;s own axes; turn it off
+and the axes follow the map&rsquo;s grid. <span class="prov prov-doc">documented</span></p>
+<h3 id="when-selection-or-snapping-seems-broken">When selection or snapping seems broken<a class="headerlink" href="#when-selection-or-snapping-seems-broken" title="Permanent link">#</a></h3>
+<p>Three things in the editor look like bugs and are not:</p>
 <ul>
-<li>placing and orienting objects, snapping, and grouping</li>
-<li>cliff and talus placement, and the fact that <strong>a model set deep into a rock face is
-  usually correct</strong>. Bluff and talus pieces are intentionally sunk several metres. Only
-  man-made objects should sit exactly on the surface</li>
-<li>custom models, and getting your own geometry in</li>
-<li>never put a backup file inside a folder the editor scans. It will be loaded as map
-  content, and the symptom presents as a selection bug rather than as a stray file</li>
+<li><strong>The orientation settings and the Snapping panel only appear once something is
+  selected.</strong> If neither shows, nothing is selected. &ldquo;No settings&rdquo; and &ldquo;snap is
+  broken&rdquo; are one problem, not two.</li>
+<li><strong>Freeze Model is on.</strong> The toolbar has Freeze Plants and Freeze Model buttons,
+  next to the Hide buttons, that Saber&rsquo;s toolbar page does not list. A frozen model
+  still renders but cannot be picked: clicking it selects the terrain block behind
+  it, and no gizmo appears. The setting is saved, so it survives a restart and reads
+  like corruption. It is also on the scene right-click menu as <strong>Freeze Models</strong>.</li>
+<li><strong>Change rotation basis</strong> only moves the gizmo&rsquo;s pivot. With it on, river and
+  overlay nodes can all appear stacked in one spot. Keep it off for node work.</li>
+</ul>
+<p>These come from reading the editor itself, not from Saber&rsquo;s guides.</p>
+<h3 id="where-placed-models-are-stored">Where placed models are stored<a class="headerlink" href="#where-placed-models-are-stored" title="Permanent link">#</a></h3>
+<p>Hand-placed models are saved one group per file, as
+<code>Media\prebuild\&lt;level&gt;\subgroups\Model_*.xml</code>. Two limits matter if you ever touch
+those files:</p>
+<ul>
+<li><strong>They must use LF line endings.</strong> A subgroup file with Windows (CRLF) line
+  endings is ignored without any warning. Over eleven thousand models once vanished
+  from a map this way. Every file the editor writes itself is LF.</li>
+<li><strong>Keep a subgroup under about 3,000 models.</strong> The largest one proven to load here
+  held 3,852. That is a measured working limit, not a documented one.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Never put a backup inside a folder the editor scans</p>
+<p>The editor loads <strong>every</strong> file in <code>subgroups\</code>. Backup copies left there were
+loaded as seventeen empty groups. The symptom was models with no settings that
+would not highlight, and snapping that seemed broken, so it presented as a
+selection bug, not as a stray file. Keep backups outside the map&rsquo;s folders.</p>
+</div>
+<h2 id="the-three-physics-types">The three physics types<a class="headerlink" href="#the-three-physics-types" title="Permanent link">#</a></h2>
+<p>Every model is labelled with its collision type in the Select Asset window and in
+its properties. <span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Type</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STATIC</code></td>
+<td>static</td>
+<td>never moves, never breaks. Trucks collide with it</td>
+</tr>
+<tr>
+<td><code>DYN</code></td>
+<td>dynamic</td>
+<td>trucks can push it. Disappears a while after it has been hit and the truck has moved on</td>
+</tr>
+<tr>
+<td><code>DESTR</code></td>
+<td>destructible</td>
+<td>dynamic, and breaks into chunks. Pieces disappear later</td>
+</tr>
+</tbody>
+</table></div>
+<p>Physics only runs near the truck, and a dynamic model has no physics until the first
+hit. That is why a badly placed one misbehaves: a fence post buried in snow or mud,
+or overlapping another model, can leap up the moment a truck touches it.</p>
+<p><strong>Freeze Physics</strong> makes a dynamic or destructible model behave as static. Trucks
+still collide with it but cannot move it, and it never disappears. Use it for any
+dynamic model you placed only for its looks, such as part of a composed scene.
+Frozen models are drawn with a black box instead of a grey one.</p>
+<p><strong>Collision Notification</strong> on the toolbar highlights bad placements: a <strong>violet</strong>
+box where a dynamic model or hand-placed plant cuts into terrain, snow or mud, and a
+<strong>red</strong> box where it cuts into another model. <span class="prov prov-doc">documented</span></p>
+<h2 id="sitting-rocks-on-a-slope">Sitting rocks on a slope<a class="headerlink" href="#sitting-rocks-on-a-slope" title="Permanent link">#</a></h2>
+<p>A model&rsquo;s orientation is stored as an <code>Up</code> and a <code>Dir</code> vector. For a rock, <strong><code>Up</code>
+should be the surface normal</strong>. Placed with a straight-up <code>Up</code>, a rock keeps its flat
+base level while the ground falls away beneath it, so its downhill edge lifts and its
+underside shows. Measured on one map before fixing it: at the median slope of 26
+degrees, 46% of rocks showed more than half a metre of underside. Tilt it to the
+ground and settle it in by about half the fall across its footprint.</p>
+<p>Living things are the opposite. A tree grows straight up on a hillside, so give
+trees and plants a vertical <code>Up</code>.</p>
+<p>If you place by script, check the <strong>final</strong> position. Sinking a model along the
+surface normal moves it sideways on steep ground, sometimes far enough to carry it
+past whatever slope limit you placed it under.</p>
+<h2 id="cliffs-talus-and-the-rock-that-is-meant-to-be-buried">Cliffs, talus, and the rock that is meant to be buried<a class="headerlink" href="#cliffs-talus-and-the-rock-that-is-meant-to-be-buried" title="Permanent link">#</a></h2>
+<p>On a cliff, a large share of the rocks will look wrong to any automatic check, and
+most of them are right.</p>
+<p><strong>A model set deep into a rock face is usually correct.</strong> Bluff and talus pieces are
+sunk into the cliff on purpose, by as much as 15 m, so that only their face shows.
+On one map, a check found 2,761 &ldquo;buried&rdquo; models. That was not 2,761 mistakes. It was
+the cliff.</p>
+<p>So the rule is:</p>
+<ul>
+<li><strong>natural rock</strong> may be sunk as deep as it needs to be</li>
+<li><strong>man-made objects</strong> (buildings, wrecks, fences, crates) should sit exactly on the
+  surface. These are the only ones worth re-seating</li>
+</ul>
+<p>Two more lessons from building rock walls:</p>
+<ul>
+<li><strong>Scale means nothing without the mesh.</strong> A scale of 3 on one rock and on another
+  can give wildly different sizes. Copying a set of scale values onto a different mix
+  of rocks once turned a 6.84 m boulder into a 227 m lump stuck to a cliff. Know each
+  model&rsquo;s real size in metres before choosing a scale.</li>
+<li><strong>Steep walls want faceted rock, not boulders.</strong> A hand-built reference wall used
+  mostly one sandstone face piece, and placed no rounded rock or rock pile on ground
+  steeper than 55 degrees.</li>
+</ul>
+<h2 id="scattering-by-script">Scattering by script<a class="headerlink" href="#scattering-by-script" title="Permanent link">#</a></h2>
+<p>If you place rocks or debris with a script rather than a distribution, two things
+make the difference between natural and artificial.</p>
+<p><strong>Nothing in nature is evenly spaced.</strong> Rocks, debris and plants arrive in clumps with
+bare ground between, because whatever put them there acted at a place. Uniform random
+placement gives an even wash that looks machine-made however good the models are. Use
+clusters: a large one with a few smaller companions around it, never a lone object
+and never a grid.</p>
+<p><strong>Keep scatter off the roads.</strong> Taking the road out of a distribution&rsquo;s density map
+does nothing for individually placed models. On one map, 269 placed objects sat in a
+road before the placement masks were fixed.</p>
+<h2 id="models-that-are-not-really-there">Models that are not really there<a class="headerlink" href="#models-that-are-not-really-there" title="Permanent link">#</a></h2>
+<p>Expeditions ships the class files for a lot of SnowRunner content whose meshes are
+missing. A class file under <code>classes\models\</code> is <strong>not</strong> proof a model is usable. The
+editor accepts the placement, then logs <code>Prebuild data for model brand 'X' not found</code>
+once per instance and stops on a dialog for each. 1,250 placements produced 3,016
+dialogs.</p>
+<p>Check new models by placing one before placing hundreds. From one test, these vanilla
+models failed: <code>icelandic_mossy_rock_06</code> to <code>_12</code>, <code>rock_04</code>, <code>rock_08</code>. These
+worked: <code>boulder_small</code>, <code>boulder_medium</code>, <code>boulder_large</code>, <code>rock_01</code> to <code>_03</code>,
+<code>rock_05</code> to <code>_07</code>, <code>rock_09</code> to <code>_12</code>, <code>icelandic_mossy_rock_01</code> to <code>_05</code>,
+<code>log_long_a</code>, <code>log_medium_a</code>, <code>log_short_a</code>, <code>rus_log_lying_1</code>, <code>campfire_stones_01</code>,
+and every wildlife model tried. Distribution brushes are a separate system and did
+not fail.</p>
+<h3 id="models-with-something-extra">Models with something extra<a class="headerlink" href="#models-with-something-extra" title="Permanent link">#</a></h3>
+<p>Saber points out some naming patterns worth searching for.
+<span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_objective</code></td>
+<td>animated models with states, used for building things. See <a href="../40-zones/construction-zones.html#making-something-appear">Construction zones</a></td>
+</tr>
+<tr>
+<td><code>farplane</code></td>
+<td>far-distance scenery</td>
+</tr>
+<tr>
+<td><code>animal</code></td>
+<td>animal figures</td>
+</tr>
+<tr>
+<td><code>totem</code></td>
+<td>totems</td>
+</tr>
+<tr>
+<td><code>ufo</code></td>
+<td>UFO-themed objects</td>
+</tr>
+</tbody>
+</table></div>
+<p>Some creature models are visible only between certain distances, for example 50 to
+150 m. Those ending <code>_notshy</code> do not vanish up close. Saber documents this for
+SnowRunner&rsquo;s creature list; whether every Expeditions creature behaves the same is
+<span class="prov prov-unver">unverified</span>.</p>
+<h2 id="your-own-models">Your own models<a class="headerlink" href="#your-own-models" title="Permanent link">#</a></h2>
+<p>A model from outside the game can be placed in the editor. It needs four files,
+under <code>Media\</code>:</p>
+<div class="hl"><pre><span></span><code>Media\meshes\models\&lt;name&gt;.fbx      the mesh, its LODs, and its collision
+Media\meshes\models\&lt;name&gt;.xml      mesh settings: LOD distances and materials
+Media\classes\models\&lt;name&gt;.xml     the model&#39;s class: instancing and physics
+Media\textures\models\&lt;name&gt;_&lt;material&gt;__d.tga   textures
+</code></pre></div>
+
+<p>The name uses lowercase letters, digits and underscores only. In Select Asset,
+search for the <strong>bare name</strong>. Custom models list with a <code>\Media</code> suffix, and
+searching for the suffixed name finds nothing.</p>
+<p>The rules that cost the most to learn:</p>
+<ul>
+<li><strong>Keep the hierarchy flat.</strong> FBX already has a root node called <code>RootNode</code>. The
+  collision object (named exactly <code>cdt</code>) and the visual meshes (<code>mesh</code>, <code>mesh_lod1</code>
+  and so on) must be its <strong>direct</strong> children. Adding your own root as Saber&rsquo;s
+  guide seems to ask crashed the editor three times, with <code>no cdt</code> in the log.</li>
+<li><strong>65,534 vertices and faces per mesh</strong>, and Blender&rsquo;s vertex count is not the
+  file&rsquo;s: the exporter splits vertices at UV and normal seams, so a mesh Blender
+  calls 41,559 vertices reached 77,486 in the file. Prefer models that fit without
+  decimation; decimation is what leaves the degenerate faces behind the converter&rsquo;s
+  <code>IsValidIdx</code> crash.</li>
+<li><strong>Textures at most 2048, power of two.</strong> Larger ones fail, and the model renders
+  untextured.</li>
+<li><strong>The converter is a syntax check, not an acceptance test.</strong> One model passed it
+  three times and crashed the editor three times. Only the editor is the final word.</li>
+<li><strong>Delete the converted cache after a rebuild.</strong> <code>Media\prebuild\meshes\models_&lt;name&gt;</code>
+  is reused if it is newer than your fix, and reproduces the old failure exactly,
+  which reads as &ldquo;the fix did nothing&rdquo;.</li>
+<li><strong>Dark triangles or a scrambled-looking texture are usually faces seen from behind.</strong>
+  Turn the camera: a flaw that stays fixed on the model from every angle is geometry,
+  not shading. Compare against the original file before trying texture fixes.</li>
+<li><strong>Imported models arrive at any scale.</strong> One downloaded plant measured 0.05 m tall,
+  another 8.16 m wide. Set the real height in metres when converting.</li>
+</ul>
+<p>The toolkit&rsquo;s <code>glb_to_fbx.py</code> does the conversion and these checks; see
+<a href="../80-ai-tools/toolkit.html">The toolkit</a>. Saber&rsquo;s own instructions are in the PDF
+<em>Custom Level Entities: Models, Overlays and PbrMaterials</em>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Licences travel with the model</p>
+<p>Use only CC0 or CC BY models. CC BY requires the credit to go wherever the model
+goes, so a map that ships one needs its credits shipped too. Avoid CC BY-SA,
+which would attach its terms to everything around it, and NonCommercial.</p>
+</div>
+<h2 id="what-is-not-known-yet">What is not known yet<a class="headerlink" href="#what-is-not-known-yet" title="Permanent link">#</a></h2>
+<ul>
+<li>whether a custom model behaves in a running game exactly as in the editor</li>
+<li>grouping and selection tools in the editor&rsquo;s interface beyond what is above</li>
+<li>whether Saber&rsquo;s distance-visibility rules apply to every Expeditions creature</li>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
@@ -278,7 +515,23 @@
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#placing-a-model">Placing a model</a><ul>
+<li><a href="#when-selection-or-snapping-seems-broken">When selection or snapping seems broken</a></li>
+<li><a href="#where-placed-models-are-stored">Where placed models are stored</a></li>
+</ul>
+</li>
+<li><a href="#the-three-physics-types">The three physics types</a></li>
+<li><a href="#sitting-rocks-on-a-slope">Sitting rocks on a slope</a></li>
+<li><a href="#cliffs-talus-and-the-rock-that-is-meant-to-be-buried">Cliffs, talus, and the rock that is meant to be buried</a></li>
+<li><a href="#scattering-by-script">Scattering by script</a></li>
+<li><a href="#models-that-are-not-really-there">Models that are not really there</a><ul>
+<li><a href="#models-with-something-extra">Models with something extra</a></li>
+</ul>
+</li>
+<li><a href="#your-own-models">Your own models</a></li>
+<li><a href="#what-is-not-known-yet">What is not known yet</a></li>
+</ul>
 </div>
 
   </aside>

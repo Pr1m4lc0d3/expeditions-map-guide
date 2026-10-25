@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Every base module, and every surface you can edit &middot; Expeditions Map Making</title>
-<meta name="description" content="The fourteen built-in base modules, what each descriptor field does, every image slot and where it appears on screen, and the values the engine actually accepts."><link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Module descriptor reference &middot; Expeditions Map Making</title>
+<meta name="description" content="Every field of a base module&#39;s descriptor, every image slot and where it appears, the twelve vanilla modules&#39; identifiers and art symbols, and which module types work for a mod."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html" aria-current="page">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html" aria-current="page">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -252,148 +252,162 @@
 
   <main id="main">
       <div class="page-head">
-        <p class="eyebrow">Custom content</p>
-        <h1>Every base module, and every surface you can edit</h1>
-<p class="lede">The fourteen built-in base modules, what each descriptor field does, every image slot and where it appears on screen, and the values the engine actually accepts.</p>      </div>
-      <article class="prose"><h1 id="every-base-module-and-every-surface-you-can-edit">Every base module, and every surface you can edit<a class="headerlink" href="#every-base-module-and-every-surface-you-can-edit" title="Permanent link">#</a></h1>
+        <p class="eyebrow">Appendix A - base modules</p>
+        <h1>Module descriptor reference</h1>
+<p class="lede">Every field of a base module&#39;s descriptor, every image slot and where it appears, the twelve vanilla modules&#39; identifiers and art symbols, and which module types work for a mod.</p>      </div>
+      <article class="prose"><h1 id="module-descriptor-reference">Module descriptor reference<a class="headerlink" href="#module-descriptor-reference" title="Permanent link">#</a></h1>
 <p>A base module is a thing the player buys at a deploy zone: a repair station, a
-fuel station, a workshop. This page is the reference for all of them — what the
-built-in ones are, which fields you can set, which pictures appear where, and
-what values the engine will accept.</p>
-<p>Everything on this page was read out of the shipped game — the field names and
-their types come from the editor&rsquo;s own type definitions, and the artwork names
-come from the game&rsquo;s UI bundle. Where something is measured rather than
-documented, it says so.</p>
-<h2 id="the-fourteen-built-in-modules">The fourteen built-in modules<a class="headerlink" href="#the-fourteen-built-in-modules" title="Permanent link">#</a></h2>
-<p>These are the families that ship with a complete set of artwork. The names in
-the right-hand columns are UI symbols, not files — they live inside the
-Scaleform bundle, and a descriptor refers to them by name.</p>
+fuel station, a workshop. Its descriptor (<code>BaseUpgradeDesc</code>) sets what it is
+called, what it costs, which models and pictures it uses, and, through
+<code>zoneProperty</code>, what it does. This page lists every one of those fields. For the
+step-by-step process of making a module, see
+<a href="fob-modules.html">Custom FOB modules</a>.</p>
+<p>Field names and types come from the editor&rsquo;s own type definitions. Identifiers
+and art symbols were read from the running game. Where something is measured
+in game rather than documented, it says so.</p>
+<h2 id="the-twelve-vanilla-modules">The twelve vanilla modules<a class="headerlink" href="#the-twelve-vanilla-modules" title="Permanent link">#</a></h2>
+<p>The game has <strong>twelve modules a player can buy</strong>. Each has its own page in this
+appendix. The names in the art columns are UI symbols inside the game&rsquo;s bundle,
+not files; a descriptor refers to them by name.</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
-<th>Family</th>
-<th>Popup card</th>
-<th>List row</th>
-<th>Small row</th>
-<th>Map icon</th>
-<th>Trade icon</th>
+<th>Module</th>
+<th><code>moduleId</code></th>
+<th><code>bg</code></th>
+<th><code>bgRight</code></th>
+<th><code>bgSmall</code></th>
+<th><code>popupModuleBg</code></th>
+<th><code>iconMap40</code></th>
+<th><code>iconTrade</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Base station</td>
-<td><code>moduleBaseStationPopup</code></td>
-<td><code>moduleBaseStationRight</code></td>
-<td><code>moduleBaseStationSmall</code></td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Com center</td>
-<td><code>moduleComCenterPopup</code></td>
-<td><code>moduleComCenterRight</code></td>
-<td><code>moduleComCenterSmall</code></td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Double stock</td>
-<td><code>moduleDoubleStockPopup</code></td>
-<td><code>moduleDoubleStockRight</code></td>
-<td><code>moduleDoubleStockSmall</code></td>
-<td><code>moduleDoubleStockMap40</code></td>
-<td><code>moduleDoubleStock48</code></td>
-</tr>
-<tr>
-<td>Drone base</td>
-<td><code>moduleDroneBasePopup</code></td>
-<td><code>moduleDroneBaseRight</code></td>
-<td><code>moduleDroneBaseSmall</code></td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Evacuator</td>
-<td><code>moduleEvacuatorPopup</code></td>
-<td><code>moduleEvacuatorRight</code></td>
-<td><code>moduleEvacuatorSmall</code></td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Extra storage</td>
-<td><code>moduleExtraStoragePopup</code></td>
-<td><code>moduleExtraStorageRight</code></td>
-<td><code>moduleExtraStorageSmall</code></td>
-<td><code>moduleExtraStorageMap40</code></td>
-<td><code>moduleExtraStorage48</code></td>
-</tr>
-<tr>
-<td>Gas station</td>
-<td><code>moduleGasStationPopup</code></td>
+<td><a href="../62-modules/gas-station.html">Gas station</a></td>
+<td><code>GAS_STATION</code></td>
+<td><code>moduleGasStation</code></td>
 <td><code>moduleGasStationRight</code></td>
 <td><code>moduleGasStationSmall</code></td>
+<td><code>moduleGasStationPopup</code></td>
 <td><code>moduleGazStationMap40</code></td>
 <td><code>moduleGazStation48</code></td>
 </tr>
 <tr>
-<td>Generator</td>
-<td><code>moduleGeneratorPopup</code></td>
-<td><code>moduleGeneratorRight</code></td>
-<td><code>moduleGeneratorSmall</code></td>
-<td><code>moduleGeneratorMap40</code></td>
-<td><code>moduleGenerator48</code></td>
+<td><a href="../62-modules/extra-storage.html">Warehouse</a></td>
+<td><code>EXTRA_STORAGE</code></td>
+<td><code>moduleExtraStorage</code></td>
+<td><code>moduleExtraStorageRight</code></td>
+<td><code>moduleExtraStorageSmall</code></td>
+<td><code>moduleExtraStoragePopup</code></td>
+<td><code>moduleExtraStorageMap40</code></td>
+<td><code>moduleExtraStorage48</code></td>
 </tr>
 <tr>
-<td>Helicopter</td>
-<td><code>moduleHelicopterPopup</code></td>
-<td><code>moduleHelicopterRight</code></td>
-<td><code>moduleHelicopterSmall</code></td>
-<td><code>moduleHelicopterMap40</code></td>
-<td><code>moduleHelicopter48</code></td>
+<td><a href="../62-modules/double-stock.html">Essentials storage</a></td>
+<td><code>DOUBLE_STOCK</code></td>
+<td><code>moduleDoubleStock</code></td>
+<td><code>moduleDoubleStockRight</code></td>
+<td><code>moduleDoubleStockSmall</code></td>
+<td><code>moduleDoubleStockPopup</code></td>
+<td><code>moduleDoubleStockMap40</code></td>
+<td><code>moduleDoubleStock48</code></td>
 </tr>
 <tr>
-<td>Parking</td>
-<td><code>moduleParkingPopup</code></td>
-<td><code>moduleParkingRight</code></td>
-<td><code>moduleParkingSmall</code></td>
-<td><code>moduleParkingMap40</code></td>
-<td><code>moduleParking48</code></td>
+<td><a href="../62-modules/workshop.html">Workshop</a></td>
+<td><code>WORKSHOP</code></td>
+<td><code>moduleWorkshop</code></td>
+<td><code>moduleWorkshopRight</code></td>
+<td><code>moduleWorkshopSmall</code></td>
+<td><code>moduleWorkshopPopup</code></td>
+<td><code>moduleWorkshopMap40</code></td>
+<td><code>moduleWorkshop48</code></td>
 </tr>
 <tr>
-<td>Repair station</td>
-<td><code>moduleRepairStationPopup</code></td>
+<td><a href="../62-modules/repair-station.html">Repair station</a></td>
+<td><code>REPAIR_ZONE</code></td>
+<td><code>moduleRepairStation</code></td>
 <td><code>moduleRepairStationRight</code></td>
 <td><code>moduleRepairStationSmall</code></td>
+<td><code>moduleRepairStationPopup</code></td>
 <td><code>moduleRepairStationMap40</code></td>
 <td><code>moduleRepairStation48</code></td>
 </tr>
 <tr>
-<td>Resource zone</td>
-<td><code>moduleResourceZonePopup</code></td>
-<td><code>moduleResourceZoneRight</code></td>
-<td><code>moduleResourceZoneSmall</code></td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr>
-<td>Service station</td>
-<td><code>moduleServiceStationPopup</code></td>
+<td><a href="../62-modules/service-station.html">Service station</a></td>
+<td><code>SERVICE_STATION</code></td>
+<td><code>moduleServiceStation</code></td>
 <td><code>moduleServiceStationRight</code></td>
 <td><code>moduleServiceStationSmall</code></td>
+<td><code>moduleServiceStationPopup</code></td>
 <td><code>moduleServiceStationMap40</code></td>
-<td>—</td>
+<td><code>moduleMapService48</code></td>
 </tr>
 <tr>
-<td>Workshop</td>
-<td><code>moduleWorkshopPopup</code></td>
-<td><code>moduleWorkshopRight</code></td>
-<td><code>moduleWorkshopSmall</code></td>
-<td><code>moduleWorkshopMap40</code></td>
-<td><code>moduleWorkshop48</code></td>
+<td><a href="../62-modules/generator.html">Generator</a></td>
+<td><code>GENERATOR</code></td>
+<td><code>moduleGenerator</code></td>
+<td><code>moduleGeneratorRight</code></td>
+<td><code>moduleGeneratorSmall</code></td>
+<td><code>moduleGeneratorPopup</code></td>
+<td><code>moduleGeneratorMap40</code></td>
+<td><code>moduleGenerator48</code></td>
+</tr>
+<tr>
+<td><a href="../62-modules/helicopter.html">Helipad</a></td>
+<td><code>HELICOPTER</code></td>
+<td><code>moduleHelicopter</code></td>
+<td><code>moduleHelicopterRight</code></td>
+<td><code>moduleHelicopterSmall</code></td>
+<td><code>moduleHelicopterPopup</code></td>
+<td><code>moduleHelicopterMap40</code></td>
+<td><code>moduleHelicopter48</code></td>
+</tr>
+<tr>
+<td><a href="../62-modules/parking.html">Expanded parking</a></td>
+<td><code>PARKING</code></td>
+<td><code>moduleParking</code></td>
+<td><code>moduleParkingRight</code></td>
+<td><code>moduleParkingSmall</code></td>
+<td><code>moduleParkingPopup</code></td>
+<td><code>moduleParkingMap40</code></td>
+<td><code>moduleParking48</code></td>
+</tr>
+<tr>
+<td><a href="../62-modules/drone-base.html">Cargo drone</a></td>
+<td><code>DRONE_BASE</code></td>
+<td><code>moduleDroneBase</code></td>
+<td><code>moduleDroneBaseRight</code></td>
+<td><code>moduleDroneBaseSmall</code></td>
+<td><code>moduleDroneBasePopup</code></td>
+<td><code>moduleDroneMap40</code></td>
+<td><code>mapDroneZone48</code></td>
+</tr>
+<tr>
+<td><a href="../62-modules/com-center.html">Intelligence center</a></td>
+<td><code>ANTENNA</code></td>
+<td><code>moduleComCenter</code></td>
+<td><code>moduleComCenterRight</code></td>
+<td><code>moduleComCenterSmall</code></td>
+<td><code>moduleComCenterPopup</code></td>
+<td><code>moduleRadarMap40</code></td>
+<td><code>moduleRadar48</code></td>
+</tr>
+<tr>
+<td><a href="../62-modules/evacuator.html">Tow truck</a></td>
+<td><code>TOW_TRUCK</code></td>
+<td><code>moduleEvacuator</code></td>
+<td><code>moduleEvacuatorRight</code></td>
+<td><code>moduleEvacuatorSmall</code></td>
+<td><code>moduleEvacuatorPopup</code></td>
+<td><code>moduleEvocuationMap40</code></td>
+<td><code>moduleEvocuation48</code></td>
 </tr>
 </tbody>
 </table></div>
+<p>Two more <code>moduleId</code> values exist but can&rsquo;t be bought (cost <code>-1</code>):
+<code>BASE_MODULE</code>, the base station every base starts with, and <code>SUPPLY_SHOP</code>, the
+store. Both use the base station&rsquo;s art (<code>moduleBaseStation…</code>).</p>
 <div class="admonition warning">
 <p class="admonition-title">The gas station is spelled two different ways</p>
 <p>Its backgrounds are <code>moduleGa**s**Station…</code> and its icons are
@@ -700,17 +714,17 @@ because a wrong name does not fail loudly — it draws a placeholder.</p>
 <tr>
 <td><code>bgRight</code></td>
 <td><code>moduleSlotContentRight</code></td>
-<td>the row when the panel is right-aligned</td>
+<td>the banner above the module&rsquo;s card when the player uses it</td>
 </tr>
 <tr>
 <td><code>bgSmall</code></td>
 <td><code>moduleSlotContentSmall</code></td>
-<td>the compact row</td>
+<td>the chip in the HUD strip of built modules</td>
 </tr>
 <tr>
 <td><code>popupModuleBg</code></td>
 <td><code>""</code></td>
-<td>the big picture on the build card</td>
+<td>the big picture on the build card. A vanilla symbol or <code>""</code> only, never a mod PNG</td>
 </tr>
 <tr>
 <td><code>iconMap40</code></td>
@@ -775,12 +789,17 @@ inside the blanks.</p>
 <h3 id="supplying-your-own-pictures">Supplying your own pictures<a class="headerlink" href="#supplying-your-own-pictures" title="Permanent link">#</a></h3>
 <p>A mod ships PNGs in <code>ui/textures/</code> and names them in the descriptor <strong>without
 the extension and without the folder</strong>:</p>
-<div class="hl"><pre><span></span><code>ui/textures/mymodule_bg.png        -&gt;   &quot;bg&quot;: &quot;mymodule_bg&quot;
-ui/textures/mymodule_popup.png     -&gt;   &quot;popupModuleBg&quot;: &quot;mymodule_popup&quot;
+<div class="hl"><pre><span></span><code>ui/textures/mymodule_bg.png        -&gt;   &quot;bg&quot;: &quot;mymodule_bg&quot;        380 x 92
+ui/textures/mymodule_right.png     -&gt;   &quot;bgRight&quot;: &quot;mymodule_right&quot;  760 x 90
+ui/textures/mymodule_small.png     -&gt;   &quot;bgSmall&quot;: &quot;mymodule_small&quot;  124 x 52
 </code></pre></div>
 
 <div class="admonition danger">
-<p class="admonition-title">Only bg, bgRight, bgSmall and popupModuleBg may be custom PNGs</p>
+<p class="admonition-title">Only bg, bgRight and bgSmall may be custom PNGs</p>
+<p>The game loads mod PNGs only for these three fields (<code>MODULE_BG</code>,
+<code>MODULE_BG_SMALL</code> and <code>MODULE_BG_RIGHT</code> in its image loader). A mod PNG in
+<code>popupModuleBg</code> draws the broken-image placeholder, seen in game; set it to
+<code>""</code> or a vanilla symbol.</p>
 <p>The icon fields take <strong>UI symbol names from the game&rsquo;s bundle</strong>, not files.
 Pointing <code>iconMap40</code> at a PNG you shipped does not work. Use a vanilla
 symbol from the table at the top of this page.</p>
@@ -838,7 +857,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:<
 </tbody>
 </table></div>
 <div class="admonition danger">
-<p class="admonition-title">Only three of these are proven to work for a mod</p>
+<p class="admonition-title">Only four module types are proven to work for a mod</p>
 <p>What has actually been tested in game with a custom module:</p>
 <div class="table-scroll"><table>
 <thead>
@@ -875,9 +894,14 @@ The engine knows 72 zone-property types. These are the ones a base module uses:<
 <td>builds and sells, never reveals an air drop, even with the game&rsquo;s script patched. See <a href="../62-modules/com-center.html#building-your-own-the-ability-does-not-work">Intelligence center</a></td>
 </tr>
 <tr>
-<td><code>ZonePropertyHelicopter</code>, <code>ZonePropertyServiceStation</code></td>
+<td><code>ZonePropertyServiceStation</code></td>
+<td>✅ works</td>
+<td>A custom service station: trucks in its area can add armor up to +20%, as vanilla. Tested October 2026</td>
+</tr>
+<tr>
+<td><code>ZonePropertyHelicopter</code></td>
 <td>⚠ not yet tested</td>
-<td>one of each worked in March 2025; neither has been reproduced since</td>
+<td>one worked in March 2025 and it hasn&rsquo;t been reproduced since</td>
 </tr>
 <tr>
 <td><code>ZonePropertyFuelStation</code>, the others</td>
@@ -886,7 +910,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:<
 </tr>
 </tbody>
 </table></div>
-<p>⇒ <strong>For a mod, start from one of the three that work.</strong> A fuel station
+<p>⇒ <strong>For a mod, start from one of the four that work.</strong> A fuel station
 built as <code>ZonePropertyFobModuleStorage</code> with one fuel slot is proven; see
 the recipe below. Each module page in <a href="../62-modules/index.html">Appendix A</a>
 opens with the same verdict.</p>
@@ -955,7 +979,7 @@ opens with the same verdict.</p>
 <td><code>alwaysSpawn</code></td>
 <td>bool</td>
 <td><code>False</code></td>
-<td></td>
+<td>every vanilla storage-type module sets <code>True</code></td>
 </tr>
 <tr>
 <td><code>isAtDeployZone</code></td>
@@ -1016,15 +1040,19 @@ opens with the same verdict.</p>
 <p>A slot is a <code>ConsumablesSlot</code>:</p>
 <div class="hl"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ConsumablesSlot&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;chance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;tradeFromTruckToZone&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nt">&quot;chance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tradeFromTruckToZone&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
 <div class="admonition note">
-<p class="admonition-title"><code>tradeFromTruckToZone</code> decides which way goods move</p>
-<p><code>false</code> — the zone gives to the truck. This is a shop or a fuel pump.
-<code>true</code> — the truck gives to the zone. This is a depot or a delivery target.</p>
-<p>A fuel station that will not dispense usually has this the wrong way round.</p>
+<p class="admonition-title">What the slot fields mean</p>
+<p><code>quantity</code> is how much the slot holds. <code>chance</code> is a probability from 0 to
+1, where <code>1.0</code> means always; vanilla modules use <code>1.0</code>.</p>
+<p><code>tradeFromTruckToZone</code> controls only whether the truck may also put goods
+<strong>back into</strong> the module. The module gives to the truck either way. Every
+vanilla module sets it <code>true</code>. Saber&rsquo;s zone docs describe it the same way.</p>
+<p>If a truck can&rsquo;t take goods and shows &ldquo;Can&rsquo;t be transferred&rdquo;, check the
+truck first: the same message appears when the truck has no room left.</p>
 </div>
 <p><strong>To build a fuel-only module</strong>, set <code>capacity</code> to 0, leave <code>slotsSettings</code>
 empty, null the repairs, wheels and electro slots, and give it only
@@ -1050,14 +1078,14 @@ arbiter is the running game. Deploy it and look at it.</p>
 </div></article>
 
       <nav class="seq" aria-label="Previous and next page">
-<a class="seq-prev" href="../60-custom/items.html"><span>Previous</span>Custom inventory items</a><a class="seq-next" href="../60-custom/fob-modules.html"><span>Next</span>Custom FOB modules</a>      </nav>
+<a class="seq-prev" href="../80-ai-tools/transferable.html"><span>Previous</span>Lessons that transfer to other games</a><a class="seq-next" href="../62-modules/index.html"><span>Next</span>Every base module</a>      </nav>
   </main>
 
   <aside class="onthispage" aria-label="On this page">
     <p>On this page</p>
     <div class="toc">
 <ul>
-<li><a href="#the-fourteen-built-in-modules">The fourteen built-in modules</a></li>
+<li><a href="#the-twelve-vanilla-modules">The twelve vanilla modules</a></li>
 <li><a href="#the-module-identifiers">The module identifiers</a></li>
 <li><a href="#the-models">The models</a></li>
 <li><a href="#every-field-you-can-set">Every field you can set</a><ul>

@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/water.html" aria-current="page">Rivers, lakes and waterfalls</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -81,13 +81,13 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../30-dressing/sound.html">Music and sound</a>
         </li>
@@ -98,19 +98,19 @@
       <ul>
         <li>
           <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -138,16 +138,13 @@
       <ul>
         <li>
           <a href="../60-custom/specialists.html">Custom specialists</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-outline">outline</span>        </li>
-        <li>
-          <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a>
         </li>
         <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
-<span class="pill pill-outline">outline</span>        </li>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -181,7 +178,7 @@
       <ul>
         <li>
           <a href="../70-shipping/packing.html">Packing your map</a>
-<span class="pill pill-outline">outline</span>        </li>
+        </li>
         <li>
           <a href="../70-shipping/troubleshooting.html">Something is broken</a>
         </li>
@@ -207,6 +204,9 @@
     <section>
       <h2>Appendix A - base modules</h2>
       <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
         <li>
           <a href="../62-modules/index.html">Every base module</a>
         </li>
@@ -264,33 +264,124 @@
 that strip fit the valley. It gives you a water surface. The ground still has to
 provide the bed and the banks.</p>
 <p>Get those three things to agree first. Foam can wait.</p>
+<h2 id="what-a-water-object-is">What a water object is<a class="headerlink" href="#what-a-water-object-is" title="Permanent link">#</a></h2>
+<p>All water in a map, flowing or still, is a <strong>River</strong> object.
+<span class="prov prov-doc">documented</span> It is a line of points, like a road
+<a href="roads.html">overlay</a>, with one important difference: <strong>every point has a
+height</strong>, and that height is the level of the water surface there.</p>
+<p>A River is a <strong>surface, not a channel.</strong> It lays water over whatever is beneath
+it. It does not cut a bed. Saber&rsquo;s own order of work starts with &ldquo;prepare a
+deepening of the terrain&rdquo; before you add any water.
+<span class="prov prov-doc">documented</span></p>
+<p>On disk a point looks like this: <span class="prov prov-unver">measured</span></p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;River</span><span class="w"> </span><span class="na">Flow=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">NeedFlowMapLoading=</span><span class="s">&quot;false&quot;</span><span class="w"> </span><span class="na">Clean=</span><span class="s">&quot;emerald&quot;</span><span class="w"> </span><span class="na">Muddy=</span><span class="s">&quot;brown&quot;</span><span class="w"> </span><span class="err">...</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Node</span><span class="w"> </span><span class="na">Position=</span><span class="s">&quot;(x; y; z)&quot;</span><span class="w"> </span><span class="na">Width=</span><span class="s">&quot;16.17662&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/River&gt;</span>
+</code></pre></div>
+
+<p>The middle number, <code>y</code>, is the water height. Unlike an overlay, the points are
+direct children of <code>&lt;River&gt;</code>, with no <code>&lt;Curve&gt;</code> around them.</p>
+<h3 id="the-settings-that-matter">The settings that matter<a class="headerlink" href="#the-settings-that-matter" title="Permanent link">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>setting</th>
+<th>what it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UseFlowMap</strong></td>
+<td><code>false</code>: water flows from point <code>0</code> towards the last point. <code>true</code>: you paint the direction with the Water brush</td>
+</tr>
+<tr>
+<td><strong>AvoidEffectOpacity</strong></td>
+<td><code>false</code> (default): shallow water runs slower and with smaller waves. <code>true</code>: shallow but wild, for mountain streams</td>
+</tr>
+<tr>
+<td><strong>Clean Type</strong></td>
+<td>the water&rsquo;s colour where it is clean</td>
+</tr>
+<tr>
+<td><strong>Muddy Type</strong></td>
+<td>the colour where you paint it muddy with the WaterMud brush</td>
+</tr>
+<tr>
+<td><strong>AboveReferences</strong></td>
+<td>keeps this river&rsquo;s colours from being overridden by imported references</td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="prov prov-doc">documented</span></p>
+<p>To reverse a river&rsquo;s flow, right-click it in the Scene View and choose
+<strong>River &hellip; Invert</strong>. <span class="prov prov-doc">documented</span> In the saved
+file, UseFlowMap appears as <code>NeedFlowMapLoading</code>.
+<span class="prov prov-unver">measured</span></p>
+<p>The colour types are classes in the game files, such as <code>emerald</code>,
+<code>emerald_deep</code>, <code>green</code>, <code>brown</code>, <code>clay-orange</code>, <code>clay-red</code>, <code>blue</code>,
+<code>blue_shallow</code>, <code>turquoise</code>, <code>dark</code> and <code>black</code>. They differ in how far down you
+can see: <code>emerald</code> shows about <code>1.9 m</code> deep, <code>green</code> about <code>0.3 m</code>.
+<span class="prov prov-unver">measured</span></p>
+<div class="admonition warning">
+<p class="admonition-title">Rivers in the same block must match</p>
+<p>Two rivers inside one <code>24 m</code> terrain block must have the same settings. You
+cannot merge a river that uses a flow map with one that does not, and merged
+rivers need the same Clean and Muddy types. Otherwise one takes the other&rsquo;s
+colours and a hard colour edge appears at the block border.
+<span class="prov prov-doc">documented</span></p>
+</div>
 <h2 id="the-mistake-that-looks-wrong-immediately">The mistake that looks wrong immediately<a class="headerlink" href="#the-mistake-that-looks-wrong-immediately" title="Permanent link">#</a></h2>
 <p>If you can see straight, square or saw-toothed edges floating over the ground,
 you are seeing the edge of the water object instead of a shoreline.</p>
 <p>The fix is not always more width, and it is not always less height. Measure both.
-The visible water should meet soil on each side, with the outer mesh edges hidden
+The visible water should meet soil on each side, with the outer edges hidden
 inside the banks. Check from road height, not only from directly above.</p>
+<p>Saber&rsquo;s rule for banks: the ground at the bank should be <strong>a little higher</strong> than
+the water, not the same height. Where they are level, the join looks bad; the
+usual fix is to raise the terrain slightly. <span class="prov prov-doc">documented</span></p>
+<p>Two measurements show what &ldquo;contained&rdquo; means in practice. On two custom maps
+whose rivers look right, the water&rsquo;s edge sat <code>0.48 m</code> and <code>3.70 m</code> <strong>below</strong> the
+bank (median per map). On a generated network that looked wrong, one edge point
+in five floated more than <code>0.15 m</code> above the soil.
+<span class="prov prov-unver">measured</span></p>
+<div class="admonition note">
+<p class="admonition-title">The jagged edge is partly a resolution limit</p>
+<p>The built water surface is stored much more coarsely than the ground: on a
+full-size map, one water sample for every 12 terrain samples. A shoreline
+cannot follow the ground more finely than that, so the edge steps. It is
+worst on <strong>flat</strong> ground, where a small height error moves the shoreline a
+long way, and disappears on a steep bank. There is no setting to raise the
+water resolution. Cut a defined bank where water meets flat ground.
+<span class="prov prov-unver">measured</span></p>
+</div>
 <h2 id="measure-in-two-directions">Measure in two directions<a class="headerlink" href="#measure-in-two-directions" title="Permanent link">#</a></h2>
 <p><strong>Along the channel</strong>, measure the bed and the fall toward the outlet. A flowing
 reach needs a connected downhill route. Do not stretch one horizontal sheet down
 a steep ravine. Equally, do not force a pool to follow every bump in its bed.</p>
 <p><strong>Across the channel</strong>, measure from bank to bank, at right angles to the local
 flow direction. The water surface is normally level across a section. Follow the
-bend when choosing that direction; the map&rsquo;s X axis is not the river&rsquo;s cross-section.</p>
-<p>A heightmap is a starting point, not a promise about underwater ground. Its survey
-and processing may describe a water surface rather than the actual bed. Inspect
-what your particular dataset contains before designing a lake around it.</p>
+bend when choosing that direction; the map&rsquo;s X axis is not the river&rsquo;s
+cross-section.</p>
+<p>A steep channel is not itself a problem. A network built with an AI agent, with more than half
+its length on ground steeper than <code>20</code> degrees, read correctly because the water
+was contained by banks. Deleting steep reaches is the wrong fix; containing them
+is the right one. <span class="prov prov-unver">measured</span></p>
+<p>A heightmap is a starting point, not a promise about underwater ground. Survey
+data levels lakes and wide rivers flat by specification, so it describes a water
+surface rather than the bed. See <a href="real-terrain.html">real-world terrain</a> before
+designing a lake around imported ground.</p>
 <div class="admonition warning">
 <p class="admonition-title">The road may not be the raw terrain</p>
-<p>Road flattening can change the surface you drive on. Do not turn it off just
-to make a puddle show. You may uncover a much deeper hollow than intended.</p>
+<p>An overlay with Flatten on levels the ground under it when the terrain is
+built. Do not turn it off just to make a puddle show. You may uncover a much
+deeper hollow than intended.</p>
 </div>
 <h2 id="give-each-piece-a-name">Give each piece a name<a class="headerlink" href="#give-each-piece-a-name" title="Permanent link">#</a></h2>
 <p>You should not have to click seventy objects to find one crossing.</p>
-<p>Our convention is <code>W00_R000_Name_ReachDescription</code>. <code>W00</code> identifies a channel;
-<code>R000</code>, <code>R001</code> and <code>R002</code> run downstream within it. Tributaries get their own channel
-codes and a recorded connection to the receiving reach. Lakes use <code>L000</code>, road
-pools <code>P000</code>, and culverts <code>C000</code>.</p>
+<p>One workable convention is <code>W00_R000_Name_ReachDescription</code>. <code>W00</code> identifies a
+channel; <code>R000</code>, <code>R001</code> and <code>R002</code> run downstream within it. Tributaries get their
+own channel codes and a recorded connection to the receiving reach. Lakes use
+<code>L000</code>, road pools <code>P000</code>, and culverts <code>C000</code>.</p>
 <p>Use the real drainage name when you can verify it against mapping of that actual
 channel. Otherwise use a clearly descriptive name such as
 <code>W01_R000_UnnamedDrainage_UpperChannel</code>. A named canyon nearby is not evidence that
@@ -301,33 +392,65 @@ small index linking labels, IDs, source files and upstream/downstream neighbours
 <p class="admonition-title">A name in a spreadsheet is not a name in the editor</p>
 <p>Confirm that the editor displays your label and lets you select its nodes.
 If individual rivers cannot retain labels, test a named group containing one
-river. Save and reopen it before adopting the method. The exact serialization
-is still unverified in this workflow; do not invent a River XML attribute.</p>
+river. Save and reopen it before adopting the method. The exact
+serialization has not been verified; do not invent a River XML attribute.
+<span class="prov prov-unver">unverified</span></p>
 </div>
 <h2 id="build-the-first-reach-by-hand">Build the first reach by hand<a class="headerlink" href="#build-the-first-reach-by-hand" title="Permanent link">#</a></h2>
 <ol>
 <li>Back up a map that already rebuilds and deploys. Work on a separate copy.</li>
 <li>Choose a short, uncomplicated channel. Measure its bed and both banks.</li>
-<li>Use <strong>Add River</strong> from the terrain&rsquo;s context menu, then position its nodes along
-   the channel. Adjust node height and width together.</li>
-<li>Rebuild and inspect the whole reach from both banks. Check between nodes and
+<li>Use <strong>Add River</strong> from the terrain&rsquo;s context menu, or from the Rivers node in
+   the Scene View. Add points with <strong>Add after</strong> and <strong>Add before</strong>, as on an
+   overlay. Set each point&rsquo;s height in <strong>Position Y</strong> and its width in
+   <strong>Width</strong>. <span class="prov prov-doc">documented</span></li>
+<li>Rebuild and inspect the whole reach from both banks. Check between points and
    around bends, not just where the handles sit. Lower, narrow, widen or reroute
    where needed. If no banks exist, design the channel before adding more water.</li>
 <li>Inspect both ends. Connect them to another reach, a pool or a deliberately
    concealed endpoint. Do not leave a visible square cap.</li>
-<li>Give the reach its label and test that you can find its nodes after reopening.</li>
+<li>Give the reach its label and test that you can find its points after
+   reopening.</li>
 <li>Pack and drive it. Then extend it.</li>
 </ol>
-<p>The editor provides river nodes and separate water painting controls.
-<span class="prov prov-doc">documented</span> See
-<a href="https://expeditions-guides.saber.games/map_modding/creating_a_map/rivers_and_water_objects/adding_rivers_and_water_objects/">Saber&rsquo;s river instructions</a>
+<p>In hand-built work the width changes from point to point to fit the channel.
+On two custom maps whose rivers look right, the median width was about <code>5.5 m</code>
+and <code>18 m</code>, with points about <code>5</code> and <code>12 m</code> apart. A small mountain stream is
+about <code>5</code> to <code>6 m</code> wide; a <code>33 m</code> desert-wash width used on an alpine map turned
+streams into corridors covering almost a quarter of the ground.
+<span class="prov prov-unver">measured</span></p>
+<p>See <a href="https://expeditions-guides.saber.games/map_modding/creating_a_map/rivers_and_water_objects/adding_rivers_and_water_objects/">Saber&rsquo;s river
+instructions</a>
 for the controls in your editor version.</p>
 <h2 id="a-lake-is-a-bowl-not-a-wide-river">A lake is a bowl, not a wide river<a class="headerlink" href="#a-lake-is-a-bowl-not-a-wide-river" title="Permanent link">#</a></h2>
 <p>Pick a water elevation and inspect the entire shoreline. The surrounding terrain
-must contain that level. A low saddle is an outlet, not a bank you can ignore.
-Use level water nodes, shape the water object to cover the basin, and hide its
-outside edges under surrounding terrain. Check the bed depth separately from the
-surface height, especially anywhere a truck can enter.</p>
+must contain that level. A low saddle is an outlet, not a bank you can ignore:
+read the level off that <strong>spill point</strong>, and dig the basin before you add water.</p>
+<p>In maps that load, a lake or pool is a River with <strong>3 or 4 points, the same
+height on every point</strong>, and a large width, for example 3 points at <code>55.8 m</code>
+wide. <span class="prov prov-unver">measured</span> Shape it to cover the basin
+and hide its outside edges under the surrounding terrain. Check the bed depth
+separately from the surface height, especially anywhere a truck can enter.</p>
+<div class="admonition warning">
+<p class="admonition-title">A hole is not a lake</p>
+<p>A basin cut into ground that falls further across its own width than the cut
+is deep cannot hold water. In one generated map, seven of eleven basins
+failed this way. <span class="prov prov-unver">measured</span></p>
+</div>
+<h3 id="water-beyond-the-map-edge">Water beyond the map edge<a class="headerlink" href="#water-beyond-the-map-edge" title="Permanent link">#</a></h3>
+<p>The terrain properties have a <strong>Background Water</strong> section that extends a flat
+water surface past the edge of the map, for a coast or a lakeshore.
+<span class="prov prov-doc">documented</span></p>
+<ol>
+<li>Make a flat River at the map edge, the same height on every point.</li>
+<li>In the terrain&rsquo;s Background Water fields, set <strong>Height</strong> to that river&rsquo;s Y
+   and <strong>Type (Clean)</strong> to its Clean type, and enable the edge or edges it
+   should extend from.</li>
+<li>Keep the river&rsquo;s edge more than <code>64 m</code> from the map edge, or the player sees
+   the &ldquo;No entry&rdquo; signs.</li>
+<li>Hide the corners, where the surface looks odd, behind rocks or terrain, or
+   enable the neighbouring edge too.</li>
+</ol>
 <h2 id="when-the-channel-goes-under-a-road">When the channel goes under a road<a class="headerlink" href="#when-the-channel-goes-under-a-road" title="Permanent link">#</a></h2>
 <p>Mark a planned culvert explicitly. Do not let an automatic watershed tool treat
 the road embankment as the end of the channel.</p>
@@ -337,15 +460,121 @@ outlet contained by banks. The covered section is allowed to disappear into the
 road terrain; raising it to become visible would defeat the crossing.</p>
 <p>The culvert model and its opening still need placement and collision checks.
 Drawing water through solid ground does not cut a tunnel. A ford or washout is a
-different design, not an excuse to apply this exception everywhere.</p>
+different design, not an excuse to apply this exception everywhere.
+<span class="prov prov-unver">unverified</span> This crossing method has not
+yet been confirmed in game.</p>
+<h2 id="waterfalls-are-two-rivers">Waterfalls are two rivers<a class="headerlink" href="#waterfalls-are-two-rivers" title="Permanent link">#</a></h2>
+<p>A single River cannot be made to fall. A waterfall is built from <strong>two</strong>:
+<span class="prov prov-unver">measured</span></p>
+<ul>
+<li>an <strong>upper</strong> River whose last point sits at the lip of the drop</li>
+<li>a <strong>lower</strong> River whose first point sits at the base, close by <strong>on the map</strong></li>
+</ul>
+<p>The engine joins two rivers whose ends are close together horizontally and
+ignores the height between them, pulling the water down as a fall. On five
+hand-built falls that work:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th></th>
+<th>range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>horizontal gap between the two ends</td>
+<td><code>2.6</code> to <code>13.8 m</code>, median <code>6.0 m</code></td>
+</tr>
+<tr>
+<td>drop</td>
+<td><code>15</code> to <code>43 m</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>The gap and the drop are <strong>unrelated</strong>: the tallest fall had the tightest gap.
+Do not scale one with the other. Other things those falls had in common:</p>
+<ul>
+<li>both rivers sit in <strong>one</strong> subgroup file</li>
+<li>the lower river often <strong>starts flat</strong> for a few points, a plunge pool, and
+  only then descends</li>
+<li>the widths do not have to match across the break</li>
+<li>several upper rivers can feed one lower river</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">A waterfall needs a cliff</p>
+<p>Two generated falls dropped the water two to four times further than the
+ground fell, <code>31 m</code> of water over <code>6.9 m</code> of ground, and rendered as water
+pouring down an open hillside. Build the drop in the terrain first, and
+check it, before you build the water. <span class="prov prov-unver">measured</span></p>
+</div>
+<p>A repeatable procedure for falls, including effects and foam, is still being
+tested.</p>
 <h2 id="make-it-move-after-it-fits">Make it move after it fits<a class="headerlink" href="#make-it-move-after-it-fits" title="Permanent link">#</a></h2>
 <p>Flow direction, speed and foam are not the same setting. Neither are brown water,
-wet ground and deep mud. Check each one independently. Use the editor&rsquo;s water
-brushes and verify a small painted sample before asking a script to write masks.</p>
-<p>Put foam where water is disturbed, then carry it downstream. Perfect matching
-white bands on both banks tend to look painted on. Treat falls as separate drops
-with a receiving pool and suitable effects, not a stretched river ribbon. The
-repeatable waterfall procedure is still being tested.</p>
+wet ground and deep mud. Check each one independently.</p>
+<p>The <strong>Geometry &gt; Water</strong> brush does not create water; it paints three things on
+water you have already added. <span class="prov prov-doc">documented</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>mode</th>
+<th>stored in</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Foam</strong></td>
+<td>green channel of <code>_water.tga</code></td>
+<td>paint where water is disturbed, such as against rocks</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>blue channel of <code>_water.tga</code></td>
+<td>Value <code>1</code> is the fastest</td>
+</tr>
+<tr>
+<td><strong>Flow</strong></td>
+<td><code>_water_flow.tga</code></td>
+<td>only used if UseFlowMap is true</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <strong>WaterMud</strong> brush blends a river between its Clean and Muddy colours. It is
+colour only; it does not make anything muddy to drive.
+<span class="prov prov-doc">documented</span></p>
+<div class="admonition warning">
+<p class="admonition-title">Turn Autofade off for Flow</p>
+<p>Painting flow with Autofade on corrects your strokes automatically and gives
+a wrong flow map. Set the main direction with a very large brush first, then
+add detail near obstacles and banks with a smaller one.
+<span class="prov prov-doc">documented</span></p>
+</div>
+<p>The water masks exist <strong>only as tiles</strong>, one per map piece. There is no
+full-size master to edit. <span class="prov prov-unver">measured</span> In
+<code>_water.tga</code>, the red channel is not the water&rsquo;s extent: it holds the same grid on
+every tile, including tiles with no water. The River object is the only record of
+where water is. <span class="prov prov-unver">measured</span></p>
+<p>Use the editor&rsquo;s brushes and verify a small painted sample before asking a script
+to write masks.</p>
+<h3 id="foam-comes-from-somewhere">Foam comes from somewhere<a class="headerlink" href="#foam-comes-from-somewhere" title="Permanent link">#</a></h3>
+<p>Put foam where water is disturbed, then carry it downstream. Real foam starts at
+a <strong>source</strong>, a rock, a drop or a kink in the bank, and streaks away downstream
+with the flow. Nothing makes foam across a whole cross-section at once.</p>
+<p>Foam computed from position along the river alone came out as matching white
+bands on both banks, which look painted on. Measured, it varied <code>52.3</code> along the
+river against only <code>3.2</code> across it. <span class="prov prov-unver">measured</span></p>
+<h3 id="two-helper-images">Two helper images<a class="headerlink" href="#two-helper-images" title="Permanent link">#</a></h3>
+<p>From the Geometry node&rsquo;s context menu: <span class="prov prov-doc">documented</span></p>
+<ul>
+<li><strong>Create Water Heightmap</strong> writes <code>_water_height.png</code>, the height of every
+  water surface. The editor does not use it, but with the terrain heightmap it
+  shows where water is and how deep, for generating bank vegetation or wet
+  ground elsewhere.</li>
+<li><strong>Create Default Flowmap</strong> writes <code>_default_water_flow.tga</code>, a flow map the
+  editor works out from each river&rsquo;s points and curvature. Edit it, rename it to
+  <code>_water_flow.tga</code>, and set UseFlowMap to true to use it.</li>
+</ul>
 <h2 id="ask-ai-for-measurements-not-reassurance">Ask AI for measurements, not reassurance<a class="headerlink" href="#ask-ai-for-measurements-not-reassurance" title="Permanent link">#</a></h2>
 <p>A useful request looks like this:</p>
 <blockquote>
@@ -357,17 +586,37 @@ as a planned culvert with matching mouth levels.</p>
 <p>Ask for the measurements, a connectivity index, a change list and a rollback
 copy. Then inspect the result yourself. A script passing its tests is not the
 same as the editor rebuilding, and neither proves the packed map deploys.</p>
-<p>The current <strong>expeditions-waterways</strong> skill is a workflow preview for Claude Code
-and Codex. It is not yet an automatic river designer. One short Shafer Trail
-Monsoon reach has received a positive visual review; bends, junctions, naming
-serialization and full-network export still need validation.</p>
+<p>The toolkit has scripts for the parts that are measurement rather than taste.
+<code>paint_river.py</code> writes speed, foam and mud masks from the river&rsquo;s slope, learns
+its scale from any reach you have already painted by hand, and never overwrites
+your paint. <code>shape_river.py</code> changes only the heights of a river&rsquo;s points, to
+give it a riffle-and-pool profile, and leaves everything else in the file
+untouched. Both dry-run unless you add <code>--apply</code>.</p>
+<div class="hl"><pre><span></span><code>python paint_river.py level_&lt;name&gt;
+python shape_river.py level_&lt;name&gt;
+</code></pre></div>
+
+<p>Neither is an automatic river designer. Waterway tooling for AI agents is still
+a preview: one short reach has received a positive visual review, while bends,
+junctions, naming and exporting a full network still need validation.
+<span class="prov prov-unver">unverified</span></p>
 <div class="admonition tip">
 <p class="admonition-title">Keep the change small enough to blame</p>
 <p>Build one reach. Check it. Save a known-good version. Add the next reach.
 If a build fails, undo that last isolated change before collecting more
 guesses. A crash at a step labelled plants does not, by itself, prove that
 the plants caused it.</p>
-</div></article>
+</div>
+<h2 id="not-yet-known">Not yet known<a class="headerlink" href="#not-yet-known" title="Permanent link">#</a></h2>
+<ul>
+<li>How to label a single river so the editor shows the name.</li>
+<li>Whether the culvert crossing above works in game.</li>
+<li>A repeatable procedure for waterfalls, with foam and effects.</li>
+<li>How bends and junctions behave when generated by a tool.</li>
+</ul>
+<p>Read Saber&rsquo;s pages first:</p>
+<div class="hl"><pre><span></span><code>python wiki.py howto river
+</code></pre></div></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../20-land/roads.html"><span>Previous</span>Roads are not carved terrain</a><a class="seq-next" href="../20-land/real-terrain.html"><span>Next</span>Using real-world terrain</a>      </nav>
@@ -377,14 +626,27 @@ the plants caused it.</p>
     <p>On this page</p>
     <div class="toc">
 <ul>
+<li><a href="#what-a-water-object-is">What a water object is</a><ul>
+<li><a href="#the-settings-that-matter">The settings that matter</a></li>
+</ul>
+</li>
 <li><a href="#the-mistake-that-looks-wrong-immediately">The mistake that looks wrong immediately</a></li>
 <li><a href="#measure-in-two-directions">Measure in two directions</a></li>
 <li><a href="#give-each-piece-a-name">Give each piece a name</a></li>
 <li><a href="#build-the-first-reach-by-hand">Build the first reach by hand</a></li>
-<li><a href="#a-lake-is-a-bowl-not-a-wide-river">A lake is a bowl, not a wide river</a></li>
+<li><a href="#a-lake-is-a-bowl-not-a-wide-river">A lake is a bowl, not a wide river</a><ul>
+<li><a href="#water-beyond-the-map-edge">Water beyond the map edge</a></li>
+</ul>
+</li>
 <li><a href="#when-the-channel-goes-under-a-road">When the channel goes under a road</a></li>
-<li><a href="#make-it-move-after-it-fits">Make it move after it fits</a></li>
+<li><a href="#waterfalls-are-two-rivers">Waterfalls are two rivers</a></li>
+<li><a href="#make-it-move-after-it-fits">Make it move after it fits</a><ul>
+<li><a href="#foam-comes-from-somewhere">Foam comes from somewhere</a></li>
+<li><a href="#two-helper-images">Two helper images</a></li>
+</ul>
+</li>
 <li><a href="#ask-ai-for-measurements-not-reassurance">Ask AI for measurements, not reassurance</a></li>
+<li><a href="#not-yet-known">Not yet known</a></li>
 </ul>
 </div>
 
