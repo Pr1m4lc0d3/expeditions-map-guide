@@ -158,7 +158,7 @@ This store-row art runs the **same way** as the purchase card.
 
 ![Warehouse bgRight](../assets/bases/extra-storage_right.png)
 
-`bgSmall` — 124 x 52 — the HUD strip of deployed modules. A **tight, centred crop** that fills the chip, cropped on every side — not the same fit as `bg`.
+`bgSmall` — 124 x 52 — the HUD strip of deployed modules. The **whole module**, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.
 
 ![Warehouse bgSmall](../assets/bases/extra-storage_small.png)
 
@@ -170,7 +170,7 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyFobModuleStorage`** for this module.
-The type itself works for a mod (PebbleGas is built on it), but no custom warehouse has been tested in game doing this module's job.
+The type itself works for a mod (a custom fuel station is built on it), but no custom warehouse has been tested in game doing this module's job.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

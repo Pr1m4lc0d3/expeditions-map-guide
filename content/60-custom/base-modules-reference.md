@@ -240,9 +240,9 @@ The engine knows 72 zone-property types. These are the ones a base module uses:
 
     | Type | For a mod | Tested with |
     |---|---|---|
-    | `ZonePropertyFobModuleStorage` | ✅ works | PebbleGas, a fuel station with a single fuel slot |
-    | `ZonePropertyWorkshop` | ✅ works | Platt's Gate Works |
-    | `ZonePropertyDroneDelivery` | ✅ works | Nom Nom's Drone Delivery Service |
+    | `ZonePropertyFobModuleStorage` | ✅ works | A custom fuel station with a single fuel slot, and a custom repair station |
+    | `ZonePropertyWorkshop` | ✅ works | A custom workshop that crafts, recycles and starts stocked |
+    | `ZonePropertyDroneDelivery` | ✅ works | A custom cargo drone base |
     | `ZonePropertyGenerator` | ⛔ broken | six builds; each one emptied the module store and froze the game on exit to headquarters |
     | `AntennaUpgradeDesc` (with `ZonePropertyFobModuleDefault`) | ⛔ broken | builds and sells, never reveals an air drop, even with the game's script patched. See [Intelligence center](../62-modules/com-center.html#building-your-own-the-ability-does-not-work) |
     | `ZonePropertyHelicopter`, `ZonePropertyServiceStation` | ⚠ not yet tested | one of each worked in March 2025; neither has been reproduced since |

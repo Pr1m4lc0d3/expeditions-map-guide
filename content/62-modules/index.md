@@ -18,10 +18,10 @@ To build a module of your own, start with
 |---|---|---|
 | [Gas station](gas-station.html) | **✅ Works** | Sells fuel to a truck parked at the zone. |
 | [Warehouse](extra-storage.html) | **⚠ Not yet tested** | Holds cargo at the base. |
-| [Essentials storage](double-stock.html) | **⚠ Not yet tested** | Doubles the cargo the base can hold. |
-| [Workshop](workshop.html) | **✅ Works** | Repairs and upgrades trucks. |
-| [Repair station](repair-station.html) | **⚠ Not yet tested** | Restores truck condition. |
-| [Service station](service-station.html) | **⚠ Not yet tested** | Combined refuel, repair and tyre service. |
+| [Essentials storage](double-stock.html) | **⚠ Not yet tested** | Holds some fuel, wheels and spare parts, resupplied between deployments. |
+| [Workshop](workshop.html) | **✅ Works** | Crafts items from spare parts; refills only by recycling items. |
+| [Repair station](repair-station.html) | **✅ Works** | Stocks spare parts and wheels for trucks to take. |
+| [Service station](service-station.html) | **✅ Works** | Lets trucks in its area spend spare parts on armor, up to +20%. |
 | [Generator](generator.html) | **⛔ Broken** | Converts fuel into electricity. |
 | [Helipad](helicopter.html) | **⚠ Not yet tested** | Transports the player between discovered zones. |
 | [Expanded parking](parking.html) | **⚠ Not yet tested** | Raises how many trucks the deploy zone holds. |

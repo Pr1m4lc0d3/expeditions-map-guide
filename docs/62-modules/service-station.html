@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Service station &middot; Expeditions Map Making</title>
-<meta name="description" content="Combined refuel, repair and tyre service. Documented for custom modules."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Lets trucks in its area spend spare parts on armor, up to 20% above full strength."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -224,10 +224,10 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/repair-station.html">Repair station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/service-station.html" aria-current="page">Service station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/generator.html">Generator</a>
 <span class="pill pill-v-broken">broken</span>        </li>
@@ -254,14 +254,54 @@
       <div class="page-head">
         <p class="eyebrow">Appendix A - base modules</p>
         <h1>Service station</h1>
-        <div class="verdict verdict-untested" role="note">
-          <span class="verdict-label">As a custom module: NOT YET TESTED</span>
-          <span class="verdict-text">A custom one worked in March 2025, and nobody has been able to reproduce it since. Treat it as untested.</span>
+        <div class="verdict verdict-works" role="note">
+          <span class="verdict-label">As a custom module: WORKS</span>
+          <span class="verdict-text">A custom one builds, and trucks in its area can add armor up to the same +20% as the vanilla module. Tested in game, October 2026.</span>
         </div>
-<p class="lede">Combined refuel, repair and tyre service. Documented for custom modules.</p>      </div>
+<p class="lede">Lets trucks in its area spend spare parts on armor, up to 20% above full strength.</p>      </div>
       <article class="prose"><h1 id="service-station">Service station<a class="headerlink" href="#service-station" title="Permanent link">#</a></h1>
 <p><img alt="Service station store card" src="../assets/bases/service-station_card.png" /></p>
-<p>Combined refuel, repair and tyre service.</p>
+<p>Lets a truck parked in its area spend spare parts on armor: strength above 100% on the engine, gearbox, suspension and fuel tank.</p>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<p>Nothing happens at the module itself. The vanilla one has no trade screen (<code>isInteractive</code> is false) and holds no stock. It only raises the armor cap of a truck standing in its area.</p>
+<p>The player adds armor the same way they repair. Open the vehicle status panel, select a part, and spend spare parts on it. The game&rsquo;s Codex describes it: some specialists and base modules raise a part&rsquo;s strength limit, and while that extra strength lasts, collision damage is reduced.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Highest a part can reach</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No armor specialist, away from the station</td>
+<td>100% (repair only)</td>
+</tr>
+<tr>
+<td>No armor specialist, in the station&rsquo;s area</td>
+<td>120%</td>
+</tr>
+<tr>
+<td>A specialist with +95% armor, away from the station</td>
+<td>195%</td>
+</tr>
+<tr>
+<td>The same specialist, in the station&rsquo;s area</td>
+<td>215%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Measured in game, October 2026. The station&rsquo;s +20% adds to whatever the team&rsquo;s specialists give.</p>
+<div class="admonition note">
+<p class="admonition-title">Where armor can be added</p>
+<p>In the test above, the specialist&rsquo;s +95% could be added away from any station, and that specialist does <strong>not</strong> have the <code>ArmorRestoreEverywhere</code> modifier. Only the station&rsquo;s own +20% needed the truck to be in its area. Saber&rsquo;s specialist docs give an example that reads as if adding armor away from a station needs <code>ArmorRestoreEverywhere</code>. What that modifier adds on top has not been tested.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">The +20% cannot be changed by a mod</p>
+<p><code>ZonePropertyServiceStation</code> has no strength setting. Its only members are <code>moduleId</code>, <code>zoneDiscoverability</code> and two inherited switches. The +20% is the game-wide <code>baseArmorMultiplier</code> (default <code>0.2</code>) on <code>TruckArmorController</code>, compiled into the game&rsquo;s own data.</p>
+<p>Raising it would mean patching the game itself, for every truck at every station, vanilla included. So a custom service station can differ only in price, models and art.</p>
+<p>To give players more armor, use specialists. The <code>ArmorCapacity</code> modifier adds a percentage to each of the four parts. See <a href="../60-custom/specialists.html">Specialists</a>.</p>
+</div>
 <h2 id="in-game">In game<a class="headerlink" href="#in-game" title="Permanent link">#</a></h2>
 <p><strong>The purchase card.</strong> This is what a player sees before buying.</p>
 <p><img alt="Service station purchase card" src="../assets/bases/service-station_buy.png" /></p>
@@ -459,7 +499,7 @@ and you can see it directly.</p>
 <p><img alt="Service station popup" src="../assets/bases/service-station_popup.png" /></p>
 <p><code>bgRight</code> — 760 x 90 — the banner above the module card when it is in use. The artwork is <strong>aligned to the RIGHT</strong>; the icon and name sit on the tan bar to its left.</p>
 <p><img alt="Service station bgRight" src="../assets/bases/service-station_right.png" /></p>
-<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. A <strong>tight, centred crop</strong> that fills the chip, cropped on every side — not the same fit as <code>bg</code>.</p>
+<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. The <strong>whole module</strong>, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.</p>
 <p><img alt="Service station bgSmall" src="../assets/bases/service-station_small.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Composition</p>
@@ -469,7 +509,8 @@ small and floats. Match the framing, not just the pixel size.</p>
 </div>
 <h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyServiceStation</code></strong> for this module.
-A custom module built on it worked once, in March 2025, and nobody has reproduced that since. Treat it as untested.</p>
+A custom service station built on it works: trucks in its area can add armor up to +20%, the same as the vanilla module. Tested in game, October 2026.</p>
+<p>Copy the vanilla one&rsquo;s behaviour: <code>isInteractive</code> false and <code>isOnlyOneAvailableAtDeployZone</code> true. The card&rsquo;s description should say what the player does, since nothing on the module shows it: park in the area, open the vehicle status panel and spend spare parts on armor.</p>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
 <p>See <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a> for the full field list.</p></article>
 
@@ -481,6 +522,7 @@ A custom module built on it worked once, in March 2025, and nobody has reproduce
     <p>On this page</p>
     <div class="toc">
 <ul>
+<li><a href="#how-it-works">How it works</a></li>
 <li><a href="#in-game">In game</a></li>
 <li><a href="#identity">Identity</a></li>
 <li><a href="#models">Models</a></li>

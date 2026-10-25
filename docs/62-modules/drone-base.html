@@ -224,10 +224,10 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/repair-station.html">Repair station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/service-station.html">Service station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/generator.html">Generator</a>
 <span class="pill pill-v-broken">broken</span>        </li>
@@ -256,7 +256,7 @@
         <h1>Cargo drone</h1>
         <div class="verdict verdict-works" role="note">
           <span class="verdict-label">As a custom module: WORKS</span>
-          <span class="verdict-text">Nom Nom&#39;s Drone Delivery Service moves items between drone and base and holds 100 gallons of fuel. Tested in game by the owner.</span>
+          <span class="verdict-text">A custom cargo drone base moves items between drone and base and holds 100 gallons of fuel. Tested in game.</span>
         </div>
 <p class="lede">Recovers ground drones at the deploy zone. Documented for custom modules.</p>      </div>
       <article class="prose"><h1 id="cargo-drone">Cargo drone<a class="headerlink" href="#cargo-drone" title="Permanent link">#</a></h1>
@@ -459,7 +459,7 @@ and you can see it directly.</p>
 <p><img alt="Cargo drone popup" src="../assets/bases/drone-base_popup.png" /></p>
 <p><code>bgRight</code> — 760 x 90 — the banner above the module card when it is in use. The artwork is <strong>aligned to the RIGHT</strong>; the icon and name sit on the tan bar to its left.</p>
 <p><img alt="Cargo drone bgRight" src="../assets/bases/drone-base_right.png" /></p>
-<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. A <strong>tight, centred crop</strong> that fills the chip, cropped on every side — not the same fit as <code>bg</code>.</p>
+<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. The <strong>whole module</strong>, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.</p>
 <p><img alt="Cargo drone bgSmall" src="../assets/bases/drone-base_small.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Composition</p>
@@ -469,7 +469,7 @@ small and floats. Match the framing, not just the pixel size.</p>
 </div>
 <h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyDroneDelivery</code></strong> for this module.
-A custom cargo drone built on it works: Nom Nom&rsquo;s Drone Delivery Service uses it and was tested in game.</p>
+A custom cargo drone built on it works, tested in game.</p>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
 <p>See <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a> for the full field list.</p></article>
 

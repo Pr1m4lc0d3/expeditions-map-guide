@@ -224,10 +224,10 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/repair-station.html">Repair station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/service-station.html">Service station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/generator.html">Generator</a>
 <span class="pill pill-v-broken">broken</span>        </li>
@@ -256,7 +256,7 @@
         <h1>Gas station</h1>
         <div class="verdict verdict-works" role="note">
           <span class="verdict-label">As a custom module: WORKS</span>
-          <span class="verdict-text">Works when you build it as a storage module with a single fuel slot, the way PebbleGas does. Selling it leaves its model on the map.</span>
+          <span class="verdict-text">Works when you build it as a storage module with a single fuel slot. Selling it leaves its model on the map.</span>
         </div>
 <p class="lede">Sells fuel to a truck parked at the zone. Documented for custom modules.</p>      </div>
       <article class="prose"><h1 id="gas-station">Gas station<a class="headerlink" href="#gas-station" title="Permanent link">#</a></h1>
@@ -457,7 +457,7 @@ let the row clip. The example below is the complete image.</p>
 <p><img alt="Gas station popup" src="../assets/bases/gas-station_popup.png" /></p>
 <p><code>bgRight</code> — 760 x 90 — the banner above the module card when it is in use. The artwork is <strong>aligned to the RIGHT</strong>; the icon and name sit on the tan bar to its left.</p>
 <p><img alt="Gas station bgRight" src="../assets/bases/gas-station_right.png" /></p>
-<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. A <strong>tight, centred crop</strong> that fills the chip, cropped on every side — not the same fit as <code>bg</code>.</p>
+<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. The <strong>whole module</strong>, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.</p>
 <p><img alt="Gas station bgSmall" src="../assets/bases/gas-station_small.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Composition</p>
@@ -467,7 +467,7 @@ small and floats. Match the framing, not just the pixel size.</p>
 </div>
 <h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyFobModuleStorage</code></strong> for this module.
-A custom gas station built on it works: PebbleGas uses it with a single fuel slot and was tested in game.</p>
+A custom gas station built on it works with a single fuel slot, tested in game.</p>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
 <p>See <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a> for the full field list.</p></article>
 

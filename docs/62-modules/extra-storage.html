@@ -224,10 +224,10 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/repair-station.html">Repair station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/service-station.html">Service station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/generator.html">Generator</a>
 <span class="pill pill-v-broken">broken</span>        </li>
@@ -457,7 +457,7 @@ let the row clip. The example below is the complete image.</p>
 <p><img alt="Warehouse popup" src="../assets/bases/extra-storage_popup.png" /></p>
 <p><code>bgRight</code> — 760 x 90 — the banner above the module card when it is in use. The artwork is <strong>aligned to the RIGHT</strong>; the icon and name sit on the tan bar to its left.</p>
 <p><img alt="Warehouse bgRight" src="../assets/bases/extra-storage_right.png" /></p>
-<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. A <strong>tight, centred crop</strong> that fills the chip, cropped on every side — not the same fit as <code>bg</code>.</p>
+<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. The <strong>whole module</strong>, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.</p>
 <p><img alt="Warehouse bgSmall" src="../assets/bases/extra-storage_small.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Composition</p>
@@ -467,7 +467,7 @@ small and floats. Match the framing, not just the pixel size.</p>
 </div>
 <h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyFobModuleStorage</code></strong> for this module.
-The type itself works for a mod (PebbleGas is built on it), but no custom warehouse has been tested in game doing this module&rsquo;s job.</p>
+The type itself works for a mod (a custom fuel station is built on it), but no custom warehouse has been tested in game doing this module&rsquo;s job.</p>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
 <p>See <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a> for the full field list.</p></article>
 

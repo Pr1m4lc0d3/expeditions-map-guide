@@ -224,10 +224,10 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/repair-station.html">Repair station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/service-station.html">Service station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/generator.html">Generator</a>
 <span class="pill pill-v-broken">broken</span>        </li>
@@ -457,7 +457,7 @@ let the row clip. The example below is the complete image.</p>
 <p><img alt="Intelligence center popup" src="../assets/bases/com-center_popup.png" /></p>
 <p><code>bgRight</code> — 760 x 90 — the banner above the module card when it is in use. The artwork is <strong>aligned to the RIGHT</strong>; the icon and name sit on the tan bar to its left.</p>
 <p><img alt="Intelligence center bgRight" src="../assets/bases/com-center_right.png" /></p>
-<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. A <strong>tight, centred crop</strong> that fills the chip, cropped on every side — not the same fit as <code>bg</code>.</p>
+<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. The <strong>whole module</strong>, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.</p>
 <p><img alt="Intelligence center bgSmall" src="../assets/bases/com-center_small.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Composition</p>
@@ -473,8 +473,8 @@ the refund. Its ability, marking nearby air drops as question marks on the
 map, never fires. Tested in game on a vanilla map, where nothing starts
 revealed. Saber ended support in September 2026, so this won&rsquo;t be patched.</p>
 </div>
-<p>Everything else about the module works. Measured with Gimbo&rsquo;s Resource
-Scanner, an <code>AntennaUpgradeDesc</code> mod:</p>
+<p>Everything else about the module works. Measured with a custom intelligence center, an
+<code>AntennaUpgradeDesc</code> mod:</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -531,7 +531,7 @@ Saber&rsquo;s own antenna and wrong for yours.</p>
 <li><strong>Give it a job that works for a mod.</strong> Storage, fuel and repair modules
   built on <code>ZonePropertyFobModuleStorage</code> do work. See
   <a href="../60-custom/base-modules-reference.html#what-the-module-does-zoneproperty">What the module does</a>.</li>
-<li><strong>Or make it about money,</strong> as Gimbo&rsquo;s Intel Scanner now is: <code>cost</code>
+<li><strong>Or make it about money,</strong> as one tested custom intelligence center now is: <code>cost</code>
   1,000 and <code>sellPrice</code> 500,000, with a description that owns the joke. A
   sold custom module leaves its model standing on the map (true of every
   module with a custom model), but the cash arrives every time.</li>

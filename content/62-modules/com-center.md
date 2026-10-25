@@ -158,7 +158,7 @@ This store-row art runs the **same way** as the purchase card.
 
 ![Intelligence center bgRight](../assets/bases/com-center_right.png)
 
-`bgSmall` — 124 x 52 — the HUD strip of deployed modules. A **tight, centred crop** that fills the chip, cropped on every side — not the same fit as `bg`.
+`bgSmall` — 124 x 52 — the HUD strip of deployed modules. The **whole module**, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.
 
 ![Intelligence center bgSmall](../assets/bases/com-center_small.png)
 
@@ -175,8 +175,8 @@ This store-row art runs the **same way** as the purchase card.
     map, never fires. Tested in game on a vanilla map, where nothing starts
     revealed. Saber ended support in September 2026, so this won't be patched.
 
-Everything else about the module works. Measured with Gimbo's Resource
-Scanner, an `AntennaUpgradeDesc` mod:
+Everything else about the module works. Measured with a custom intelligence center, an
+`AntennaUpgradeDesc` mod:
 
 | | Result |
 |---|---|
@@ -213,7 +213,7 @@ is not known. Don't spend time on the range; it isn't the cause.
 - **Give it a job that works for a mod.** Storage, fuel and repair modules
   built on `ZonePropertyFobModuleStorage` do work. See
   [What the module does](../60-custom/base-modules-reference.html#what-the-module-does-zoneproperty).
-- **Or make it about money,** as Gimbo's Intel Scanner now is: `cost`
+- **Or make it about money,** as one tested custom intelligence center now is: `cost`
   1,000 and `sellPrice` 500,000, with a description that owns the joke. A
   sold custom module leaves its model standing on the map (true of every
   module with a custom model), but the cash arrives every time.

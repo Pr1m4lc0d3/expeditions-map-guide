@@ -2,16 +2,19 @@
 title: Repair station
 part: Appendix A - base modules
 order: 904
-summary: Restores truck condition. Documented for custom modules.
-verdict: untested
-verdict_text: "Doc Windsor EMT builds and shows its model at a main base and an outpost, but nobody has tested whether it repairs a truck."
+summary: Stocks spare parts and wheels for trucks to take. Resupplied between deployments.
+verdict: works
+verdict_text: "A custom one built on the same settings stocks parts and wheels, and a truck can take them. Tested in game, October 2026."
 ---
 
 # Repair station
 
 ![Repair station store card](../assets/bases/repair-station_card.png)
 
-Restores truck condition.
+Stocks spare parts and wheels for trucks to take. It does not repair a truck itself; the player repairs from the vehicle status panel with the parts they take. The game says its stock is resupplied between deployments.
+
+!!! note "Can't be transferred usually means the truck is full"
+    The red "Can't be transferred" under spare parts appears when the truck has no room left for them (`UI_POPUP_TRADE_NO_DETAILS_CAPACITY_IN_TARGET`). Check the truck's parts count before suspecting the module: the vanilla repair station shows the same message to a full truck.
 
 ## In game
 
@@ -158,7 +161,7 @@ This store-row art runs the **same way** as the purchase card.
 
 ![Repair station bgRight](../assets/bases/repair-station_right.png)
 
-`bgSmall` — 124 x 52 — the HUD strip of deployed modules. A **tight, centred crop** that fills the chip, cropped on every side — not the same fit as `bg`.
+`bgSmall` — 124 x 52 — the HUD strip of deployed modules. The **whole module**, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.
 
 ![Repair station bgSmall](../assets/bases/repair-station_small.png)
 
@@ -170,7 +173,18 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyFobModuleStorage`** for this module.
-The type itself works for a mod (PebbleGas is built on it), but no custom repair station has been tested in game doing this module's job.
+A custom repair station built on it works, tested in game. Copy the vanilla settings, not a gas station's:
+
+| Setting | Vanilla repair station |
+|---|---|
+| `repairsSlotSettings` | quantity 1200, `chance` 1.0, `tradeFromTruckToZone` true |
+| `wheelsSlotSettings` | quantity 6, `chance` 1.0, `tradeFromTruckToZone` true |
+| `alwaysSpawn` | true |
+| `expandedConsumablesCapacity` | 3.0 |
+| `isAffectedByAdditionalOutpostResourcesAbility` | false |
+| Icons | `moduleRepairStation20`, `moduleRepairStation40`, `moduleRepairStationMap40`, `moduleRepairStation48` |
+
+A module cloned from the gas station keeps the fuel-pump icons and leaves out the wheels.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

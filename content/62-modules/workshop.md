@@ -2,16 +2,39 @@
 title: Workshop
 part: Appendix A - base modules
 order: 903
-summary: Repairs and upgrades trucks. Documented for custom modules.
+summary: Crafts inventory items from spare parts, and recycles items back into spare parts.
 verdict: works
-verdict_text: "Platt's Gate Works builds at a main base, opens the Workshop menu, holds spare parts and crafts. Not yet checked: building at an outpost, and reloading a save."
+verdict_text: "A custom one builds at a main base, opens the Workshop menu, holds spare parts, crafts and recycles. Not yet checked: building at an outpost, and reloading a save."
 ---
 
 # Workshop
 
 ![Workshop store card](../assets/bases/workshop_card.png)
 
-Repairs and upgrades trucks.
+Crafts inventory items from spare parts, and recycles items back into spare parts. It does not repair trucks.
+
+## How it works
+
+The workshop keeps its own stock of spare parts and spends it on crafting.
+
+**It can't be loaded from a truck.** Trying to hand it spare parts shows "Can't be transferred". The game has a message for exactly that (`UI_POPUP_WORKSHOP_CANNOT_BE_TRANSFERRED`). The only way to add parts is to **recycle** inventory items at the workshop.
+
+The vanilla workshop starts with **0** parts, so it does nothing until the player brings something to recycle. These are the vanilla items with a recycle value:
+
+| Item | Recycles into | Costs to craft |
+|---|---|---|
+| Scrap for Workshop | 50 parts | can't be crafted |
+| GPS tracker | 50 | 220 |
+| Big portable bridge | 70 | 150 |
+| Small portable bridge | 40 | 100 |
+| Signal amplifier | 40 | 160 |
+| Fixed anchor | 40 | 160 |
+| Jack screw | 40 | 200 |
+| Tow rope | 20 | 50 |
+
+Scrap for Workshop exists only to be recycled; it turns up as loot. An item is craftable when its `craftRepairsCost` is not `-1`, and recyclable when its `recycleRepairsCost` is not `-1`.
+
+A custom workshop can start stocked: set `repairsInitialAmount`. Once those parts are spent, it reloads by recycling like the vanilla one. Whether the starting stock refills on a new deployment has not been tested.
 
 ## In game
 
@@ -158,7 +181,7 @@ This store-row art runs the **same way** as the purchase card.
 
 ![Workshop bgRight](../assets/bases/workshop_right.png)
 
-`bgSmall` — 124 x 52 — the HUD strip of deployed modules. A **tight, centred crop** that fills the chip, cropped on every side — not the same fit as `bg`.
+`bgSmall` — 124 x 52 — the HUD strip of deployed modules. The **whole module**, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.
 
 ![Workshop bgSmall](../assets/bases/workshop_small.png)
 
@@ -170,7 +193,7 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyWorkshop`** for this module.
-A custom workshop built on it works: Platt's Gate Works uses it and was tested in game.
+A custom workshop built on it works, tested in game: it crafts, recycles, and starts with the parts set in `repairsInitialAmount`.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

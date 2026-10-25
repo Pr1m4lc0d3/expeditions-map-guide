@@ -2,16 +2,41 @@
 title: Service station
 part: Appendix A - base modules
 order: 905
-summary: Combined refuel, repair and tyre service. Documented for custom modules.
-verdict: untested
-verdict_text: "A custom one worked in March 2025, and nobody has been able to reproduce it since. Treat it as untested."
+summary: Lets trucks in its area spend spare parts on armor, up to 20% above full strength.
+verdict: works
+verdict_text: "A custom one builds, and trucks in its area can add armor up to the same +20% as the vanilla module. Tested in game, October 2026."
 ---
 
 # Service station
 
 ![Service station store card](../assets/bases/service-station_card.png)
 
-Combined refuel, repair and tyre service.
+Lets a truck parked in its area spend spare parts on armor: strength above 100% on the engine, gearbox, suspension and fuel tank.
+
+## How it works
+
+Nothing happens at the module itself. The vanilla one has no trade screen (`isInteractive` is false) and holds no stock. It only raises the armor cap of a truck standing in its area.
+
+The player adds armor the same way they repair. Open the vehicle status panel, select a part, and spend spare parts on it. The game's Codex describes it: some specialists and base modules raise a part's strength limit, and while that extra strength lasts, collision damage is reduced.
+
+| Situation | Highest a part can reach |
+|---|---|
+| No armor specialist, away from the station | 100% (repair only) |
+| No armor specialist, in the station's area | 120% |
+| A specialist with +95% armor, away from the station | 195% |
+| The same specialist, in the station's area | 215% |
+
+Measured in game, October 2026. The station's +20% adds to whatever the team's specialists give.
+
+!!! note "Where armor can be added"
+    In the test above, the specialist's +95% could be added away from any station, and that specialist does **not** have the `ArmorRestoreEverywhere` modifier. Only the station's own +20% needed the truck to be in its area. Saber's specialist docs give an example that reads as if adding armor away from a station needs `ArmorRestoreEverywhere`. What that modifier adds on top has not been tested.
+
+!!! warning "The +20% cannot be changed by a mod"
+    `ZonePropertyServiceStation` has no strength setting. Its only members are `moduleId`, `zoneDiscoverability` and two inherited switches. The +20% is the game-wide `baseArmorMultiplier` (default `0.2`) on `TruckArmorController`, compiled into the game's own data.
+
+    Raising it would mean patching the game itself, for every truck at every station, vanilla included. So a custom service station can differ only in price, models and art.
+
+    To give players more armor, use specialists. The `ArmorCapacity` modifier adds a percentage to each of the four parts. See [Specialists](../60-custom/specialists.html).
 
 ## In game
 
@@ -160,7 +185,7 @@ and you can see it directly.
 
 ![Service station bgRight](../assets/bases/service-station_right.png)
 
-`bgSmall` — 124 x 52 — the HUD strip of deployed modules. A **tight, centred crop** that fills the chip, cropped on every side — not the same fit as `bg`.
+`bgSmall` — 124 x 52 — the HUD strip of deployed modules. The **whole module**, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.
 
 ![Service station bgSmall](../assets/bases/service-station_small.png)
 
@@ -172,7 +197,9 @@ and you can see it directly.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyServiceStation`** for this module.
-A custom module built on it worked once, in March 2025, and nobody has reproduced that since. Treat it as untested.
+A custom service station built on it works: trucks in its area can add armor up to +20%, the same as the vanilla module. Tested in game, October 2026.
+
+Copy the vanilla one's behaviour: `isInteractive` false and `isOnlyOneAvailableAtDeployZone` true. The card's description should say what the player does, since nothing on the module shows it: park in the area, open the vehicle status panel and spend spare parts on armor.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

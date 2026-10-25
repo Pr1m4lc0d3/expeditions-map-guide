@@ -4,7 +4,7 @@ part: Appendix A - base modules
 order: 900
 summary: Sells fuel to a truck parked at the zone. Documented for custom modules.
 verdict: works
-verdict_text: "Works when you build it as a storage module with a single fuel slot, the way PebbleGas does. Selling it leaves its model on the map."
+verdict_text: "Works when you build it as a storage module with a single fuel slot. Selling it leaves its model on the map."
 ---
 
 # Gas station
@@ -158,7 +158,7 @@ This store-row art runs the **same way** as the purchase card.
 
 ![Gas station bgRight](../assets/bases/gas-station_right.png)
 
-`bgSmall` — 124 x 52 — the HUD strip of deployed modules. A **tight, centred crop** that fills the chip, cropped on every side — not the same fit as `bg`.
+`bgSmall` — 124 x 52 — the HUD strip of deployed modules. The **whole module**, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.
 
 ![Gas station bgSmall](../assets/bases/gas-station_small.png)
 
@@ -170,7 +170,7 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyFobModuleStorage`** for this module.
-A custom gas station built on it works: PebbleGas uses it with a single fuel slot and was tested in game.
+A custom gas station built on it works with a single fuel slot, tested in game.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

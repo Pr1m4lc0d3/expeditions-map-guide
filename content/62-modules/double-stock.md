@@ -4,7 +4,7 @@ part: Appendix A - base modules
 order: 902
 summary: Doubles the cargo the base can hold. Documented for custom modules.
 verdict: untested
-verdict_text: "A custom copy (Essentials Storage) loads and keeps an inventory in a save, but nobody has checked in game that it actually adds capacity."
+verdict_text: "A custom copy loads and keeps an inventory in a save, but nobody has checked in game that it actually adds capacity."
 ---
 
 # Essentials storage
@@ -158,7 +158,7 @@ This store-row art runs the **same way** as the purchase card.
 
 ![Essentials storage bgRight](../assets/bases/double-stock_right.png)
 
-`bgSmall` — 124 x 52 — the HUD strip of deployed modules. A **tight, centred crop** that fills the chip, cropped on every side — not the same fit as `bg`.
+`bgSmall` — 124 x 52 — the HUD strip of deployed modules. The **whole module**, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.
 
 ![Essentials storage bgSmall](../assets/bases/double-stock_small.png)
 
@@ -170,7 +170,7 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyFobModuleStorage`** for this module.
-The type itself works for a mod (PebbleGas is built on it), but no custom essentials storage has been tested in game doing this module's job.
+The type itself works for a mod (a custom fuel station is built on it), but no custom essentials storage has been tested in game doing this module's job.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

@@ -4,7 +4,7 @@ part: Appendix A - base modules
 order: 909
 summary: Recovers ground drones at the deploy zone. Documented for custom modules.
 verdict: works
-verdict_text: "Nom Nom's Drone Delivery Service moves items between drone and base and holds 100 gallons of fuel. Tested in game by the owner."
+verdict_text: "A custom cargo drone base moves items between drone and base and holds 100 gallons of fuel. Tested in game."
 ---
 
 # Cargo drone
@@ -160,7 +160,7 @@ and you can see it directly.
 
 ![Cargo drone bgRight](../assets/bases/drone-base_right.png)
 
-`bgSmall` — 124 x 52 — the HUD strip of deployed modules. A **tight, centred crop** that fills the chip, cropped on every side — not the same fit as `bg`.
+`bgSmall` — 124 x 52 — the HUD strip of deployed modules. The **whole module**, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.
 
 ![Cargo drone bgSmall](../assets/bases/drone-base_small.png)
 
@@ -172,7 +172,7 @@ and you can see it directly.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyDroneDelivery`** for this module.
-A custom cargo drone built on it works: Nom Nom's Drone Delivery Service uses it and was tested in game.
+A custom cargo drone built on it works, tested in game.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 

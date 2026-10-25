@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Workshop &middot; Expeditions Map Making</title>
-<meta name="description" content="Repairs and upgrades trucks. Documented for custom modules."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Crafts inventory items from spare parts, and recycles items back into spare parts."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -224,10 +224,10 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/repair-station.html">Repair station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/service-station.html">Service station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/generator.html">Generator</a>
 <span class="pill pill-v-broken">broken</span>        </li>
@@ -256,12 +256,69 @@
         <h1>Workshop</h1>
         <div class="verdict verdict-works" role="note">
           <span class="verdict-label">As a custom module: WORKS</span>
-          <span class="verdict-text">Platt&#39;s Gate Works builds at a main base, opens the Workshop menu, holds spare parts and crafts. Not yet checked: building at an outpost, and reloading a save.</span>
+          <span class="verdict-text">A custom one builds at a main base, opens the Workshop menu, holds spare parts, crafts and recycles. Not yet checked: building at an outpost, and reloading a save.</span>
         </div>
-<p class="lede">Repairs and upgrades trucks. Documented for custom modules.</p>      </div>
+<p class="lede">Crafts inventory items from spare parts, and recycles items back into spare parts.</p>      </div>
       <article class="prose"><h1 id="workshop">Workshop<a class="headerlink" href="#workshop" title="Permanent link">#</a></h1>
 <p><img alt="Workshop store card" src="../assets/bases/workshop_card.png" /></p>
-<p>Repairs and upgrades trucks.</p>
+<p>Crafts inventory items from spare parts, and recycles items back into spare parts. It does not repair trucks.</p>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<p>The workshop keeps its own stock of spare parts and spends it on crafting.</p>
+<p><strong>It can&rsquo;t be loaded from a truck.</strong> Trying to hand it spare parts shows &ldquo;Can&rsquo;t be transferred&rdquo;. The game has a message for exactly that (<code>UI_POPUP_WORKSHOP_CANNOT_BE_TRANSFERRED</code>). The only way to add parts is to <strong>recycle</strong> inventory items at the workshop.</p>
+<p>The vanilla workshop starts with <strong>0</strong> parts, so it does nothing until the player brings something to recycle. These are the vanilla items with a recycle value:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Recycles into</th>
+<th>Costs to craft</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scrap for Workshop</td>
+<td>50 parts</td>
+<td>can&rsquo;t be crafted</td>
+</tr>
+<tr>
+<td>GPS tracker</td>
+<td>50</td>
+<td>220</td>
+</tr>
+<tr>
+<td>Big portable bridge</td>
+<td>70</td>
+<td>150</td>
+</tr>
+<tr>
+<td>Small portable bridge</td>
+<td>40</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Signal amplifier</td>
+<td>40</td>
+<td>160</td>
+</tr>
+<tr>
+<td>Fixed anchor</td>
+<td>40</td>
+<td>160</td>
+</tr>
+<tr>
+<td>Jack screw</td>
+<td>40</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Tow rope</td>
+<td>20</td>
+<td>50</td>
+</tr>
+</tbody>
+</table></div>
+<p>Scrap for Workshop exists only to be recycled; it turns up as loot. An item is craftable when its <code>craftRepairsCost</code> is not <code>-1</code>, and recyclable when its <code>recycleRepairsCost</code> is not <code>-1</code>.</p>
+<p>A custom workshop can start stocked: set <code>repairsInitialAmount</code>. Once those parts are spent, it reloads by recycling like the vanilla one. Whether the starting stock refills on a new deployment has not been tested.</p>
 <h2 id="in-game">In game<a class="headerlink" href="#in-game" title="Permanent link">#</a></h2>
 <p><strong>The purchase card.</strong> This is what a player sees before buying.</p>
 <p><img alt="Workshop purchase card" src="../assets/bases/workshop_buy.png" /></p>
@@ -457,7 +514,7 @@ let the row clip. The example below is the complete image.</p>
 <p><img alt="Workshop popup" src="../assets/bases/workshop_popup.png" /></p>
 <p><code>bgRight</code> — 760 x 90 — the banner above the module card when it is in use. The artwork is <strong>aligned to the RIGHT</strong>; the icon and name sit on the tan bar to its left.</p>
 <p><img alt="Workshop bgRight" src="../assets/bases/workshop_right.png" /></p>
-<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. A <strong>tight, centred crop</strong> that fills the chip, cropped on every side — not the same fit as <code>bg</code>.</p>
+<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. The <strong>whole module</strong>, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.</p>
 <p><img alt="Workshop bgSmall" src="../assets/bases/workshop_small.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Composition</p>
@@ -467,7 +524,7 @@ small and floats. Match the framing, not just the pixel size.</p>
 </div>
 <h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyWorkshop</code></strong> for this module.
-A custom workshop built on it works: Platt&rsquo;s Gate Works uses it and was tested in game.</p>
+A custom workshop built on it works, tested in game: it crafts, recycles, and starts with the parts set in <code>repairsInitialAmount</code>.</p>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
 <p>See <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a> for the full field list.</p></article>
 
@@ -479,6 +536,7 @@ A custom workshop built on it works: Platt&rsquo;s Gate Works uses it and was te
     <p>On this page</p>
     <div class="toc">
 <ul>
+<li><a href="#how-it-works">How it works</a></li>
 <li><a href="#in-game">In game</a></li>
 <li><a href="#identity">Identity</a></li>
 <li><a href="#models">Models</a></li>

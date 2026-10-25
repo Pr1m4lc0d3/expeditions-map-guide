@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Repair station &middot; Expeditions Map Making</title>
-<meta name="description" content="Restores truck condition. Documented for custom modules."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Stocks spare parts and wheels for trucks to take. Resupplied between deployments."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -224,10 +224,10 @@
 <span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/repair-station.html" aria-current="page">Repair station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/service-station.html">Service station</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
         <li>
           <a href="../62-modules/generator.html">Generator</a>
 <span class="pill pill-v-broken">broken</span>        </li>
@@ -254,14 +254,18 @@
       <div class="page-head">
         <p class="eyebrow">Appendix A - base modules</p>
         <h1>Repair station</h1>
-        <div class="verdict verdict-untested" role="note">
-          <span class="verdict-label">As a custom module: NOT YET TESTED</span>
-          <span class="verdict-text">Doc Windsor EMT builds and shows its model at a main base and an outpost, but nobody has tested whether it repairs a truck.</span>
+        <div class="verdict verdict-works" role="note">
+          <span class="verdict-label">As a custom module: WORKS</span>
+          <span class="verdict-text">A custom one built on the same settings stocks parts and wheels, and a truck can take them. Tested in game, October 2026.</span>
         </div>
-<p class="lede">Restores truck condition. Documented for custom modules.</p>      </div>
+<p class="lede">Stocks spare parts and wheels for trucks to take. Resupplied between deployments.</p>      </div>
       <article class="prose"><h1 id="repair-station">Repair station<a class="headerlink" href="#repair-station" title="Permanent link">#</a></h1>
 <p><img alt="Repair station store card" src="../assets/bases/repair-station_card.png" /></p>
-<p>Restores truck condition.</p>
+<p>Stocks spare parts and wheels for trucks to take. It does not repair a truck itself; the player repairs from the vehicle status panel with the parts they take. The game says its stock is resupplied between deployments.</p>
+<div class="admonition note">
+<p class="admonition-title">Can&rsquo;t be transferred usually means the truck is full</p>
+<p>The red &ldquo;Can&rsquo;t be transferred&rdquo; under spare parts appears when the truck has no room left for them (<code>UI_POPUP_TRADE_NO_DETAILS_CAPACITY_IN_TARGET</code>). Check the truck&rsquo;s parts count before suspecting the module: the vanilla repair station shows the same message to a full truck.</p>
+</div>
 <h2 id="in-game">In game<a class="headerlink" href="#in-game" title="Permanent link">#</a></h2>
 <p><strong>The purchase card.</strong> This is what a player sees before buying.</p>
 <p><img alt="Repair station purchase card" src="../assets/bases/repair-station_buy.png" /></p>
@@ -457,7 +461,7 @@ let the row clip. The example below is the complete image.</p>
 <p><img alt="Repair station popup" src="../assets/bases/repair-station_popup.png" /></p>
 <p><code>bgRight</code> — 760 x 90 — the banner above the module card when it is in use. The artwork is <strong>aligned to the RIGHT</strong>; the icon and name sit on the tan bar to its left.</p>
 <p><img alt="Repair station bgRight" src="../assets/bases/repair-station_right.png" /></p>
-<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. A <strong>tight, centred crop</strong> that fills the chip, cropped on every side — not the same fit as <code>bg</code>.</p>
+<p><code>bgSmall</code> — 124 x 52 — the HUD strip of deployed modules. The <strong>whole module</strong>, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.</p>
 <p><img alt="Repair station bgSmall" src="../assets/bases/repair-station_small.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Composition</p>
@@ -467,7 +471,42 @@ small and floats. Match the framing, not just the pixel size.</p>
 </div>
 <h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyFobModuleStorage</code></strong> for this module.
-The type itself works for a mod (PebbleGas is built on it), but no custom repair station has been tested in game doing this module&rsquo;s job.</p>
+A custom repair station built on it works, tested in game. Copy the vanilla settings, not a gas station&rsquo;s:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Vanilla repair station</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>repairsSlotSettings</code></td>
+<td>quantity 1200, <code>chance</code> 1.0, <code>tradeFromTruckToZone</code> true</td>
+</tr>
+<tr>
+<td><code>wheelsSlotSettings</code></td>
+<td>quantity 6, <code>chance</code> 1.0, <code>tradeFromTruckToZone</code> true</td>
+</tr>
+<tr>
+<td><code>alwaysSpawn</code></td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>expandedConsumablesCapacity</code></td>
+<td>3.0</td>
+</tr>
+<tr>
+<td><code>isAffectedByAdditionalOutpostResourcesAbility</code></td>
+<td>false</td>
+</tr>
+<tr>
+<td>Icons</td>
+<td><code>moduleRepairStation20</code>, <code>moduleRepairStation40</code>, <code>moduleRepairStationMap40</code>, <code>moduleRepairStation48</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>A module cloned from the gas station keeps the fuel-pump icons and leaves out the wheels.</p>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
 <p>See <a href="../60-custom/base-modules-reference.html">Every base module, and every surface you can edit</a> for the full field list.</p></article>
 

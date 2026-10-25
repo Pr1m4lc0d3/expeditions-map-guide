@@ -158,7 +158,7 @@ This store-row art runs the **same way** as the purchase card.
 
 ![Helipad bgRight](../assets/bases/helicopter_right.png)
 
-`bgSmall` — 124 x 52 — the HUD strip of deployed modules. A **tight, centred crop** that fills the chip, cropped on every side — not the same fit as `bg`.
+`bgSmall` — 124 x 52 — the HUD strip of deployed modules. The **whole module**, scaled so it just fills the chip and touches its edges. Every vanilla chip is framed this way. Zooming in past that shows only a corner of the model and reads as far too big.
 
 ![Helipad bgSmall](../assets/bases/helicopter_small.png)
 
