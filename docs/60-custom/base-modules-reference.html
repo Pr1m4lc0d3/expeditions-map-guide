@@ -245,7 +245,7 @@
 <span class="pill pill-v-broken">broken</span>        </li>
         <li>
           <a href="../62-modules/evacuator.html">Tow truck</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
       </ul>
     </section>
     <section>
@@ -889,7 +889,7 @@ The engine knows 72 zone-property types. These are the ones a base module uses:<
 </tbody>
 </table></div>
 <div class="admonition danger">
-<p class="admonition-title">Only six module types are proven to work for a mod</p>
+<p class="admonition-title">Only seven module types are proven to work for a mod</p>
 <p>What has actually been tested in game with a custom module:</p>
 <div class="table-scroll"><table>
 <thead>
@@ -941,13 +941,18 @@ The engine knows 72 zone-property types. These are the ones a base module uses:<
 <td>A custom expanded parking: <code>recoveryDiscount</code> 0.1 cut a 1,000 recovery to 900. Tested October 2026</td>
 </tr>
 <tr>
+<td><code>ZonePropertyTowTruck</code></td>
+<td>✅ works</td>
+<td>A custom tow truck, <code>recoveryDiscount</code> 1.0: recovery to its base cost 0. Tested October 2026</td>
+</tr>
+<tr>
 <td><code>ZonePropertyFuelStation</code>, the others</td>
 <td>⚠ not yet tested</td>
 <td>no custom module on them has been checked in game</td>
 </tr>
 </tbody>
 </table></div>
-<p>⇒ <strong>For a mod, start from one of the six that work.</strong> A fuel station
+<p>⇒ <strong>For a mod, start from one of the seven that work.</strong> A fuel station
 built as <code>ZonePropertyFobModuleStorage</code> with one fuel slot is proven; see
 the recipe below. Each module page in <a href="../62-modules/index.html">Appendix A</a>
 opens with the same verdict.</p>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tow truck &middot; Expeditions Map Making</title>
-<meta name="description" content="Recovers a stranded truck back to the base. Documented for custom modules."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="Makes recovering a truck to this base free. Documented for custom modules."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -245,7 +245,7 @@
 <span class="pill pill-v-broken">broken</span>        </li>
         <li>
           <a href="../62-modules/evacuator.html" aria-current="page">Tow truck</a>
-<span class="pill pill-v-untested">untested</span>        </li>
+<span class="pill pill-v-works">works</span>        </li>
       </ul>
     </section>
     <section>
@@ -286,14 +286,14 @@
       <div class="page-head">
         <p class="eyebrow">Appendix A - base modules</p>
         <h1>Tow truck</h1>
-        <div class="verdict verdict-untested" role="note">
-          <span class="verdict-label">As a custom module: NOT YET TESTED</span>
-          <span class="verdict-text">No custom tow truck has been built and tested in game.</span>
+        <div class="verdict verdict-works" role="note">
+          <span class="verdict-label">As a custom module: WORKS</span>
+          <span class="verdict-text">A custom tow truck was built and tested in game in October 2026. Recovery to its base costs 0. The only difference from vanilla: the map card lacks the tow-truck picture strip.</span>
         </div>
-<p class="lede">Recovers a stranded truck back to the base. Documented for custom modules.</p>      </div>
+<p class="lede">Makes recovering a truck to this base free. Documented for custom modules.</p>      </div>
       <article class="prose"><h1 id="tow-truck">Tow truck<a class="headerlink" href="#tow-truck" title="Permanent link">#</a></h1>
 <p><img alt="Tow truck store card" src="../assets/bases/evacuator_card.png" /></p>
-<p>Recovers a stranded truck back to the base.</p>
+<p>Makes recovering a truck to this base free. The game&rsquo;s card says it &ldquo;allows to evacuate for free to the base or outpost where installed&rdquo;.</p>
 <h2 id="in-game">In game<a class="headerlink" href="#in-game" title="Permanent link">#</a></h2>
 <p><strong>The purchase card.</strong> This is what a player sees before buying.</p>
 <p><img alt="Tow truck purchase card" src="../assets/bases/evacuator_buy.png" /></p>
@@ -499,7 +499,11 @@ small and floats. Match the framing, not just the pixel size.</p>
 </div>
 <h2 id="building-your-own">Building your own<a class="headerlink" href="#building-your-own" title="Permanent link">#</a></h2>
 <p>Saber&rsquo;s documentation names <strong><code>ZonePropertyTowTruck</code></strong> for this module.
-No custom module built on it has been tested in game yet. This is Saber&rsquo;s documented setting, not a proven one.</p>
+A custom tow truck built on it works in game (tested October 2026): with <code>recoveryDiscount</code> 1.0, recovery to its base showed &ldquo;Cost of use: 0&rdquo;. The test build used Saber&rsquo;s own tow truck models and artwork (the vanilla module uses its small model at both base sizes), its own mod name as <code>moduleId</code>, <code>isInteractive</code> false, one per deploy zone, and the schema defaults for the rest: <code>fullyRepairTruck</code>, <code>refuelTruck</code> and <code>restoreAddonRepairAndFuel</code> on, <code>repairAmount</code> and <code>refuelAmount</code> 0.</p>
+<div class="admonition note">
+<p class="admonition-title">One visible difference: the map card&rsquo;s picture strip</p>
+<p>On the map, selecting a base with the vanilla tow truck shows a strip with a picture of the module and the line &ldquo;Tow Truck module has been built at the outpost. The truck recovery is free of charge.&rdquo; A custom tow truck&rsquo;s card has no strip. That line is the game&rsquo;s own text <code>UI_TOW_TRUCK_DEPLOY</code>, not a field in the module, and how the game decides to show it hasn&rsquo;t been found. The recovery itself is still free.</p>
+</div>
 <p>Give it a <code>moduleId</code> <strong>no other mod uses</strong> — your own mod name works.</p>
 <p>See <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a> for the full field list.</p></article>
 

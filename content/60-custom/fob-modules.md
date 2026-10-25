@@ -76,12 +76,13 @@ short:
 
 | Works for a mod, tested in game | Broken for a mod | Not yet tested |
 |---|---|---|
-| storage-type modules (`ZonePropertyFobModuleStorage`): a fuel station with one fuel slot, a repair station, a warehouse, an essentials storage | generator (`ZonePropertyGenerator`): empties the module store and freezes the game on exit to headquarters | tow truck |
+| storage-type modules (`ZonePropertyFobModuleStorage`): a fuel station with one fuel slot, a repair station, a warehouse, an essentials storage | generator (`ZonePropertyGenerator`): empties the module store and freezes the game on exit to headquarters | none left |
 | workshop (`ZonePropertyWorkshop`) | intelligence center (`AntennaUpgradeDesc`): builds and sells, but never reveals anything | |
 | cargo drone (`ZonePropertyDroneDelivery`) | | |
 | service station (`ZonePropertyServiceStation`) | | |
 | helipad (`ZonePropertyHelicopter`) | | |
 | expanded parking (`ZonePropertyParking`) | | |
+| tow truck (`ZonePropertyTowTruck`) | | |
 
 **Start from a type that works, and copy the vanilla module you are imitating.**
 Open its page in Appendix A and take its settings as they are, then change one
@@ -466,7 +467,6 @@ workaround.
 - **Unlocking a custom module as an objective reward.** Documented by Saber,
   not tested with a custom module, and which identifier the reward wants (the
   `name` or the `moduleId`) is not confirmed.
-- **The tow truck** has never been checked as a custom module.
 - **Map-side custom module zones.** Saber describes FOB module zones on a map
   that carry their own `moduleId` to tie a zone to one custom module. That has
   not been tested here.

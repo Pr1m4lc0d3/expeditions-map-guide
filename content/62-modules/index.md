@@ -28,7 +28,7 @@ To build a module of your own, start with
 | [Expanded parking](parking.html) | **✅ Works** | Makes recovering a truck to this base cheaper, and holds spare wheels. |
 | [Cargo drone](drone-base.html) | **✅ Works** | Recovers ground drones at the deploy zone. |
 | [Intelligence center](com-center.html) | **⛔ Broken** | Marks nearby air drops on the map. |
-| [Tow truck](evacuator.html) | **⚠ Not yet tested** | Recovers a stranded truck back to the base. |
+| [Tow truck](evacuator.html) | **✅ Works** | Makes recovering a truck to this base free. |
 
 Every verdict comes from a test recorded in the toolkit's logs. "Not yet tested" means nobody has checked in game that a custom one does its job, so nothing is claimed either way.
 

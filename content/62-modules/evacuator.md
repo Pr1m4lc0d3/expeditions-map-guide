@@ -2,16 +2,16 @@
 title: Tow truck
 part: Appendix A - base modules
 order: 912
-summary: Recovers a stranded truck back to the base. Documented for custom modules.
-verdict: untested
-verdict_text: "No custom tow truck has been built and tested in game."
+summary: Makes recovering a truck to this base free. Documented for custom modules.
+verdict: works
+verdict_text: "A custom tow truck was built and tested in game in October 2026. Recovery to its base costs 0. The only difference from vanilla: the map card lacks the tow-truck picture strip."
 ---
 
 # Tow truck
 
 ![Tow truck store card](../assets/bases/evacuator_card.png)
 
-Recovers a stranded truck back to the base.
+Makes recovering a truck to this base free. The game's card says it "allows to evacuate for free to the base or outpost where installed".
 
 ## In game
 
@@ -170,7 +170,10 @@ This store-row art runs the **same way** as the purchase card.
 ## Building your own
 
 Saber's documentation names **`ZonePropertyTowTruck`** for this module.
-No custom module built on it has been tested in game yet. This is Saber's documented setting, not a proven one.
+A custom tow truck built on it works in game (tested October 2026): with `recoveryDiscount` 1.0, recovery to its base showed "Cost of use: 0". The test build used Saber's own tow truck models and artwork (the vanilla module uses its small model at both base sizes), its own mod name as `moduleId`, `isInteractive` false, one per deploy zone, and the schema defaults for the rest: `fullyRepairTruck`, `refuelTruck` and `restoreAddonRepairAndFuel` on, `repairAmount` and `refuelAmount` 0.
+
+!!! note "One visible difference: the map card's picture strip"
+    On the map, selecting a base with the vanilla tow truck shows a strip with a picture of the module and the line "Tow Truck module has been built at the outpost. The truck recovery is free of charge." A custom tow truck's card has no strip. That line is the game's own text `UI_TOW_TRUCK_DEPLOY`, not a field in the module, and how the game decides to show it hasn't been found. The recovery itself is still free.
 
 Give it a `moduleId` **no other mod uses** — your own mod name works.
 
