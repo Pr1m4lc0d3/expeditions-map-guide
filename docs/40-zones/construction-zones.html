@@ -398,50 +398,69 @@ items are matched by <code>Type</code> alone.</p>
 <p>Both versions use <strong>Model Building Settings</strong>: a model on the map switches from one
 named state to another, playing its animation if it has one.
 <span class="prov prov-doc">documented</span></p>
-<div class="step"><div class="n">1</div><div>
-
-### Pick a model that has states
-
-Only models already set up with states can do this. Their names end in
-`_objective`, so search for that suffix in the editor's Select Asset window. Saber's
-example is `animal_tracking_camera_01_objective`.
-
-</div></div>
-
-<div class="step"><div class="n">2</div><div>
-
-### Find the state names
-
-Open the model's class XML in `initial.pak`, under `[media]\classes\models\` (or the
-same path inside `[media]\_dlc\`). Each `<Subset Name="...">` is one state. For the
-camera trap they are `build_stage_0`, the bare tree, and `build_complete`, the trap
-installed.
-
-</div></div>
-
-<div class="step"><div class="n">3</div><div>
-
-### Tag the model
-
-Place the model and give it a **Tag** in its properties in the editor. The settings
-find the model by that tag.
-
-</div></div>
-
-<div class="step"><div class="n">4</div><div>
-
-### Fill in the settings
-
-| Field | What to put |
-|---|---|
-| `levelName` | your map's name, without `.xml` |
-| `modelTag` | the tag from step 3 |
-| `stagesProgress` | two entries: the "not delivered" state at `0`, the "delivered" state at `1`. Names exactly as in the XML |
-| `unloadBlockedZoneId` | optional zone that blocks unloading while a truck is in it |
-| `modelType` | meant to pick a sound for the change. Saber says it does not work as intended |
-
-</div></div>
-
+<div class="step">
+<div class="n">1</div>
+<div>
+<h3 id="pick-a-model-that-has-states">Pick a model that has states<a class="headerlink" href="#pick-a-model-that-has-states" title="Permanent link">#</a></h3>
+<p>Only models already set up with states can do this. Their names end in
+<code>_objective</code>, so search for that suffix in the editor&rsquo;s Select Asset window. Saber&rsquo;s
+example is <code>animal_tracking_camera_01_objective</code>.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">2</div>
+<div>
+<h3 id="find-the-state-names">Find the state names<a class="headerlink" href="#find-the-state-names" title="Permanent link">#</a></h3>
+<p>Open the model&rsquo;s class XML in <code>initial.pak</code>, under <code>[media]\classes\models\</code> (or the
+same path inside <code>[media]\_dlc\</code>). Each <code>&lt;Subset Name="..."&gt;</code> is one state. For the
+camera trap they are <code>build_stage_0</code>, the bare tree, and <code>build_complete</code>, the trap
+installed.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">3</div>
+<div>
+<h3 id="tag-the-model">Tag the model<a class="headerlink" href="#tag-the-model" title="Permanent link">#</a></h3>
+<p>Place the model and give it a <strong>Tag</strong> in its properties in the editor. The settings
+find the model by that tag.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">4</div>
+<div>
+<h3 id="fill-in-the-settings">Fill in the settings<a class="headerlink" href="#fill-in-the-settings" title="Permanent link">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>What to put</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>levelName</code></td>
+<td>your map&rsquo;s name, without <code>.xml</code></td>
+</tr>
+<tr>
+<td><code>modelTag</code></td>
+<td>the tag from step 3</td>
+</tr>
+<tr>
+<td><code>stagesProgress</code></td>
+<td>two entries: the &ldquo;not delivered&rdquo; state at <code>0</code>, the &ldquo;delivered&rdquo; state at <code>1</code>. Names exactly as in the XML</td>
+</tr>
+<tr>
+<td><code>unloadBlockedZoneId</code></td>
+<td>optional zone that blocks unloading while a truck is in it</td>
+</tr>
+<tr>
+<td><code>modelType</code></td>
+<td>meant to pick a sound for the change. Saber says it does not work as intended</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">State names cannot contain spaces</p>
 <p>Saber&rsquo;s guide says names of model states must be written without spaces, or
@@ -497,7 +516,13 @@ there is no reason to risk it. Use underscores. See
 <ul>
 <li><a href="#without-an-objective-the-construction-property">Without an objective: the construction property</a></li>
 <li><a href="#with-an-objective-objectconstruction">With an objective: objectConstruction</a></li>
-<li><a href="#making-something-appear">Making something appear</a></li>
+<li><a href="#making-something-appear">Making something appear</a><ul>
+<li><a href="#pick-a-model-that-has-states">Pick a model that has states</a></li>
+<li><a href="#find-the-state-names">Find the state names</a></li>
+<li><a href="#tag-the-model">Tag the model</a></li>
+<li><a href="#fill-in-the-settings">Fill in the settings</a></li>
+</ul>
+</li>
 <li><a href="#bridges-from-either-bank">Bridges from either bank</a></li>
 <li><a href="#keeping-trucks-out-of-the-way">Keeping trucks out of the way</a></li>
 <li><a href="#these-zones-move-items-so-the-naming-rule-applies">These zones move items, so the naming rule applies</a></li>

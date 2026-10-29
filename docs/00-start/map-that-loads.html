@@ -306,84 +306,73 @@ any of them.</p>
 <p>Get to &ldquo;I can drive on it&rdquo; on day one. Then every later problem has a short list
 of suspects: whatever you did since it last worked.</p>
 <h2 id="the-five-steps">The five steps<a class="headerlink" href="#the-five-steps" title="Permanent link">#</a></h2>
-<div class="step"><div class="n">1</div><div>
-
-### Make the map and give it a shape
-
-Create a new map in the editor and raise some terrain. Do not make it good. A
+<div class="step">
+<div class="n">1</div>
+<div>
+<h3 id="make-the-map-and-give-it-a-shape">Make the map and give it a shape<a class="headerlink" href="#make-the-map-and-give-it-a-shape" title="Permanent link">#</a></h3>
+<p>Create a new map in the editor and raise some terrain. Do not make it good. A
 lumpy field is fine. You want geometry that exists, not geometry you like, because
-you are testing the pipeline and you will probably throw this away.
-
-</div></div>
-
-<div class="step"><div class="n">2</div><div>
-
-### Place a deploy zone
-
-In the map editor, place a zone object where you want trucks to arrive, and give
-it an **Id**. Pick a name without spaces or punctuation, something like
-`main_deploy`. Note it exactly, because the next step has to match it character
-for character.
-
-Put it on reasonably flat ground, and sit it slightly **above** the terrain
+you are testing the pipeline and you will probably throw this away.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">2</div>
+<div>
+<h3 id="place-a-deploy-zone">Place a deploy zone<a class="headerlink" href="#place-a-deploy-zone" title="Permanent link">#</a></h3>
+<p>In the map editor, place a zone object where you want trucks to arrive, and give
+it an <strong>Id</strong>. Pick a name without spaces or punctuation, something like
+<code>main_deploy</code>. Note it exactly, because the next step has to match it character
+for character.</p>
+<p>Put it on reasonably flat ground, and sit it slightly <strong>above</strong> the terrain
 surface rather than exactly on it. <span class="prov prov-doc">documented</span>
-Zones that intersect the ground cause collision problems for arriving trucks.
-
-</div></div>
-
-<div class="step"><div class="n">3</div><div>
-
-**A deploy zone placed on a real-terrain map.** The pink marker is the zone, and the Scene View lists it under Zones as `deploy`.
-
-![A deploy zone placed in the editor, listed under Zones in the Scene View](../assets/land/deploy-zone-in-editor.jpg)
-
-### Tell the game that zone is a deploy point
-
-Open the zone settings tool. Find your zone by its Id and give it the
-**`ZonePropertyDeploy`** property. Set:
-
-- `defaultDeployPoint` to **true**, so this is where the player starts
-- `maxTrucksNum` to how many trucks can arrive here, 4 is a reasonable start
-
-Leave everything else alone for now. In particular leave `zoneDiscoverability`
+Zones that intersect the ground cause collision problems for arriving trucks.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">3</div>
+<div>
+<p><strong>A deploy zone placed on a real-terrain map.</strong> The pink marker is the zone, and the Scene View lists it under Zones as <code>deploy</code>.</p>
+<p><img alt="A deploy zone placed in the editor, listed under Zones in the Scene View" src="../assets/land/deploy-zone-in-editor.jpg" /></p>
+<h3 id="tell-the-game-that-zone-is-a-deploy-point">Tell the game that zone is a deploy point<a class="headerlink" href="#tell-the-game-that-zone-is-a-deploy-point" title="Permanent link">#</a></h3>
+<p>Open the zone settings tool. Find your zone by its Id and give it the
+<strong><code>ZonePropertyDeploy</code></strong> property. Set:</p>
+<ul>
+<li><code>defaultDeployPoint</code> to <strong>true</strong>, so this is where the player starts</li>
+<li><code>maxTrucksNum</code> to how many trucks can arrive here, 4 is a reasonable start</li>
+</ul>
+<p>Leave everything else alone for now. In particular leave <code>zoneDiscoverability</code>
 empty, because a zone with no discoverability settings is simply available from
-the start, which is what you want.
-
-</div></div>
-
-<div class="step"><div class="n">4</div><div>
-
-### Add a Free Roam expedition
-
-Still in the zone settings tool, under objectives, create one record in
-**`contractsSettings`**:
-
-- `contractType` = **1**, which means expedition rather than contract
-- `name` = `Free Roam`
-- `region` = `mod_region`
-- `employer` = pick any, `ExpeditionsInc` is fine
-- add exactly **one** stage, and inside it fill in only **`freeRoamInfo`**
-
-In that `freeRoamInfo`, `map` is the name of your map's XML file and `uiDesc` is
-whatever text you want shown while the player roams.
-
-</div></div>
-
-<div class="step"><div class="n">5</div><div>
-
-**A map built this way, packed and driven in the game as a Free Roam expedition.** This one is real slickrock elevation, imported and given a deploy zone and a Free Roam expedition, nothing more.
-
-![A truck on real slickrock terrain in a custom Free Roam expedition](../assets/land/free-roam-real-terrain-in-game.jpg)
-
-### Save, close, pack
-
-Save. Close the editor, which is also how your work gets written out. Pack.
-
-Wait the 25 minutes. Then launch the game, find your map under the mod region,
-pick Free Roam, and deploy.
-
-</div></div>
-
+the start, which is what you want.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">4</div>
+<div>
+<h3 id="add-a-free-roam-expedition">Add a Free Roam expedition<a class="headerlink" href="#add-a-free-roam-expedition" title="Permanent link">#</a></h3>
+<p>Still in the zone settings tool, under objectives, create one record in
+<strong><code>contractsSettings</code></strong>:</p>
+<ul>
+<li><code>contractType</code> = <strong>1</strong>, which means expedition rather than contract</li>
+<li><code>name</code> = <code>Free Roam</code></li>
+<li><code>region</code> = <code>mod_region</code></li>
+<li><code>employer</code> = pick any, <code>ExpeditionsInc</code> is fine</li>
+<li>add exactly <strong>one</strong> stage, and inside it fill in only <strong><code>freeRoamInfo</code></strong></li>
+</ul>
+<p>In that <code>freeRoamInfo</code>, <code>map</code> is the name of your map&rsquo;s XML file and <code>uiDesc</code> is
+whatever text you want shown while the player roams.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">5</div>
+<div>
+<p><strong>A map built this way, packed and driven in the game as a Free Roam expedition.</strong> This one is real slickrock elevation, imported and given a deploy zone and a Free Roam expedition, nothing more.</p>
+<p><img alt="A truck on real slickrock terrain in a custom Free Roam expedition" src="../assets/land/free-roam-real-terrain-in-game.jpg" /></p>
+<h3 id="save-close-pack">Save, close, pack<a class="headerlink" href="#save-close-pack" title="Permanent link">#</a></h3>
+<p>Save. Close the editor, which is also how your work gets written out. Pack.</p>
+<p>Wait the 25 minutes. Then launch the game, find your map under the mod region,
+pick Free Roam, and deploy.</p>
+</div>
+</div>
 <h2 id="if-it-does-not-appear-or-does-not-deploy">If it does not appear or does not deploy<a class="headerlink" href="#if-it-does-not-appear-or-does-not-deploy" title="Permanent link">#</a></h2>
 <p>Four causes cover nearly all of it. In order of how often they are the answer:</p>
 <p><strong>The map is not in the list at all.</strong> You are missing the expedition, or its
@@ -426,7 +415,14 @@ is up to you:</p>
     <div class="toc">
 <ul>
 <li><a href="#why-this-order-matters">Why this order matters</a></li>
-<li><a href="#the-five-steps">The five steps</a></li>
+<li><a href="#the-five-steps">The five steps</a><ul>
+<li><a href="#make-the-map-and-give-it-a-shape">Make the map and give it a shape</a></li>
+<li><a href="#place-a-deploy-zone">Place a deploy zone</a></li>
+<li><a href="#tell-the-game-that-zone-is-a-deploy-point">Tell the game that zone is a deploy point</a></li>
+<li><a href="#add-a-free-roam-expedition">Add a Free Roam expedition</a></li>
+<li><a href="#save-close-pack">Save, close, pack</a></li>
+</ul>
+</li>
 <li><a href="#if-it-does-not-appear-or-does-not-deploy">If it does not appear or does not deploy</a></li>
 <li><a href="#what-next">What next</a></li>
 </ul>

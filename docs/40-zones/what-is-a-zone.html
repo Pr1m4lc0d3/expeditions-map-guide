@@ -321,36 +321,33 @@ a named area, and Saber notes it will not be visible in the game until something
 refers to it, such as an objective. <span class="prov prov-doc">documented</span>
 That is not a fault. Many zones exist only so an objective has a place to point at.</p>
 <h2 id="adding-one">Adding one<a class="headerlink" href="#adding-one" title="Permanent link">#</a></h2>
-<div class="step"><div class="n">1</div><div>
-
-### Place the locator
-
-In the editor, right-click the terrain (or the **Zones** section of the Scene View)
-and choose **Add Zone**. It appears as `no_id`. Move it where you want it, then set
-its **Id** in the properties panel. Save the map.
-
-</div></div>
-
-<div class="step"><div class="n">2</div><div>
-
-### Give it props
-
-Open **Zone Settings** from the toolbar. Expand your map, then
-**TERRAIN LOCATORS LIST**, then your zone. Click the plus next to **props**, pick a
-property type, fill in its fields, and save with Ctrl+S.
-
-</div></div>
-
-<div class="step"><div class="n">3</div><div>
-
-### Pack and test
-
-A map only loads with at least one expedition and one deploy zone, so you need
+<div class="step">
+<div class="n">1</div>
+<div>
+<h3 id="place-the-locator">Place the locator<a class="headerlink" href="#place-the-locator" title="Permanent link">#</a></h3>
+<p>In the editor, right-click the terrain (or the <strong>Zones</strong> section of the Scene View)
+and choose <strong>Add Zone</strong>. It appears as <code>no_id</code>. Move it where you want it, then set
+its <strong>Id</strong> in the properties panel. Save the map.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">2</div>
+<div>
+<h3 id="give-it-props">Give it props<a class="headerlink" href="#give-it-props" title="Permanent link">#</a></h3>
+<p>Open <strong>Zone Settings</strong> from the toolbar. Expand your map, then
+<strong>TERRAIN LOCATORS LIST</strong>, then your zone. Click the plus next to <strong>props</strong>, pick a
+property type, fill in its fields, and save with Ctrl+S.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">3</div>
+<div>
+<h3 id="pack-and-test">Pack and test<a class="headerlink" href="#pack-and-test" title="Permanent link">#</a></h3>
+<p>A map only loads with at least one expedition and one deploy zone, so you need
 those before you can test any other zone. See
-[Make a map that loads](../00-start/map-that-loads.html).
-
-</div></div>
-
+<a href="../00-start/map-that-loads.html">Make a map that loads</a>.</p>
+</div>
+</div>
 <h2 id="the-id-is-the-only-link-between-the-halves">The Id is the only link between the halves<a class="headerlink" href="#the-id-is-the-only-link-between-the-halves" title="Permanent link">#</a></h2>
 <p>The Zone Settings plugin lists your zones under <strong>TERRAIN LOCATORS LIST</strong> by their
 Id, and that is how it matches a set of props to a locator in the scene.
@@ -570,7 +567,12 @@ list with empty settings; see
     <div class="toc">
 <ul>
 <li><a href="#two-halves-two-programs">Two halves, two programs</a></li>
-<li><a href="#adding-one">Adding one</a></li>
+<li><a href="#adding-one">Adding one</a><ul>
+<li><a href="#place-the-locator">Place the locator</a></li>
+<li><a href="#give-it-props">Give it props</a></li>
+<li><a href="#pack-and-test">Pack and test</a></li>
+</ul>
+</li>
 <li><a href="#the-id-is-the-only-link-between-the-halves">The Id is the only link between the halves</a></li>
 <li><a href="#one-zone-several-props">One zone, several props</a></li>
 <li><a href="#the-locator-fields-worth-knowing">The locator fields worth knowing</a></li>

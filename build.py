@@ -59,6 +59,19 @@ TEMPLATES = os.path.join(ROOT, "templates")
 ASSETS = os.path.join(ROOT, "assets")
 
 MD_EXT = ["extra", "admonition", "toc", "sane_lists", "smarty", "codehilite"]
+
+
+STEP_OPEN = re.compile(r'<div class="step"><div class="n">(\d+)</div><div>')
+
+
+def mark_step_blocks(body: str) -> str:
+    """Let markdown render inside the numbered step blocks.
+
+    Without markdown="1" (md_in_html, part of "extra") everything inside a raw
+    <div> is passed through untouched, so the steps' ### headings, bold text,
+    lists and images were published as literal markdown on five pages.
+    """
+    return STEP_OPEN.sub(r'<div class="step" markdown="1"><div class="n">\1</div><div markdown="1">', body)
 MD_CFG = {
     "codehilite": {"css_class": "hl", "guess_lang": False},
     "toc": {"permalink": "#", "toc_depth": "2-3"},
@@ -106,7 +119,7 @@ def collect():
                 print(f"   ! {os.path.relpath(p, ROOT)} has no title, skipped")
                 continue
             md = markdown.Markdown(extensions=MD_EXT, extension_configs=MD_CFG)
-            rendered = md.convert(body)
+            rendered = md.convert(mark_step_blocks(body))
             rendered = wrap_tables(rendered)
             pages.append(dict(
                 meta=meta,

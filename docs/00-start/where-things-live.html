@@ -356,27 +356,30 @@ close it, <strong>it writes that memory back over your files.</strong> So if you
 <code>prebuild</code> by hand while the editor is open, closing the editor silently throws
 your edit away.</p>
 <p>The safe order is always:</p>
-<div class="step"><div class="n">1</div><div>
-
-In the editor: **save**, then **close it**.
-
-</div></div>
-<div class="step"><div class="n">2</div><div>
-
-Make your file edits now, with the editor shut.
-
-</div></div>
-<div class="step"><div class="n">3</div><div>
-
-Open the editor again. It reads your edits.
-
-</div></div>
-<div class="step"><div class="n">4</div><div>
-
-Pack.
-
-</div></div>
-
+<div class="step">
+<div class="n">1</div>
+<div>
+<p>In the editor: <strong>save</strong>, then <strong>close it</strong>.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">2</div>
+<div>
+<p>Make your file edits now, with the editor shut.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">3</div>
+<div>
+<p>Open the editor again. It reads your edits.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">4</div>
+<div>
+<p>Pack.</p>
+</div>
+</div>
 <h2 id="packing-rewrites-some-of-your-work">Packing rewrites some of your work<a class="headerlink" href="#packing-rewrites-some-of-your-work" title="Permanent link">#</a></h2>
 <p>The pack step is not a simple copy. It rebuilds parts of your map from what the
 editor has in memory, and one of the things it rebuilds is the list of zones.</p>

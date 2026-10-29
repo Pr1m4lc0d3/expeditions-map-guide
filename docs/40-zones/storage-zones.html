@@ -441,30 +441,30 @@ suspecting the zone. Tested in game, October 2026; see
 <h2 id="air-drops-random-by-design">Air drops: random by design<a class="headerlink" href="#air-drops-random-by-design" title="Permanent link">#</a></h2>
 <p>At the start of each expedition the game decides which air drops exist and what is
 in them. <span class="prov prov-doc">documented</span></p>
-<div class="step"><div class="n">1</div><div>
-
-**Which zones spawn.** Every storage zone with `alwaysSpawn` **off** goes into a draw.
-The game spawns only as many as `maxInventoryZones` allows. You set that number in
-Zone Settings, in the map's `inventorySettings` section.
-
-</div></div>
-
-<div class="step"><div class="n">2</div><div>
-
-**What is in each one.** Inside a zone that spawned, each item and each consumable
-appears according to its own `chance`.
-
-</div></div>
-
-<div class="step"><div class="n">3</div><div>
-
-**Extra items.** `inventorySettings` also has an `additionalLoot` list. Each entry,
-given by `type` and optionally `itemName`, is added to one of the zones that
+<div class="step">
+<div class="n">1</div>
+<div>
+<p><strong>Which zones spawn.</strong> Every storage zone with <code>alwaysSpawn</code> <strong>off</strong> goes into a draw.
+The game spawns only as many as <code>maxInventoryZones</code> allows. You set that number in
+Zone Settings, in the map&rsquo;s <code>inventorySettings</code> section.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">2</div>
+<div>
+<p><strong>What is in each one.</strong> Inside a zone that spawned, each item and each consumable
+appears according to its own <code>chance</code>.</p>
+</div>
+</div>
+<div class="step">
+<div class="n">3</div>
+<div>
+<p><strong>Extra items.</strong> <code>inventorySettings</code> also has an <code>additionalLoot</code> list. Each entry,
+given by <code>type</code> and optionally <code>itemName</code>, is added to one of the zones that
 spawned, on top of its random contents. <span class="prov prov-unver">unverified</span>
-in game.
-
-</div></div>
-
+in game.</p>
+</div>
+</div>
 <p>So place more air drop zones than <code>maxInventoryZones</code>, and every expedition on the
 map gets a different set. Air drop locations and contents are drawn again for each
 new expedition. <span class="prov prov-doc">documented</span></p>
