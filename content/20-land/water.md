@@ -2,7 +2,6 @@
 title: Rivers, lakes and waterfalls
 part: The land
 order: 240
-status: draft
 summary: Give water somewhere to go, hide the edges, and keep the result editable whether you build it yourself or with AI.
 ---
 
@@ -92,6 +91,10 @@ in five floated more than `0.15 m` above the soil.
     long way, and disappears on a steep bank. There is no setting to raise the
     water resolution. Cut a defined bank where water meets flat ground.
     <span class="prov prov-unver">measured</span>
+
+**The mistake, in the game.** River pieces that do not fit their channel render as a stepped sheet climbing the slope beside the road.
+
+![River water rendering as a stepped, floating sheet beside a road in the game](../assets/land/river-stepped-sheet-in-game.jpg)
 
 ## Measure in two directions
 
@@ -219,6 +222,10 @@ different design, not an excuse to apply this exception everywhere.
 <span class="prov prov-unver">unverified</span> This crossing method has not
 yet been confirmed in game.
 
+**Culvert pipes placed where a wash crosses a road**, in the editor. Not yet confirmed in game, as the note above says.
+
+![Two culvert pipe models set under a road where a wash crosses, in the editor](../assets/land/culverts-under-road-editor.jpg)
+
 ## Waterfalls are two rivers
 
 A single River cannot be made to fall. A waterfall is built from **two**:
@@ -286,6 +293,10 @@ where water is. <span class="prov prov-unver">measured</span>
 
 Use the editor's brushes and verify a small painted sample before asking a script
 to write masks.
+
+**A river built in the editor, driven through in the game.** The surface fits its channel and moves.
+
+![A truck driving through flowing river water among sandstone rocks in the game](../assets/land/river-drivable-in-game.jpg)
 
 ### Foam comes from somewhere
 

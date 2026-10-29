@@ -2,7 +2,6 @@
 title: Models, rocks and cliffs
 part: Dressing the map
 order: 310
-status: draft
 summary: Placing objects, and telling a deliberately buried rock apart from a mistake.
 ---
 
@@ -141,6 +140,12 @@ Two more lessons from building rock walls:
   mostly one sandstone face piece, and placed no rounded rock or rock pile on ground
   steeper than 55 degrees.
 
+**The difference faceted rock makes, on one real canyon wall.** On the left, the bare
+terrain cliff with its texture stretched down the face; on the right, the same wall
+built from stacked sandstone models.
+
+![A canyon wall in the editor: stretched bare terrain cliff on the left, cliff built from sandstone rock models on the right](../assets/dressing/cliff-terrain-vs-rock-models.jpg)
+
 ## Scattering by script
 
 If you place rocks or debris with a script rather than a distribution, two things
@@ -230,6 +235,14 @@ The rules that cost the most to learn:
 - **Imported models arrive at any scale.** One downloaded plant measured 0.05 m tall,
   another 8.16 m wide. Set the real height in metres when converting.
 
+**A custom model shows pure white in the editor until the editor has converted it
+itself.** This cabin was white with every file in place. Once the editor had converted
+the models and been restarted, the same cabins came up textured.
+
+![A custom log cabin selected in the editor, rendered completely white](../assets/dressing/custom-model-white-in-editor.jpg)
+
+![Seven custom cabins on a slope in the editor, all textured](../assets/dressing/custom-models-textured-in-editor.jpg)
+
 The toolkit's `glb_to_fbx.py` does the conversion and these checks; see
 [The toolkit](../80-ai-tools/toolkit.html). Saber's own instructions are in the PDF
 *Custom Level Entities: Models, Overlays and PbrMaterials*.
@@ -294,6 +307,20 @@ it for you.
 Tested: a renamed copy of Saber's sample, and then seven custom buildings on one map,
 loaded and rendered fully textured in a running game, on a map installed locally.
 Loading the same pack before running the fix dropped back to the menu.
+
+**Saber's sample oil pump, renamed, in a running game after the fix.** Before it, this
+map never got past the loading screen.
+
+![Saber's sample oil pump standing textured on a test map in a running game](../assets/models/custom-model-in-game_sample.jpg)
+
+**Seven custom log buildings on one map, in a running game.** None of them carries
+`NeedPreload`. Every texture loaded, from the map's own pak.
+
+![Custom two-storey cabin, woodshed and workshop in a running game](../assets/models/custom-models-in-game_cabins-1.jpg)
+
+![Three weathered custom cabins in a running game](../assets/models/custom-models-in-game_cabins-2.jpg)
+
+![Custom cabins seen from the workshop in a running game](../assets/models/custom-models-in-game_cabins-3.jpg)
 
 !!! warning "Not yet known"
     - **Maps installed from mod.io.** Locally, the game names a map's archive

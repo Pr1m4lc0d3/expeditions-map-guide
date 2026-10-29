@@ -67,6 +67,8 @@ naming `CreateInventoryItem`.
 A SnowRunner vehicle brought into Expeditions spawns, drives and steers correctly
 but renders completely black, including glass and wheels.
 
+![A ported pickup truck rendered as a solid black silhouette in game, next to a normally textured stock vehicle](../assets/shipping/ported-vehicle-solid-black.jpg)
+
 Its `.pct` textures were encoded by SnowRunner's converter and Expeditions cannot
 decode them. The log shows one line per map:
 
@@ -267,6 +269,11 @@ Your map shows the "No Signal" placeholder on the selection screen.
 `uiMinimapScreenshot` is still at its default value of `mapAllLocked`, which *is* the No
 Signal image. Point it at a 400 x 400 PNG in your map's `ui\textures` folder, named
 without the file extension.
+
+**What it looks like:** custom maps listed on the selection screen, with the No Signal
+placeholder where the map's picture should be.
+
+![The expedition selection screen with custom maps listed and a NO SIGNAL placeholder as the map picture](../assets/shipping/no-signal-preview.jpg)
 
 ---
 

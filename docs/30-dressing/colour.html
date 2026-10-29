@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
         </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -81,10 +81,10 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/colour.html" aria-current="page">Colour and textures</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -101,10 +101,10 @@
         </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -141,7 +141,7 @@
         </li>
         <li>
           <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
         </li>
@@ -347,6 +347,10 @@ as a hard line. Saber&rsquo;s fix: use the <strong>same textures</strong> as lay
 boundary, so the blocks blend across it.</p>
 <p>As with the other brushes, holding the right mouse button paints; a Value above
 <code>0.50</code> adds the layer and below <code>0.50</code> erases it.</p>
+<p><strong>The brush window&rsquo;s dropdown is where you choose between the two levels:</strong> the
+material&rsquo;s layers (<code>L1</code> to <code>L4</code>) for layer painting, and <code>Opacity</code> at the bottom for
+the material itself. Here a snow layer is being painted over the ground layer.</p>
+<p><img alt="The editor's Brush window with its layer dropdown open, listing L1 to L4 and Opacity, over a painted snow patch" src="../assets/dressing/brush-layer-dropdown-painting-snow.jpg" /></p>
 <h3 id="settings">Settings<a class="headerlink" href="#settings" title="Permanent link">#</a></h3>
 <p>Saber recommends nearly the same settings on every material of a level, so that
 painting is predictable and boundaries do not jump. <span class="prov prov-doc">documented</span></p>
@@ -438,6 +442,9 @@ brightness.</p>
 <p>A road is an <strong>Overlay</strong> object laid along a curve, not a change to the terrain&rsquo;s
 layers. Its look comes from its own texture, so repainting the ground under a road
 does not change the road. <span class="prov prov-doc">documented</span></p>
+<p><strong>Seen on a real map:</strong> the ground here went black during a colour pass, and every road
+overlay kept its own grey or dirt colour.</p>
+<p><img alt="Terrain rendered black in the editor while the asphalt and dirt road overlays keep their colours" src="../assets/dressing/road-overlays-keep-colour-on-black-ground.jpg" /></p>
 <p>Saber notes that Expeditions uses ordinary road overlays much less than SnowRunner,
 and has its own: <code>animal_tracks</code>, <code>cracked_mud</code> and <code>log_road</code>.</p>
 <div class="admonition warning">

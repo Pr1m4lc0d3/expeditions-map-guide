@@ -57,6 +57,10 @@ Zones that intersect the ground cause collision problems for arriving trucks.
 
 <div class="step"><div class="n">3</div><div>
 
+**A deploy zone placed on a real-terrain map.** The pink marker is the zone, and the Scene View lists it under Zones as `deploy`.
+
+![A deploy zone placed in the editor, listed under Zones in the Scene View](../assets/land/deploy-zone-in-editor.jpg)
+
 ### Tell the game that zone is a deploy point
 
 Open the zone settings tool. Find your zone by its Id and give it the
@@ -90,6 +94,10 @@ whatever text you want shown while the player roams.
 </div></div>
 
 <div class="step"><div class="n">5</div><div>
+
+**A map built this way, packed and driven in the game as a Free Roam expedition.** This one is real slickrock elevation, imported and given a deploy zone and a Free Roam expedition, nothing more.
+
+![A truck on real slickrock terrain in a custom Free Roam expedition](../assets/land/free-roam-real-terrain-in-game.jpg)
 
 ### Save, close, pack
 

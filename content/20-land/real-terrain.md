@@ -2,7 +2,6 @@
 title: Using real-world terrain
 part: The land
 order: 250
-status: draft
 summary: Importing real elevation data, and the surprising amount of design work it does for you.
 ---
 
@@ -49,6 +48,10 @@ terrain, and a baked terrain file left from a copied map will hide the result.
 
 Outside the United States the toolkit's `expeditions/dem.py` uses the global
 tiles instead. That route has not been tested on a map in this guide.
+
+**A real heightmap straight after import.** No roads, paint or plants yet: the shape of the land is all from the elevation data.
+
+![Bare real-world terrain in the editor right after the heightmap import](../assets/land/real-heightmap-imported.jpg)
 
 ### Precision follows real elevation
 
@@ -99,6 +102,10 @@ overlay has no height of its own.
 python fetch_trails.py level_<name> <lat> <lon> --span 2016
 python fetch_trails.py level_<name> <lat> <lon> --span 2016 --apply
 ```
+
+**The real switchbacks, driven in the game.** The shelf road and the hairpins below it came with the elevation data; nothing here was sculpted by hand.
+
+![A truck on a narrow shelf road above real switchbacks in the game](../assets/land/real-switchbacks-in-game.jpg)
 
 ## Getting the orientation right
 

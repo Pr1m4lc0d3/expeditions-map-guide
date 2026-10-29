@@ -2,7 +2,6 @@
 title: Deploy zones and FOBs
 part: Zones
 order: 420
-status: draft
 summary: Where trucks arrive, and how a base with a store, a workshop and a fuel pump is actually assembled.
 ---
 
@@ -182,6 +181,11 @@ A base does not offer Recovery unless you add it. Put a `ZonePropertyRecovery` p
 on the deploy zone. In Expeditions this prop is for deploy zones only.
 <span class="prov prov-doc">documented</span> <span class="prov prov-unver">unverified</span>
 in game by this guide.
+
+**Recovery offered at a custom map's deploy zone, in a running game.** A Tow Truck
+module built at the outpost makes it free.
+
+![The map's outpost list with Recover offered at a deploy area, cost 0](../assets/custom/recovery-free-at-deploy-zone.jpg)
 
 | Field | What it does |
 |---|---|

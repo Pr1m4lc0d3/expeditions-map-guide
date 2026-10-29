@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
         </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/real-terrain.html" aria-current="page">Using real-world terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -81,10 +81,10 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -101,10 +101,10 @@
         </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -141,7 +141,7 @@
         </li>
         <li>
           <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
         </li>
@@ -287,11 +287,6 @@
         <p class="eyebrow">The land</p>
         <h1>Using real-world terrain</h1>
 <p class="lede">Importing real elevation data, and the surprising amount of design work it does for you.</p>      </div>
-      <div class="banner">
-        <strong>This page is draft.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
       <article class="prose"><p>You do not have to invent your landscape. Public survey data gives you the height
 of real ground, and a real place has already solved problems that are hard to
 solve by hand: where the valleys drain, how steep the slopes sit, and where a road
@@ -344,6 +339,8 @@ Read <a href="terrain.html">how terrain works</a> first: the import replaces the
 terrain, and a baked terrain file left from a copied map will hide the result.</p>
 <p>Outside the United States the toolkit&rsquo;s <code>expeditions/dem.py</code> uses the global
 tiles instead. That route has not been tested on a map in this guide.</p>
+<p><strong>A real heightmap straight after import.</strong> No roads, paint or plants yet: the shape of the land is all from the elevation data.</p>
+<p><img alt="Bare real-world terrain in the editor right after the heightmap import" src="../assets/land/real-heightmap-imported.jpg" /></p>
 <h3 id="precision-follows-real-elevation">Precision follows real elevation<a class="headerlink" href="#precision-follows-real-elevation" title="Permanent link">#</a></h3>
 <p>The height format&rsquo;s smallest step grows with height above zero, not with the
 map&rsquo;s relief. A map whose ground sits at <code>1,600</code> to <code>1,977 m</code> above sea level
@@ -398,6 +395,8 @@ overlay has no height of its own.</p>
 python fetch_trails.py level_&lt;name&gt; &lt;lat&gt; &lt;lon&gt; --span 2016 --apply
 </code></pre></div>
 
+<p><strong>The real switchbacks, driven in the game.</strong> The shelf road and the hairpins below it came with the elevation data; nothing here was sculpted by hand.</p>
+<p><img alt="A truck on a narrow shelf road above real switchbacks in the game" src="../assets/land/real-switchbacks-in-game.jpg" /></p>
 <h2 id="getting-the-orientation-right">Getting the orientation right<a class="headerlink" href="#getting-the-orientation-right" title="Permanent link">#</a></h2>
 <p>It is easy to import a real place mirror-imaged, and hard to notice. A valley
 looks like a valley either way round. What gives it away is that two layers built

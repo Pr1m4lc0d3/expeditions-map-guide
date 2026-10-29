@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
         </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -81,10 +81,10 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -101,10 +101,10 @@
         </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -141,7 +141,7 @@
         </li>
         <li>
           <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../60-custom/fob-modules.html" aria-current="page">Custom FOB modules</a>
         </li>
@@ -712,6 +712,9 @@ It looks like a colour bug and is a missing file. <code>install_model_to_mod.py<
 runs the game&rsquo;s converter to publish the <code>.pct</code> files and stops if any is
 missing.</p>
 </div>
+<p><strong>A custom module shipped without its <code>.pct</code> files, in a running game.</strong> Every
+surface is the same flat red.</p>
+<p><img alt="A custom module rendering flat, detail-free red at night" src="../assets/custom/module-flat-red-missing-pct.jpg" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Ship .pct only, never .pct_header</p>
 <p>With the header files beside the <code>.pct</code>, the game draws only the smallest
@@ -719,6 +722,9 @@ versions of each texture: a blurry, smeared surface with scrambled lettering
 at every distance. The install step deletes them and the packer never packs
 them.</p>
 </div>
+<p><strong>A custom tanker shipped with <code>.pct_header</code> files beside its textures.</strong> The
+lettering on the tank is smeared past reading, even this close.</p>
+<p><img alt="A custom tanker module with a smeared, blurry texture" src="../assets/custom/module-smeared-pct-header.jpg" /></p>
 <p>The editor cannot draw a custom model&rsquo;s textures at all, so a model that looks
 white in the editor means nothing. Judge it in the game.</p>
 <h2 id="step-4-store-art">Step 4. Store art<a class="headerlink" href="#step-4-store-art" title="Permanent link">#</a></h2>
@@ -811,6 +817,9 @@ it and you test the old version without knowing.</p>
 <li>Sell it. The refund arrives and the slot frees. For options 2 and 3 the model
    stays; that is the known limit, not your bug.</li>
 </ol>
+<p><strong>What an id collision looks like.</strong> The heading is the raw string
+<code>UI_BASE_BUILDING_SUBHEADER</code> and the panel is empty.</p>
+<p><img alt="The Base modules panel empty, headed UI_BASE_BUILDING_SUBHEADER" src="../assets/custom/base-modules-panel-empty.jpg" /></p>
 <div class="admonition note">
 <p class="admonition-title">Can&rsquo;t be transferred usually means the truck is full</p>
 <p>The red &ldquo;Can&rsquo;t be transferred&rdquo; under spare parts at a repair-style module
@@ -868,6 +877,9 @@ module.</p>
 </tr>
 </tbody>
 </table></div>
+<p><strong>Trucks gone ghostly during a custom build animation.</strong> The module and the truck
+beside it are drawn as translucent purple shapes while the model rises.</p>
+<p><img alt="A custom module and a truck rendered as translucent purple ghosts during the build" src="../assets/custom/module-build-animation-ghosting.jpg" /></p>
 <div class="admonition warning">
 <p class="admonition-title">If a save stops loading, park mods, do not delete them</p>
 <p>A save remembers its modules. A module mod that is present but cannot be

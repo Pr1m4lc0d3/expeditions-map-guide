@@ -2,7 +2,6 @@
 title: Vegetation and distributions
 part: Dressing the map
 order: 320
-status: draft
 summary: Scattering plants and objects across a map without placing every one by hand.
 ---
 
@@ -119,6 +118,12 @@ Each distribution has three switches: <span class="prov prov-doc">documented</sp
 | Ignore Water | plants do not grow under water |
 | Ignore Mud | plants do not grow in mud |
 
+**With the defaults left alone, the forest stops at the water.** A forest distribution
+painted over a whole real-terrain hill leaves the river channel bare, and a clearing
+erased on the summit stays open.
+
+![A hill covered in autumn forest in the editor, with the river channel and a summit clearing left bare](../assets/dressing/forest-kept-out-of-river.jpg)
+
 Leave them `false` unless you really want grass through a road. This only covers the
 distribution. Rocks and objects placed individually are not kept off roads by it;
 see [Models, rocks and cliffs](models.html#scattering-by-script).
@@ -225,6 +230,14 @@ been learned building them:
   is how the game switches it **off**, for debris that must not move.
 - **Declare real heights.** Because `MinSize`/`MaxSize` multiply, variants built at
   different sizes come out visibly mismatched in one brush.
+
+**A custom card plant in the editor, before and after the fix.** The same patch of a
+distribution first drew as red cones where the custom plant could not be drawn, then,
+rebuilt, as Mullein plants standing with their flower spikes up.
+
+![A cluster of red cones in the editor where a custom plant failed to draw](../assets/dressing/custom-plant-red-cones.jpg)
+
+![The same patch with the custom Mullein card plants standing upright in the editor](../assets/dressing/custom-plant-mullein-standing.jpg)
 
 The toolkit builds card plants and checks these for you; see
 [The toolkit](../80-ai-tools/toolkit.html).

@@ -2,7 +2,6 @@
 title: Roads are not carved terrain
 part: The land
 order: 230
-status: draft
 summary: Roads are Overlay objects laid on top of the ground, and two of the defaults are backwards for a usable road.
 ---
 
@@ -142,6 +141,10 @@ That suggests drawing a continuous road as **one overlay where you can**, and
 inspecting every place two overlays meet. <span class="prov prov-unver">unverified</span>
 The link between the joins and the humps is a measured pattern; the mechanism
 has not been confirmed.
+
+**What the humps look like.** An overlay road through forest on real terrain; the ripples across it are the humps a driver feels.
+
+![An overlay dirt road with visible humps across it in the editor](../assets/land/overlay-road-humps.jpg)
 
 !!! danger "Do not smooth a switchback with a round brush"
     The two legs of a hairpin are close together on the map and far apart along

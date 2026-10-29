@@ -2,7 +2,6 @@
 title: How terrain actually works
 part: The land
 order: 210
-status: draft
 summary: Heightmaps, the tile system, and why editing the file you think is the terrain often changes nothing.
 ---
 

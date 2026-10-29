@@ -30,7 +30,14 @@ is cross-compatible: drop a SnowRunner truck into Expeditions and it will spawn,
 drive, steer and articulate its suspension perfectly.
 
 Its textures will not load, and the vehicle renders **solid black** — body,
-glass, wheels, everything. The log says:
+glass, wheels, everything.
+
+**A ported SnowRunner pickup in a running game, before re-encoding.** It drives,
+but every surface is black.
+
+![A ported pickup rendering as a solid black silhouette beside a stock truck](../assets/vehicles/ported-truck-black.jpg)
+
+The log says:
 
 ```
 Failed to load texture textures/<modid>\trucks/carroceria__d_a.tga
@@ -102,6 +109,11 @@ encoder: `Sources\Bin\ResourceConverter.exe`.
 The whole process is: work out which textures the mod's materials ask for, write
 a source `.tga` for each one, run them through the converter, put the results
 back into `pc.pak`, and install.
+
+**The same pickup, at the same base, after its textures were re-encoded with the
+game's own converter.**
+
+![The same ported pickup fully textured after re-encoding](../assets/vehicles/ported-truck-reencoded.jpg)
 
 ### With the tool
 

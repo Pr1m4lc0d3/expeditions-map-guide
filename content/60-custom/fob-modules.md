@@ -336,11 +336,21 @@ What the install step does for you, and why it matters:
     runs the game's converter to publish the `.pct` files and stops if any is
     missing.
 
+**A custom module shipped without its `.pct` files, in a running game.** Every
+surface is the same flat red.
+
+![A custom module rendering flat, detail-free red at night](../assets/custom/module-flat-red-missing-pct.jpg)
+
 !!! warning "Ship .pct only, never .pct_header"
     With the header files beside the `.pct`, the game draws only the smallest
     versions of each texture: a blurry, smeared surface with scrambled lettering
     at every distance. The install step deletes them and the packer never packs
     them.
+
+**A custom tanker shipped with `.pct_header` files beside its textures.** The
+lettering on the tank is smeared past reading, even this close.
+
+![A custom tanker module with a smeared, blurry texture](../assets/custom/module-smeared-pct-header.jpg)
 
 The editor cannot draw a custom model's textures at all, so a model that looks
 white in the editor means nothing. Judge it in the game.
@@ -425,6 +435,11 @@ Restart the game so it finds the new pak, then check, in this order:
 5. Sell it. The refund arrives and the slot frees. For options 2 and 3 the model
    stays; that is the known limit, not your bug.
 
+**What an id collision looks like.** The heading is the raw string
+`UI_BASE_BUILDING_SUBHEADER` and the panel is empty.
+
+![The Base modules panel empty, headed UI_BASE_BUILDING_SUBHEADER](../assets/custom/base-modules-panel-empty.jpg)
+
 !!! note "Can't be transferred usually means the truck is full"
     The red "Can't be transferred" under spare parts at a repair-style module
     appears when the truck has no room left for parts. The vanilla repair
@@ -443,6 +458,11 @@ Restart the game so it finds the new pak, then check, in this order:
 | right at a main base, vanilla at an outpost | `modelIdAdditional` not set |
 | trucks go ghostly while it builds | an `_objective` build animation; set both animated fields to `""` |
 | crash while loading a save | a model the save names was removed from the mod |
+
+**Trucks gone ghostly during a custom build animation.** The module and the truck
+beside it are drawn as translucent purple shapes while the model rises.
+
+![A custom module and a truck rendered as translucent purple ghosts during the build](../assets/custom/module-build-animation-ghosting.jpg)
 
 !!! warning "If a save stops loading, park mods, do not delete them"
     A save remembers its modules. A module mod that is present but cannot be

@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
         </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -81,10 +81,10 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -101,10 +101,10 @@
         </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -141,7 +141,7 @@
         </li>
         <li>
           <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
         </li>
@@ -307,7 +307,11 @@ start.</p>
 is cross-compatible: drop a SnowRunner truck into Expeditions and it will spawn,
 drive, steer and articulate its suspension perfectly.</p>
 <p>Its textures will not load, and the vehicle renders <strong>solid black</strong> — body,
-glass, wheels, everything. The log says:</p>
+glass, wheels, everything.</p>
+<p><strong>A ported SnowRunner pickup in a running game, before re-encoding.</strong> It drives,
+but every surface is black.</p>
+<p><img alt="A ported pickup rendering as a solid black silhouette beside a stock truck" src="../assets/vehicles/ported-truck-black.jpg" /></p>
+<p>The log says:</p>
 <div class="hl"><pre><span></span><code>Failed to load texture textures/&lt;modid&gt;\trucks/carroceria__d_a.tga
 </code></pre></div>
 
@@ -382,6 +386,9 @@ encoder: <code>Sources\Bin\ResourceConverter.exe</code>.</p>
 <p>The whole process is: work out which textures the mod&rsquo;s materials ask for, write
 a source <code>.tga</code> for each one, run them through the converter, put the results
 back into <code>pc.pak</code>, and install.</p>
+<p><strong>The same pickup, at the same base, after its textures were re-encoded with the
+game&rsquo;s own converter.</strong></p>
+<p><img alt="The same ported pickup fully textured after re-encoding" src="../assets/vehicles/ported-truck-reencoded.jpg" /></p>
 <h3 id="with-the-tool">With the tool<a class="headerlink" href="#with-the-tool" title="Permanent link">#</a></h3>
 <div class="hl"><pre><span></span><code>python port_vehicle.py analyze &lt;mod.zip&gt;
 python port_vehicle.py port &lt;mod.zip&gt; --id &lt;modid&gt; --name &quot;My Truck&quot;

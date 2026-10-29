@@ -2,7 +2,6 @@
 title: Loot, storage and airdrops
 part: Zones
 order: 430
-status: draft
 summary: Zones that hold things the player can take, and the naming rule that silently breaks all of them.
 ---
 

@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
         </li>
         <li>
           <a href="../20-land/roads.html" aria-current="page">Roads are not carved terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -81,10 +81,10 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -101,10 +101,10 @@
         </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -141,7 +141,7 @@
         </li>
         <li>
           <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
         </li>
@@ -287,11 +287,6 @@
         <p class="eyebrow">The land</p>
         <h1>Roads are not carved terrain</h1>
 <p class="lede">Roads are Overlay objects laid on top of the ground, and two of the defaults are backwards for a usable road.</p>      </div>
-      <div class="banner">
-        <strong>This page is draft.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
       <article class="prose"><p>This is the biggest single time sink for a new map maker: sculpting roads into the
 heightmap by hand when the editor has a road tool.</p>
 <p>A road in Expeditions is an <strong>Overlay</strong>: a curve you draw across the map, carrying
@@ -424,6 +419,8 @@ neither setting was the cause. Measuring them found
 inspecting every place two overlays meet. <span class="prov prov-unver">unverified</span>
 The link between the joins and the humps is a measured pattern; the mechanism
 has not been confirmed.</p>
+<p><strong>What the humps look like.</strong> An overlay road through forest on real terrain; the ripples across it are the humps a driver feels.</p>
+<p><img alt="An overlay dirt road with visible humps across it in the editor" src="../assets/land/overlay-road-humps.jpg" /></p>
 <div class="admonition danger">
 <p class="admonition-title">Do not smooth a switchback with a round brush</p>
 <p>The two legs of a hairpin are close together on the map and far apart along

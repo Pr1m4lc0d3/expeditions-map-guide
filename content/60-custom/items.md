@@ -2,7 +2,6 @@
 title: Custom inventory items
 part: Custom content
 order: 620
-status: draft
 summary: Your own devices, tools and quest items, and the one flag that decides whether a mission using them can start.
 ---
 

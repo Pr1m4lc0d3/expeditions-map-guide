@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
         </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -81,10 +81,10 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html" aria-current="page">Models, rocks and cliffs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -101,10 +101,10 @@
         </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -141,7 +141,7 @@
         </li>
         <li>
           <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
         </li>
@@ -287,11 +287,6 @@
         <p class="eyebrow">Dressing the map</p>
         <h1>Models, rocks and cliffs</h1>
 <p class="lede">Placing objects, and telling a deliberately buried rock apart from a mistake.</p>      </div>
-      <div class="banner">
-        <strong>This page is draft.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
       <article class="prose"><p>A model is any single object you place on the map: a rock, a cabin, a fence, a
 wreck. This page covers placing them by hand, the physics types that decide how they
 behave when a truck hits them, rock and cliff work, and bringing in models of your
@@ -429,6 +424,10 @@ the cliff.</p>
   mostly one sandstone face piece, and placed no rounded rock or rock pile on ground
   steeper than 55 degrees.</li>
 </ul>
+<p><strong>The difference faceted rock makes, on one real canyon wall.</strong> On the left, the bare
+terrain cliff with its texture stretched down the face; on the right, the same wall
+built from stacked sandstone models.</p>
+<p><img alt="A canyon wall in the editor: stretched bare terrain cliff on the left, cliff built from sandstone rock models on the right" src="../assets/dressing/cliff-terrain-vs-rock-models.jpg" /></p>
 <h2 id="scattering-by-script">Scattering by script<a class="headerlink" href="#scattering-by-script" title="Permanent link">#</a></h2>
 <p>If you place rocks or debris with a script rather than a distribution, two things
 make the difference between natural and artificial.</p>
@@ -526,6 +525,11 @@ searching for the suffixed name finds nothing.</p>
 <li><strong>Imported models arrive at any scale.</strong> One downloaded plant measured 0.05 m tall,
   another 8.16 m wide. Set the real height in metres when converting.</li>
 </ul>
+<p><strong>A custom model shows pure white in the editor until the editor has converted it
+itself.</strong> This cabin was white with every file in place. Once the editor had converted
+the models and been restarted, the same cabins came up textured.</p>
+<p><img alt="A custom log cabin selected in the editor, rendered completely white" src="../assets/dressing/custom-model-white-in-editor.jpg" /></p>
+<p><img alt="Seven custom cabins on a slope in the editor, all textured" src="../assets/dressing/custom-models-textured-in-editor.jpg" /></p>
 <p>The toolkit&rsquo;s <code>glb_to_fbx.py</code> does the conversion and these checks; see
 <a href="../80-ai-tools/toolkit.html">The toolkit</a>. Saber&rsquo;s own instructions are in the PDF
 <em>Custom Level Entities: Models, Overlays and PbrMaterials</em>.</p>
@@ -594,6 +598,14 @@ it for you.</p>
 <p>Tested: a renamed copy of Saber&rsquo;s sample, and then seven custom buildings on one map,
 loaded and rendered fully textured in a running game, on a map installed locally.
 Loading the same pack before running the fix dropped back to the menu.</p>
+<p><strong>Saber&rsquo;s sample oil pump, renamed, in a running game after the fix.</strong> Before it, this
+map never got past the loading screen.</p>
+<p><img alt="Saber's sample oil pump standing textured on a test map in a running game" src="../assets/models/custom-model-in-game_sample.jpg" /></p>
+<p><strong>Seven custom log buildings on one map, in a running game.</strong> None of them carries
+<code>NeedPreload</code>. Every texture loaded, from the map&rsquo;s own pak.</p>
+<p><img alt="Custom two-storey cabin, woodshed and workshop in a running game" src="../assets/models/custom-models-in-game_cabins-1.jpg" /></p>
+<p><img alt="Three weathered custom cabins in a running game" src="../assets/models/custom-models-in-game_cabins-2.jpg" /></p>
+<p><img alt="Custom cabins seen from the workshop in a running game" src="../assets/models/custom-models-in-game_cabins-3.jpg" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Not yet known</p>
 <ul>

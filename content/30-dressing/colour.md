@@ -48,6 +48,12 @@ boundary, so the blocks blend across it.
 As with the other brushes, holding the right mouse button paints; a Value above
 `0.50` adds the layer and below `0.50` erases it.
 
+**The brush window's dropdown is where you choose between the two levels:** the
+material's layers (`L1` to `L4`) for layer painting, and `Opacity` at the bottom for
+the material itself. Here a snow layer is being painted over the ground layer.
+
+![The editor's Brush window with its layer dropdown open, listing L1 to L4 and Opacity, over a painted snow patch](../assets/dressing/brush-layer-dropdown-painting-snow.jpg)
+
 ### Settings
 
 Saber recommends nearly the same settings on every material of a level, so that
@@ -119,6 +125,11 @@ brightness.
 A road is an **Overlay** object laid along a curve, not a change to the terrain's
 layers. Its look comes from its own texture, so repainting the ground under a road
 does not change the road. <span class="prov prov-doc">documented</span>
+
+**Seen on a real map:** the ground here went black during a colour pass, and every road
+overlay kept its own grey or dirt colour.
+
+![Terrain rendered black in the editor while the asphalt and dirt road overlays keep their colours](../assets/dressing/road-overlays-keep-colour-on-black-ground.jpg)
 
 Saber notes that Expeditions uses ordinary road overlays much less than SnowRunner,
 and has its own: `animal_tracks`, `cracked_mud` and `log_road`.

@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
         </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -81,10 +81,10 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/vegetation.html" aria-current="page">Vegetation and distributions</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -101,10 +101,10 @@
         </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -141,7 +141,7 @@
         </li>
         <li>
           <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
         </li>
@@ -287,11 +287,6 @@
         <p class="eyebrow">Dressing the map</p>
         <h1>Vegetation and distributions</h1>
 <p class="lede">Scattering plants and objects across a map without placing every one by hand.</p>      </div>
-      <div class="banner">
-        <strong>This page is draft.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
       <article class="prose"><p>A <strong>distribution</strong> grows plants across an area you paint, instead of placing them
 one at a time. It is how forests, grass, scrub and scattered stones get onto a map.
 <span class="prov prov-doc">documented</span></p>
@@ -440,6 +435,10 @@ the mountain&rsquo;s silhouette stays visible longer.</p>
 </tr>
 </tbody>
 </table></div>
+<p><strong>With the defaults left alone, the forest stops at the water.</strong> A forest distribution
+painted over a whole real-terrain hill leaves the river channel bare, and a clearing
+erased on the summit stays open.</p>
+<p><img alt="A hill covered in autumn forest in the editor, with the river channel and a summit clearing left bare" src="../assets/dressing/forest-kept-out-of-river.jpg" /></p>
 <p>Leave them <code>false</code> unless you really want grass through a road. This only covers the
 distribution. Rocks and objects placed individually are not kept off roads by it;
 see <a href="models.html#scattering-by-script">Models, rocks and cliffs</a>.</p>
@@ -551,6 +550,11 @@ been learned building them:</p>
 <li><strong>Declare real heights.</strong> Because <code>MinSize</code>/<code>MaxSize</code> multiply, variants built at
   different sizes come out visibly mismatched in one brush.</li>
 </ul>
+<p><strong>A custom card plant in the editor, before and after the fix.</strong> The same patch of a
+distribution first drew as red cones where the custom plant could not be drawn, then,
+rebuilt, as Mullein plants standing with their flower spikes up.</p>
+<p><img alt="A cluster of red cones in the editor where a custom plant failed to draw" src="../assets/dressing/custom-plant-red-cones.jpg" /></p>
+<p><img alt="The same patch with the custom Mullein card plants standing upright in the editor" src="../assets/dressing/custom-plant-mullein-standing.jpg" /></p>
 <p>The toolkit builds card plants and checks these for you; see
 <a href="../80-ai-tools/toolkit.html">The toolkit</a>.</p>
 <h2 id="what-is-not-known-yet">What is not known yet<a class="headerlink" href="#what-is-not-known-yet" title="Permanent link">#</a></h2>

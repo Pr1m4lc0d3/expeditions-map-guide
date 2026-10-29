@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
         </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/water.html" aria-current="page">Rivers, lakes and waterfalls</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -81,10 +81,10 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -101,10 +101,10 @@
         </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -141,7 +141,7 @@
         </li>
         <li>
           <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
         </li>
@@ -287,11 +287,6 @@
         <p class="eyebrow">The land</p>
         <h1>Rivers, lakes and waterfalls</h1>
 <p class="lede">Give water somewhere to go, hide the edges, and keep the result editable whether you build it yourself or with AI.</p>      </div>
-      <div class="banner">
-        <strong>This page is draft.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
       <article class="prose"><p>A river is not a blue road. Putting a strip of water across a valley does not make
 that strip fit the valley. It gives you a water surface. The ground still has to
 provide the bed and the banks.</p>
@@ -386,6 +381,8 @@ long way, and disappears on a steep bank. There is no setting to raise the
 water resolution. Cut a defined bank where water meets flat ground.
 <span class="prov prov-unver">measured</span></p>
 </div>
+<p><strong>The mistake, in the game.</strong> River pieces that do not fit their channel render as a stepped sheet climbing the slope beside the road.</p>
+<p><img alt="River water rendering as a stepped, floating sheet beside a road in the game" src="../assets/land/river-stepped-sheet-in-game.jpg" /></p>
 <h2 id="measure-in-two-directions">Measure in two directions<a class="headerlink" href="#measure-in-two-directions" title="Permanent link">#</a></h2>
 <p><strong>Along the channel</strong>, measure the bed and the fall toward the outlet. A flowing
 reach needs a connected downhill route. Do not stretch one horizontal sheet down
@@ -495,6 +492,8 @@ Drawing water through solid ground does not cut a tunnel. A ford or washout is a
 different design, not an excuse to apply this exception everywhere.
 <span class="prov prov-unver">unverified</span> This crossing method has not
 yet been confirmed in game.</p>
+<p><strong>Culvert pipes placed where a wash crosses a road</strong>, in the editor. Not yet confirmed in game, as the note above says.</p>
+<p><img alt="Two culvert pipe models set under a road where a wash crosses, in the editor" src="../assets/land/culverts-under-road-editor.jpg" /></p>
 <h2 id="waterfalls-are-two-rivers">Waterfalls are two rivers<a class="headerlink" href="#waterfalls-are-two-rivers" title="Permanent link">#</a></h2>
 <p>A single River cannot be made to fall. A waterfall is built from <strong>two</strong>:
 <span class="prov prov-unver">measured</span></p>
@@ -589,6 +588,8 @@ every tile, including tiles with no water. The River object is the only record o
 where water is. <span class="prov prov-unver">measured</span></p>
 <p>Use the editor&rsquo;s brushes and verify a small painted sample before asking a script
 to write masks.</p>
+<p><strong>A river built in the editor, driven through in the game.</strong> The surface fits its channel and moves.</p>
+<p><img alt="A truck driving through flowing river water among sandstone rocks in the game" src="../assets/land/river-drivable-in-game.jpg" /></p>
 <h3 id="foam-comes-from-somewhere">Foam comes from somewhere<a class="headerlink" href="#foam-comes-from-somewhere" title="Permanent link">#</a></h3>
 <p>Put foam where water is disturbed, then carry it downstream. Real foam starts at
 a <strong>source</strong>, a rock, a drop or a kink in the bank, and streaks away downstream

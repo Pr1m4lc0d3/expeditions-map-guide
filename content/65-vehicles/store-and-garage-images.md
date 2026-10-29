@@ -125,6 +125,12 @@ the only real mistake: it clips the roof or the bed, and nothing tells you.
 
 ## Matching the stock cards
 
+**Custom cut-out cards in the game's truck list, beside stock ones.** The Jeep
+Wrangler RC and Jeep Renegade RC cards were made this way; DON 71 and TUZ 16 below
+are stock.
+
+![Truck list in the headquarters with custom cut-out cards matching the stock cards](../assets/vehicles/garage-cutout-cards.jpg)
+
 <span class="prov prov-unver">measured</span>
 Stock cards are **zoomed in far enough to crop at the bumper**. Fitting the whole
 vehicle inside the frame is the obvious thing to do and it looks visibly small

@@ -399,6 +399,10 @@ Empowers the vehicle in tow,null
 Drone armor repairs anywhere,
 ```
 
+**The first of those, on a custom specialist's card in the recruitment screen.**
+
+![A specialist ability line ending in ",null"](../assets/custom/specialist-null-line.jpg)
+
 For a line that shows no number (a switch, or an override sentence), leave
 `valuePrefix` and `valueType` **out** of the label entirely. Vanilla's own
 switch-only modifiers carry no prefix or type at all.

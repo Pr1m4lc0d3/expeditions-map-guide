@@ -61,19 +61,19 @@
       <ul>
         <li>
           <a href="../20-land/terrain.html">How terrain actually works</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/brushes.html">The brushes</a>
         </li>
         <li>
           <a href="../20-land/roads.html">Roads are not carved terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../20-land/real-terrain.html">Using real-world terrain</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -81,10 +81,10 @@
       <ul>
         <li>
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../30-dressing/colour.html">Colour and textures</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -101,10 +101,10 @@
         </li>
         <li>
           <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../40-zones/construction-zones.html">Construction zones</a>
 <span class="pill pill-draft">draft</span>        </li>
@@ -141,7 +141,7 @@
         </li>
         <li>
           <a href="../60-custom/items.html">Custom inventory items</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
         <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
         </li>
@@ -404,6 +404,7 @@ naming <code>CreateInventoryItem</code>.</p>
 <h2 id="a-ported-vehicle-is-solid-black">A ported vehicle is solid black<a class="headerlink" href="#a-ported-vehicle-is-solid-black" title="Permanent link">#</a></h2>
 <p>A SnowRunner vehicle brought into Expeditions spawns, drives and steers correctly
 but renders completely black, including glass and wheels.</p>
+<p><img alt="A ported pickup truck rendered as a solid black silhouette in game, next to a normally textured stock vehicle" src="../assets/shipping/ported-vehicle-solid-black.jpg" /></p>
 <p>Its <code>.pct</code> textures were encoded by SnowRunner&rsquo;s converter and Expeditions cannot
 decode them. The log shows one line per map:</p>
 <div class="hl"><pre><span></span><code>Failed to load texture textures/&lt;modid&gt;\trucks/&lt;name&gt;.tga
@@ -540,6 +541,9 @@ invalid.</p>
 <p><code>uiMinimapScreenshot</code> is still at its default value of <code>mapAllLocked</code>, which <em>is</em> the No
 Signal image. Point it at a 400 x 400 PNG in your map&rsquo;s <code>ui\textures</code> folder, named
 without the file extension.</p>
+<p><strong>What it looks like:</strong> custom maps listed on the selection screen, with the No Signal
+placeholder where the map&rsquo;s picture should be.</p>
+<p><img alt="The expedition selection screen with custom maps listed and a NO SIGNAL placeholder as the map picture" src="../assets/shipping/no-signal-preview.jpg" /></p>
 <hr />
 <h2 id="diagnosing-when-the-table-does-not-help">Diagnosing when the table does not help<a class="headerlink" href="#diagnosing-when-the-table-does-not-help" title="Permanent link">#</a></h2>
 <p>Two places the game does record something:</p>
