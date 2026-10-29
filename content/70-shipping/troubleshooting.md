@@ -16,6 +16,7 @@ minute pack.
 | What you see | Almost certainly |
 |---|---|
 | Map does not appear in the list at all | [no expedition](#the-map-is-not-in-the-list), or its `contractType` is wrong |
+| Map with a custom model starts loading, then drops back to the main menu | [the custom model's name was never fixed after packing](#a-map-with-a-custom-model-drops-back-to-the-menu) |
 | Map appears, Deploy screen is blank or does nothing | [no deploy zone the game can find](#deploy-does-nothing) |
 | Map appears, Deploy hangs on the loading screen forever | [a zone reference that points at nothing](#deploy-hangs-forever) |
 | Map loads, but it is an older version than you packed | [two maps claiming one identity](#the-wrong-map-loads) |
@@ -34,6 +35,30 @@ minute pack.
 | Map shows "No Signal" as its picture | [`uiMinimapScreenshot` left at its default](#no-signal-instead-of-a-picture) |
 | Terrain edits do nothing in game | you edited the masters, not the tiles, or you did not repack |
 | A ported vehicle is solid black, wheels and all | [its textures are SnowRunner-encoded](#a-ported-vehicle-is-solid-black) |
+
+---
+
+## A map with a custom model drops back to the menu
+
+The map starts loading, then the game returns to the main menu. It does not crash,
+there is no crash dump, and the log files are empty. Remove the custom model, pack
+again, and the map loads.
+
+The game registers the model's class from your map under one name and looks it up
+under another, so it never finds it. Its own error, `Terrain| Cant load Model Brand`,
+goes to a log that retail builds discard. Nothing about the model's files causes this,
+so landmarks, texture fixes, `NeedPreload`, renaming the files or following Saber's
+guide more closely will not help. Loading the map straight after packing, before the
+fix has run, gives exactly this symptom too. Saber's own sample model fails the same way.
+
+Run `python fix_map_model_brands.py <Level> --apply` after every pack, with the game
+closed. The full explanation is in
+[Custom models in a map](../30-dressing/models.html#custom-models-in-a-map-the-step-after-every-pack).
+
+If the map has no custom models, or the command reports "already" for every model
+and the map still returns to the menu, look elsewhere. A save that holds an item from
+a mod you have removed can also stop a map loading; that one leaves an SSL crash dump
+naming `CreateInventoryItem`.
 
 ---
 

@@ -99,6 +99,7 @@ a cliff at every boundary.
 | re-seat placements | `reseat_models.py` |
 | move a group | `move_cluster.py` |
 | check a custom model converts and loads | `verify_model.py` |
+| make custom models load in a packed map | `fix_map_model_brands.py <level> --apply` (after every pack; `after_pack.ps1` runs it) |
 
 `verify_model.py` exists because `ResourceConverter --mod-convert -s` only tells
 you the files parse. Twenty-nine models passed it and then crashed the editor on

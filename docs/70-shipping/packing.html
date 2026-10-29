@@ -385,11 +385,18 @@ built around it grow again. One measured pack took a module pak from 2.4 MB to
 rebuilds them, so nothing is lost. <code>check_fob_module.py</code> reports zips in the
 folder as a warning and zips inside the pak as an error.
 <code>pack_fob_module.py</code> packs only what belongs in the pak, so it cannot do this.</p>
+<h3 id="custom-models-come-out-under-a-name-the-game-cannot-find">Custom models come out under a name the game cannot find<a class="headerlink" href="#custom-models-come-out-under-a-name-the-game-cannot-find" title="Permanent link">#</a></h3>
+<p>If your map has any model of your own on it, the packed map will drop back to the
+main menu every time it loads, with no error. The game registers the model under one
+name and looks it up under another. The fix is to rename the model in the packed map
+after every pack; the reason and the command are in
+<a href="../30-dressing/models.html#custom-models-in-a-map-the-step-after-every-pack">Custom models in a map</a>.</p>
 <h2 id="the-check-to-run-every-single-time">The check to run every single time<a class="headerlink" href="#the-check-to-run-every-single-time" title="Permanent link">#</a></h2>
 <p>Before you spend half an hour testing in the game, spend a second checking the
 pack:</p>
 <div class="hl"><pre><span></span><code>python check_pack.py &lt;Level&gt;
 python check_objectives.py &lt;Level&gt; --pak
+python fix_map_model_brands.py &lt;Level&gt; --apply     only if the map has custom models
 </code></pre></div>
 
 <p><code>check_pack.py</code> compares the packed map with your source and reports, on one
@@ -494,6 +501,7 @@ fresh, matching set of paks and zips.</p></article>
 <li><a href="#zone-names-are-baked-in-and-cannot-be-changed-afterwards">Zone names are baked in and cannot be changed afterwards</a></li>
 <li><a href="#an-invalid-type-is-emptied-not-rejected">An invalid type is emptied, not rejected</a></li>
 <li><a href="#a-module-pack-can-swallow-its-own-output">A module pack can swallow its own output</a></li>
+<li><a href="#custom-models-come-out-under-a-name-the-game-cannot-find">Custom models come out under a name the game cannot find</a></li>
 </ul>
 </li>
 <li><a href="#the-check-to-run-every-single-time">The check to run every single time</a></li>

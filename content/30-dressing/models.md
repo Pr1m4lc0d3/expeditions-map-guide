@@ -17,8 +17,10 @@ See [Vegetation and distributions](vegetation.html).
 !!! note "How much of this is tested"
     Placing, physics types and the Freeze Physics option are from Saber's guides.
     The rock and cliff rules, the subgroup traps and the custom model recipe come
-    from work on real maps and are measured. Custom models have been placed and
-    checked **in the editor only**, not yet in a running game.
+    from work on real maps and are measured. A custom model has been loaded **in a
+    running game** on a map installed locally, after the brand fix described in
+    [Custom models in a map](#custom-models-in-a-map-the-step-after-every-pack).
+    Maps installed from mod.io have not been tested.
 
 ## Placing a model
 
@@ -232,6 +234,75 @@ The toolkit's `glb_to_fbx.py` does the conversion and these checks; see
 [The toolkit](../80-ai-tools/toolkit.html). Saber's own instructions are in the PDF
 *Custom Level Entities: Models, Overlays and PbrMaterials*.
 
+Saber's PDF was written for SnowRunner, and its Expeditions page says only that the
+setup is "very similar". Two things it does not tell you:
+
+- **Don't test with Saber's sample model as it ships.** Every name in it
+  (`oil_pump_01`, its textures, its landmark, and the bundled `landmark__d.tga`) is
+  already a stock Expeditions resource. Packing it ships duplicates of things the game
+  already has. Rename the model and its textures to unique names first.
+- **`NeedPreload="true"` is for base modules, not map models.** Saber requires it on
+  the models of custom base modules. Seven custom buildings without it loaded in a
+  running game, so a model you only place on a map does not need it.
+
+## Custom models in a map: the step after every pack
+
+!!! danger "Without this step, any map with a custom model never loads"
+    The map starts loading and drops straight back to the main menu. There is no error
+    message, no crash dump and nothing in the logs. This happens even when every file
+    is exactly as Saber's guide describes, Saber's own sample model included.
+
+**What goes wrong.** This is a defect in the game, read out of a running game and its
+code. The editor stores a custom model in the map as `<name>\Media`. When the map
+loads, the game registers the model's class from your map's pak under one name and
+then looks it up under another:
+
+| | name the game uses |
+|---|---|
+| registers the class as | `my_model_level_<map>.pak` |
+| looks the model up as | `my_model\mod_level_<map>.pak` |
+
+The two can never match: the game treats `/` and `\` as the same character, but
+never `_` and `\`. The lookup fails, the game logs `Cant load Model Brand` to a log
+that retail builds throw away, and it abandons the load. Nothing in your Media files
+changes either name, which is why no fix to the model itself helps.
+
+**The fix.** A model name without a backslash is looked up exactly as written, the
+way every stock model is. So, after packing, rename each custom model in the packed
+map to the name the game registers:
+
+```
+my_model\Media   ->   my_model_level_<map>.pak
+```
+
+The toolkit does this with one command, which only renames models whose class your
+map's pak actually ships:
+
+```
+python fix_map_model_brands.py <Level>            report what it would change
+python fix_map_model_brands.py <Level> --apply    rename (close the game first)
+```
+
+It also reads the texture names out of each packed mesh and warns about any texture
+that neither your map nor the game carries, because such a model renders untextured
+on every machine except yours.
+
+**Packing again erases the fix.** The pack rebuilds the map from the editor's data,
+so run the command after **every** Pack terrain. The toolkit's `after_pack.ps1` runs
+it for you.
+
+Tested: a renamed copy of Saber's sample, and then seven custom buildings on one map,
+loaded and rendered fully textured in a running game, on a map installed locally.
+Loading the same pack before running the fix dropped back to the menu.
+
+!!! warning "Not yet known"
+    - **Maps installed from mod.io.** Locally, the game names a map's archive
+      `mod_level_<map>.pak`. For a map installed from mod.io it may use the numeric
+      mod id instead, as it does for truck mods. If so, the name to rename to changes.
+      `--archive <name>` sets it once it is known. <span class="prov prov-unver">unverified</span>
+    - **The landmark.** The fix leaves the landmark reference alone. Whether a custom
+      model's landmark then shows on the navigation map has not been checked.
+
 !!! warning "Licences travel with the model"
     Use only CC0 or CC BY models. CC BY requires the credit to go wherever the model
     goes, so a map that ships one needs its credits shipped too. Avoid CC BY-SA,
@@ -239,6 +310,7 @@ The toolkit's `glb_to_fbx.py` does the conversion and these checks; see
 
 ## What is not known yet
 
-- whether a custom model behaves in a running game exactly as in the editor
+- whether a map with custom models works after being installed from mod.io
+- whether a custom model's landmark shows on the navigation map
 - grouping and selection tools in the editor's interface beyond what is above
 - whether Saber's distance-visibility rules apply to every Expeditions creature

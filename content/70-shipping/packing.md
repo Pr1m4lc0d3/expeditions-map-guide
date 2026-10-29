@@ -134,6 +134,14 @@ rebuilds them, so nothing is lost. `check_fob_module.py` reports zips in the
 folder as a warning and zips inside the pak as an error.
 `pack_fob_module.py` packs only what belongs in the pak, so it cannot do this.
 
+### Custom models come out under a name the game cannot find
+
+If your map has any model of your own on it, the packed map will drop back to the
+main menu every time it loads, with no error. The game registers the model under one
+name and looks it up under another. The fix is to rename the model in the packed map
+after every pack; the reason and the command are in
+[Custom models in a map](../30-dressing/models.html#custom-models-in-a-map-the-step-after-every-pack).
+
 ## The check to run every single time
 
 Before you spend half an hour testing in the game, spend a second checking the
@@ -142,6 +150,7 @@ pack:
 ```
 python check_pack.py <Level>
 python check_objectives.py <Level> --pak
+python fix_map_model_brands.py <Level> --apply     only if the map has custom models
 ```
 
 `check_pack.py` compares the packed map with your source and reports, on one

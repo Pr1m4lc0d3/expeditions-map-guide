@@ -305,6 +305,10 @@ minute pack.</p>
 <td><a href="#the-map-is-not-in-the-list">no expedition</a>, or its <code>contractType</code> is wrong</td>
 </tr>
 <tr>
+<td>Map with a custom model starts loading, then drops back to the main menu</td>
+<td><a href="#a-map-with-a-custom-model-drops-back-to-the-menu">the custom model&rsquo;s name was never fixed after packing</a></td>
+</tr>
+<tr>
 <td>Map appears, Deploy screen is blank or does nothing</td>
 <td><a href="#deploy-does-nothing">no deploy zone the game can find</a></td>
 </tr>
@@ -378,6 +382,24 @@ minute pack.</p>
 </tr>
 </tbody>
 </table></div>
+<hr />
+<h2 id="a-map-with-a-custom-model-drops-back-to-the-menu">A map with a custom model drops back to the menu<a class="headerlink" href="#a-map-with-a-custom-model-drops-back-to-the-menu" title="Permanent link">#</a></h2>
+<p>The map starts loading, then the game returns to the main menu. It does not crash,
+there is no crash dump, and the log files are empty. Remove the custom model, pack
+again, and the map loads.</p>
+<p>The game registers the model&rsquo;s class from your map under one name and looks it up
+under another, so it never finds it. Its own error, <code>Terrain| Cant load Model Brand</code>,
+goes to a log that retail builds discard. Nothing about the model&rsquo;s files causes this,
+so landmarks, texture fixes, <code>NeedPreload</code>, renaming the files or following Saber&rsquo;s
+guide more closely will not help. Loading the map straight after packing, before the
+fix has run, gives exactly this symptom too. Saber&rsquo;s own sample model fails the same way.</p>
+<p>Run <code>python fix_map_model_brands.py &lt;Level&gt; --apply</code> after every pack, with the game
+closed. The full explanation is in
+<a href="../30-dressing/models.html#custom-models-in-a-map-the-step-after-every-pack">Custom models in a map</a>.</p>
+<p>If the map has no custom models, or the command reports &ldquo;already&rdquo; for every model
+and the map still returns to the menu, look elsewhere. A save that holds an item from
+a mod you have removed can also stop a map loading; that one leaves an SSL crash dump
+naming <code>CreateInventoryItem</code>.</p>
 <hr />
 <h2 id="a-ported-vehicle-is-solid-black">A ported vehicle is solid black<a class="headerlink" href="#a-ported-vehicle-is-solid-black" title="Permanent link">#</a></h2>
 <p>A SnowRunner vehicle brought into Expeditions spawns, drives and steers correctly
@@ -540,6 +562,7 @@ settles most arguments in about a minute.</p></article>
     <div class="toc">
 <ul>
 <li><a href="#symptom-table">Symptom table</a></li>
+<li><a href="#a-map-with-a-custom-model-drops-back-to-the-menu">A map with a custom model drops back to the menu</a></li>
 <li><a href="#a-ported-vehicle-is-solid-black">A ported vehicle is solid black</a></li>
 <li><a href="#the-map-is-not-in-the-list">The map is not in the list</a></li>
 <li><a href="#deploy-does-nothing">Deploy does nothing</a></li>
