@@ -129,7 +129,7 @@ model the game already has.
 
 **Then restart the editor.** Search Select Asset for the **bare name** (`my_shed`, not
 the `\Media` it lists with). A new model can show pure white until the editor has
-converted it; restart once more and it comes up textured.
+converted it: click **Rebuild terrain** and it comes up textured. No second restart is needed.
 
 ![A custom log cabin selected in the editor, rendered completely white](../assets/dressing/custom-model-white-in-editor.jpg)
 

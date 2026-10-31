@@ -236,8 +236,8 @@ The rules that cost the most to learn:
   another 8.16 m wide. Set the real height in metres when converting.
 
 **A custom model shows pure white in the editor until the editor has converted it
-itself.** This cabin was white with every file in place. Once the editor had converted
-the models and been restarted, the same cabins came up textured.
+itself.** This cabin was white with every file in place. Click **Rebuild terrain** and it
+comes up textured; there is no need to close and reopen the editor.
 
 ![A custom log cabin selected in the editor, rendered completely white](../assets/dressing/custom-model-white-in-editor.jpg)
 
