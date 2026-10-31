@@ -83,6 +83,9 @@
           <a href="../30-dressing/models.html" aria-current="page">Models, rocks and cliffs</a>
         </li>
         <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
         </li>
         <li>
@@ -530,8 +533,8 @@ itself.</strong> This cabin was white with every file in place. Once the editor 
 the models and been restarted, the same cabins came up textured.</p>
 <p><img alt="A custom log cabin selected in the editor, rendered completely white" src="../assets/dressing/custom-model-white-in-editor.jpg" /></p>
 <p><img alt="Seven custom cabins on a slope in the editor, all textured" src="../assets/dressing/custom-models-textured-in-editor.jpg" /></p>
-<p>The toolkit&rsquo;s <code>glb_to_fbx.py</code> does the conversion and these checks; see
-<a href="../80-ai-tools/toolkit.html">The toolkit</a>. Saber&rsquo;s own instructions are in the PDF
+<p>The toolkit&rsquo;s <code>import_model.py</code> does the conversion and these checks in one command; see
+<a href="making-models.html">Making and importing your own models</a>. Saber&rsquo;s own instructions are in the PDF
 <em>Custom Level Entities: Models, Overlays and PbrMaterials</em>.</p>
 <p>Saber&rsquo;s PDF was written for SnowRunner, and its Expeditions page says only that the
 setup is &ldquo;very similar&rdquo;. Two things it does not tell you:</p>
@@ -593,7 +596,7 @@ python fix_map_model_brands.py &lt;Level&gt; --apply    rename (close the game f
 that neither your map nor the game carries, because such a model renders untextured
 on every machine except yours.</p>
 <p><strong>Packing again erases the fix.</strong> The pack rebuilds the map from the editor&rsquo;s data,
-so run the command after <strong>every</strong> Pack terrain. The toolkit&rsquo;s <code>after_pack.ps1</code> runs
+so run the command after <strong>every</strong> Pack terrain. The toolkit&rsquo;s <code>after_pack.py</code> (in <code>map-models</code>) runs
 it for you.</p>
 <p>Tested: a renamed copy of Saber&rsquo;s sample, and then seven custom buildings on one map,
 loaded and rendered fully textured in a running game, on a map installed locally.
@@ -632,7 +635,7 @@ which would attach its terms to everything around it, and NonCommercial.</p>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
-<a class="seq-prev" href="../20-land/real-terrain.html"><span>Previous</span>Using real-world terrain</a><a class="seq-next" href="../30-dressing/vegetation.html"><span>Next</span>Vegetation and distributions</a>      </nav>
+<a class="seq-prev" href="../20-land/real-terrain.html"><span>Previous</span>Using real-world terrain</a><a class="seq-next" href="../30-dressing/making-models.html"><span>Next</span>Making and importing your own models</a>      </nav>
   </main>
 
   <aside class="onthispage" aria-label="On this page">

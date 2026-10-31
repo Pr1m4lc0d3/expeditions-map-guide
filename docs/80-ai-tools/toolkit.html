@@ -83,6 +83,9 @@
           <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
         </li>
         <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
           <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
         </li>
         <li>
@@ -293,8 +296,12 @@ directly. An agent uses them, but there is nothing AI about them — run them
 yourself from a terminal.</p>
 <h2 id="getting-it">Getting it<a class="headerlink" href="#getting-it" title="Permanent link">#</a></h2>
 <blockquote>
-<p><strong>[DOWNLOAD LOCATION NEEDED]</strong> — the toolkit is not yet published. When it is,
-this is where the link goes, and the commands below work as written.</p>
+<p><strong>Only part of the toolkit is published so far.</strong> The
+<a href="https://github.com/Pr1m4lc0d3/expeditions-tools">expeditions-tools</a> repository
+holds the base module tools (<code>fob-modules</code>) and the custom model tools
+(<code>map-models</code>: <code>import_model.py</code>, <code>after_pack.py</code>, <code>fix_map_model_brands.py</code>).
+The other scripts on this page, <code>wiki.py</code> among them, are not published yet;
+their commands are here so you know what exists.</p>
 </blockquote>
 <p>Once you have it, put the folder anywhere you like and work from inside it. Every
 command on this page is written as if your terminal is <strong>in the toolkit folder</strong>:</p>
@@ -417,8 +424,12 @@ a cliff at every boundary.</p>
 <td><code>verify_model.py</code></td>
 </tr>
 <tr>
+<td>import a .glb as a placeable model</td>
+<td><code>import_model.py &lt;file.glb&gt; --name &lt;name&gt; --height &lt;m&gt;</code> (published, <code>map-models</code>)</td>
+</tr>
+<tr>
 <td>make custom models load in a packed map</td>
-<td><code>fix_map_model_brands.py &lt;level&gt; --apply</code> (after every pack; <code>after_pack.ps1</code> runs it)</td>
+<td><code>after_pack.py</code> after every pack, or <code>fix_map_model_brands.py &lt;level&gt; --apply</code> for one map (published, <code>map-models</code>)</td>
 </tr>
 </tbody>
 </table></div>

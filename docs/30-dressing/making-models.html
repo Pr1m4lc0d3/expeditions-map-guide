@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Making and importing your own models &middot; Expeditions Map Making</title>
+<meta name="description" content="Where a model can come from, what each route needs and costs, and the one command that brings a .glb into the editor."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html" aria-current="page">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Dressing the map</p>
+        <h1>Making and importing your own models</h1>
+<p class="lede">Where a model can come from, what each route needs and costs, and the one command that brings a .glb into the editor.</p>      </div>
+      <article class="prose"><p>The game&rsquo;s own models only go so far. This page covers getting a model of your own
+onto a map: where it can come from, how to turn it into something the editor will
+place, and the one step after every pack that makes the map load.</p>
+<p>The rules the editor enforces on a custom model, and why a packed map with one on it
+needs fixing, are on <a href="models.html#your-own-models">Models, rocks and cliffs</a>. This
+page is the practical route through them.</p>
+<div class="admonition note">
+<p class="admonition-title">How much of this is tested</p>
+<p>The whole route, from a picture to a model loaded <strong>in a running game</strong>, has been
+done for a set of custom buildings made with Meshy and imported with these tools.
+The import and the after-pack fix are the same for a model from any source.
+Maps installed from mod.io have not been tested.</p>
+</div>
+<h2 id="before-you-start-what-you-set-up-yourself">Before you start: what you set up yourself<a class="headerlink" href="#before-you-start-what-you-set-up-yourself" title="Permanent link">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Some routes need outside services you sign up for and pay for yourself</p>
+<p>The tools are free and open source. Some of what they drive is not, and none of it
+comes with the tools: they do not install it, cannot set it up for you, and have no
+connection to the companies that run it.</p>
+</div>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>You need</th>
+<th>For</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Expeditions</strong>, with the editor run once</td>
+<td>Everything. The tools use the game&rsquo;s own converter</td>
+<td>You own it</td>
+</tr>
+<tr>
+<td><strong>Python</strong> 3.10 or newer</td>
+<td>Everything</td>
+<td>Free</td>
+</tr>
+<tr>
+<td><strong><a href="https://www.blender.org/">Blender</a></strong></td>
+<td>Converting every model, whatever its source</td>
+<td>Free</td>
+</tr>
+<tr>
+<td><strong><a href="https://www.meshy.ai/">Meshy</a></strong>, a 3D model generator run as a web service</td>
+<td>Only for making a model from a picture</td>
+<td><strong>Paid</strong>, billed by Meshy in credits. As these tools build a model it costs 35 credits: 30 to generate, 5 to remesh. Some plans include free retries; check whether yours covers runs made through the API</td>
+</tr>
+<tr>
+<td><strong>An image generator</strong> you choose</td>
+<td>Only for making the picture you give Meshy</td>
+<td>Depends on the tool</td>
+</tr>
+</tbody>
+</table></div>
+<p>Before you spend anything:</p>
+<ul>
+<li><strong>Your pictures leave your computer</strong> when you use Meshy or an online image
+  generator. Their terms decide who owns the result, not the tools&rsquo; licence. Read
+  them before you sell or publish what you make.</li>
+<li><strong>Credits go the moment a command runs.</strong> A bad result is billed like a good one.</li>
+<li><strong>A service can change.</strong> If Meshy changes its API or prices, that step can stop
+  working until the tools are updated.</li>
+</ul>
+<h2 id="three-places-a-model-can-come-from">Three places a model can come from<a class="headerlink" href="#three-places-a-model-can-come-from" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Route</th>
+<th>Good for</th>
+<th>Needs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Download one</strong></td>
+<td>Rocks, plants, common props</td>
+<td>A model library that allows reuse. Use CC0 or CC BY only</td>
+</tr>
+<tr>
+<td><strong>Build it in Blender</strong></td>
+<td>Anything made of simple parts: timber, steel, walls, kits that fit together</td>
+<td>Blender and time, or a script that builds it</td>
+</tr>
+<tr>
+<td><strong>Generate it from a picture</strong></td>
+<td>One-off buildings and set pieces you cannot find anywhere</td>
+<td>An image generator and a paid Meshy account</td>
+</tr>
+</tbody>
+</table></div>
+<p>Whichever route you take, the end of it is a <code>.glb</code> file, and from there the import is
+the same.</p>
+<h2 id="generating-a-model-from-a-picture">Generating a model from a picture<a class="headerlink" href="#generating-a-model-from-a-picture" title="Permanent link">#</a></h2>
+<p>Meshy builds a textured 3D model from one picture. What it can reproduce depends far
+more on the picture than on anything you do afterwards.</p>
+<p><strong>Make the picture for Meshy, not for people.</strong></p>
+<ul>
+<li><strong>One object, on a transparent or plain background.</strong></li>
+<li><strong>Big solid masses.</strong> Wire, chain, cable, lattice and loose clutter come back as
+  lumps or holes.</li>
+<li><strong>Lettering only on flat, upright panels facing the camera square-on.</strong> Text on a
+  tilted surface came back as mirrored nonsense; every square-on sign read.</li>
+<li><strong>Nothing small in front of a sign.</strong> A small lamp on a sign was stretched into a
+  wedge across the letters, and no setting removed it. Fix it in the picture.</li>
+</ul>
+<p><strong>Generate, then remesh.</strong> Meshy&rsquo;s full-detail model has far too many faces for the
+game, which takes at most 65,534 per mesh. Meshy&rsquo;s remesh rebuilds it at 30,000
+triangles and keeps the texture. Never reduce it in Blender instead: decimating a
+generated model scrambles its texture.</p>
+<div class="hl"><pre><span></span><code>python meshy.py concept.png --name my_shed                 # 30 credits
+python meshy.py --remesh &lt;task id&gt; --name my_shed_rm --polycount 30000    # 5 credits
+python check_model_base.py &lt;meshy store&gt;\my_shed_rm.glb
+</code></pre></div>
+
+<p><code>meshy.py</code> and <code>check_model_base.py</code> are in the toolkit&rsquo;s <code>fob-modules</code> folder.
+<code>check_model_base.py</code> catches a fault Meshy often leaves: the floor stored twice, facing
+up and down, which shows as dark flickering triangles on the ground under the model.</p>
+<div class="admonition note">
+<p class="admonition-title">The Meshy website and the API keep separate lists</p>
+<p>A model you make on the Meshy website cannot be fetched through the API, and the
+other way round. Its <strong>Retry</strong> button is on the website. If a result is bad and
+the picture has not changed, retrying there may be free on your plan, where
+running <code>meshy.py</code> again always starts a new, billed task.</p>
+</div>
+<h2 id="building-a-model-in-blender">Building a model in Blender<a class="headerlink" href="#building-a-model-in-blender" title="Permanent link">#</a></h2>
+<p>A model you build yourself has none of a generated model&rsquo;s surprises, and you choose
+where its origin is. That matters for pieces meant to fit together.</p>
+<p><strong>Kit pieces line up by their origins.</strong> Put the origin of each piece where it joins
+the next one, then import with <code>--keep-origin</code>. Placed at the same point, two pieces
+meet exactly. For example, a chute section has its origin at its joint, and the
+trestle that holds it up has its origin at the top of its cap: place the trestle at
+the chute&rsquo;s joint and it carries the chute. Make the legs longer than they need to be
+and let the extra sink into the ground; one trestle then fits any slope up to its
+length. <span class="prov prov-unver">placed in the editor, not yet seen in game</span></p>
+<p>Keep the part names in Blender different from the model&rsquo;s name. A model whose own
+name appears inside its file is rejected, with an error that does not say why.</p>
+<h2 id="importing-a-model">Importing a model<a class="headerlink" href="#importing-a-model" title="Permanent link">#</a></h2>
+<p>One command checks the file, converts it, installs it into your Media folder, and runs
+the game&rsquo;s own converter on it:</p>
+<div class="hl"><pre><span></span><code>python import_model.py shed.glb --name my_shed --height 4
+</code></pre></div>
+
+<p><code>import_model.py</code> is in the toolkit&rsquo;s <code>map-models</code> folder. The options that matter:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Use it when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--height 4</code> or <code>--length 12</code></td>
+<td>Always. Imported models arrive at any scale; give the real size in metres</td>
+</tr>
+<tr>
+<td><code>--two-sided</code></td>
+<td>You can see through walls from inside. Generated models are often single-sided</td>
+</tr>
+<tr>
+<td><code>--keep-origin</code></td>
+<td>Kit pieces that line up by their origins. Leave it off and the model is set on the ground</td>
+</tr>
+<tr>
+<td><code>--collider box</code></td>
+<td>The automatic collision shape fails or is too lumpy</td>
+</tr>
+</tbody>
+</table></div>
+<p>The name uses lowercase letters, digits and underscores, and must not clash with a
+model the game already has.</p>
+<p><strong>Then restart the editor.</strong> Search Select Asset for the <strong>bare name</strong> (<code>my_shed</code>, not
+the <code>\Media</code> it lists with). A new model can show pure white until the editor has
+converted it; restart once more and it comes up textured.</p>
+<p><img alt="A custom log cabin selected in the editor, rendered completely white" src="../assets/dressing/custom-model-white-in-editor.jpg" /></p>
+<p><img alt="Seven custom cabins on a slope in the editor, all textured" src="../assets/dressing/custom-models-textured-in-editor.jpg" /></p>
+<h2 id="after-every-pack-terrain">After every Pack terrain<a class="headerlink" href="#after-every-pack-terrain" title="Permanent link">#</a></h2>
+<p>A packed map with a custom model on it drops back to the main menu, because the game
+registers the model under one name and looks it up under another. Run this after
+<strong>every</strong> pack, with the game closed:</p>
+<div class="hl"><pre><span></span><code>python after_pack.py --check     see what it would change
+python after_pack.py             fix every map in your Mods folder
+</code></pre></div>
+
+<p>It renames your models inside the packed map to the name the game looks for, keeps a
+backup beside the pak, and warns if a model&rsquo;s textures are not shipped with the map.
+If it says <strong>do not upload this map</strong>, a model will render untextured on every machine
+but yours. The details are in
+<a href="models.html#custom-models-in-a-map-the-step-after-every-pack">Custom models in a map</a>.</p>
+<p><strong>Custom buildings made from pictures with Meshy, imported with these tools, in a
+running game.</strong></p>
+<p><img alt="Three weathered custom cabins in a running game" src="../assets/models/custom-models-in-game_cabins-2.jpg" /></p>
+<h2 id="getting-the-tools">Getting the tools<a class="headerlink" href="#getting-the-tools" title="Permanent link">#</a></h2>
+<p>The scripts are in the <a href="https://github.com/Pr1m4lc0d3/expeditions-tools">expeditions-tools</a>
+repository: <code>map-models</code> for the import and the after-pack fix, <code>fob-modules</code> for
+<code>meshy.py</code> and the model checks. Keep the two folders side by side. Each folder&rsquo;s
+README lists what it needs.</p>
+<h2 id="what-is-not-known-yet">What is not known yet<a class="headerlink" href="#what-is-not-known-yet" title="Permanent link">#</a></h2>
+<ul>
+<li>whether a map with custom models works after being installed from mod.io</li>
+<li>whether a custom model&rsquo;s landmark shows on the navigation map</li>
+<li>kit pieces that line up by their origins have been placed in the editor, not yet
+  seen in a running game</li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../30-dressing/models.html"><span>Previous</span>Models, rocks and cliffs</a><a class="seq-next" href="../30-dressing/vegetation.html"><span>Next</span>Vegetation and distributions</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#before-you-start-what-you-set-up-yourself">Before you start: what you set up yourself</a></li>
+<li><a href="#three-places-a-model-can-come-from">Three places a model can come from</a></li>
+<li><a href="#generating-a-model-from-a-picture">Generating a model from a picture</a></li>
+<li><a href="#building-a-model-in-blender">Building a model in Blender</a></li>
+<li><a href="#importing-a-model">Importing a model</a></li>
+<li><a href="#after-every-pack-terrain">After every Pack terrain</a></li>
+<li><a href="#getting-the-tools">Getting the tools</a></li>
+<li><a href="#what-is-not-known-yet">What is not known yet</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

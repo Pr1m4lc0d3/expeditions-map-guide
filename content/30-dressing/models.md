@@ -243,8 +243,8 @@ the models and been restarted, the same cabins came up textured.
 
 ![Seven custom cabins on a slope in the editor, all textured](../assets/dressing/custom-models-textured-in-editor.jpg)
 
-The toolkit's `glb_to_fbx.py` does the conversion and these checks; see
-[The toolkit](../80-ai-tools/toolkit.html). Saber's own instructions are in the PDF
+The toolkit's `import_model.py` does the conversion and these checks in one command; see
+[Making and importing your own models](making-models.html). Saber's own instructions are in the PDF
 *Custom Level Entities: Models, Overlays and PbrMaterials*.
 
 Saber's PDF was written for SnowRunner, and its Expeditions page says only that the
@@ -301,7 +301,7 @@ that neither your map nor the game carries, because such a model renders untextu
 on every machine except yours.
 
 **Packing again erases the fix.** The pack rebuilds the map from the editor's data,
-so run the command after **every** Pack terrain. The toolkit's `after_pack.ps1` runs
+so run the command after **every** Pack terrain. The toolkit's `after_pack.py` (in `map-models`) runs
 it for you.
 
 Tested: a renamed copy of Saber's sample, and then seven custom buildings on one map,

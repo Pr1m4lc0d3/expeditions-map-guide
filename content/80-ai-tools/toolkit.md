@@ -13,8 +13,12 @@ yourself from a terminal.
 
 ## Getting it
 
-> **[DOWNLOAD LOCATION NEEDED]** — the toolkit is not yet published. When it is,
-> this is where the link goes, and the commands below work as written.
+> **Only part of the toolkit is published so far.** The
+> [expeditions-tools](https://github.com/Pr1m4lc0d3/expeditions-tools) repository
+> holds the base module tools (`fob-modules`) and the custom model tools
+> (`map-models`: `import_model.py`, `after_pack.py`, `fix_map_model_brands.py`).
+> The other scripts on this page, `wiki.py` among them, are not published yet;
+> their commands are here so you know what exists.
 
 Once you have it, put the folder anywhere you like and work from inside it. Every
 command on this page is written as if your terminal is **in the toolkit folder**:
@@ -99,7 +103,8 @@ a cliff at every boundary.
 | re-seat placements | `reseat_models.py` |
 | move a group | `move_cluster.py` |
 | check a custom model converts and loads | `verify_model.py` |
-| make custom models load in a packed map | `fix_map_model_brands.py <level> --apply` (after every pack; `after_pack.ps1` runs it) |
+| import a .glb as a placeable model | `import_model.py <file.glb> --name <name> --height <m>` (published, `map-models`) |
+| make custom models load in a packed map | `after_pack.py` after every pack, or `fix_map_model_brands.py <level> --apply` for one map (published, `map-models`) |
 
 `verify_model.py` exists because `ResourceConverter --mod-convert -s` only tells
 you the files parse. Twenty-nine models passed it and then crashed the editor on

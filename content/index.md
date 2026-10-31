@@ -37,6 +37,7 @@ Two rules save more time than everything else on this site combined.
 <li><a href="00-start/where-things-live.html"><strong>Where everything lives</strong><span>Three copies of your map, and which one to edit. Read this one early.</span></a></li>
 <li><a href="00-start/map-that-loads.html"><strong>Make a map that loads</strong><span>The shortest path from nothing to driving around your own terrain.</span></a></li>
 <li><a href="70-shipping/troubleshooting.html"><strong>Something is broken</strong><span>Symptom to cause. Start here when the game misbehaves.</span></a></li>
+<li><a href="30-dressing/making-models.html"><strong>Your own 3D models</strong><span>Download, build or generate a model, import it in one command, and make the map load.</span></a></li>
 <li><a href="65-vehicles/porting-a-truck.html"><strong>Porting a SnowRunner truck</strong><span>The meshes just work. The textures do not, and that is the whole story.</span></a></li>
 <li><a href="62-modules/index.html"><strong>Every base module</strong><span>All twelve FOB modules, one page each: screenshots, models and every image slot.</span></a></li>
 <li><a href="80-ai-tools/overview.html"><strong>Using AI with the editor</strong><span>The scripts and agent skills, what they are good at, and what they must not be trusted with.</span></a></li>
