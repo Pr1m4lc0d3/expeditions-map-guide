@@ -32,15 +32,16 @@ page is the practical route through them.
 | **Python** 3.10 or newer | Everything | Free |
 | **[Blender](https://www.blender.org/)** | Converting every model, whatever its source | Free |
 | **[Meshy](https://www.meshy.ai/)**, a 3D model generator run as a web service | Only for making a model from a picture | **Paid**, billed by Meshy in credits. As these tools build a model it costs 35 credits: 30 to generate, 5 to remesh. Some plans include free retries; check whether yours covers runs made through the API |
-| **An image generator** you choose | Only for making the picture you give Meshy | Depends on the tool |
+| **[Tripo](https://studio.tripo3d.ai/)**, another 3D model generator run as a web service | The same job as Meshy, instead of it | **Paid**, billed in credits from a Tripo Studio plan. As these tools set it up, a model cost 45 credits in October 2026, and every result has a **free retry** |
+| **An image generator** you choose | Only for making the picture you give the 3D generator | Depends on the tool |
 
 Before you spend anything:
 
-- **Your pictures leave your computer** when you use Meshy or an online image
+- **Your pictures leave your computer** when you use Meshy, Tripo or an online image
   generator. Their terms decide who owns the result, not the tools' licence. Read
   them before you sell or publish what you make.
 - **Credits go the moment a command runs.** A bad result is billed like a good one.
-- **A service can change.** If Meshy changes its API or prices, that step can stop
+- **A service can change.** If Meshy or Tripo changes its site, API or prices, that step can stop
   working until the tools are updated.
 
 ## Three places a model can come from
@@ -49,17 +50,26 @@ Before you spend anything:
 |---|---|---|
 | **Download one** | Rocks, plants, common props | A model library that allows reuse. Use CC0 or CC BY only |
 | **Build it in Blender** | Anything made of simple parts: timber, steel, walls, kits that fit together | Blender and time, or a script that builds it |
-| **Generate it from a picture** | One-off buildings and set pieces you cannot find anywhere | An image generator and a paid Meshy account |
+| **Generate it from a picture** | One-off buildings and set pieces you cannot find anywhere | An image generator and a paid Meshy or Tripo account |
 
 Whichever route you take, the end of it is a `.glb` file, and from there the import is
 the same.
 
 ## Generating a model from a picture
 
-Meshy builds a textured 3D model from one picture. What it can reproduce depends far
-more on the picture than on anything you do afterwards.
+A 3D generator (Meshy and Tripo both work with these tools) builds a textured model
+from one picture. What it can reproduce depends far more on the picture than on
+anything you do afterwards.
 
-**Make the picture for Meshy, not for people.**
+**Start from a photograph of a real one.** For anything that exists in the real world
+(a mine headframe, an ore bin, a water tank), find photographs of a surviving example
+first, and make the concept picture from them. A concept drawn from someone's idea of
+how a structure works comes out as something no one would build; one made from a real
+photograph keeps the real engineering. Several photographs from different sides are
+better than one: a single view hid that one ore bin was as big as its headframe. Use
+photographs only as a reference unless their licence lets you publish them.
+
+**Make the picture for the generator, not for people.**
 
 - **One object, on a transparent or plain background.**
 - **Big solid masses.** Wire, chain, cable, lattice and loose clutter come back as
@@ -69,7 +79,7 @@ more on the picture than on anything you do afterwards.
 - **Nothing small in front of a sign.** A small lamp on a sign was stretched into a
   wedge across the letters, and no setting removed it. Fix it in the picture.
 
-**Generate, then remesh.** Meshy's full-detail model has far too many faces for the
+**With Meshy: generate, then remesh.** Meshy's full-detail model has far too many faces for the
 game, which takes at most 65,534 per mesh. Meshy's remesh rebuilds it at 30,000
 triangles and keeps the texture. Never reduce it in Blender instead: decimating a
 generated model scrambles its texture.
@@ -83,6 +93,20 @@ python check_model_base.py <meshy store>\my_shed_rm.glb
 `meshy.py` and `check_model_base.py` are in the toolkit's `fob-modules` folder.
 `check_model_base.py` catches a fault Meshy often leaves: the floor stored twice, facing
 up and down, which shows as dark flickering triangles on the ground under the model.
+
+**With Tripo: set the polycount before you generate.** Tripo Studio's default is
+2,000,000 triangles; set it to 40,000, the texture to 2K (the game's limit), and turn
+**Remove Lighting** on so no shadows are painted into the texture. Tripo keeps these
+settings between runs. `tripo_studio.py` drives the Studio page in a Chrome you have
+signed in to, refuses to generate if the price is higher than expected, and saves the
+GLB. A bad result gets Tripo's **free retry**, not a second paid run.
+
+```
+python generate_model.py concept.png --name my_shed --with tripo     # or --with meshy
+```
+
+Tested so far: Tripo models made this way passed every import check and were placed in
+the editor. None has been seen in a running game yet.
 
 !!! note "The Meshy website and the API keep separate lists"
     A model you make on the Meshy website cannot be fetched through the API, and the
@@ -161,7 +185,7 @@ running game.**
 
 The scripts are in the [expeditions-tools](https://github.com/Pr1m4lc0d3/expeditions-tools)
 repository: `map-models` for the import and the after-pack fix, `fob-modules` for
-`meshy.py` and the model checks. Keep the two folders side by side. Each folder's
+`generate_model.py`, `meshy.py`, `tripo_studio.py` and the model checks. Keep the two folders side by side. Each folder's
 README lists what it needs.
 
 ## What is not known yet

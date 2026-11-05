@@ -133,7 +133,7 @@ Saber lists these as the props for ordinary zones in Expeditions.
 | `ZonePropertyNotification` | a message shown when the player arrives, once (`executedOnce`) or every time. Invisible in game | not yet covered. Its message uses the same settings as objective notifications, see [Stages and substages](../50-missions/stages.html) |
 | `ZonePropertyMinigame` | a place to play a minigame | [The assignment types](../50-missions/assignment-types.html#minigameinfo) |
 | `ZonePropertyUpgradesGiver` | gives the player listed truck upgrades | not yet covered |
-| `ZonePropertyGateway` | a link to another map | not usable yet, see below |
+| `ZonePropertyGateway` | a link to another map | [Gateways between maps](gateways.html) |
 
 Deploy, Base Building, Inventory Storage, Object Construction and Hidden Hint props
 each carry a `zoneDiscoverability` block, which decides whether the player can see
@@ -141,9 +141,11 @@ the zone before finding it. See [Hiding and revealing zones](discoverability.htm
 The Notification prop has one too, but Saber says not to use it there, since that
 zone is never shown in game.
 
-!!! warning "Gateways do not work in Expeditions yet"
+!!! warning "Gateways take extra work in Expeditions"
     Saber's guide says custom regions of several linked maps are not supported in
     Expeditions; only standalone maps are. <span class="prov prov-doc">documented</span>
+    They can be made to work by hand, see [Gateways between maps](gateways.html).
+    <span class="prov prov-unver">tested in game</span>
 
 ### Props you should not add by hand
 

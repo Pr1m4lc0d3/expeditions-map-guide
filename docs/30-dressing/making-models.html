@@ -114,6 +114,9 @@
         <li>
           <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
 <span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+<span class="pill pill-draft">draft</span>        </li>
       </ul>
     </section>
     <section>
@@ -340,19 +343,24 @@ connection to the companies that run it.</p>
 <td><strong>Paid</strong>, billed by Meshy in credits. As these tools build a model it costs 35 credits: 30 to generate, 5 to remesh. Some plans include free retries; check whether yours covers runs made through the API</td>
 </tr>
 <tr>
+<td><strong><a href="https://studio.tripo3d.ai/">Tripo</a></strong>, another 3D model generator run as a web service</td>
+<td>The same job as Meshy, instead of it</td>
+<td><strong>Paid</strong>, billed in credits from a Tripo Studio plan. As these tools set it up, a model cost 45 credits in October 2026, and every result has a <strong>free retry</strong></td>
+</tr>
+<tr>
 <td><strong>An image generator</strong> you choose</td>
-<td>Only for making the picture you give Meshy</td>
+<td>Only for making the picture you give the 3D generator</td>
 <td>Depends on the tool</td>
 </tr>
 </tbody>
 </table></div>
 <p>Before you spend anything:</p>
 <ul>
-<li><strong>Your pictures leave your computer</strong> when you use Meshy or an online image
+<li><strong>Your pictures leave your computer</strong> when you use Meshy, Tripo or an online image
   generator. Their terms decide who owns the result, not the tools&rsquo; licence. Read
   them before you sell or publish what you make.</li>
 <li><strong>Credits go the moment a command runs.</strong> A bad result is billed like a good one.</li>
-<li><strong>A service can change.</strong> If Meshy changes its API or prices, that step can stop
+<li><strong>A service can change.</strong> If Meshy or Tripo changes its site, API or prices, that step can stop
   working until the tools are updated.</li>
 </ul>
 <h2 id="three-places-a-model-can-come-from">Three places a model can come from<a class="headerlink" href="#three-places-a-model-can-come-from" title="Permanent link">#</a></h2>
@@ -378,16 +386,24 @@ connection to the companies that run it.</p>
 <tr>
 <td><strong>Generate it from a picture</strong></td>
 <td>One-off buildings and set pieces you cannot find anywhere</td>
-<td>An image generator and a paid Meshy account</td>
+<td>An image generator and a paid Meshy or Tripo account</td>
 </tr>
 </tbody>
 </table></div>
 <p>Whichever route you take, the end of it is a <code>.glb</code> file, and from there the import is
 the same.</p>
 <h2 id="generating-a-model-from-a-picture">Generating a model from a picture<a class="headerlink" href="#generating-a-model-from-a-picture" title="Permanent link">#</a></h2>
-<p>Meshy builds a textured 3D model from one picture. What it can reproduce depends far
-more on the picture than on anything you do afterwards.</p>
-<p><strong>Make the picture for Meshy, not for people.</strong></p>
+<p>A 3D generator (Meshy and Tripo both work with these tools) builds a textured model
+from one picture. What it can reproduce depends far more on the picture than on
+anything you do afterwards.</p>
+<p><strong>Start from a photograph of a real one.</strong> For anything that exists in the real world
+(a mine headframe, an ore bin, a water tank), find photographs of a surviving example
+first, and make the concept picture from them. A concept drawn from someone&rsquo;s idea of
+how a structure works comes out as something no one would build; one made from a real
+photograph keeps the real engineering. Several photographs from different sides are
+better than one: a single view hid that one ore bin was as big as its headframe. Use
+photographs only as a reference unless their licence lets you publish them.</p>
+<p><strong>Make the picture for the generator, not for people.</strong></p>
 <ul>
 <li><strong>One object, on a transparent or plain background.</strong></li>
 <li><strong>Big solid masses.</strong> Wire, chain, cable, lattice and loose clutter come back as
@@ -397,7 +413,7 @@ more on the picture than on anything you do afterwards.</p>
 <li><strong>Nothing small in front of a sign.</strong> A small lamp on a sign was stretched into a
   wedge across the letters, and no setting removed it. Fix it in the picture.</li>
 </ul>
-<p><strong>Generate, then remesh.</strong> Meshy&rsquo;s full-detail model has far too many faces for the
+<p><strong>With Meshy: generate, then remesh.</strong> Meshy&rsquo;s full-detail model has far too many faces for the
 game, which takes at most 65,534 per mesh. Meshy&rsquo;s remesh rebuilds it at 30,000
 triangles and keeps the texture. Never reduce it in Blender instead: decimating a
 generated model scrambles its texture.</p>
@@ -409,6 +425,17 @@ python check_model_base.py &lt;meshy store&gt;\my_shed_rm.glb
 <p><code>meshy.py</code> and <code>check_model_base.py</code> are in the toolkit&rsquo;s <code>fob-modules</code> folder.
 <code>check_model_base.py</code> catches a fault Meshy often leaves: the floor stored twice, facing
 up and down, which shows as dark flickering triangles on the ground under the model.</p>
+<p><strong>With Tripo: set the polycount before you generate.</strong> Tripo Studio&rsquo;s default is
+2,000,000 triangles; set it to 40,000, the texture to 2K (the game&rsquo;s limit), and turn
+<strong>Remove Lighting</strong> on so no shadows are painted into the texture. Tripo keeps these
+settings between runs. <code>tripo_studio.py</code> drives the Studio page in a Chrome you have
+signed in to, refuses to generate if the price is higher than expected, and saves the
+GLB. A bad result gets Tripo&rsquo;s <strong>free retry</strong>, not a second paid run.</p>
+<div class="hl"><pre><span></span><code>python generate_model.py concept.png --name my_shed --with tripo     # or --with meshy
+</code></pre></div>
+
+<p>Tested so far: Tripo models made this way passed every import check and were placed in
+the editor. None has been seen in a running game yet.</p>
 <div class="admonition note">
 <p class="admonition-title">The Meshy website and the API keep separate lists</p>
 <p>A model you make on the Meshy website cannot be fetched through the API, and the
@@ -487,7 +514,7 @@ running game.</strong></p>
 <h2 id="getting-the-tools">Getting the tools<a class="headerlink" href="#getting-the-tools" title="Permanent link">#</a></h2>
 <p>The scripts are in the <a href="https://github.com/Pr1m4lc0d3/expeditions-tools">expeditions-tools</a>
 repository: <code>map-models</code> for the import and the after-pack fix, <code>fob-modules</code> for
-<code>meshy.py</code> and the model checks. Keep the two folders side by side. Each folder&rsquo;s
+<code>generate_model.py</code>, <code>meshy.py</code>, <code>tripo_studio.py</code> and the model checks. Keep the two folders side by side. Each folder&rsquo;s
 README lists what it needs.</p>
 <h2 id="what-is-not-known-yet">What is not known yet<a class="headerlink" href="#what-is-not-known-yet" title="Permanent link">#</a></h2>
 <ul>
