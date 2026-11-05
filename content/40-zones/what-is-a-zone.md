@@ -144,7 +144,7 @@ zone is never shown in game.
 !!! warning "Gateways take extra work in Expeditions"
     Saber's guide says custom regions of several linked maps are not supported in
     Expeditions; only standalone maps are. <span class="prov prov-doc">documented</span>
-    They can be made to work by hand, see [Gateways between maps](gateways.html).
+    They work anyway, without a region. See [Gateways between maps](gateways.html).
     <span class="prov prov-unver">tested in game</span>
 
 ### Props you should not add by hand

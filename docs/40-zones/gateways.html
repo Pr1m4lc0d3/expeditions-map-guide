@@ -301,21 +301,23 @@
       <article class="prose"><p>A gateway is a zone that sends the player&rsquo;s truck to a zone on another map. It is
 how vanilla joins a surface map to its cave.</p>
 <p>Saber&rsquo;s guide says custom regions of several linked maps are not supported in
-Expeditions. <span class="prov prov-doc">documented</span> <strong>They can be made to
-work.</strong> A truck has driven from one custom map to a second and back again, on
-PC. <span class="prov prov-unver">tested in game</span> The game has all the
-parts. Saber&rsquo;s tools just don&rsquo;t produce a working result by themselves.</p>
+Expeditions, and that both maps of a gateway must be in the same region.
+<span class="prov prov-doc">documented</span> <strong>Gateways work anyway, and you don&rsquo;t
+need a region.</strong> Two ordinary standalone maps have been linked and driven between
+on PC, with a stock truck and a custom one.
+<span class="prov prov-unver">tested in game</span></p>
 <div class="admonition warning">
 <p class="admonition-title">This page is a draft</p>
-<p>One two-map test proves it can be done. It does not yet prove every step below
-is needed, and the list at the end says what has not been tested.</p>
+<p>This rests on one pair of small test maps. The list at the end says what has
+not been tested.</p>
 </div>
 <h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">#</a></h2>
 <ul>
 <li>Two maps, each packed to a <code>.pak</code>, each with a deploy zone.</li>
 <li>A gateway zone on each map, each pointing at the other.</li>
-<li>A small region folder that names both maps.</li>
 </ul>
+<p>Both maps must be installed. The player starts on one of them like any other custom
+map.</p>
 <h2 id="step-1-give-each-map-four-built-in-ground-layers">Step 1: give each map four built-in ground layers<a class="headerlink" href="#step-1-give-each-map-four-built-in-ground-layers" title="Permanent link">#</a></h2>
 <p>Do this first, because getting it wrong crashes the game the moment a truck
 arrives, and the error says nothing useful.</p>
@@ -394,49 +396,9 @@ corrected inside the <code>.pak</code> afterward. <span class="prov prov-unver">
 </tr>
 </tbody>
 </table></div>
-<p>That second form is what Saber&rsquo;s region tool writes. It does work inside the region
-files, where the game swaps it for the real name as it loads them. It isn&rsquo;t swapped
-in a map&rsquo;s own <code>.pak</code>, and in the test the map&rsquo;s own copy is the one the game used.
+<p>That second form is what Saber&rsquo;s hidden region tool writes. The game only swaps it
+for the real name when it loads a region&rsquo;s files, not in a map&rsquo;s own <code>.pak</code>.
 <span class="prov prov-unver">measured</span></p>
-<h2 id="step-4-add-the-region-folder">Step 4: add the region folder<a class="headerlink" href="#step-4-add-the-region-folder" title="Permanent link">#</a></h2>
-<p>The game looks for regions in <code>Media\prebuild\&lt;region name&gt;\</code>, with a
-<code>regionDesc.json</code> in it. <span class="prov prov-unver">measured</span> Saber&rsquo;s tool
-for making one is hidden inside <code>ZoneSettingsEditor.exe</code>, and what it writes needs
-fixing by hand. Do not save through the tool again afterward, because it strips
-values the game needs.</p>
-<p>The region&rsquo;s <code>zone_settings.json</code> needs all of these, or the game fails in a
-different place for each one <span class="prov prov-unver">measured</span>:</p>
-<div class="table-scroll"><table>
-<thead>
-<tr>
-<th>Requirement</th>
-<th>If it&rsquo;s missing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>The data key and region name are <code>mod_region</code>, not your region&rsquo;s name</td>
-<td>the game stops before the main menu</td>
-</tr>
-<tr>
-<td>Every map after the first has <code>modId</code> and <code>inventorySettings</code></td>
-<td>the Custom list comes up empty</td>
-</tr>
-<tr>
-<td>Every map has <code>uiFuelConsumptionModifier</code> 1, <code>birdsMultiplier</code> 0.5, <code>noFlyZone</code> -1</td>
-<td>a blank expedition setup screen</td>
-</tr>
-<tr>
-<td>Every map has a <code>caveSettings</code> block and a <code>uiImages</code> list</td>
-<td>the game freezes on arriving at the map</td>
-</tr>
-<tr>
-<td>Gateways have <code>isShown</code> and <code>isAffectedByZoneSettings</code> set to <code>true</code></td>
-<td>the tool strips these and the region loader doesn&rsquo;t restore them</td>
-</tr>
-</tbody>
-</table></div>
-<p>Whether the crossing needs this folder at all is not yet tested, see below.</p>
 <h2 id="what-the-player-sees">What the player sees<a class="headerlink" href="#what-the-player-sees" title="Permanent link">#</a></h2>
 <p>Drive into the zone and a <strong>Travel to</strong> prompt appears. Press it, and a popup offers
 <strong>Let&rsquo;s go</strong> and <strong>Not now</strong>. The truck then arrives in the target zone, and the
@@ -449,16 +411,17 @@ and logs an error, but the crossing still works.
 <span class="prov prov-unver">tested in game</span></p>
 <h2 id="not-yet-known">Not yet known<a class="headerlink" href="#not-yet-known" title="Permanent link">#</a></h2>
 <ul>
-<li>Whether the region folder is needed, or the two <code>.pak</code> files are enough.</li>
 <li>Whether a <code>mod_level_</code> link can be kept through a pack, so that no correction is
   needed afterward.</li>
 <li>How to deliver a linked set of maps to other players, and whether a map installed
   through mod.io still goes by <code>mod_level_&lt;name&gt;</code>.</li>
+<li>Whether a mission can span both maps. Without a region, each map keeps its own
+  expedition, and the crossing was tested in free roam only.</li>
 <li>Whether a cave works. Vanilla caves use <code>caveSettings</code>, with <code>isCave</code> and
   <code>surfaceMapID</code>, and <code>isCave</code> on the gateway. None of that has been tried on a
   custom map.</li>
 <li>More than two maps, or more than one gateway on a map.</li>
-<li>Popup images, locked gateways, modded trucks, and anything carried across.</li>
+<li>Popup images, locked gateways, and anything carried across.</li>
 <li>Any platform other than PC.</li>
 </ul></article>
 
@@ -474,7 +437,6 @@ and logs an error, but the crossing still works.
 <li><a href="#step-1-give-each-map-four-built-in-ground-layers">Step 1: give each map four built-in ground layers</a></li>
 <li><a href="#step-2-place-the-gateway-zones">Step 2: place the gateway zones</a></li>
 <li><a href="#step-3-write-the-link-with-the-real-level-name">Step 3: write the link with the real level name</a></li>
-<li><a href="#step-4-add-the-region-folder">Step 4: add the region folder</a></li>
 <li><a href="#what-the-player-sees">What the player sees</a></li>
 <li><a href="#not-yet-known">Not yet known</a></li>
 </ul>

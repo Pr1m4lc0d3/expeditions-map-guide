@@ -10,20 +10,23 @@ A gateway is a zone that sends the player's truck to a zone on another map. It i
 how vanilla joins a surface map to its cave.
 
 Saber's guide says custom regions of several linked maps are not supported in
-Expeditions. <span class="prov prov-doc">documented</span> **They can be made to
-work.** A truck has driven from one custom map to a second and back again, on
-PC. <span class="prov prov-unver">tested in game</span> The game has all the
-parts. Saber's tools just don't produce a working result by themselves.
+Expeditions, and that both maps of a gateway must be in the same region.
+<span class="prov prov-doc">documented</span> **Gateways work anyway, and you don't
+need a region.** Two ordinary standalone maps have been linked and driven between
+on PC, with a stock truck and a custom one.
+<span class="prov prov-unver">tested in game</span>
 
 !!! warning "This page is a draft"
-    One two-map test proves it can be done. It does not yet prove every step below
-    is needed, and the list at the end says what has not been tested.
+    This rests on one pair of small test maps. The list at the end says what has
+    not been tested.
 
 ## What you need
 
 - Two maps, each packed to a `.pak`, each with a deploy zone.
 - A gateway zone on each map, each pointing at the other.
-- A small region folder that names both maps.
+
+Both maps must be installed. The player starts on one of them like any other custom
+map.
 
 ## Step 1: give each map four built-in ground layers
 
@@ -81,31 +84,9 @@ Two wrong forms, and what they do:
 | `level_gate_two \|\| gate_two` | names a level that doesn't exist |
 | `` ~#@%$`*level_gate_two~#@%$`* \|\| gate_two `` | the prompt shows the raw text, and pressing Let's go drops you to the main menu <span class="prov prov-unver">tested in game</span> |
 
-That second form is what Saber's region tool writes. It does work inside the region
-files, where the game swaps it for the real name as it loads them. It isn't swapped
-in a map's own `.pak`, and in the test the map's own copy is the one the game used.
+That second form is what Saber's hidden region tool writes. The game only swaps it
+for the real name when it loads a region's files, not in a map's own `.pak`.
 <span class="prov prov-unver">measured</span>
-
-## Step 4: add the region folder
-
-The game looks for regions in `Media\prebuild\<region name>\`, with a
-`regionDesc.json` in it. <span class="prov prov-unver">measured</span> Saber's tool
-for making one is hidden inside `ZoneSettingsEditor.exe`, and what it writes needs
-fixing by hand. Do not save through the tool again afterward, because it strips
-values the game needs.
-
-The region's `zone_settings.json` needs all of these, or the game fails in a
-different place for each one <span class="prov prov-unver">measured</span>:
-
-| Requirement | If it's missing |
-|---|---|
-| The data key and region name are `mod_region`, not your region's name | the game stops before the main menu |
-| Every map after the first has `modId` and `inventorySettings` | the Custom list comes up empty |
-| Every map has `uiFuelConsumptionModifier` 1, `birdsMultiplier` 0.5, `noFlyZone` -1 | a blank expedition setup screen |
-| Every map has a `caveSettings` block and a `uiImages` list | the game freezes on arriving at the map |
-| Gateways have `isShown` and `isAffectedByZoneSettings` set to `true` | the tool strips these and the region loader doesn't restore them |
-
-Whether the crossing needs this folder at all is not yet tested, see below.
 
 ## What the player sees
 
@@ -124,14 +105,15 @@ and logs an error, but the crossing still works.
 
 ## Not yet known
 
-- Whether the region folder is needed, or the two `.pak` files are enough.
 - Whether a `mod_level_` link can be kept through a pack, so that no correction is
   needed afterward.
 - How to deliver a linked set of maps to other players, and whether a map installed
   through mod.io still goes by `mod_level_<name>`.
+- Whether a mission can span both maps. Without a region, each map keeps its own
+  expedition, and the crossing was tested in free roam only.
 - Whether a cave works. Vanilla caves use `caveSettings`, with `isCave` and
   `surfaceMapID`, and `isCave` on the gateway. None of that has been tried on a
   custom map.
 - More than two maps, or more than one gateway on a map.
-- Popup images, locked gateways, modded trucks, and anything carried across.
+- Popup images, locked gateways, and anything carried across.
 - Any platform other than PC.
