@@ -385,7 +385,7 @@ actually been run.</p>
 <td>Task</td>
 <td><code>tasksSettings</code>, needs <code>taskGiverZone</code></td>
 <td>Driving to a giver zone</td>
-<td>ON A CUSTOM MAP</td>
+<td>PROVEN</td>
 </tr>
 <tr>
 <td>Contest</td>
@@ -433,13 +433,13 @@ Objective names must be unique across all kinds.</p>
 <td><code>takeInventory</code></td>
 <td>Collect items from zones</td>
 <td><code>zoneToTakeInvFrom[].zoneGlobalId</code>, <code>inventoryToTake</code></td>
-<td>ON A CUSTOM MAP</td>
+<td>PROVEN</td>
 </tr>
 <tr>
 <td><code>objectConstruction</code></td>
 <td>Deliver items, fuel, repairs, power; can build a model</td>
 <td><code>zoneToFill[].globalZoneId</code>, <code>inventory</code>, <code>fuelNum</code>, <code>repairsNum</code>, <code>electroNum</code>, <code>model</code></td>
-<td>ON A CUSTOM MAP</td>
+<td>PROVEN for a quest item; see Traps</td>
 </tr>
 <tr>
 <td><code>truckDelivery</code></td>
@@ -752,6 +752,12 @@ minigame failures. DOCUMENTED.</p>
 <li>Opening a module zone before its base exists breaks every popup after it.</li>
 <li>Finishing an Expedition keeps the player on the map.</li>
 <li>Hidden editor fields survive a pack, so they can be written in the JSON.</li>
+<li><strong>Deliveries name a type, not an item.</strong> Leave <code>invId</code> blank and set <code>type</code>, as vanilla
+    does. With a named item, the delivery never completed. An anchor, which has uses, was
+    offered with a blank id but never delivered. A plain quest item (<code>Quest_item</code>, type 14)
+    completed. The zone it is collected from still needs the item&rsquo;s id to spawn it.</li>
+<li><strong>A Task saves under its map&rsquo;s id</strong>, <code>mod_level_&lt;name&gt;_&lt;task&gt;</code>, even inside a region. An
+    Expedition saves under the group it was started from.</li>
 <li>Schema enum listings repeat the first value, so a saved number is the listed index
     minus one: <code>contractType</code> 1 is EXPEDITION.</li>
 </ol>
@@ -818,7 +824,7 @@ minigame failures. DOCUMENTED.</p>
 <tr>
 <td>Side jobs</td>
 <td>Tasks at giver zones</td>
-<td>ON A CUSTOM MAP</td>
+<td>PROVEN</td>
 </tr>
 <tr>
 <td>Earn a specialist</td>

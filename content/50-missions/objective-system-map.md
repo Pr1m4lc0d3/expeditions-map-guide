@@ -47,7 +47,7 @@ Three ideas carry every story:
 | Expedition | `contractsSettings`, `contractType` 1 | Expedition selection menu | PROVEN |
 | Free Roam | an Expedition with one stage holding only `freeRoamInfo` | Menu | PROVEN |
 | Contract | `contractsSettings`, `contractType` 0 | On the map | ON A CUSTOM MAP |
-| Task | `tasksSettings`, needs `taskGiverZone` | Driving to a giver zone | ON A CUSTOM MAP |
+| Task | `tasksSettings`, needs `taskGiverZone` | Driving to a giver zone | PROVEN |
 | Contest | `contestSettings` | Not used in Expeditions, says Saber | none |
 | Regional contract | region file, zones from all maps | Described for SnowRunner only | Not needed: see below |
 
@@ -65,8 +65,8 @@ Objective names must be unique across all kinds.
 |---|---|---|---|
 | `visitAllZones` | Reach zones | `zones[].globalZoneId`, `uiDesc` | PROVEN, also across maps |
 | `freeRoamInfo` | Nothing: Free Roam only | `map`, `uiDesc` | PROVEN |
-| `takeInventory` | Collect items from zones | `zoneToTakeInvFrom[].zoneGlobalId`, `inventoryToTake` | ON A CUSTOM MAP |
-| `objectConstruction` | Deliver items, fuel, repairs, power; can build a model | `zoneToFill[].globalZoneId`, `inventory`, `fuelNum`, `repairsNum`, `electroNum`, `model` | ON A CUSTOM MAP |
+| `takeInventory` | Collect items from zones | `zoneToTakeInvFrom[].zoneGlobalId`, `inventoryToTake` | PROVEN |
+| `objectConstruction` | Deliver items, fuel, repairs, power; can build a model | `zoneToFill[].globalZoneId`, `inventory`, `fuelNum`, `repairsNum`, `electroNum`, `model` | PROVEN for a quest item; see Traps |
 | `truckDelivery` | Drive a placed truck to a zone | `globalZoneDeliveryId`, `afterStageFinished` | ON A CUSTOM MAP |
 | `scoutingInfo` | Explore an area to a percentage | `scoutingsProp[]`: `zoneGlobalId`, `radius`, `winCondition`, offset | DOCUMENTED |
 | `minigameInfo` | Play minigames | `minigames[]`: `zoneGlobalId`, `name`; settings sit on the zone | DOCUMENTED |
@@ -158,7 +158,13 @@ Zones that tell a story without an objective: `ZonePropertyNotification`,
 7. Opening a module zone before its base exists breaks every popup after it.
 8. Finishing an Expedition keeps the player on the map.
 9. Hidden editor fields survive a pack, so they can be written in the JSON.
-10. Schema enum listings repeat the first value, so a saved number is the listed index
+10. **Deliveries name a type, not an item.** Leave `invId` blank and set `type`, as vanilla
+    does. With a named item, the delivery never completed. An anchor, which has uses, was
+    offered with a blank id but never delivered. A plain quest item (`Quest_item`, type 14)
+    completed. The zone it is collected from still needs the item's id to spawn it.
+11. **A Task saves under its map's id**, `mod_level_<name>_<task>`, even inside a region. An
+    Expedition saves under the group it was started from.
+12. Schema enum listings repeat the first value, so a saved number is the listed index
     minus one: `contractType` 1 is EXPEDITION.
 
 ## 8. Story patterns
@@ -175,5 +181,5 @@ Zones that tell a story without an objective: `ZonePropertyNotification`,
 | Survey an area | `scoutingInfo`, then a reward | DOCUMENTED |
 | Investigate | `minigameInfo`: photos, inspection | DOCUMENTED |
 | Rescue | `truckDelivery` with a placed truck | ON A CUSTOM MAP |
-| Side jobs | Tasks at giver zones | ON A CUSTOM MAP |
+| Side jobs | Tasks at giver zones | PROVEN |
 | Earn a specialist | `ObjectiveRewardSpecialist` | DOCUMENTED |
