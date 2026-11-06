@@ -376,7 +376,7 @@ minute pack.</p>
 </tr>
 <tr>
 <td>Map shows &ldquo;No Signal&rdquo; as its picture</td>
-<td><a href="#no-signal-instead-of-a-picture"><code>uiMinimapScreenshot</code> left at its default</a></td>
+<td><a href="#no-signal-instead-of-a-picture">normal for every custom map</a></td>
 </tr>
 <tr>
 <td>Terrain edits do nothing in game</td>
@@ -544,9 +544,12 @@ needs at least one required assignment, and a stage made entirely of optional on
 invalid.</p>
 <h2 id="no-signal-instead-of-a-picture">No Signal instead of a picture<a class="headerlink" href="#no-signal-instead-of-a-picture" title="Permanent link">#</a></h2>
 <p>Your map shows the &ldquo;No Signal&rdquo; placeholder on the selection screen.</p>
-<p><code>uiMinimapScreenshot</code> is still at its default value of <code>mapAllLocked</code>, which <em>is</em> the No
-Signal image. Point it at a 400 x 400 PNG in your map&rsquo;s <code>ui\textures</code> folder, named
-without the file extension.</p>
+<p>Every custom map shows this, and nothing in the map can change it. Saber&rsquo;s guide says to
+set <code>uiMinimapScreenshot</code> to a 400 x 400 PNG, but a map set up that way still showed no
+image. <span class="prov prov-unver">tested in game</span> The game&rsquo;s scripts never read
+that field. The picture comes from the game&rsquo;s own image library, which has one entry per
+vanilla map, and any other map falls back to No Signal.
+<span class="prov prov-unver">measured</span></p>
 <p><strong>What it looks like:</strong> custom maps listed on the selection screen, with the No Signal
 placeholder where the map&rsquo;s picture should be.</p>
 <p><img alt="The expedition selection screen with custom maps listed and a NO SIGNAL placeholder as the map picture" src="../assets/shipping/no-signal-preview.jpg" /></p>

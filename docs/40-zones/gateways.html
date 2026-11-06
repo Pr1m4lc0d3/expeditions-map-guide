@@ -399,6 +399,71 @@ corrected inside the <code>.pak</code> afterward. <span class="prov prov-unver">
 <p>That second form is what Saber&rsquo;s hidden region tool writes. The game only swaps it
 for the real name when it loads a region&rsquo;s files, not in a map&rsquo;s own <code>.pak</code>.
 <span class="prov prov-unver">measured</span></p>
+<h2 id="grouping-the-maps-in-a-region">Grouping the maps in a region<a class="headerlink" href="#grouping-the-maps-in-a-region" title="Permanent link">#</a></h2>
+<p>The crossing doesn&rsquo;t need a region, but a region is how the game groups linked maps.
+A region is a folder at <code>Media\prebuild\&lt;id&gt;</code>, holding <code>regionDesc.json</code> and copies of
+each map&rsquo;s zones and contracts. <span class="prov prov-unver">tested in game</span></p>
+<p>Saber&rsquo;s hidden region tool writes files the game can&rsquo;t load, and saving through it
+again undoes any repair. A working region needs all of this:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>What the region needs</th>
+<th>What happens without it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>its data stored under the key <code>mod_region</code></td>
+<td>the game hangs before the main menu</td>
+</tr>
+<tr>
+<td>a <code>modId</code> of <code>mod_&lt;id&gt;</code> on the second map onward</td>
+<td>the Custom list comes up empty</td>
+</tr>
+<tr>
+<td><code>uiFuelConsumptionModifier</code> 1, <code>birdsMultiplier</code> 0.5, <code>noFlyZone</code> -1 on each map</td>
+<td>a divide by zero blanks the Expedition setup screen</td>
+</tr>
+<tr>
+<td><code>caveSettings</code> and <code>uiImages</code> on each map</td>
+<td>the game freezes entering the map</td>
+</tr>
+<tr>
+<td>every zone setting written out, such as <code>isShown</code></td>
+<td>the region loader fills in no defaults</td>
+</tr>
+<tr>
+<td>links written <code>mod_level_&lt;name&gt; \|\| &lt;zone&gt;</code></td>
+<td>Let&rsquo;s go drops you to the main menu</td>
+</tr>
+</tbody>
+</table></div>
+<p>A region holds a copy of each map&rsquo;s zones, so <strong>rebuild it after every pack.</strong></p>
+<h2 id="locking-a-map-until-the-player-earns-it">Locking a map until the player earns it<a class="headerlink" href="#locking-a-map-until-the-player-earns-it" title="Permanent link">#</a></h2>
+<p>A map can stay locked in the Expedition selection list while a gateway still leads
+into it. Three settings do this, and all of them have worked in game.
+<span class="prov prov-unver">tested in game</span></p>
+<p><strong>Lock its Expeditions.</strong> List the objective that must be finished in
+<code>blockerObjectives</code> on each Expedition of that map, including its Free Roam. The
+editor hides this field, so write it in the map&rsquo;s <code>objective_settings.json</code>. A pack
+keeps it. Until then, the row shows a lock and can&rsquo;t be started.</p>
+<p><strong>Use the full saved name.</strong> The game saves a finished contract as
+<code>mod_&lt;region id&gt;_&lt;contract name&gt;</code>, such as <code>mod_gateway_test_Find the Gate</code>. Write that
+whole name. A plain name shows the lock, but finishing the contract never clears it.
+Contracts played from a map&rsquo;s own group save under that map&rsquo;s id instead, so start
+the chain from the region&rsquo;s group.</p>
+<p><strong>Hide its camp.</strong> Set the deploy zone&rsquo;s <code>zoneDiscoverability</code> to state 0,
+<code>NOT_EXPLORED</code>. The player finds it by driving to it, and can deploy there once the
+map unlocks.</p>
+<p><code>blockerMap</code>, the field Saber documents for this, did not lock the row.</p>
+<p><strong>One Expedition can span both maps.</strong> A two-stage Expedition, reach the gate and then
+reach a base site on the far map, finished in game and unlocked Free Roam on both maps.
+Its reward opened a working base on the far map. As with gateway links, the pack writes
+references to the other map as <code>level_&lt;name&gt;</code>, so correct them to <code>mod_level_&lt;name&gt;</code> in
+the <code>.pak</code>, or the far stage can never finish.</p>
+<p><strong>Keep module zones hidden until the base exists.</strong> Opening a module zone before its
+base has opened showed an empty Base modules panel and broke every popup after it.</p>
 <h2 id="what-the-player-sees">What the player sees<a class="headerlink" href="#what-the-player-sees" title="Permanent link">#</a></h2>
 <p>Drive into the zone and a <strong>Travel to</strong> prompt appears. Press it, and a popup offers
 <strong>Let&rsquo;s go</strong> and <strong>Not now</strong>. The truck then arrives in the target zone, and the
@@ -417,6 +482,9 @@ and logs an error, but the crossing still works.
   through mod.io still goes by <code>mod_level_&lt;name&gt;</code>.</li>
 <li>Whether a mission can span both maps. Without a region, each map keeps its own
   expedition, and the crossing was tested in free roam only.</li>
+<li>How to stop a region&rsquo;s maps also being listed on their own. In the Expedition
+  selection list, a region gets its own group, headed <code>mod_&lt;id&gt;</code>, and each map keeps
+  its separate group as well.</li>
 <li>Whether a cave works. Vanilla caves use <code>caveSettings</code>, with <code>isCave</code> and
   <code>surfaceMapID</code>, and <code>isCave</code> on the gateway. None of that has been tried on a
   custom map.</li>
@@ -437,6 +505,8 @@ and logs an error, but the crossing still works.
 <li><a href="#step-1-give-each-map-four-built-in-ground-layers">Step 1: give each map four built-in ground layers</a></li>
 <li><a href="#step-2-place-the-gateway-zones">Step 2: place the gateway zones</a></li>
 <li><a href="#step-3-write-the-link-with-the-real-level-name">Step 3: write the link with the real level name</a></li>
+<li><a href="#grouping-the-maps-in-a-region">Grouping the maps in a region</a></li>
+<li><a href="#locking-a-map-until-the-player-earns-it">Locking a map until the player earns it</a></li>
 <li><a href="#what-the-player-sees">What the player sees</a></li>
 <li><a href="#not-yet-known">Not yet known</a></li>
 </ul>

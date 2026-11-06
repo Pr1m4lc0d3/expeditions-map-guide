@@ -88,6 +88,58 @@ That second form is what Saber's hidden region tool writes. The game only swaps 
 for the real name when it loads a region's files, not in a map's own `.pak`.
 <span class="prov prov-unver">measured</span>
 
+## Grouping the maps in a region
+
+The crossing doesn't need a region, but a region is how the game groups linked maps.
+A region is a folder at `Media\prebuild\<id>`, holding `regionDesc.json` and copies of
+each map's zones and contracts. <span class="prov prov-unver">tested in game</span>
+
+Saber's hidden region tool writes files the game can't load, and saving through it
+again undoes any repair. A working region needs all of this:
+
+| What the region needs | What happens without it |
+|---|---|
+| its data stored under the key `mod_region` | the game hangs before the main menu |
+| a `modId` of `mod_<id>` on the second map onward | the Custom list comes up empty |
+| `uiFuelConsumptionModifier` 1, `birdsMultiplier` 0.5, `noFlyZone` -1 on each map | a divide by zero blanks the Expedition setup screen |
+| `caveSettings` and `uiImages` on each map | the game freezes entering the map |
+| every zone setting written out, such as `isShown` | the region loader fills in no defaults |
+| links written `mod_level_<name> \|\| <zone>` | Let's go drops you to the main menu |
+
+A region holds a copy of each map's zones, so **rebuild it after every pack.**
+
+## Locking a map until the player earns it
+
+A map can stay locked in the Expedition selection list while a gateway still leads
+into it. Three settings do this, and all of them have worked in game.
+<span class="prov prov-unver">tested in game</span>
+
+**Lock its Expeditions.** List the objective that must be finished in
+`blockerObjectives` on each Expedition of that map, including its Free Roam. The
+editor hides this field, so write it in the map's `objective_settings.json`. A pack
+keeps it. Until then, the row shows a lock and can't be started.
+
+**Use the full saved name.** The game saves a finished contract as
+`mod_<region id>_<contract name>`, such as `mod_gateway_test_Find the Gate`. Write that
+whole name. A plain name shows the lock, but finishing the contract never clears it.
+Contracts played from a map's own group save under that map's id instead, so start
+the chain from the region's group.
+
+**Hide its camp.** Set the deploy zone's `zoneDiscoverability` to state 0,
+`NOT_EXPLORED`. The player finds it by driving to it, and can deploy there once the
+map unlocks.
+
+`blockerMap`, the field Saber documents for this, did not lock the row.
+
+**One Expedition can span both maps.** A two-stage Expedition, reach the gate and then
+reach a base site on the far map, finished in game and unlocked Free Roam on both maps.
+Its reward opened a working base on the far map. As with gateway links, the pack writes
+references to the other map as `level_<name>`, so correct them to `mod_level_<name>` in
+the `.pak`, or the far stage can never finish.
+
+**Keep module zones hidden until the base exists.** Opening a module zone before its
+base has opened showed an empty Base modules panel and broke every popup after it.
+
 ## What the player sees
 
 Drive into the zone and a **Travel to** prompt appears. Press it, and a popup offers
@@ -111,6 +163,9 @@ and logs an error, but the crossing still works.
   through mod.io still goes by `mod_level_<name>`.
 - Whether a mission can span both maps. Without a region, each map keeps its own
   expedition, and the crossing was tested in free roam only.
+- How to stop a region's maps also being listed on their own. In the Expedition
+  selection list, a region gets its own group, headed `mod_<id>`, and each map keeps
+  its separate group as well.
 - Whether a cave works. Vanilla caves use `caveSettings`, with `isCave` and
   `surfaceMapID`, and `isCave` on the gateway. None of that has been tried on a
   custom map.

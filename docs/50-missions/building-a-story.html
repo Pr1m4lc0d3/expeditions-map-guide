@@ -296,22 +296,22 @@
       <article class="prose"><p>You have stages, and stages have rewards. Put those two together and you have
 progression, because <strong>a reward can change the map</strong>.</p>
 <p>That is the whole technique, and it is better than it sounds.</p>
-<h2 id="the-obvious-approach-and-why-it-is-not-available">The obvious approach, and why it is not available<a class="headerlink" href="#the-obvious-approach-and-why-it-is-not-available" title="Permanent link">#</a></h2>
+<h2 id="locking-one-mission-behind-another">Locking one mission behind another<a class="headerlink" href="#locking-one-mission-behind-another" title="Permanent link">#</a></h2>
 <p>The natural way to build a campaign is to lock mission B until mission A is done.
 There is a field for exactly that, <code>blockerObjectives</code>, which takes a list of
 objective names.</p>
-<p>The official guide says the field is &ldquo;currently absent&rdquo;.</p>
-<p>Here is the more precise situation. The field exists on every objective, and the
-editor&rsquo;s own type schema marks it <strong>hidden from mod tools</strong> rather than absent.
-<span class="prov prov-schema">schema only</span> It sits in every custom map&rsquo;s file
-as an empty list. So writing it in by hand may well work.</p>
+<p>The official guide says the field is &ldquo;currently absent&rdquo;. It isn&rsquo;t: the editor hides it
+from mod tools, but it sits in every custom map&rsquo;s <code>objective_settings.json</code> as an empty
+list, and a value written there by hand works.
+<span class="prov prov-unver">tested in game</span> The locked Expedition shows a lock
+in the selection list and can&rsquo;t be started until the blocker is finished.</p>
 <div class="admonition warning">
-<p class="admonition-title">Worth an experiment, not a foundation</p>
-<p>Nobody has confirmed that <code>blockerObjectives</code> functions in a custom map. If you
-test it, you will have learned something genuinely new. Until then, do not build
-a multi-mission campaign that depends on it.</p>
+<p class="admonition-title">Use the full saved name</p>
+<p>A plain objective name shows the lock, but finishing that objective never clears
+it. Write the name the game saves: <code>mod_&lt;id&gt;_&lt;objective name&gt;</code>. See
+<a href="../40-zones/gateways.md">Gateways between maps</a> for how this was tested.</p>
 </div>
-<h2 id="what-actually-works-rewards-that-reshape-the-world">What actually works: rewards that reshape the world<a class="headerlink" href="#what-actually-works-rewards-that-reshape-the-world" title="Permanent link">#</a></h2>
+<h2 id="rewards-that-reshape-the-world">Rewards that reshape the world<a class="headerlink" href="#rewards-that-reshape-the-world" title="Permanent link">#</a></h2>
 <p>Three reward types change zones, and any stage can carry them:</p>
 <div class="table-scroll"><table>
 <thead>
@@ -419,8 +419,8 @@ good the terrain is.</p></article>
     <p>On this page</p>
     <div class="toc">
 <ul>
-<li><a href="#the-obvious-approach-and-why-it-is-not-available">The obvious approach, and why it is not available</a></li>
-<li><a href="#what-actually-works-rewards-that-reshape-the-world">What actually works: rewards that reshape the world</a></li>
+<li><a href="#locking-one-mission-behind-another">Locking one mission behind another</a></li>
+<li><a href="#rewards-that-reshape-the-world">Rewards that reshape the world</a></li>
 <li><a href="#a-worked-example">A worked example</a></li>
 <li><a href="#three-things-that-will-trip-you-up">Three things that will trip you up</a></li>
 <li><a href="#progress-carries-between-expeditions">Progress carries between expeditions</a></li>

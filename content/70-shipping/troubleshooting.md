@@ -32,7 +32,7 @@ minute pack.
 | A zone cannot be reached by truck or drone | [drone-only set without drone-allowed](#a-zone-is-unreachable) |
 | A completion message never shows | [notification at the wrong level](#the-message-never-appears) |
 | Objective behaves erratically or inconsistently | [two objectives share a name](#two-objectives-with-the-same-name) |
-| Map shows "No Signal" as its picture | [`uiMinimapScreenshot` left at its default](#no-signal-instead-of-a-picture) |
+| Map shows "No Signal" as its picture | [normal for every custom map](#no-signal-instead-of-a-picture) |
 | Terrain edits do nothing in game | you edited the masters, not the tiles, or you did not repack |
 | A ported vehicle is solid black, wheels and all | [its textures are SnowRunner-encoded](#a-ported-vehicle-is-solid-black) |
 
@@ -266,9 +266,12 @@ invalid.
 
 Your map shows the "No Signal" placeholder on the selection screen.
 
-`uiMinimapScreenshot` is still at its default value of `mapAllLocked`, which *is* the No
-Signal image. Point it at a 400 x 400 PNG in your map's `ui\textures` folder, named
-without the file extension.
+Every custom map shows this, and nothing in the map can change it. Saber's guide says to
+set `uiMinimapScreenshot` to a 400 x 400 PNG, but a map set up that way still showed no
+image. <span class="prov prov-unver">tested in game</span> The game's scripts never read
+that field. The picture comes from the game's own image library, which has one entry per
+vanilla map, and any other map falls back to No Signal.
+<span class="prov prov-unver">measured</span>
 
 **What it looks like:** custom maps listed on the selection screen, with the No Signal
 placeholder where the map's picture should be.

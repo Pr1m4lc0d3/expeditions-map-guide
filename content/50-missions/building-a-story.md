@@ -10,25 +10,24 @@ progression, because **a reward can change the map**.
 
 That is the whole technique, and it is better than it sounds.
 
-## The obvious approach, and why it is not available
+## Locking one mission behind another
 
 The natural way to build a campaign is to lock mission B until mission A is done.
 There is a field for exactly that, `blockerObjectives`, which takes a list of
 objective names.
 
-The official guide says the field is "currently absent".
+The official guide says the field is "currently absent". It isn't: the editor hides it
+from mod tools, but it sits in every custom map's `objective_settings.json` as an empty
+list, and a value written there by hand works.
+<span class="prov prov-unver">tested in game</span> The locked Expedition shows a lock
+in the selection list and can't be started until the blocker is finished.
 
-Here is the more precise situation. The field exists on every objective, and the
-editor's own type schema marks it **hidden from mod tools** rather than absent.
-<span class="prov prov-schema">schema only</span> It sits in every custom map's file
-as an empty list. So writing it in by hand may well work.
+!!! warning "Use the full saved name"
+    A plain objective name shows the lock, but finishing that objective never clears
+    it. Write the name the game saves: `mod_<id>_<objective name>`. See
+    [Gateways between maps](../40-zones/gateways.md) for how this was tested.
 
-!!! warning "Worth an experiment, not a foundation"
-    Nobody has confirmed that `blockerObjectives` functions in a custom map. If you
-    test it, you will have learned something genuinely new. Until then, do not build
-    a multi-mission campaign that depends on it.
-
-## What actually works: rewards that reshape the world
+## Rewards that reshape the world
 
 Three reward types change zones, and any stage can carry them:
 
