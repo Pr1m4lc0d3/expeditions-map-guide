@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The objective system map &middot; Expeditions Map Making</title>
+<meta name="description" content="Every kind of objective, stage, lock and reward in one place, with how far each has been proven, for planning a story."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objective-system-map.html" aria-current="page">The objective system map</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Missions</p>
+        <h1>The objective system map</h1>
+<p class="lede">Every kind of objective, stage, lock and reward in one place, with how far each has been proven, for planning a story.</p>      </div>
+      <div class="banner">
+        <strong>This page is draft.</strong>
+        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
+        been proven in a running game.
+      </div>
+      <article class="prose"><p>This page lists everything a story can be built from, and how sure we are that it works
+on a custom map. Each part has its own page in this section with the detail.</p>
+<div class="admonition warning">
+<p class="admonition-title">This page is a draft</p>
+<p>Much of it is still untested on custom maps. The status column tells you what has
+actually been run.</p>
+</div>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PROVEN</td>
+<td>run in game on a custom map</td>
+</tr>
+<tr>
+<td>ON A CUSTOM MAP</td>
+<td>written into a custom map, but not re-tested for this page</td>
+</tr>
+<tr>
+<td>DOCUMENTED</td>
+<td>Saber&rsquo;s Expeditions guide describes it; not tried on a custom map</td>
+</tr>
+<tr>
+<td>ENGINE ONLY</td>
+<td>in the engine&rsquo;s schema but missing from Saber&rsquo;s guide; unknown if mods can use it</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="1-the-shape-of-a-story">1. The shape of a story<a class="headerlink" href="#1-the-shape-of-a-story" title="Permanent link">#</a></h2>
+<div class="hl"><pre><span></span><code>Region (optional)
+  Map
+    Objective            Expedition | Contract | Task
+      Lock               blockerObjectives, requirements
+      Stage [0]          stages run in order
+        Substage         substages in one stage run in any order
+        Stage reward     fires when this stage closes
+      Stage [1] ...
+      Final rewards      fire when the objective finishes
+</code></pre></div>
+
+<p>Three ideas carry every story:</p>
+<ul>
+<li><strong>Order</strong> comes from stages. Same stage means any order; next stage means after.</li>
+<li><strong>Gating</strong> comes from locks. One objective opens another.</li>
+<li><strong>Change</strong> comes from rewards. A reward can change the world mid-story.</li>
+</ul>
+<h2 id="2-kinds-of-objective">2. Kinds of objective<a class="headerlink" href="#2-kinds-of-objective" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Where it lives</th>
+<th>How the player starts it</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expedition</td>
+<td><code>contractsSettings</code>, <code>contractType</code> 1</td>
+<td>Expedition selection menu</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td>Free Roam</td>
+<td>an Expedition with one stage holding only <code>freeRoamInfo</code></td>
+<td>Menu</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td>Contract</td>
+<td><code>contractsSettings</code>, <code>contractType</code> 0</td>
+<td>On the map</td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td>Task</td>
+<td><code>tasksSettings</code>, needs <code>taskGiverZone</code></td>
+<td>Driving to a giver zone</td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td>Contest</td>
+<td><code>contestSettings</code></td>
+<td>Not used in Expeditions, says Saber</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Regional contract</td>
+<td>region file, zones from all maps</td>
+<td>Described for SnowRunner only</td>
+<td>Not needed: see below</td>
+</tr>
+</tbody>
+</table></div>
+<p>A normal Expedition stored on one map already spans maps, so a separate regional
+contract hasn&rsquo;t been needed. PROVEN 11-05.</p>
+<p>Every map needs one Expedition and one deploy zone. Give every map a Free Roam too.
+Objective names must be unique across all kinds.</p>
+<h2 id="3-things-a-stage-can-ask-for">3. Things a stage can ask for<a class="headerlink" href="#3-things-a-stage-can-ask-for" title="Permanent link">#</a></h2>
+<h3 id="documented-substages">Documented substages<a class="headerlink" href="#documented-substages" title="Permanent link">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Player does</th>
+<th>Key fields</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>visitAllZones</code></td>
+<td>Reach zones</td>
+<td><code>zones[].globalZoneId</code>, <code>uiDesc</code></td>
+<td>PROVEN, also across maps</td>
+</tr>
+<tr>
+<td><code>freeRoamInfo</code></td>
+<td>Nothing: Free Roam only</td>
+<td><code>map</code>, <code>uiDesc</code></td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td><code>takeInventory</code></td>
+<td>Collect items from zones</td>
+<td><code>zoneToTakeInvFrom[].zoneGlobalId</code>, <code>inventoryToTake</code></td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td><code>objectConstruction</code></td>
+<td>Deliver items, fuel, repairs, power; can build a model</td>
+<td><code>zoneToFill[].globalZoneId</code>, <code>inventory</code>, <code>fuelNum</code>, <code>repairsNum</code>, <code>electroNum</code>, <code>model</code></td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td><code>truckDelivery</code></td>
+<td>Drive a placed truck to a zone</td>
+<td><code>globalZoneDeliveryId</code>, <code>afterStageFinished</code></td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td><code>scoutingInfo</code></td>
+<td>Explore an area to a percentage</td>
+<td><code>scoutingsProp[]</code>: <code>zoneGlobalId</code>, <code>radius</code>, <code>winCondition</code>, offset</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>minigameInfo</code></td>
+<td>Play minigames</td>
+<td><code>minigames[]</code>: <code>zoneGlobalId</code>, <code>name</code>; settings sit on the zone</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>makeActionInZone</code></td>
+<td>Seismic prospecting at hidden zones</td>
+<td>Same shape as <code>visitAllZones</code></td>
+<td>DOCUMENTED</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="in-the-engine-missing-from-sabers-guide">In the engine, missing from Saber&rsquo;s guide<a class="headerlink" href="#in-the-engine-missing-from-sabers-guide" title="Permanent link">#</a></h3>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Looks like</th>
+<th>Zone prop</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>objectInteraction</code></td>
+<td>Interact with a placed, animated model</td>
+<td><code>interactionZoneId</code>, <code>modelPlacementZoneId</code>, <code>animModelName</code>, <code>animStagesProgress</code></td>
+<td>ENGINE ONLY</td>
+</tr>
+<tr>
+<td><code>puzzleInfo</code></td>
+<td>A puzzle at a zone</td>
+<td><code>ZonePropertyPuzzleZone</code>; 2 in the vanilla dump</td>
+<td>ENGINE ONLY</td>
+</tr>
+<tr>
+<td><code>cutsceneInfo</code></td>
+<td>Play a cutscene</td>
+<td><code>ZonePropertyCutscene</code>; 29 in the vanilla dump</td>
+<td>ENGINE ONLY</td>
+</tr>
+<tr>
+<td><code>otherMapGatewaySelectionSettings</code></td>
+<td>Unknown, tied to gateways</td>
+<td>Hidden from mods</td>
+<td>ENGINE ONLY</td>
+</tr>
+<tr>
+<td><code>tutorialViewsOnCompleteStage</code></td>
+<td>Shows a tutorial when a stage ends</td>
+<td>None</td>
+<td>ENGINE ONLY</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="minigames">Minigames<a class="headerlink" href="#minigames" title="Permanent link">#</a></h3>
+<p>Settings go on a <code>ZonePropertyMinigame</code> zone. The count is how many sit in the vanilla game dump.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Saber&rsquo;s page</th>
+<th>Vanilla count</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CAMERA</code></td>
+<td>Taking photos</td>
+<td>195</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>VISUAL_INSPECTION</code></td>
+<td>Visual inspection</td>
+<td>118</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>PROCESS_POINTS</code></td>
+<td>Probably scanning with a drone (unconfirmed)</td>
+<td>52</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>ECHOLOT_SCAN</code></td>
+<td>Echo sounder</td>
+<td>44</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>LOOK_AT_OBJECT</code></td>
+<td>None found</td>
+<td>Not counted</td>
+<td>ENGINE ONLY</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-locks-and-requirements">4. Locks and requirements<a class="headerlink" href="#4-locks-and-requirements" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Effect</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>blockerObjectives</code></td>
+<td>Locks until listed objectives finish. Use the full saved name <code>mod_&lt;id&gt;_&lt;name&gt;</code>. Hidden in the editor; see <a href="../40-zones/gateways.html">Gateways between maps</a></td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td><code>blockerMap</code></td>
+<td>Saber: locks until a map is opened. Did not lock a menu row</td>
+<td>Failed in test</td>
+</tr>
+<tr>
+<td><code>zoneDiscoverability</code></td>
+<td>Hides a zone until found by truck, drone or binoculars</td>
+<td>PROVEN on a deploy zone</td>
+</tr>
+<tr>
+<td><code>requiredInventory</code></td>
+<td>Items needed</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>requiredSpecialities</code></td>
+<td>Specialists needed</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>requiredTruckAddons</code></td>
+<td>Truck addons needed</td>
+<td>DOCUMENTED</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="5-rewards">5. Rewards<a class="headerlink" href="#5-rewards" title="Permanent link">#</a></h2>
+<p>Rewards go on the whole objective, or on one stage to fire mid-story.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Reward</th>
+<th>Gives</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ObjectiveRewardMoney</code></td>
+<td>Money</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardOpenZoneProperties</code></td>
+<td>Opens a zone with new props, such as a base</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardUpdateZoneProperties</code></td>
+<td>Adds props to a zone; <code>zoneSettingsToRemove</code> takes them off</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardUnlock</code></td>
+<td>Unlocks a truck or upgrade</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardItem</code></td>
+<td>Gives a truck or upgrade</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardBaseUpgrade</code></td>
+<td>Unlocks an FOB module</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardSpecialist</code></td>
+<td>Unlocks a specialist</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardSticker</code></td>
+<td>Gives a sticker</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardAddItemsToZone</code></td>
+<td>Puts items in a zone</td>
+<td>ENGINE ONLY</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardOverlayState</code></td>
+<td>Changes an overlay&rsquo;s state</td>
+<td>ENGINE ONLY</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardZoneInventoryRandModifier</code></td>
+<td>Changes a zone&rsquo;s random loot</td>
+<td>ENGINE ONLY</td>
+</tr>
+<tr>
+<td><code>ContestResultRewards</code></td>
+<td>Nothing: it has never paid out on our maps</td>
+<td>Do not use</td>
+</tr>
+<tr>
+<td><code>ObjectiveRewardsUpgradeGarage</code></td>
+<td>Not used in Expeditions</td>
+<td>Do not use</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Bonus rewards</strong>, Expeditions only: extra money for how the player did it. Conditions
+include little damage, no recovery, few engine stalls, not using an item, and few
+minigame failures. DOCUMENTED.</p>
+<h2 id="6-presentation">6. Presentation<a class="headerlink" href="#6-presentation" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Effect</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code>, <code>uiDesc</code></td>
+<td>Listing and objective text, plain text only</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td><code>employer</code></td>
+<td>Name and logo</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td><code>notification</code> on a zone</td>
+<td>Message when reached</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td><code>zoneDiscoverability.discoveryMessage</code></td>
+<td>Message when found</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td><code>difficulty</code>, <code>wayLength</code>, <code>tips</code></td>
+<td>Details; not shown on the selection screen we tested</td>
+<td>Unknown</td>
+</tr>
+<tr>
+<td><code>prepayment</code></td>
+<td>Money up front</td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td><code>radiusSett</code></td>
+<td>Shows a search area, not the exact zone</td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td>Fake zones</td>
+<td>Wrong spots with their own message</td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td><code>uiMinimapScreenshot</code></td>
+<td>Nothing: No Signal stays</td>
+<td>Failed in test</td>
+</tr>
+<tr>
+<td><code>UI_</code> keys with <code>texts\strings_english.str</code></td>
+<td>Showed the raw key on a map</td>
+<td>Failed in test</td>
+</tr>
+</tbody>
+</table></div>
+<p>Zones that tell a story without an objective: <code>ZonePropertyNotification</code>,
+<code>ZonePropertyHiddenHint</code>, <code>ZonePropertyWatchpoint</code>. DOCUMENTED or ENGINE ONLY; not tried.</p>
+<h2 id="7-traps">7. Traps<a class="headerlink" href="#7-traps" title="Permanent link">#</a></h2>
+<ol>
+<li>A lock needs the full saved name. A plain name never clears.</li>
+<li>Start the chain from the region group, or its saved name differs.</li>
+<li>The pack rewrites references to another map as <code>level_&lt;name&gt;</code>. Correct them to <code>mod_level_&lt;name&gt;</code> in the <code>.pak</code> after every pack.</li>
+<li>Every stage needs one required substage.</li>
+<li>A dangling zone reference hangs the Deploy screen.</li>
+<li>A null <code>localOffsetScoutingAreaRelativeZone</code> crashes.</li>
+<li>Opening a module zone before its base exists breaks every popup after it.</li>
+<li>Finishing an Expedition keeps the player on the map.</li>
+<li>Hidden editor fields survive a pack, so they can be written in the JSON.</li>
+<li>Schema enum listings repeat the first value, so a saved number is the listed index
+    minus one: <code>contractType</code> 1 is EXPEDITION.</li>
+</ol>
+<h2 id="8-story-patterns">8. Story patterns<a class="headerlink" href="#8-story-patterns" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Built from</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unlock a map</td>
+<td>Expedition, then <code>blockerObjectives</code> on its Free Roam</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td>Journey across maps</td>
+<td>One Expedition with stages on each map</td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td>Earn a base</td>
+<td>Stage or final reward with <code>ObjectiveRewardOpenZoneProperties</code></td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td>Hidden camp</td>
+<td>Deploy zone starting <code>NOT_EXPLORED</code></td>
+<td>PROVEN</td>
+</tr>
+<tr>
+<td>Clear a blockage</td>
+<td><code>objectConstruction</code>, then <code>zoneSettingsToRemove</code></td>
+<td>Documented parts</td>
+</tr>
+<tr>
+<td>Rebuild something</td>
+<td><code>objectConstruction</code> with Model Building Settings</td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td>Find the site</td>
+<td><code>radiusSett</code> plus fake zones</td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td>Survey an area</td>
+<td><code>scoutingInfo</code>, then a reward</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td>Investigate</td>
+<td><code>minigameInfo</code>: photos, inspection</td>
+<td>DOCUMENTED</td>
+</tr>
+<tr>
+<td>Rescue</td>
+<td><code>truckDelivery</code> with a placed truck</td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td>Side jobs</td>
+<td>Tasks at giver zones</td>
+<td>ON A CUSTOM MAP</td>
+</tr>
+<tr>
+<td>Earn a specialist</td>
+<td><code>ObjectiveRewardSpecialist</code></td>
+<td>DOCUMENTED</td>
+</tr>
+</tbody>
+</table></div></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../40-zones/gateways.html"><span>Previous</span>Gateways between maps</a><a class="seq-next" href="../50-missions/objectives-overview.html"><span>Next</span>Objectives in one page</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#1-the-shape-of-a-story">1. The shape of a story</a></li>
+<li><a href="#2-kinds-of-objective">2. Kinds of objective</a></li>
+<li><a href="#3-things-a-stage-can-ask-for">3. Things a stage can ask for</a><ul>
+<li><a href="#documented-substages">Documented substages</a></li>
+<li><a href="#in-the-engine-missing-from-sabers-guide">In the engine, missing from Saber&rsquo;s guide</a></li>
+<li><a href="#minigames">Minigames</a></li>
+</ul>
+</li>
+<li><a href="#4-locks-and-requirements">4. Locks and requirements</a></li>
+<li><a href="#5-rewards">5. Rewards</a></li>
+<li><a href="#6-presentation">6. Presentation</a></li>
+<li><a href="#7-traps">7. Traps</a></li>
+<li><a href="#8-story-patterns">8. Story patterns</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>
