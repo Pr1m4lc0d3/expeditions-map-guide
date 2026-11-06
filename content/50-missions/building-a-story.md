@@ -25,7 +25,7 @@ in the selection list and can't be started until the blocker is finished.
 !!! warning "Use the full saved name"
     A plain objective name shows the lock, but finishing that objective never clears
     it. Write the name the game saves: `mod_<id>_<objective name>`. See
-    [Gateways between maps](../40-zones/gateways.md) for how this was tested.
+    [Gateways between maps](../40-zones/gateways.html) for how this was tested.
 
 ## Rewards that reshape the world
 
