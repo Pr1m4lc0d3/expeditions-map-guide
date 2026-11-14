@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gateways between maps &middot; Expeditions Map Making</title>
-<meta name="description" content="How to link two custom maps so a truck drives from one to the other, which Saber&#39;s guide says is not supported."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="How to link two custom maps so a truck drives from one to the other, which Saber&#39;s guide says is not supported. Tested in game, with the fixes every pack needs done for you by after_pack."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -116,7 +116,7 @@
 <span class="pill pill-draft">draft</span>        </li>
         <li>
           <a href="../40-zones/gateways.html" aria-current="page">Gateways between maps</a>
-<span class="pill pill-draft">draft</span>        </li>
+        </li>
       </ul>
     </section>
     <section>
@@ -298,12 +298,7 @@
       <div class="page-head">
         <p class="eyebrow">Zones</p>
         <h1>Gateways between maps</h1>
-<p class="lede">How to link two custom maps so a truck drives from one to the other, which Saber&#39;s guide says is not supported.</p>      </div>
-      <div class="banner">
-        <strong>This page is draft.</strong>
-        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
-        been proven in a running game.
-      </div>
+<p class="lede">How to link two custom maps so a truck drives from one to the other, which Saber&#39;s guide says is not supported. Tested in game, with the fixes every pack needs done for you by after_pack.</p>      </div>
       <article class="prose"><p>A gateway is a zone that sends the player&rsquo;s truck to a zone on another map. It is
 how vanilla joins a surface map to its cave.</p>
 <p>Saber&rsquo;s guide says custom regions of several linked maps are not supported in
@@ -312,9 +307,10 @@ Expeditions, and that both maps of a gateway must be in the same region.
 need a region.</strong> Two ordinary standalone maps have been linked and driven between
 on PC, with a stock truck and a custom one.
 <span class="prov prov-unver">tested in game</span></p>
-<div class="admonition warning">
-<p class="admonition-title">This page is a draft</p>
-<p>This rests on one pair of small test maps. The list at the end says what has
+<div class="admonition note">
+<p class="admonition-title">What this rests on</p>
+<p>One pair of small test maps, on PC. The crossing, the region, the map lock and a
+mission spanning both maps all worked in game. The list at the end says what has
 not been tested.</p>
 </div>
 <h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">#</a></h2>
@@ -383,6 +379,13 @@ calls it <code>mod_level_&lt;name&gt;</code>, not <code>level_&lt;name&gt;</code
 <p><strong>Packing rewrites this line.</strong> The packed map&rsquo;s <code>zone_settings.json</code> comes out as
 <code>level_gate_two || gate_two</code>, a level that doesn&rsquo;t exist. Each pack needs the link
 corrected inside the <code>.pak</code> afterward. <span class="prov prov-unver">tested in game</span></p>
+<p><strong><code>after_pack</code> does this for you.</strong> Run it after every pack, as you already do for
+custom models. Its <code>fix_gateway_links.py</code> step puts the real level name back into the
+<code>.pak</code>, and into the Switch copy, which keeps its own zone file (the other platform
+copies hold no link; crossing on Switch is untested). A map with no gateways is left alone. It also
+stops, with a message, on the three things that break a crossing without any error from
+the game: a map with no ground layers, a partner zone with no gateway, and an all-zero
+<code>cameraDir</code>. <span class="prov prov-unver">tested in game</span></p>
 <p>Two wrong forms, and what they do:</p>
 <div class="table-scroll"><table>
 <thead>
@@ -445,7 +448,14 @@ again undoes any repair. A working region needs all of this:</p>
 </tr>
 </tbody>
 </table></div>
-<p>A region holds a copy of each map&rsquo;s zones, so <strong>rebuild it after every pack.</strong></p>
+<p>A region holds a copy of each map&rsquo;s zones, so <strong>rebuild it after every pack.</strong>
+<code>after_pack</code> does that too: it refreshes every installed region from the maps&rsquo; own
+<code>.pak</code> files and keeps the values you set by hand. To make a new one:</p>
+<div class="hl"><pre><span></span><code>python build_region.py new my_region --name &quot;My Region&quot; level_map_one level_map_two --apply
+</code></pre></div>
+
+<p>It writes everything in the table above, so never save the region through Saber&rsquo;s
+tool afterward: that strips it all again. <span class="prov prov-unver">tested in game</span></p>
 <h2 id="locking-a-map-until-the-player-earns-it">Locking a map until the player earns it<a class="headerlink" href="#locking-a-map-until-the-player-earns-it" title="Permanent link">#</a></h2>
 <p>A map can stay locked in the Expedition selection list while a gateway still leads
 into it. Three settings do this, and all of them have worked in game.
@@ -466,10 +476,17 @@ map unlocks.</p>
 <p><strong>One Expedition can span both maps.</strong> A two-stage Expedition, reach the gate and then
 reach a base site on the far map, finished in game and unlocked Free Roam on both maps.
 Its reward opened a working base on the far map. As with gateway links, the pack writes
-references to the other map as <code>level_&lt;name&gt;</code>, so correct them to <code>mod_level_&lt;name&gt;</code> in
-the <code>.pak</code>, or the far stage can never finish.</p>
+references to the other map as <code>level_&lt;name&gt;</code>, and the far stage can never finish until
+they read <code>mod_level_&lt;name&gt;</code>. <code>after_pack</code> corrects those along with the links.</p>
 <p><strong>Keep module zones hidden until the base exists.</strong> Opening a module zone before its
 base has opened showed an empty Base modules panel and broke every popup after it.</p>
+<p><strong>Let the toolkit write the chain.</strong> <code>build_objectives.py</code> writes all of this from one
+plan file: the full saved names in <code>blockerObjectives</code>, the hidden camp, the stages on
+each map and the base reward. It refuses a chain that could trap the player: a lock
+nothing can open, a map with no Free Roam, or a stage that points at a missing zone.
+The plan that ran in game is in the toolkit as <code>objective_plans/gate_chain.json</code>.
+<span class="prov prov-unver">tested in game</span> See the
+<a href="../80-ai-tools/toolkit.html">AI toolkit</a>.</p>
 <h2 id="what-the-player-sees">What the player sees<a class="headerlink" href="#what-the-player-sees" title="Permanent link">#</a></h2>
 <p>Drive into the zone and a <strong>Travel to</strong> prompt appears. Press it, and a popup offers
 <strong>Let&rsquo;s go</strong> and <strong>Not now</strong>. The truck then arrives in the target zone, and the
@@ -486,8 +503,6 @@ and logs an error, but the crossing still works.
   needed afterward.</li>
 <li>How to deliver a linked set of maps to other players, and whether a map installed
   through mod.io still goes by <code>mod_level_&lt;name&gt;</code>.</li>
-<li>Whether a mission can span both maps. Without a region, each map keeps its own
-  expedition, and the crossing was tested in free roam only.</li>
 <li>How to stop a region&rsquo;s maps also being listed on their own. In the Expedition
   selection list, a region gets its own group, headed <code>mod_&lt;id&gt;</code>, and each map keeps
   its separate group as well.</li>
@@ -495,7 +510,10 @@ and logs an error, but the crossing still works.
   <code>surfaceMapID</code>, and <code>isCave</code> on the gateway. None of that has been tried on a
   custom map.</li>
 <li>More than two maps, or more than one gateway on a map.</li>
-<li>Popup images, locked gateways, and anything carried across.</li>
+<li>Popup images in use (the popup works without them, showing an empty picture).</li>
+<li>A gateway that is itself hidden until a reward opens it. Locking the far map&rsquo;s
+  Expeditions is tested; locking the gateway zone is not.</li>
+<li>Cargo, trailers or a winched truck carried across.</li>
 <li>Any platform other than PC.</li>
 </ul></article>
 
