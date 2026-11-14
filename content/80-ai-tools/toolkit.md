@@ -122,6 +122,8 @@ engine actually reads.
 |---|---|
 | validate objectives before packing | `check_objectives.py <level>` / `--pak` / `--all` |
 | author the gameplay layer | `build_missions.py` |
+| write objectives, locks and rewards from one plan | `build_objectives.py <plan.json>` / `--apply` |
+| lock a custom truck and its parts behind those objectives | `vehicle_unlocks.py <plan.json> --mod <id>` / `--apply` ([how it works](../50-missions/vehicle-unlocks.html)) |
 
 Run `check_objectives.py` before every pack. Objective errors are silent: a stage
 where every substage is optional is prohibited and errors, a null

@@ -28,8 +28,8 @@ as one. Those are consumables, built as truck addons.
     The descriptor fields, item types, the HQ flag and the Workshop values are
     sourced from Saber's guide, the editor schema and item mods tested in game.
     Several things are **not yet known** and are marked where they come up:
-    whether the four-mod HQ limit behaves as documented, whether `invId` is ever
-    read, and every ability class except the jack screw.
+    whether the four-mod HQ limit behaves as documented, and every ability class
+    except the jack screw.
 
 ## What an item mod contains
 
@@ -187,10 +187,10 @@ example: a delivery stage that asks for a type accepts *any* item of that type.
     added" or "not implemented", and support ended without it being finished.
     <span class="prov prov-doc">documented</span>
 
-    Whether the game reads it anyway is **not established**. The safe assumption
-    is that only `type` counts. If two of your items must not be mistaken for each
-    other (two different quest pickups, say), give them different types.
-    The large list of quest types exists for this.
+    The game does read the id in places, but not everywhere. A `takeInventory`
+    stage spawns and collects the named item. A delivery counts and removes the
+    named item, but its objective check is blocked on an unpatched game. See
+    [Delivering a custom item](#delivering-a-custom-item).
 
 The JSON stores `type` as a number, its position in the schema's list. These
 values are confirmed against working items in shipped or tested data:
@@ -397,8 +397,8 @@ Set the zone's `capacity` above `0` or nothing shows, and give the zone an id wi
 
 **As something to collect or deliver.** A `takeInventory` stage asks the player to
 pick items up from a zone; an `objectConstruction` stage asks them to bring items
-to one. Both name the item by `type` (and an id field that may not be read, see
-above). See [The assignment types](../50-missions/assignment-types.html).
+to one. See [The assignment types](../50-missions/assignment-types.html), and read
+the next section before you deliver a custom item.
 
 **As a requirement or a reward.** List it in an expedition's Required inventory
 (and set `canTakeInHq`), or hand it over with `ObjectiveRewardItem`. See
@@ -409,12 +409,64 @@ icon and a description. Delivering it to a construction zone switches an
 `_objective` model on the map to its built state, which is what shows the camera
 on the tree. <span class="prov prov-doc">documented</span>
 
+## Delivering a custom item
+
+A custom quest item can be collected on any install. Delivering it to an objective
+needs a small patch to the game, because of how the delivery check was left.
+
+**What happens when the player presses the key.** The popup counts the item, then
+tells the objective system what arrived, then removes the item from the truck. The
+count and the removal use the real item id. The middle step always sends a blank
+id, and the check compares that blank with the id in your stage:
+
+```text
+state.inventory_id == id  and  state.inventory_type == type  and  not finished  and  zone matches
+```
+
+A vanilla stage has a blank `invId`, so blank equals blank. A stage that names your
+item never matches. The check returns nothing delivered, the game logs
+`deliver inventory fail: objective mismatched`, and the player sees the key do
+nothing.
+
+**Why a blank id does not help.** A blank `invId` asks for the type's default item,
+`basicItemForType`. Type 14's default is `Quest_item`. The popup counts your item
+because it has the right type, but the delivery is looking for `Quest_item`, so the
+key does nothing. A mod item can't become a type's default, because that table sits
+in `initial.pak`.
+
+| Delivery setup | What the player sees |
+|---|---|
+| Blank id, the type's default item on the truck | Delivers. This is how vanilla works |
+| Blank id, a custom item of that type | Popup shows the default item's name, key does nothing |
+| Named id, type 14, unpatched game | Popup is correct, key does nothing |
+| Named id, type 14, patched game | **Delivers.** Tested in game |
+| Any id, a type with no default item (such as 42) | Script fault on the key press |
+
+**The patch** changes two bytes in `initial_release.sslbundle`, so the first
+comparison repeats the type test and the id stops mattering. The popup's count and
+removal still use the real id, so another item of the same type can't stand in for
+yours. A patched `initial.pak` has to be installed by every player, and this one is
+not released yet.
+
+**To build one:**
+
+1. Make the item: a descriptor and four icons, as in
+   [What an item mod contains](#what-an-item-mod-contains). Use type `14`, an id with
+   no spaces, and an id no vanilla item uses.
+2. Put it in the pickup zone's loot slot with `itemName` and `type`.
+3. Name it in the `takeInventory` stage.
+4. Name it in the `objectConstruction` stage's `inventory`, with the same `type`.
+
+**Without the patch,** end the task with a visit instead of a delivery: collect the
+item, then reach a zone. The item stays on the truck.
+
 ## Not yet known
 
-- Whether `invId` / `itemName` in objectives and required inventory is read at
-  all. Assume not.
-- Whether a `QUEST_ITEM` is accepted as a construction-zone requirement. Every
-  shipped example uses consumable types.
+- Whether a named `QUEST_ITEM` works as a construction-zone requirement. Saber's
+  guide marks the field "not implemented". Every shipped example uses consumable
+  types.
+- Delivering more than one custom item at once, and two deliveries of one type in a
+  single stage.
 - The four-mod HQ limit, in practice.
 - What `notForSale`, `isRequired`, `notForCoopDel`, `notForDuplicate`,
   `canBeUsedInCave`, `hasIconOnMinimap`, `canBeUsedFromDrone` and

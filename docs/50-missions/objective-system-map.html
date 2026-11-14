@@ -140,6 +140,9 @@
         <li>
           <a href="../50-missions/building-a-story.html">Building a story</a>
         </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html">Unlocking trucks and parts</a>
+        </li>
       </ul>
     </section>
     <section>
@@ -443,9 +446,9 @@ Objective names must be unique across all kinds.</p>
 </tr>
 <tr>
 <td><code>truckDelivery</code></td>
-<td>Drive a placed truck to a zone</td>
+<td>Drive a placed truck to a zone; on a custom map the parked truck&rsquo;s Id needs the map prefix (<a href="vehicle-unlocks.html">unlocking trucks and parts</a>)</td>
 <td><code>globalZoneDeliveryId</code>, <code>afterStageFinished</code></td>
-<td>ON A CUSTOM MAP</td>
+<td>PROVEN</td>
 </tr>
 <tr>
 <td><code>scoutingInfo</code></td>
@@ -624,13 +627,13 @@ Objective names must be unique across all kinds.</p>
 </tr>
 <tr>
 <td><code>ObjectiveRewardUnlock</code></td>
-<td>Unlocks a truck or upgrade</td>
-<td>DOCUMENTED</td>
+<td>Unlocks a truck, a custom one included</td>
+<td>PROVEN</td>
 </tr>
 <tr>
 <td><code>ObjectiveRewardItem</code></td>
-<td>Gives a truck or upgrade</td>
-<td>DOCUMENTED</td>
+<td>Gives a truck or upgrade; unlocks a custom truck&rsquo;s parts</td>
+<td>PROVEN</td>
 </tr>
 <tr>
 <td><code>ObjectiveRewardBaseUpgrade</code></td>
@@ -752,12 +755,14 @@ minigame failures. DOCUMENTED.</p>
 <li>Opening a module zone before its base exists breaks every popup after it.</li>
 <li>Finishing an Expedition keeps the player on the map.</li>
 <li>Hidden editor fields survive a pack, so they can be written in the JSON.</li>
-<li><strong>Deliveries name a type, not an item.</strong> Leave <code>invId</code> blank and set <code>type</code>, as vanilla
-    does. With a named item, the delivery never completed. An anchor, which has uses, was
-    offered with a blank id but never delivered. A plain quest item (<code>Quest_item</code>, type 14)
-    completed. The zone it is collected from still needs the item&rsquo;s id to spawn it.</li>
-<li><strong>A Task saves under its map&rsquo;s id</strong>, <code>mod_level_&lt;name&gt;_&lt;task&gt;</code>, even inside a region. An
-    Expedition saves under the group it was started from.</li>
+<li><strong>A delivery checks the item type, and a blank id means the type&rsquo;s default item.</strong> A
+    plain <code>Quest_item</code> (type 14) completes with a blank <code>invId</code>, as vanilla writes it. A
+    custom item needs its id in <code>invId</code> and a small game patch, tested in game 2026-11-06.
+    See <a href="../60-custom/items.html#delivering-a-custom-item">Delivering a custom item</a>. The
+    zone it is collected from needs the item&rsquo;s id to spawn it.</li>
+<li><strong>A Task inside a region saves under both names</strong>, <code>mod_level_&lt;name&gt;_&lt;task&gt;</code> and
+    <code>mod_&lt;regionId&gt;_&lt;task&gt;</code>. A lock on the map name is proven. An Expedition saves under the group it
+    was started from.</li>
 <li>Schema enum listings repeat the first value, so a saved number is the listed index
     minus one: <code>contractType</code> 1 is EXPEDITION.</li>
 </ol>
@@ -818,8 +823,8 @@ minigame failures. DOCUMENTED.</p>
 </tr>
 <tr>
 <td>Rescue</td>
-<td><code>truckDelivery</code> with a placed truck</td>
-<td>ON A CUSTOM MAP</td>
+<td><code>truckDelivery</code> with a placed truck, custom trucks included (<a href="vehicle-unlocks.html">how</a>)</td>
+<td>PROVEN</td>
 </tr>
 <tr>
 <td>Side jobs</td>

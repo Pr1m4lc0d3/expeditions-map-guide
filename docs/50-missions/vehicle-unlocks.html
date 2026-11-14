@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unlocking trucks and parts &middot; Expeditions Map Making</title>
+<meta name="description" content="Lock a custom truck and its parts behind your map&#39;s objectives - a barn find the player hauls home, then tasks that earn the parts. Every step tested in game, plus the one fix the game needs."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objective-system-map.html">The objective system map</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html" aria-current="page">Unlocking trucks and parts</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Missions</p>
+        <h1>Unlocking trucks and parts</h1>
+<p class="lede">Lock a custom truck and its parts behind your map&#39;s objectives - a barn find the player hauls home, then tasks that earn the parts. Every step tested in game, plus the one fix the game needs.</p>      </div>
+      <article class="prose"><p>You can make a custom truck something the player <strong>earns</strong>: it sits in a barn on your
+map, the player drags it home, and only then does it appear in the truck shop. Its
+parts can then be earned one by one from tasks, contracts and expeditions.
+<span class="prov prov-unver">tested in game</span></p>
+<p>All of this was run end to end on a small flat test map with a custom truck. A task
+hauled the truck home, then a task, a contract and an expedition unlocked every one of
+its parts. Two pieces are not documented anywhere and cost a test run each to find:
+<strong>the parked truck&rsquo;s Id needs your map&rsquo;s name in front of it</strong>, and <strong>a part the player
+already owns ignores its lock</strong>. Both are below.</p>
+<div class="admonition warning">
+<p class="admonition-title">Ship the map and the truck together</p>
+<p>A lock is only ever opened by its own map. A player who has the truck mod but not
+the map can never unlock it, and Saber&rsquo;s own packer refuses truck mods with locks for
+exactly that reason. <span class="prov prov-doc">documented</span> Release them as a
+pair, and take the locks off before you delete a test map.</p>
+</div>
+<h2 id="the-two-halves">The two halves<a class="headerlink" href="#the-two-halves" title="Permanent link">#</a></h2>
+<p>An unlock has a side in the <strong>truck mod</strong> and a side in the <strong>map</strong>. Neither works alone.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>what</th>
+<th>truck mod side (its class files)</th>
+<th>map side (the reward)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the truck</td>
+<td><code>UnlockByObjective</code> in its <code>&lt;GameData&gt;</code>, naming the objective (see below for the exact name)</td>
+<td><code>ObjectiveRewardUnlock</code>, <code>itemToUnlock</code> = the truck</td>
+</tr>
+<tr>
+<td>an add-on (rack, bumper, lights)</td>
+<td><code>AddonUnlockByObjective="true"</code> in its <code>&lt;GameData&gt;</code></td>
+<td><code>ObjectiveRewardItem</code>, <code>id</code> = the add-on</td>
+</tr>
+<tr>
+<td>an engine, gearbox or suspension</td>
+<td><code>AddonUnlockByObjective="true"</code> in that variant&rsquo;s <code>&lt;GameData&gt;</code></td>
+<td><code>ObjectiveRewardItem</code>, <code>id</code> = the variant&rsquo;s <code>Name</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>This is the same pattern the base game uses: its objective-locked trucks name their
+task, and its 184 objective-locked parts are matched by 184 part rewards.
+<span class="prov prov-unver">measured</span></p>
+<h3 id="writing-the-ids">Writing the ids<a class="headerlink" href="#writing-the-ids" title="Permanent link">#</a></h3>
+<p>A custom truck&rsquo;s ids carry its mod id on the end in the game, and the rewards have to
+use that form. Engines, gearboxes and suspensions are the exception.
+<span class="prov prov-unver">tested in game</span></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>piece</th>
+<th>write the reward as</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the truck</td>
+<td><code>&lt;truck file name&gt;_&lt;mod id&gt;</code></td>
+<td><code>mytruck_1234567</code></td>
+</tr>
+<tr>
+<td>an add-on</td>
+<td><code>&lt;add-on file name&gt;_&lt;mod id&gt;</code></td>
+<td><code>mytruck_roofrack_1234567</code></td>
+</tr>
+<tr>
+<td>an engine, gearbox or suspension</td>
+<td>the variant&rsquo;s <code>Name</code>, no mod id</td>
+<td><code>mytruck_engine_tuned</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>A save file shows the same split: custom add-ons are stored with the mod id, custom
+engines and gearboxes without. An add-on reward written without the mod id also worked
+in the test, but the mod-id form is the one the save uses.</p>
+<h3 id="the-trucks-objective-name">The truck&rsquo;s objective name<a class="headerlink" href="#the-trucks-objective-name" title="Permanent link">#</a></h3>
+<p><code>UnlockByObjective</code> takes the name the game <strong>saves</strong> the objective under, which is
+<code>mod_</code> + your map or region id + <code>_</code> + the objective&rsquo;s name. A task called <code>Find the truck</code>
+on <code>level_my_map</code> is <code>mod_level_my_map_Find the truck</code>. The truck shop then shows the
+truck with that name as its unlock condition. <span class="prov prov-unver">tested in game</span></p>
+<h2 id="the-barn-find-haul-a-parked-truck-home">The barn find: haul a parked truck home<a class="headerlink" href="#the-barn-find-haul-a-parked-truck-home" title="Permanent link">#</a></h2>
+<p>The objective is a <strong>truck delivery</strong> stage: the player brings a truck that is parked on
+the map to a zone. It is how the base game&rsquo;s rescue tasks work.</p>
+<ol>
+<li><strong>Park the truck.</strong> In the editor, right-click the map, <strong>Add Truck</strong>, and put it where
+   the barn is. The editor&rsquo;s truck list does not show custom trucks, so leave it blank,
+   save and close the editor.</li>
+<li><strong>Give it its type and Id</strong> in the tile&rsquo;s <code>data/&lt;col&gt;_&lt;row&gt;/Truck.xml</code>:
+   - <code>Type</code> = the truck&rsquo;s in-game id, <code>&lt;truck file name&gt;_&lt;mod id&gt;</code>
+   - <code>Id</code> = <code>mod_</code> + your map id + <code>_</code> + the id your task uses</li>
+<li><strong>Write the task</strong> with a truck delivery stage naming the plain id, the zone to bring it
+   to, and <code>ObjectiveRewardUnlock</code> for the truck.</li>
+<li>Pack the map.</li>
+</ol>
+<p>The packed map spawns the custom truck where you parked it.
+<span class="prov prov-unver">tested in game</span></p>
+<div class="admonition warning">
+<p class="admonition-title">The Id needs your map&rsquo;s name in front of it</p>
+<p>The game adds the map id to the front of the task&rsquo;s truck id when it tracks the
+delivery, but it does not add it to the parked truck. With a plain Id the two never
+match: the truck sits in the zone and nothing happens. Give the parked truck the
+prefixed Id and keep the plain one in the task.
+<span class="prov prov-unver">tested in game</span></p>
+<p>The quick check: while the task is running, the parked truck carries the task&rsquo;s
+marker. If it has no marker, the Id is wrong.</p>
+</div>
+<p><img alt="A parked custom truck on a test map with no objective marker on it: the Id lacked the map prefix and the delivery never completed" src="../assets/vehicles/unlocks/haul-no-marker.jpg" /></p>
+<p><img alt="The same parked truck with the map-prefixed Id, now carrying the task's truck marker while the task runs" src="../assets/vehicles/unlocks/haul-task-marker.jpg" /></p>
+<p><img alt="The task completion screen: the money reward and the custom truck shown as the unlock" src="../assets/vehicles/unlocks/haul-completed.jpg" /></p>
+<p>After the task completes, the parked truck is removed (<code>afterStageFinished</code> <code>DESTROY</code>,
+as the base game&rsquo;s rescues do) and the truck is for sale in the shop.
+<span class="prov prov-unver">tested in game</span></p>
+<h3 id="things-that-surprised-us">Things that surprised us<a class="headerlink" href="#things-that-surprised-us" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>&ldquo;Locked&rdquo; on a parked truck only means &ldquo;until found&rdquo;.</strong> The editor&rsquo;s Locked switch
+  stops the player using the truck until they reach it. After that they can get in and
+  drive it. Reaching it does not open the shop; only the objective does.
+  <span class="prov prov-unver">tested in game</span></li>
+<li><strong>Once found, it stops spawning.</strong> After the player has reached the truck, a fresh load
+  of the map no longer places it. Test on a new save each time.
+  <span class="prov prov-unver">tested in game</span></li>
+<li><strong>To make the player tow it</strong>, set its fuel to 0 and its damage high in the editor.
+  <span class="prov prov-unver">untested</span></li>
+<li>The objective name shows in the game with <code>mod_&lt;map&gt;_</code> in front of it, as every custom
+  objective does.</li>
+</ul>
+<h2 id="earning-the-parts">Earning the parts<a class="headerlink" href="#earning-the-parts" title="Permanent link">#</a></h2>
+<p>Put <code>ObjectiveRewardItem</code> rewards on any objective or any stage, one reward per part.
+A stage&rsquo;s rewards are paid when that stage closes, so one expedition can hand out
+parts as the player goes. In the test, parts unlocked from a task, a contract, an
+expedition stage and an expedition finish. <span class="prov prov-unver">tested in game</span></p>
+<p><img alt="The garage with a light kit locked, its description reading Complete the expedition to unlock" src="../assets/vehicles/unlocks/part-locked-by-mission.jpg" /></p>
+<p><img alt="The garage after the objectives were finished: the racks and light kits now show as purchased" src="../assets/vehicles/unlocks/parts-unlocked.jpg" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Owned parts ignore their lock</p>
+<p>A part the player already owns shows as unlocked whatever its lock says. In the test,
+a brand-new save showed nothing locked while the main save still owned those parts.
+Selling them in the main save brought the locks back in both saves, so ownership
+seems to count across save slots. <span class="prov prov-unver">tested in game</span>
+Test locks on a profile that has never owned the parts.</p>
+</div>
+<p>Two more rules from the test:</p>
+<ul>
+<li><strong>A truck&rsquo;s own rack copies.</strong> If your truck uses copies of base-game racks, check their
+  <code>AddonUnlockByObjective</code>. A copy keeps the base game&rsquo;s value, and a base-game reward
+  will never unlock your renamed copy.</li>
+<li><strong>Parts that should need a rack.</strong> A truck&rsquo;s socket cannot require a part, so to make a
+  drone carrier or a detector need a roof rack, give the truck its own copy of that part
+  with <code>&lt;RequiredAddon Types="your_rack_a, your_rack_b" /&gt;</code>. A comma list means any one of
+  them, as the base game&rsquo;s kung modules use it. <span class="prov prov-unver">measured</span></li>
+</ul>
+<h2 id="doing-it-with-the-tools">Doing it with the tools<a class="headerlink" href="#doing-it-with-the-tools" title="Permanent link">#</a></h2>
+<p>The <a href="../80-ai-tools/toolkit.html">AI toolkit</a> does both halves from one plan file, so
+they cannot disagree. Run against the setup that worked in game, it finds every lock
+already in place and changes nothing. <span class="prov prov-unver">measured</span> A map
+locked by the tool alone has not yet been played.</p>
+<div class="hl"><pre><span></span><code>python build_objectives.py my_map.json --apply           the objectives and rewards
+python vehicle_unlocks.py my_map.json --mod 1234567       the truck mod&#39;s side, report only
+python vehicle_unlocks.py my_map.json --mod 1234567 --apply
+</code></pre></div>
+
+<p>In the plan, a truck reward is <code>"unlock": ["mytruck_1234567"]</code> and part rewards are
+<code>"item": [...]</code>, on an objective or on a stage. <code>vehicle_unlocks.py</code> then:</p>
+<ul>
+<li>locks exactly the parts the plan rewards, and sets the truck&rsquo;s objective name</li>
+<li>fixes each reward&rsquo;s id form, and refuses an engine written with a mod id</li>
+<li>refuses a part that is locked but rewarded by nothing, since it would stay locked forever</li>
+<li>gives a parked haul truck its map-prefixed Id, and with <code>--truck-type</code> fills in a blank
+  truck&rsquo;s type</li>
+<li>backs up the truck mod once before it first changes it</li>
+</ul>
+<p>A minimal plan:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;level_my_map&quot;</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">&quot;objectives&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">   </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Map Free Roam&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;map&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;level_my_map&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;free_roam&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">   </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Find the truck&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;map&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;level_my_map&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;task&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;giver&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;barn_sign&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;truck&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;truck&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;barn_truck&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;zone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;yard&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;after&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;destroy&quot;</span><span class="p">,</span>
+<span class="w">                           </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Haul the truck home&quot;</span><span class="p">}]}],</span>
+<span class="w">    </span><span class="nt">&quot;unlock&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mytruck_1234567&quot;</span><span class="p">]},</span>
+<span class="w">   </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kit it out&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;map&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;level_my_map&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;contract&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;stages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;visit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;zone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;depot&quot;</span><span class="p">}]}],</span>
+<span class="w">    </span><span class="nt">&quot;item&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mytruck_roofrack_1234567&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mytruck_engine_tuned&quot;</span><span class="p">]}]}</span>
+</code></pre></div>
+
+<h2 id="still-open">Still open<a class="headerlink" href="#still-open" title="Permanent link">#</a></h2>
+<ul>
+<li>Whether a tow-only barn find (fuel 0, heavy damage) behaves as expected.</li>
+<li>Where the game shares part ownership between save slots.</li>
+<li>Unlocking through Saber&rsquo;s <strong>Upgrades Giver</strong> zone (a zone that hands over one part when
+  reached) instead of an objective reward. <span class="prov prov-doc">documented</span>,
+  not tried with a custom truck.</li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../50-missions/building-a-story.html"><span>Previous</span>Building a story</a><a class="seq-next" href="../60-custom/specialists.html"><span>Next</span>Custom specialists</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-two-halves">The two halves</a><ul>
+<li><a href="#writing-the-ids">Writing the ids</a></li>
+<li><a href="#the-trucks-objective-name">The truck&rsquo;s objective name</a></li>
+</ul>
+</li>
+<li><a href="#the-barn-find-haul-a-parked-truck-home">The barn find: haul a parked truck home</a><ul>
+<li><a href="#things-that-surprised-us">Things that surprised us</a></li>
+</ul>
+</li>
+<li><a href="#earning-the-parts">Earning the parts</a></li>
+<li><a href="#doing-it-with-the-tools">Doing it with the tools</a></li>
+<li><a href="#still-open">Still open</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -19,8 +19,8 @@ on it. See [building a story](building-a-story.html).
 | Reward | Gives the player | |
 |---|---|---|
 | `ObjectiveRewardMoney` | cash | <span class="prov prov-doc">documented</span> |
-| `ObjectiveRewardUnlock` | a truck or upgrade becomes purchasable | <span class="prov prov-doc">documented</span> |
-| `ObjectiveRewardItem` | a truck or upgrade, handed over outright | <span class="prov prov-doc">documented</span> |
+| `ObjectiveRewardUnlock` | a truck becomes purchasable; works for a custom truck, see [unlocking trucks and parts](vehicle-unlocks.html) | <span class="prov prov-unver">tested in game</span> |
+| `ObjectiveRewardItem` | a truck or upgrade, handed over outright; unlocks a custom truck's parts, see [unlocking trucks and parts](vehicle-unlocks.html) | <span class="prov prov-unver">tested in game</span> |
 | `ObjectiveRewardSticker` | a truck sticker | <span class="prov prov-doc">documented</span> |
 | `ObjectiveRewardSpecialist` | a crew member becomes available | <span class="prov prov-doc">documented</span> |
 | `ObjectiveRewardBaseUpgrade` | a FOB module is unlocked | <span class="prov prov-doc">documented</span> |

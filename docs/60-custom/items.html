@@ -140,6 +140,9 @@
         <li>
           <a href="../50-missions/building-a-story.html">Building a story</a>
         </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html">Unlocking trucks and parts</a>
+        </li>
       </ul>
     </section>
     <section>
@@ -317,8 +320,8 @@ as one. Those are consumables, built as truck addons.
 <p>The descriptor fields, item types, the HQ flag and the Workshop values are
 sourced from Saber&rsquo;s guide, the editor schema and item mods tested in game.
 Several things are <strong>not yet known</strong> and are marked where they come up:
-whether the four-mod HQ limit behaves as documented, whether <code>invId</code> is ever
-read, and every ability class except the jack screw.</p>
+whether the four-mod HQ limit behaves as documented, and every ability class
+except the jack screw.</p>
 </div>
 <h2 id="what-an-item-mod-contains">What an item mod contains<a class="headerlink" href="#what-an-item-mod-contains" title="Permanent link">#</a></h2>
 <div class="hl"><pre><span></span><code>Documents\My Games\Expeditions\Media\Mods\
@@ -594,10 +597,10 @@ example: a delivery stage that asks for a type accepts <em>any</em> item of that
 <code>takeInventory</code>, <code>objectConstruction</code> and required inventory as &ldquo;currently not
 added&rdquo; or &ldquo;not implemented&rdquo;, and support ended without it being finished.
 <span class="prov prov-doc">documented</span></p>
-<p>Whether the game reads it anyway is <strong>not established</strong>. The safe assumption
-is that only <code>type</code> counts. If two of your items must not be mistaken for each
-other (two different quest pickups, say), give them different types.
-The large list of quest types exists for this.</p>
+<p>The game does read the id in places, but not everywhere. A <code>takeInventory</code>
+stage spawns and collects the named item. A delivery counts and removes the
+named item, but its objective check is blocked on an unpatched game. See
+<a href="#delivering-a-custom-item">Delivering a custom item</a>.</p>
 </div>
 <p>The JSON stores <code>type</code> as a number, its position in the schema&rsquo;s list. These
 values are confirmed against working items in shipped or tested data:</p>
@@ -920,8 +923,8 @@ each with a <code>type</code>, a <code>chance</code> from <code>0</code> to <cod
 <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>.</p>
 <p><strong>As something to collect or deliver.</strong> A <code>takeInventory</code> stage asks the player to
 pick items up from a zone; an <code>objectConstruction</code> stage asks them to bring items
-to one. Both name the item by <code>type</code> (and an id field that may not be read, see
-above). See <a href="../50-missions/assignment-types.html">The assignment types</a>.</p>
+to one. See <a href="../50-missions/assignment-types.html">The assignment types</a>, and read
+the next section before you deliver a custom item.</p>
 <p><strong>As a requirement or a reward.</strong> List it in an expedition&rsquo;s Required inventory
 (and set <code>canTakeInHq</code>), or hand it over with <code>ObjectiveRewardItem</code>. See
 <a href="../50-missions/rewards.html">Rewards</a>.</p>
@@ -929,12 +932,78 @@ above). See <a href="../50-missions/assignment-types.html">The assignment types<
 icon and a description. Delivering it to a construction zone switches an
 <code>_objective</code> model on the map to its built state, which is what shows the camera
 on the tree. <span class="prov prov-doc">documented</span></p>
+<h2 id="delivering-a-custom-item">Delivering a custom item<a class="headerlink" href="#delivering-a-custom-item" title="Permanent link">#</a></h2>
+<p>A custom quest item can be collected on any install. Delivering it to an objective
+needs a small patch to the game, because of how the delivery check was left.</p>
+<p><strong>What happens when the player presses the key.</strong> The popup counts the item, then
+tells the objective system what arrived, then removes the item from the truck. The
+count and the removal use the real item id. The middle step always sends a blank
+id, and the check compares that blank with the id in your stage:</p>
+<div class="hl"><pre><span></span><code>state.inventory_id == id  and  state.inventory_type == type  and  not finished  and  zone matches
+</code></pre></div>
+
+<p>A vanilla stage has a blank <code>invId</code>, so blank equals blank. A stage that names your
+item never matches. The check returns nothing delivered, the game logs
+<code>deliver inventory fail: objective mismatched</code>, and the player sees the key do
+nothing.</p>
+<p><strong>Why a blank id does not help.</strong> A blank <code>invId</code> asks for the type&rsquo;s default item,
+<code>basicItemForType</code>. Type 14&rsquo;s default is <code>Quest_item</code>. The popup counts your item
+because it has the right type, but the delivery is looking for <code>Quest_item</code>, so the
+key does nothing. A mod item can&rsquo;t become a type&rsquo;s default, because that table sits
+in <code>initial.pak</code>.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Delivery setup</th>
+<th>What the player sees</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blank id, the type&rsquo;s default item on the truck</td>
+<td>Delivers. This is how vanilla works</td>
+</tr>
+<tr>
+<td>Blank id, a custom item of that type</td>
+<td>Popup shows the default item&rsquo;s name, key does nothing</td>
+</tr>
+<tr>
+<td>Named id, type 14, unpatched game</td>
+<td>Popup is correct, key does nothing</td>
+</tr>
+<tr>
+<td>Named id, type 14, patched game</td>
+<td><strong>Delivers.</strong> Tested in game</td>
+</tr>
+<tr>
+<td>Any id, a type with no default item (such as 42)</td>
+<td>Script fault on the key press</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>The patch</strong> changes two bytes in <code>initial_release.sslbundle</code>, so the first
+comparison repeats the type test and the id stops mattering. The popup&rsquo;s count and
+removal still use the real id, so another item of the same type can&rsquo;t stand in for
+yours. A patched <code>initial.pak</code> has to be installed by every player, and this one is
+not released yet.</p>
+<p><strong>To build one:</strong></p>
+<ol>
+<li>Make the item: a descriptor and four icons, as in
+   <a href="#what-an-item-mod-contains">What an item mod contains</a>. Use type <code>14</code>, an id with
+   no spaces, and an id no vanilla item uses.</li>
+<li>Put it in the pickup zone&rsquo;s loot slot with <code>itemName</code> and <code>type</code>.</li>
+<li>Name it in the <code>takeInventory</code> stage.</li>
+<li>Name it in the <code>objectConstruction</code> stage&rsquo;s <code>inventory</code>, with the same <code>type</code>.</li>
+</ol>
+<p><strong>Without the patch,</strong> end the task with a visit instead of a delivery: collect the
+item, then reach a zone. The item stays on the truck.</p>
 <h2 id="not-yet-known">Not yet known<a class="headerlink" href="#not-yet-known" title="Permanent link">#</a></h2>
 <ul>
-<li>Whether <code>invId</code> / <code>itemName</code> in objectives and required inventory is read at
-  all. Assume not.</li>
-<li>Whether a <code>QUEST_ITEM</code> is accepted as a construction-zone requirement. Every
-  shipped example uses consumable types.</li>
+<li>Whether a named <code>QUEST_ITEM</code> works as a construction-zone requirement. Saber&rsquo;s
+  guide marks the field &ldquo;not implemented&rdquo;. Every shipped example uses consumable
+  types.</li>
+<li>Delivering more than one custom item at once, and two deliveries of one type in a
+  single stage.</li>
 <li>The four-mod HQ limit, in practice.</li>
 <li>What <code>notForSale</code>, <code>isRequired</code>, <code>notForCoopDel</code>, <code>notForDuplicate</code>,
   <code>canBeUsedInCave</code>, <code>hasIconOnMinimap</code>, <code>canBeUsedFromDrone</code> and
@@ -968,6 +1037,7 @@ on the tree. <span class="prov prov-doc">documented</span></p>
 </ul>
 </li>
 <li><a href="#using-your-item-in-a-map">Using your item in a map</a></li>
+<li><a href="#delivering-a-custom-item">Delivering a custom item</a></li>
 <li><a href="#not-yet-known">Not yet known</a></li>
 </ul>
 </div>

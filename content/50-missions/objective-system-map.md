@@ -67,7 +67,7 @@ Objective names must be unique across all kinds.
 | `freeRoamInfo` | Nothing: Free Roam only | `map`, `uiDesc` | PROVEN |
 | `takeInventory` | Collect items from zones | `zoneToTakeInvFrom[].zoneGlobalId`, `inventoryToTake` | PROVEN |
 | `objectConstruction` | Deliver items, fuel, repairs, power; can build a model | `zoneToFill[].globalZoneId`, `inventory`, `fuelNum`, `repairsNum`, `electroNum`, `model` | PROVEN for a quest item; see Traps |
-| `truckDelivery` | Drive a placed truck to a zone | `globalZoneDeliveryId`, `afterStageFinished` | ON A CUSTOM MAP |
+| `truckDelivery` | Drive a placed truck to a zone; on a custom map the parked truck's Id needs the map prefix ([unlocking trucks and parts](vehicle-unlocks.html)) | `globalZoneDeliveryId`, `afterStageFinished` | PROVEN |
 | `scoutingInfo` | Explore an area to a percentage | `scoutingsProp[]`: `zoneGlobalId`, `radius`, `winCondition`, offset | DOCUMENTED |
 | `minigameInfo` | Play minigames | `minigames[]`: `zoneGlobalId`, `name`; settings sit on the zone | DOCUMENTED |
 | `makeActionInZone` | Seismic prospecting at hidden zones | Same shape as `visitAllZones` | DOCUMENTED |
@@ -114,8 +114,8 @@ Rewards go on the whole objective, or on one stage to fire mid-story.
 | `ObjectiveRewardMoney` | Money | PROVEN |
 | `ObjectiveRewardOpenZoneProperties` | Opens a zone with new props, such as a base | PROVEN |
 | `ObjectiveRewardUpdateZoneProperties` | Adds props to a zone; `zoneSettingsToRemove` takes them off | DOCUMENTED |
-| `ObjectiveRewardUnlock` | Unlocks a truck or upgrade | DOCUMENTED |
-| `ObjectiveRewardItem` | Gives a truck or upgrade | DOCUMENTED |
+| `ObjectiveRewardUnlock` | Unlocks a truck, a custom one included | PROVEN |
+| `ObjectiveRewardItem` | Gives a truck or upgrade; unlocks a custom truck's parts | PROVEN |
 | `ObjectiveRewardBaseUpgrade` | Unlocks an FOB module | DOCUMENTED |
 | `ObjectiveRewardSpecialist` | Unlocks a specialist | DOCUMENTED |
 | `ObjectiveRewardSticker` | Gives a sticker | DOCUMENTED |
@@ -158,12 +158,14 @@ Zones that tell a story without an objective: `ZonePropertyNotification`,
 7. Opening a module zone before its base exists breaks every popup after it.
 8. Finishing an Expedition keeps the player on the map.
 9. Hidden editor fields survive a pack, so they can be written in the JSON.
-10. **Deliveries name a type, not an item.** Leave `invId` blank and set `type`, as vanilla
-    does. With a named item, the delivery never completed. An anchor, which has uses, was
-    offered with a blank id but never delivered. A plain quest item (`Quest_item`, type 14)
-    completed. The zone it is collected from still needs the item's id to spawn it.
-11. **A Task saves under its map's id**, `mod_level_<name>_<task>`, even inside a region. An
-    Expedition saves under the group it was started from.
+10. **A delivery checks the item type, and a blank id means the type's default item.** A
+    plain `Quest_item` (type 14) completes with a blank `invId`, as vanilla writes it. A
+    custom item needs its id in `invId` and a small game patch, tested in game 2026-11-06.
+    See [Delivering a custom item](../60-custom/items.html#delivering-a-custom-item). The
+    zone it is collected from needs the item's id to spawn it.
+11. **A Task inside a region saves under both names**, `mod_level_<name>_<task>` and
+    `mod_<regionId>_<task>`. A lock on the map name is proven. An Expedition saves under the group it
+    was started from.
 12. Schema enum listings repeat the first value, so a saved number is the listed index
     minus one: `contractType` 1 is EXPEDITION.
 
@@ -180,6 +182,6 @@ Zones that tell a story without an objective: `ZonePropertyNotification`,
 | Find the site | `radiusSett` plus fake zones | ON A CUSTOM MAP |
 | Survey an area | `scoutingInfo`, then a reward | DOCUMENTED |
 | Investigate | `minigameInfo`: photos, inspection | DOCUMENTED |
-| Rescue | `truckDelivery` with a placed truck | ON A CUSTOM MAP |
+| Rescue | `truckDelivery` with a placed truck, custom trucks included ([how](vehicle-unlocks.html)) | PROVEN |
 | Side jobs | Tasks at giver zones | PROVEN |
 | Earn a specialist | `ObjectiveRewardSpecialist` | DOCUMENTED |
