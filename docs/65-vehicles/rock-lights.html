@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rock lights on any truck &middot; Expeditions Map Making</title>
+<meta name="description" content="How a truck gets an add-on it was never built with, shown with rock lights, and the tool that adds a five-colour rock-light kit to your own truck or, on your own PC, to any truck."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+        <li>
+          <a href="../00-start/downloads.html">Downloads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objective-system-map.html">The objective system map</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html">Unlocking trucks and parts</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/rock-lights.html" aria-current="page">Rock lights on any truck</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Vehicles</p>
+        <h1>Rock lights on any truck</h1>
+<p class="lede">How a truck gets an add-on it was never built with, shown with rock lights, and the tool that adds a five-colour rock-light kit to your own truck or, on your own PC, to any truck.</p>      </div>
+      <div class="banner">
+        <strong>This page is draft.</strong>
+        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
+        been proven in a running game.
+      </div>
+      <article class="prose"><h1 id="rock-lights-on-any-truck">Rock lights on any truck<a class="headerlink" href="#rock-lights-on-any-truck" title="Permanent link">#</a></h1>
+<p>Rock lights are small LED pods under a truck, one in each wheel well and a few along the
+frame, that light the ground around it at night. No truck in the game has them. This page
+explains how they are added, because the same method gives any truck any add-on it was not
+built with.</p>
+<p>There are two ways to get them:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>You want</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rock lights on the trucks that came with the game</td>
+<td>The <strong>Doc&rsquo;s Rocks Rock Lights</strong> mod on <a href="https://mod.io/g/expeditions/m/rock-lights">mod.io</a>. PC only, one installer</td>
+</tr>
+<tr>
+<td>Rock lights on a truck you are building, or on a truck mod you have installed</td>
+<td>The <a href="https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/rock-lights">rock-lights tool</a> in expeditions-tools</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="how-a-truck-takes-an-add-on">How a truck takes an add-on<a class="headerlink" href="#how-a-truck-takes-an-add-on" title="Permanent link">#</a></h2>
+<p>A truck only offers the add-ons it has a <strong>slot</strong> for. The slot is an <code>AddonSockets</code> entry in
+the truck&rsquo;s class file, and every add-on names the slot it fits with <code>InstallSocket</code>:</p>
+<div class="hl"><pre><span></span><code><span class="cm">&lt;!-- in the truck&#39;s class, inside &lt;GameData&gt; --&gt;</span>
+<span class="nt">&lt;AddonSockets&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Socket</span><span class="w"> </span><span class="na">Names=</span><span class="s">&quot;RockLightsMyTruck&quot;</span><span class="w"> </span><span class="na">ParentFrame=</span><span class="s">&quot;BoneChassis_cdt&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/AddonSockets&gt;</span>
+
+<span class="cm">&lt;!-- in each add-on&#39;s class --&gt;</span>
+<span class="nt">&lt;InstallSocket</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;RockLightsMyTruck&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+<p>So adding a new kind of add-on to a truck is two jobs: give the truck an empty slot, and make
+add-ons that fit it. The slot changes nothing until the player fits something in it.</p>
+<p>Where the truck&rsquo;s class lives decides how hard the first job is:</p>
+<ul>
+<li><strong>Your own truck.</strong> The class is in your Media folder. You edit it, and the editor packs it
+  with your mod.</li>
+<li><strong>Someone else&rsquo;s truck mod.</strong> The class is inside that mod&rsquo;s pak. On your own PC you can
+  change it; the tool below does it and keeps a backup.</li>
+<li><strong>A truck that came with the game.</strong> The class is in the game&rsquo;s own <code>initial.pak</code>, and a mod
+  cannot add a slot to it. That is why the Rock Lights mod is a manual install with a patcher:
+  the patcher adds the slots to <code>initial.pak</code>, and the kits ride in an ordinary mod. Consoles do
+  not allow changing game files, so this route is PC only.</li>
+</ul>
+<h2 id="what-a-rock-light-kit-is">What a rock-light kit is<a class="headerlink" href="#what-a-rock-light-kit-is" title="Permanent link">#</a></h2>
+<p>Each kit is one add-on class with three parts.</p>
+<p><strong>The lights.</strong> Eight spot lights in the add-on&rsquo;s <code>&lt;ModelAttachments&gt;</code>, in the <code>Ignition</code>
+group, so they are on whenever the engine runs. A truck light has no day and night setting,
+so there is no better group for them. Each light is a <code>Light</code> aimed at the ground, with a
+<code>Flare</code> for the glow on the lens:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;ModelAttachments&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Ignition&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Light</span><span class="w"> </span><span class="na">_template=</span><span class="s">&quot;IgnitionSignalWhite&quot;</span><span class="w"> </span><span class="na">Color=</span><span class="s">&quot;g(255; 160; 30) x 26.4&quot;</span>
+<span class="w">               </span><span class="na">Pos=</span><span class="s">&quot;(0.70; 0.96; 0.69)&quot;</span><span class="w"> </span><span class="na">Dir=</span><span class="s">&quot;(0.30; -0.68; 0.68)&quot;</span>
+<span class="w">               </span><span class="na">AttenEnd=</span><span class="s">&quot;7.0&quot;</span><span class="w"> </span><span class="na">InnerCone=</span><span class="s">&quot;60&quot;</span><span class="w"> </span><span class="na">OuterCone=</span><span class="s">&quot;150&quot;</span><span class="w"> </span><span class="na">ParentFrame=</span><span class="s">&quot;BoneChassis_cdt&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;Flare</span><span class="w"> </span><span class="na">_template=</span><span class="s">&quot;IgnitionSignalWhite&quot;</span><span class="w"> </span><span class="na">Color=</span><span class="s">&quot;g(255; 160; 30) x 0.9&quot;</span><span class="w"> </span><span class="na">Size=</span><span class="s">&quot;0.05&quot;</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/Ignition&gt;</span>
+<span class="nt">&lt;/ModelAttachments&gt;</span>
+</code></pre></div>
+
+<p>Stock truck lights run at a multiplier of 1 to 2; the main headlight runs at 6.5. Rock lights
+need far more, around 25 to 30, because their light lands on the ground a hand&rsquo;s width away
+and still has to read from the driver&rsquo;s seat.</p>
+<p><strong>The pods.</strong> A small mesh: a 2 in pod for every light, each on a bracket that runs to the
+truck&rsquo;s own frame or floor, with a bolted tab.</p>
+<p><strong>The model line.</strong> This is the part that goes wrong:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;PhysicsModel</span><span class="w"> </span><span class="na">Mesh=</span><span class="s">&quot;trucks/rock_lights_pods_my_truck&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">No <code>&lt;Body&gt;</code> on a small add-on like this</p>
+<p>Many add-ons carry a <code>&lt;Body&gt;</code> under <code>PhysicsModel</code>. On these kits it made the garage fit
+fail without any message: the kit was listed, it highlighted, and <strong>Buy</strong> did nothing.
+The test is simple. <strong>Highlight an add-on in the garage before buying it. If it does not
+show on the truck, the model setup is wrong</strong>, whatever the class file looks like.</p>
+</div>
+<h2 id="where-the-pods-go">Where the pods go<a class="headerlink" href="#where-the-pods-go" title="Permanent link">#</a></h2>
+<p>Every truck is a different size, so the tool places the pods from the truck itself, not from
+fixed numbers:</p>
+<ol>
+<li><strong>From the wheels.</strong> The class&rsquo;s <code>&lt;Wheel Pos&gt;</code> values give the front and rear axles and the
+   track width. One pod goes behind each front wheel, one ahead of each rear wheel, and two
+   under the frame on each side, all at the same proportions on every truck.</li>
+<li><strong>From the frame height.</strong> Trucks that carry a <code>BoneChassis_cdt</code> frame start the pods at
+   its height. On trucks without one, the tool measures the underside directly.</li>
+<li><strong>Onto the steel.</strong> For each pod it reads the truck&rsquo;s own converted mesh and looks straight
+   up and straight inward for metal within a short bracket&rsquo;s reach. If there is none, the pod
+   moves a little lower or further in until there is. The light moves with the pod.</li>
+</ol>
+<p>Placing pods from proportions alone is not enough. On tall trucks the frame sits well above
+the wheel centres, and pods placed that way floated beside the rails with brackets reaching
+into nothing.</p>
+<h2 id="adding-rock-lights-with-the-tool">Adding rock lights with the tool<a class="headerlink" href="#adding-rock-lights-with-the-tool" title="Permanent link">#</a></h2>
+<p>The tool runs on its own, with no AI and no internet. You need Python, Blender and the
+Expeditions editor; the <a href="https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/rock-lights">README</a>
+lists the details. Close the game first.</p>
+<p>Run it with no arguments and it asks you, step by step: your own truck or an installed mod,
+which truck, then it shows where each pod goes and asks before it changes anything.</p>
+<div class="hl"><pre><span></span><code>python add_rock_lights.py
+</code></pre></div>
+
+<p>Or say it all at once:</p>
+<div class="hl"><pre><span></span><code>python add_rock_lights.py --truck my_truck                          # your truck, in Media
+python add_rock_lights.py --truck their_truck --mod-dir &quot;&lt;mod folder&gt;&quot;   # an installed mod
+python add_rock_lights.py --truck my_truck --plan                   # show placement only
+python add_rock_lights.py --truck my_truck --remove                 # take it out again
+</code></pre></div>
+
+<p>Either way the truck gets five kits, <strong>Rock Lights - White, Amber, Red, Blue and Green</strong>, in
+its <strong>Miscellaneous</strong> garage tab.</p>
+<ul>
+<li><strong>Your own truck:</strong> the kits, the pod mesh and its texture go into your Media folder, and the
+  slot into your truck&rsquo;s class. Pack your mod as you always do.</li>
+<li><strong>An installed mod:</strong> the tool edits that mod&rsquo;s paks, after one backup of each
+  (<code>*.rocklights_bak</code>). An update of that mod from mod.io replaces its paks, so run the tool
+  again afterwards. <code>--remove</code> takes out exactly what it added.</li>
+</ul>
+<p>The kits must live in the same mod as the truck. A mod&rsquo;s classes are filed under that mod&rsquo;s
+id, so a slot and a kit in two different mods never meet.</p>
+<h2 id="sharing-what-you-made">Sharing what you made<a class="headerlink" href="#sharing-what-you-made" title="Permanent link">#</a></h2>
+<p>Changing a truck on your own PC is yours to do, whoever made it. <strong>Uploading</strong> someone else&rsquo;s
+truck with your rock lights on it is not, unless its author says you may or its licence
+allows it. If the truck is yours, ship the kit with it like any other add-on.</p>
+<h2 id="what-has-been-checked">What has been checked<a class="headerlink" href="#what-has-been-checked" title="Permanent link">#</a></h2>
+<ul>
+<li>The kits, the brightness, the placement method and the pods have been checked in game on the
+  trucks that came with the game.</li>
+<li>The tool reproduces that placement on every one of those trucks to the millimetre.</li>
+<li>On truck mods, the tool&rsquo;s output has been checked file by file: the five kits, the slot, the
+  pods and the texture, and a clean removal. <strong>Not yet checked in game on a truck mod.</strong> This
+  page loses its draft mark when that is done.</li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../65-vehicles/skins-and-paint.html"><span>Previous</span>Skins and paint</a><a class="seq-next" href="../65-vehicles/diagnosing.html"><span>Next</span>Diagnosing a vehicle</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#how-a-truck-takes-an-add-on">How a truck takes an add-on</a></li>
+<li><a href="#what-a-rock-light-kit-is">What a rock-light kit is</a></li>
+<li><a href="#where-the-pods-go">Where the pods go</a></li>
+<li><a href="#adding-rock-lights-with-the-tool">Adding rock lights with the tool</a></li>
+<li><a href="#sharing-what-you-made">Sharing what you made</a></li>
+<li><a href="#what-has-been-checked">What has been checked</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

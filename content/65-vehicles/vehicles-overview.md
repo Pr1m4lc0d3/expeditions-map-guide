@@ -33,6 +33,7 @@ chapter is worth stating once:
 | missing bumpers, a spare wheel, or tyre options | [Accessories and tyres](addons-and-wheels.html) |
 | fixing store and garage pictures | [Store and garage artwork](store-and-garage-images.html) |
 | adding paint schemes, chrome or camouflage | [Skins and paint](skins-and-paint.html) |
+| giving a truck an add-on it never had, such as rock lights | [Rock lights on any truck](rock-lights.html) |
 | stuck, with no error to go on | [Diagnosing a vehicle](diagnosing.html) |
 
 The runbook is the ordered procedure and every other page in this part is a

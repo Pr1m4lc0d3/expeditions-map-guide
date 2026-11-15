@@ -184,6 +184,9 @@
           <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
         </li>
         <li>
+          <a href="../65-vehicles/rock-lights.html">Rock lights on any truck</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
         </li>
       </ul>
@@ -310,8 +313,9 @@ yourself from a terminal.</p>
 <blockquote>
 <p><strong>Only part of the toolkit is published so far.</strong> The
 <a href="https://github.com/Pr1m4lc0d3/expeditions-tools">expeditions-tools</a> repository
-holds the base module tools (<code>fob-modules</code>) and the custom model tools
-(<code>map-models</code>: <code>import_model.py</code>, <code>after_pack.py</code>, <code>fix_map_model_brands.py</code>).
+holds the base module tools (<code>fob-modules</code>), the custom model tools
+(<code>map-models</code>: <code>import_model.py</code>, <code>after_pack.py</code>, <code>fix_map_model_brands.py</code>), the map
+tools (<code>map-tools</code>) and the rock-light tool (<code>rock-lights</code>: <code>add_rock_lights.py</code>).
 The other scripts on this page, <code>wiki.py</code> among them, are not published yet;
 their commands are here so you know what exists.</p>
 </blockquote>
@@ -614,6 +618,18 @@ against the bodywork, which otherwise survives the matte because it shares an
 edge with the vehicle.</p>
 <p>Full field table in
 <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>.</p>
+<h3 id="add_rock_lightspy-a-rock-light-kit-on-any-truck"><code>add_rock_lights.py</code> — a rock-light kit on any truck<a class="headerlink" href="#add_rock_lightspy-a-rock-light-kit-on-any-truck" title="Permanent link">#</a></h3>
+<div class="hl"><pre><span></span><code>python add_rock_lights.py                                         # asks step by step
+python add_rock_lights.py --truck &lt;class&gt; [--plan | --remove]     # a truck in Media
+python add_rock_lights.py --truck &lt;class&gt; --mod-dir &lt;mod folder&gt;  # an installed truck mod
+</code></pre></div>
+
+<p>In the <a href="https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/rock-lights">rock-lights</a>
+folder. Adds an empty slot to the truck&rsquo;s class and five add-ons that fit it, White, Amber, Red,
+Blue and Green: eight lights each, on with the engine, with pods that are placed from the
+truck&rsquo;s wheels and mounted on its own frame. <code>--plan</code> prints where each pod goes and changes
+nothing. On an installed mod it backs up each pak once. The method is explained in
+<a href="../65-vehicles/rock-lights.html">Rock lights on any truck</a>.</p>
 <h2 id="conventions-these-scripts-follow">Conventions these scripts follow<a class="headerlink" href="#conventions-these-scripts-follow" title="Permanent link">#</a></h2>
 <p><strong>Measure, then claim.</strong> Report the number, not the impression.</p>
 <p><strong>A zero result is a claim.</strong> Run a positive control before citing one. A search
@@ -644,6 +660,7 @@ bug wearing two faces.</p></article>
 <li><a href="#vehicles">Vehicles</a><ul>
 <li><a href="#restore_addonspy-give-a-ported-truck-back-its-stock-accessories">restore_addons.py — give a ported truck back its stock accessories</a></li>
 <li><a href="#vehicle_uipy-store-and-garage-artwork">vehicle_ui.py — store and garage artwork</a></li>
+<li><a href="#add_rock_lightspy-a-rock-light-kit-on-any-truck">add_rock_lights.py — a rock-light kit on any truck</a></li>
 </ul>
 </li>
 <li><a href="#conventions-these-scripts-follow">Conventions these scripts follow</a></li>

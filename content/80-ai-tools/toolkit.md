@@ -15,8 +15,9 @@ yourself from a terminal.
 
 > **Only part of the toolkit is published so far.** The
 > [expeditions-tools](https://github.com/Pr1m4lc0d3/expeditions-tools) repository
-> holds the base module tools (`fob-modules`) and the custom model tools
-> (`map-models`: `import_model.py`, `after_pack.py`, `fix_map_model_brands.py`).
+> holds the base module tools (`fob-modules`), the custom model tools
+> (`map-models`: `import_model.py`, `after_pack.py`, `fix_map_model_brands.py`), the map
+> tools (`map-tools`) and the rock-light tool (`rock-lights`: `add_rock_lights.py`).
 > The other scripts on this page, `wiki.py` among them, are not published yet;
 > their commands are here so you know what exists.
 
@@ -219,6 +220,21 @@ edge with the vehicle.
 
 Full field table in
 [Store and garage artwork](../65-vehicles/store-and-garage-images.html).
+
+### `add_rock_lights.py` — a rock-light kit on any truck
+
+```
+python add_rock_lights.py                                         # asks step by step
+python add_rock_lights.py --truck <class> [--plan | --remove]     # a truck in Media
+python add_rock_lights.py --truck <class> --mod-dir <mod folder>  # an installed truck mod
+```
+
+In the [rock-lights](https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/rock-lights)
+folder. Adds an empty slot to the truck's class and five add-ons that fit it, White, Amber, Red,
+Blue and Green: eight lights each, on with the engine, with pods that are placed from the
+truck's wheels and mounted on its own frame. `--plan` prints where each pod goes and changes
+nothing. On an installed mod it backs up each pak once. The method is explained in
+[Rock lights on any truck](../65-vehicles/rock-lights.html).
 
 ## Conventions these scripts follow
 
