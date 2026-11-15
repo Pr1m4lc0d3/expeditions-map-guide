@@ -3,7 +3,6 @@ title: Rock lights on any truck
 part: Vehicles
 order: 667
 summary: How a truck gets an add-on it was never built with, shown with rock lights, and the tool that adds a five-colour rock-light kit to your own truck or, on your own PC, to any truck.
-status: draft
 ---
 
 # Rock lights on any truck
@@ -115,6 +114,13 @@ lists the details. Close the game first.
 Run it with no arguments and it asks you, step by step: your own truck or an installed mod,
 which truck, then it shows where each pod goes and asks before it changes anything.
 
+- **No Python?** Download **Rock Lights Tool.exe** from the repository's
+  [Releases](https://github.com/Pr1m4lc0d3/expeditions-tools/releases) and double-click it.
+  It still needs Blender and the editor.
+- **Using an AI assistant?** Point it at the tool's
+  [AGENTS.md](https://github.com/Pr1m4lc0d3/expeditions-tools/blob/main/rock-lights/AGENTS.md)
+  and ask it to add rock lights to your truck. That file gives it the whole job.
+
 ```
 python add_rock_lights.py
 ```
@@ -152,5 +158,8 @@ allows it. If the truck is yours, ship the kit with it like any other add-on.
   trucks that came with the game.
 - The tool reproduces that placement on every one of those trucks to the millimetre.
 - On truck mods, the tool's output has been checked file by file: the five kits, the slot, the
-  pods and the texture, and a clean removal. **Not yet checked in game on a truck mod.** This
-  page loses its draft mark when that is done.
+  pods and the texture, and a removal that gives back the original paks byte for byte.
+- On a truck mod in game: a tube-frame buggy from mod.io got its kits from the tool, the pods
+  showed in the garage, and the lights came on.
+- The tool never touches the game's own `initial.pak`. Only the trucks that came with the game
+  need that, and the Rock Lights mod's patcher does it for them.
