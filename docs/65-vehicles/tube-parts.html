@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tube parts in code &middot; Expeditions Map Making</title>
+<meta name="description" content="Roof racks, roll cages, bumpers and tube fenders written as code from measured centre lines, with an AI assistant doing the writing. What to ask before drawing anything, and the checks that catch gaps, inside-out tubes and floating ends before anyone sees them."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+        <li>
+          <a href="../00-start/downloads.html">Downloads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objective-system-map.html">The objective system map</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html">Unlocking trucks and parts</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/rock-lights.html">Rock lights on any truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/license-plates.html">Custom licence plates</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/engine-ghost.html">Placing the engine ghost</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/ai-built-parts.html">Building parts with AI</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/tube-parts.html" aria-current="page">Tube parts in code</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/addon-slots.html">Add-on slots, dependencies and gear</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Vehicles</p>
+        <h1>Tube parts in code</h1>
+<p class="lede">Roof racks, roll cages, bumpers and tube fenders written as code from measured centre lines, with an AI assistant doing the writing. What to ask before drawing anything, and the checks that catch gaps, inside-out tubes and floating ends before anyone sees them.</p>      </div>
+      <div class="banner">
+        <strong>This page is draft.</strong>
+        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
+        been proven in a running game.
+      </div>
+      <article class="prose"><h1 id="tube-parts-in-code">Tube parts in code<a class="headerlink" href="#tube-parts-in-code" title="Permanent link">#</a></h1>
+<p>A roof rack is a few dozen tubes. Each one is a centre line, a radius, and two ends that land on
+something. Written as code (a list of points, bent with true arcs, swept into a tube), the rack
+comes out exact, symmetric and adjustable: move one number and the whole rack follows. An AI
+assistant can write that code well. It can also produce, very confidently, a rack whose legs stop
+in mid-air, whose tubes are inside out, and that looks nothing like what was asked for. Everything
+on this page is a guard against one of those.</p>
+<h2 id="ask-before-drawing">Ask before drawing<a class="headerlink" href="#ask-before-drawing" title="Permanent link">#</a></h2>
+<p>Nearly every rejected tube part on this project was a guess that should have been a question. Ask
+these, in one message, before any geometry:</p>
+<ol>
+<li><strong>Reference</strong>: a photo, an install drawing, or a sketch on the truck.</li>
+<li><strong>What each end lands on</strong>: a bumper top, the frame, a hinge, another tube.</li>
+<li><strong>Body cut</strong>: none unless asked. A fender flare sits on the panel; the panel is cut only for tyre room.</li>
+<li><strong>What it must clear</strong>: tyres at full steer, the hardtop, the tailgate, other add-ons.</li>
+<li><strong>Dimensions, angles and body lines</strong> it should follow.</li>
+<li><strong>Finish</strong>: paint, bare, chrome caps.</li>
+<li><strong>Game fit</strong>: which slot, what it carries, what it requires.</li>
+</ol>
+<p>Read sketches from a <strong>gridded side view</strong> (an orthographic render with a metre grid) and say the
+points back before building: &ldquo;the lower rail runs from x -0.95 to the rear leg at 1.57 m, dropping
+6 cm&rdquo;. A sketch read by eye from a perspective screenshot gets the slope and the end points wrong.</p>
+<p>Build what was drawn and nothing else. Extra trusses, gussets and brackets the sketch did not show
+read as clutter, not care: one side frame went through four rounds because each version added steel
+nobody had asked for.</p>
+<h2 id="the-geometry-rules">The geometry rules<a class="headerlink" href="#the-geometry-rules" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>Centre to centre.</strong> A tube that meets another tube ends on the other&rsquo;s centre line, not on its
+  surface. Nothing is cut off in mid-air.</li>
+<li><strong>Bends are true arcs</strong> with a real bend radius, and the tube&rsquo;s rings are dense in the bend (one
+  every few degrees) with a frame that does not twist. Otherwise elbows come out faceted.</li>
+<li><strong>A tube ending on a flat surface is pushed past it</strong> far enough that its whole square-cut rim is
+  buried (radius x tan(lean), plus a few millimetres). A leaning leg stopped exactly at the plate
+  leaves a wedge of daylight under its high side.</li>
+<li><strong>Weld beads follow the real joint.</strong> A bead is a small tube laid along the line where one tube&rsquo;s
+  surface meets the other&rsquo;s. A plain ring square to the tube floats off one side whenever two tubes
+  meet at an angle; trace the intersection instead.</li>
+<li><strong>Feet are plain squared plates</strong> sitting flat on a real horizontal surface. No brackets unless asked.</li>
+<li><strong>Follow the body&rsquo;s lines.</strong> A leg that runs parallel to the body&rsquo;s own corner, a side rail that
+  carries the line of the cab: that is what makes a part look like it belongs to the truck.</li>
+</ul>
+<h2 id="faces-must-point-out">Faces must point out<a class="headerlink" href="#faces-must-point-out" title="Permanent link">#</a></h2>
+<p>The game draws only the side of a face that points toward the camera. A tube swept with its faces
+pointing <strong>inward</strong> looks almost right in most renders and shows its inside in game. This shipped
+once and was caught by the owner, not by a render, because the renderer drew both sides.</p>
+<ul>
+<li>Measure the winding of every generated piece before it goes near the game: the signed volume of a
+  closed piece, or the share of a tube&rsquo;s faces pointing away from its axis.</li>
+<li>Render with <strong>back-face culling on</strong>.</li>
+</ul>
+<h2 id="check-it-before-anyone-else-does">Check it before anyone else does<a class="headerlink" href="#check-it-before-anyone-else-does" title="Permanent link">#</a></h2>
+<p>Before sending a render, run the self-check on every joint:</p>
+<ul>
+<li>close-ups of each joint from behind and from three-quarter, both sides of the truck;</li>
+<li>no tube end in the air, no gap at a foot, no bead floating off a tube;</li>
+<li>clearances measured, not eyeballed (&ldquo;11.7 cm to the hardtop&rdquo;, not &ldquo;looks clear&rdquo;);</li>
+<li>triangle count under the game&rsquo;s 65,534 per mesh.</li>
+</ul>
+<h2 id="where-to-find-working-code">Where to find working code<a class="headerlink" href="#where-to-find-working-code" title="Permanent link">#</a></h2>
+<p>The truck-building code these rules came from is not public yet. Until it is, ask an assistant for
+the methods by name: arc fillets between straight runs, a rotation-minimising frame for the sweep,
+buried tube ends, beads traced on the intersection, faces flipped outward by signed volume.</p>
+<h2 id="what-has-been-checked">What has been checked<a class="headerlink" href="#what-has-been-checked" title="Permanent link">#</a></h2>
+<p>Racks, a roll cage, rear legs landing on a bumper, tube fenders and a side frame with recovery
+boards were built this way and checked in game. The rules above each came from a fault that
+reached a render or the game first.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../65-vehicles/ai-built-parts.html"><span>Previous</span>Building parts with AI</a><a class="seq-next" href="../65-vehicles/addon-slots.html"><span>Next</span>Add-on slots, dependencies and gear</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#ask-before-drawing">Ask before drawing</a></li>
+<li><a href="#the-geometry-rules">The geometry rules</a></li>
+<li><a href="#faces-must-point-out">Faces must point out</a></li>
+<li><a href="#check-it-before-anyone-else-does">Check it before anyone else does</a></li>
+<li><a href="#where-to-find-working-code">Where to find working code</a></li>
+<li><a href="#what-has-been-checked">What has been checked</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

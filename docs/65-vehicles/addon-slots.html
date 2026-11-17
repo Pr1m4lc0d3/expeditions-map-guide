@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add-on slots, dependencies and gear &middot; Expeditions Map Making</title>
+<meta name="description" content="How a new part reaches the garage. Slots on the truck, requirements on other parts, supply gear that adds fuel and spare parts, and the quiet failures between them, from a frame name ending in .001 to a socket offset the game ignores."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+        <li>
+          <a href="../00-start/downloads.html">Downloads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objective-system-map.html">The objective system map</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html">Unlocking trucks and parts</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/rock-lights.html">Rock lights on any truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/license-plates.html">Custom licence plates</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/engine-ghost.html">Placing the engine ghost</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/ai-built-parts.html">Building parts with AI</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/tube-parts.html">Tube parts in code</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/addon-slots.html" aria-current="page">Add-on slots, dependencies and gear</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Vehicles</p>
+        <h1>Add-on slots, dependencies and gear</h1>
+<p class="lede">How a new part reaches the garage. Slots on the truck, requirements on other parts, supply gear that adds fuel and spare parts, and the quiet failures between them, from a frame name ending in .001 to a socket offset the game ignores.</p>      </div>
+      <div class="banner">
+        <strong>This page is draft.</strong>
+        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
+        been proven in a running game.
+      </div>
+      <article class="prose"><h1 id="add-on-slots-dependencies-and-gear">Add-on slots, dependencies and gear<a class="headerlink" href="#add-on-slots-dependencies-and-gear" title="Permanent link">#</a></h1>
+<p>A part you have built is not in the game until the truck has a slot for it and the part knows which
+slot it fits. <a href="rock-lights.html">Rock lights on any truck</a> walks through the basic mechanism with a
+complete example. This page collects what goes wrong once a truck has many add-ons that depend on
+each other: a rack, gear on the rack, a tent instead of the gear, a lift kit that changes the truck.</p>
+<h2 id="slots-and-requirements">Slots and requirements<a class="headerlink" href="#slots-and-requirements" title="Permanent link">#</a></h2>
+<ul>
+<li>The <strong>slot</strong> is a <code>&lt;Socket Names="..."&gt;</code> in the truck&rsquo;s <code>&lt;AddonSockets&gt;</code>. An add-on fits one with
+  <code>&lt;InstallSocket Type="..."&gt;</code>.</li>
+<li>Sockets listed together in one <code>&lt;AddonSockets&gt;</code> group are <strong>one choice</strong>: fitting one add-on
+  clears the others. Put a tent and the gear that would sit in its place in one group, and the
+  player picks one.</li>
+<li>An add-on that bolts onto another add-on needs <code>&lt;RequiredAddon Types="a, b" /&gt;</code> before its
+  <code>InstallSocket</code> (any one of the listed add-ons will do). Without it, the garage offers fender
+  flares on a truck with no fenders under them, and they float.</li>
+<li>Ask &ldquo;what does this bolt to?&rdquo; for every new part, and write the requirement in the script that
+  builds the part, not by hand in the pak. Hand edits are lost on the next build.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">An add-on&rsquo;s own Offset is ignored</p>
+<p><code>InstallSocket</code> takes an <code>Offset</code>, and it looks like the way to slide a stock part (a drone
+carrier, the metal detector) onto your rack. In game it did nothing: the detector sat on the
+ground in front of the truck. Put the offset on the <strong>truck&rsquo;s</strong> socket instead
+(<code>&lt;Socket Names="..." Offset="(x; y; z)"&gt;</code>). That worked, and the detector sat on the rack.</p>
+</div>
+<h2 id="the-frame-name-trap">The frame name trap<a class="headerlink" href="#the-frame-name-trap" title="Permanent link">#</a></h2>
+<p>An add-on&rsquo;s class names the mesh frame it draws (<code>MeshFrame</code>) and the frame it rides
+(<code>ModelFrame</code>). If Blender exports several add-ons in one session, it renames a reused helper
+object <code>Bone_cdt.001</code>, then <code>.002</code>. The converted mesh then carries <code>BoneRackSlot1_cdt.001</code> while
+the class asks for <code>BoneRackSlot1_cdt</code>, and the part does not appear. The XML looks perfect.</p>
+<p>When an add-on &ldquo;does not work&rdquo; and its XML matches a working one, list the frames in its converted
+mesh first. A script that exports many add-ons in one Blender session must delete its helper objects
+after each export, not just unlink them.</p>
+<h2 id="supply-gear">Supply gear<a class="headerlink" href="#supply-gear" title="Permanent link">#</a></h2>
+<p>Parts that carry supplies (fuel cans, a parts case, batteries, a tent with camp kit) are add-ons
+whose <code>&lt;TruckData&gt;</code> adds capacity:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;TruckData</span><span class="w"> </span><span class="na">FuelCapacity=</span><span class="s">&quot;45&quot;</span><span class="w"> </span><span class="na">RepairsCapacity=</span><span class="s">&quot;150&quot;</span><span class="w"> </span><span class="na">ElectricChargeCapacity=</span><span class="s">&quot;15&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+</code></pre></div>
+
+<p><code>&lt;TruckData&gt;</code> on an add-on accepts only a short list of fields: fuel, water, repairs, wheel repairs,
+electric charge, the metal detector, radar, wheel drone, cistern and kung flags. Anything else is
+ignored. That is why some things cannot follow a part: the engine ghost, for one, is read only from
+the truck (<a href="engine-ghost.html">Placing the engine ghost</a>).</p>
+<p>Gear that is used up (<code>IsConsumable="true"</code>) can hide its mesh as it empties, with <code>FuelHide</code>,
+<code>RepairsHide</code> and similar elements naming a frame and a threshold.</p>
+<h2 id="when-the-truck-itself-changes">When the truck itself changes<a class="headerlink" href="#when-the-truck-itself-changes" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>A lift kit</strong> is a suspension set, and a suspension set can swap the whole truck for a <strong>truck
+  replacement</strong> (<code>TruckReplacement</code> on the set, a class in <code>classes/truck_replacements/</code>). The
+  replacement can carry its own axles, drive shafts, engine ghost and wheel track. Stock
+  replacements carry almost none of the base truck&rsquo;s add-on sockets, and they do not need to:
+  add-on sockets come from the base truck.</li>
+<li><strong>Big tyres need the lift.</strong> <code>MaxWheelRadiusWithoutSuspension</code> on the truck&rsquo;s suspension socket
+  locks tyres above that radius behind any suspension set other than the default.</li>
+<li><strong>A spare cannot follow the fitted tyres.</strong> A spare-wheel add-on draws a fixed mesh, and
+  <code>RequiredAddon</code> resolves only against add-ons, not wheels. Offer one spare per tyre size and let
+  the player pick.</li>
+</ul>
+<h2 id="never-pull-a-class-a-save-is-using">Never pull a class a save is using<a class="headerlink" href="#never-pull-a-class-a-save-is-using" title="Permanent link">#</a></h2>
+<p>A save stores every fitted mod add-on as <code>&lt;class&gt;_&lt;mod id&gt;</code>. Remove that class from the mod and the
+save names something that no longer exists. Before a rebuild drops any add-on class, scan the saves
+(read only) and keep every fitted class, with its mesh and texture, until the player has taken the
+part off in the garage.</p>
+<h2 id="what-has-been-checked">What has been checked<a class="headerlink" href="#what-has-been-checked" title="Permanent link">#</a></h2>
+<p>The socket offset, requirements, supply capacities and the per-size spares were each confirmed in
+game on a built truck or a port. The frame-name fault was found by reading the converted meshes; the
+parts drew once the names matched, but that fix was not checked on its own. The <code>TruckData</code> field list was read from
+the game&rsquo;s executable. Gear hiding as it empties is the stock mechanism and was not tested on a
+custom part.</p></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../65-vehicles/tube-parts.html"><span>Previous</span>Tube parts in code</a><a class="seq-next" href="../70-shipping/packing.html"><span>Next</span>Packing your map</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#slots-and-requirements">Slots and requirements</a></li>
+<li><a href="#the-frame-name-trap">The frame name trap</a></li>
+<li><a href="#supply-gear">Supply gear</a></li>
+<li><a href="#when-the-truck-itself-changes">When the truck itself changes</a></li>
+<li><a href="#never-pull-a-class-a-save-is-using">Never pull a class a save is using</a></li>
+<li><a href="#what-has-been-checked">What has been checked</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

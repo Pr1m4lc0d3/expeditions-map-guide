@@ -34,6 +34,11 @@ chapter is worth stating once:
 | fixing store and garage pictures | [Store and garage artwork](store-and-garage-images.html) |
 | adding paint schemes, chrome or camouflage | [Skins and paint](skins-and-paint.html) |
 | giving a truck an add-on it never had, such as rock lights | [Rock lights on any truck](rock-lights.html) |
+| putting your own licence plate on a truck | [Custom licence plates](license-plates.html) |
+| fixing the see-through engine that floats out of the nose | [Placing the engine ghost](engine-ghost.html) |
+| making bumpers, tents, cans or boards with an AI assistant and Tripo or Meshy | [Building parts with AI](ai-built-parts.html) |
+| writing a rack, cage or tube bumper as code | [Tube parts in code](tube-parts.html) |
+| wiring parts that depend on each other, gear that carries supplies, lift kits | [Add-on slots, dependencies and gear](addon-slots.html) |
 | stuck, with no error to go on | [Diagnosing a vehicle](diagnosing.html) |
 
 The runbook is the ordered procedure and every other page in this part is a

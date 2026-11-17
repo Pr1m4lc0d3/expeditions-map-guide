@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Placing the engine ghost &middot; Expeditions Map Making</title>
+<meta name="description" content="The see-through engine the game shows at start-up sits at the truck&#39;s engine sound, not its steam or its engine damage box. Why it floats out of the nose on a new body, and the tool that puts it in the bay."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+        <li>
+          <a href="../00-start/downloads.html">Downloads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objective-system-map.html">The objective system map</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html">Unlocking trucks and parts</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/rock-lights.html">Rock lights on any truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/license-plates.html">Custom licence plates</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/engine-ghost.html" aria-current="page">Placing the engine ghost</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/ai-built-parts.html">Building parts with AI</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/tube-parts.html">Tube parts in code</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/addon-slots.html">Add-on slots, dependencies and gear</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Vehicles</p>
+        <h1>Placing the engine ghost</h1>
+<p class="lede">The see-through engine the game shows at start-up sits at the truck&#39;s engine sound, not its steam or its engine damage box. Why it floats out of the nose on a new body, and the tool that puts it in the bay.</p>      </div>
+      <div class="banner">
+        <strong>This page is draft.</strong>
+        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
+        been proven in a running game.
+      </div>
+      <article class="prose"><h1 id="placing-the-engine-ghost">Placing the engine ghost<a class="headerlink" href="#placing-the-engine-ghost" title="Permanent link">#</a></h1>
+<p>Start a truck in Expeditions and a see-through engine flashes up in its engine bay. It shows again
+when the engine takes damage. On a truck you have built or brought in from somewhere else, that
+ghost often appears in the wrong place: out past the grille, floating above the hood, or 20 cm off
+to one side.</p>
+<p>The fix is one line in the truck&rsquo;s class file. The hard part is knowing which line, because the two
+obvious candidates do nothing.</p>
+<h2 id="what-the-game-reads">What the game reads<a class="headerlink" href="#what-the-game-reads" title="Permanent link">#</a></h2>
+<p>The ghost has three settings, and only two of them are named after it:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EngineIconMesh</code></td>
+<td><code>&lt;TruckData&gt;</code></td>
+<td>which ghost model to draw</td>
+</tr>
+<tr>
+<td><code>EngineIconScale</code></td>
+<td><code>&lt;TruckData&gt;</code></td>
+<td>its size</td>
+</tr>
+<tr>
+<td><code>&lt;Sounds Origin="(x; y; z)"&gt;</code></td>
+<td>the truck&rsquo;s <code>&lt;Sounds&gt;</code> element</td>
+<td><strong>where it is drawn</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>The position comes from the <strong>engine sound</strong>. When the game loads a truck class it builds an
+object for the engine sound from <code>&lt;Sounds Origin&gt;</code> (and <code>&lt;Sounds ParentFrame&gt;</code>, if the truck gives
+one). The code that draws the ghost takes that object&rsquo;s place in the world, pulls it a little
+toward the camera, and draws the ghost model there. Nothing else in the truck class sets it. The
+game&rsquo;s own field list confirms this: the only fields with &ldquo;EngineIcon&rdquo; in their names are the mesh
+and the scale.</p>
+<p>This was read out of <code>Expeditions.exe</code> with IDA after two in-game attempts had failed. The parser
+stores the ghost mesh and scale beside each other in the truck&rsquo;s data, and the only code that reads
+them back is the drawer. The drawer positions the ghost from the engine-sound object, which the
+parser fills from <code>&lt;Sounds Origin&gt;</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Two settings that look right and do nothing</p>
+<p><strong><code>&lt;Steam Origin&gt;</code></strong> places the radiator steam, not the ghost. Moving it left the ghost exactly
+where it was. Stock trucks put their steam all over the place: one stock truck&rsquo;s sits 6 cm behind
+the truck&rsquo;s own origin, two metres from its engine.</p>
+<p><strong>The engine <code>&lt;DamageArea&gt;</code></strong> is the box that takes engine damage in a crash. On every stock
+truck it sits on the engine, which makes it look like the answer. It is not: moving it did not
+move the ghost either.</p>
+</div>
+<p>Coordinates are the truck&rsquo;s own space, in metres: <strong>x forward, y up, z to the side</strong>. <code>z</code> is not
+always 0 on a ported truck: one ported Jeep carried a sound origin of <code>(0.81; 0.779; -0.2)</code>, which
+is why its ghost sat 20 cm to one side.</p>
+<h2 id="why-a-new-body-gets-it-wrong">Why a new body gets it wrong<a class="headerlink" href="#why-a-new-body-gets-it-wrong" title="Permanent link">#</a></h2>
+<p>A truck built on another truck&rsquo;s class keeps that truck&rsquo;s <code>&lt;Sounds Origin&gt;</code>. If the old engine sat
+further forward or higher than the new body&rsquo;s bay, the ghost follows the old engine. A truck
+brought in from SnowRunner can also carry a sound origin that was never meant for the ghost at all.</p>
+<h2 id="the-ghost-models">The ghost models<a class="headerlink" href="#the-ghost-models" title="Permanent link">#</a></h2>
+<p><code>EngineIconMesh</code> names a mesh in the game&rsquo;s <code>shared.pak</code>. Three are <strong>generic</strong>, modelled round
+their own origin so they can go in any truck:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Mesh</th>
+<th>Size at scale 1 (length x height x width)</th>
+<th>Reaches, from the origin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>env/engine_small</code></td>
+<td>0.66 x 0.64 x 0.56 m</td>
+<td>0.28 back, 0.38 forward, 0.33 down, 0.31 up</td>
+</tr>
+<tr>
+<td><code>env/engine_default</code></td>
+<td>1.12 x 0.66 x 0.67 m</td>
+<td>0.40 back, 0.72 forward, 0.43 down, 0.23 up</td>
+</tr>
+<tr>
+<td><code>env/engine_big</code></td>
+<td>1.47 x 0.66 x 0.95 m</td>
+<td>0.48 back, 0.99 forward, 0.43 down, 0.23 up</td>
+</tr>
+</tbody>
+</table></div>
+<p>The origin is not the middle of the model. The default engine reaches almost twice as far forward
+as back and sits mostly below its origin, so placing the origin &ldquo;in the middle of the bay&rdquo; puts the
+engine too far forward.</p>
+<p>The other ghost meshes are named after stock trucks (<code>env/engine_&lt;truck&gt;</code>). Those are modelled in
+their own truck&rsquo;s space, already in place, so on another body they land wherever that truck&rsquo;s
+engine was. Use a generic one on anything you build.</p>
+<div class="admonition note">
+<p class="admonition-title">A lift kit carries its own ghost</p>
+<p>A suspension set can swap the whole truck for a <strong>truck replacement</strong>
+(<code>classes/truck_replacements/&lt;name&gt;.xml</code>). The replacement is a complete truck class with its
+own <code>EngineIconMesh</code>, <code>EngineIconScale</code> and <code>&lt;Sounds&gt;</code>. If your truck has one, place the ghost in
+both. That is also the only way a ghost can change with the build: the game reads the ghost from
+the truck (or its replacement), never from an engine add-on, so a V8 ghost can come with a lift
+kit but not with the V8 itself.</p>
+</div>
+<h2 id="putting-it-in-the-bay">Putting it in the bay<a class="headerlink" href="#putting-it-in-the-bay" title="Permanent link">#</a></h2>
+<p>The <strong>engine-ghost</strong> tool in <a href="https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/engine-ghost">expeditions-tools</a>
+does the measuring. It reads the truck&rsquo;s own converted mesh out of the mod (no source files needed),
+finds the engine bay, and fits the ghost in it:</p>
+<div class="hl"><pre><span></span><code>python<span class="w"> </span>engine_ghost.py<span class="w"> </span>--mod<span class="w"> </span><span class="s2">&quot;&lt;...&gt;/Mods/.modio/mods/&lt;id&gt;&quot;</span><span class="w"> </span>--truck<span class="w"> </span>my_truck<span class="w"> </span>--preview<span class="w"> </span>bay.png
+</code></pre></div>
+
+<p>It reports where the ghost is now and what is wrong with it (&ldquo;pokes 0.04 m out of the nose&rdquo;, &ldquo;sits
+-0.13 m off the centre line&rdquo;), suggests a <code>&lt;Sounds Origin&gt;</code>, and draws a side and plan picture with
+the bay, the hood line, the ghost now and the ghost suggested. <code>--apply</code> writes it into the mod&rsquo;s
+pak (with the game closed), and <code>--raise</code>, <code>--lower</code> and <code>--forward</code> nudge it after you have looked.</p>
+<p>How it finds the bay:</p>
+<ul>
+<li><strong>Nose</strong>: the front-most bodywork that reaches near hood height. Bumpers, winches and bull bars
+  sit lower and further out, and a winch bumper once put one truck&rsquo;s &ldquo;front&rdquo; 18 cm ahead of its grille.</li>
+<li><strong>Windshield base</strong>: the front edge of the glass near the centre line, from just under the hood
+  up. Headlight lenses are glass too, but they sit lower and further out.</li>
+<li><strong>Bay</strong>: from 10 cm ahead of the windshield base to 15 cm behind the nose.</li>
+</ul>
+<p>On the two trucks tested, the suggested front-to-back place landed within 2.5 cm of the place the
+owner settled on by eye. <strong>Height is a look, not a measurement.</strong> On those same two trucks the
+owner chose the ghost&rsquo;s top about 25 cm under the hood line on one and 8 cm under on the other, so
+the tool&rsquo;s height is only a starting point: check it in game and nudge.</p>
+<div class="admonition tip">
+<p class="admonition-title">Converted meshes do not agree on where a part&rsquo;s vertices are</p>
+<p>In some mod meshes a part&rsquo;s vertices are stored relative to its frame&rsquo;s whole parent chain (one
+truck&rsquo;s body sat a metre too low read raw). In others they are already in truck space (another
+truck&rsquo;s body landed 1.2 m outside its own mesh when the chain was applied). The tool takes,
+for each part, whichever reading keeps the most vertices inside the bounds in the mesh&rsquo;s own
+header, which is the box the game itself uses.</p>
+</div>
+<h2 id="what-has-been-checked">What has been checked<a class="headerlink" href="#what-has-been-checked" title="Permanent link">#</a></h2>
+<ul>
+<li>In game: <code>&lt;Sounds Origin&gt;</code> moves the ghost; <code>&lt;Steam Origin&gt;</code> and the engine <code>&lt;DamageArea&gt;</code> do not.
+  Two trucks, one built from scratch and one ported, both placed and approved by eye.</li>
+<li>In the exe: the drawer reads the ghost&rsquo;s place from the engine-sound object, and no other field
+  places it.</li>
+<li>Not yet checked: whether <code>&lt;Sounds ParentFrame&gt;</code> makes the ghost ride a tilting cab. The stock
+  trucks that set it use the cab bone, so it should, but nobody has watched it happen.</li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../65-vehicles/license-plates.html"><span>Previous</span>Custom licence plates</a><a class="seq-next" href="../65-vehicles/diagnosing.html"><span>Next</span>Diagnosing a vehicle</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#what-the-game-reads">What the game reads</a></li>
+<li><a href="#why-a-new-body-gets-it-wrong">Why a new body gets it wrong</a></li>
+<li><a href="#the-ghost-models">The ghost models</a></li>
+<li><a href="#putting-it-in-the-bay">Putting it in the bay</a></li>
+<li><a href="#what-has-been-checked">What has been checked</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>
