@@ -417,6 +417,35 @@ generated one lost everything that made it look right.</p>
   not levelled by its base: one generated can had a base plate skewed 2.4 degrees, so every
   base-levelled copy leaned.</li>
 <li>Render it on the truck, <strong>with back-face culling on</strong>, from the angle the player sees, on both sides.</li>
+<li><strong>Fit the gear to the design, not the design to the gear.</strong> When a real bumper&rsquo;s can holders
+  were sized for real cans, the fix for a stock can that was too big was a new can, not a new bumper.</li>
+<li><strong>Look at what the model already has before building what seems to be missing.</strong> On one ported
+  truck, five rebuilds of a &ldquo;missing&rdquo; door jamb were wasted: the original model had the whole jamb,
+  and our own cutting script was removing it. Render the untouched original against a magenta
+  background (holes show as magenta) and compare it with your patched version first.</li>
+<li><strong>Measure from orthographic views, not perspective screenshots.</strong> A colour-coded side render with
+  the see-through pixels counted found a gap that a dozen perspective looks had argued about. In a
+  player&rsquo;s screenshot, work out which side the camera is on before reading left and right.</li>
+</ul>
+<h2 id="keep-the-model-intact-through-conversion">Keep the model intact through conversion<a class="headerlink" href="#keep-the-model-intact-through-conversion" title="Permanent link">#</a></h2>
+<p>A generated model can look perfect as it came from the generator and wrong in game, because of what
+happened to it on the way. Render the raw generated file and your converted file side by side before
+installing anything. On one set of generated wheel rims that comparison was the whole diagnosis.</p>
+<ul>
+<li><strong>Keep its own shading normals.</strong> Merging vertices, recomputing normals or re-smoothing a
+  generated mesh melted a rim&rsquo;s bolts into lumps and crumpled its centre cap. Move the model with
+  object transforms, keep the generator&rsquo;s UVs, normals and normal map, and do not reduce it if it
+  fits the budget.</li>
+<li><strong>Check which side the game draws.</strong> The same rims showed a plain disc in game for a day: the game
+  was drawing their back. Render the converted file from the side the game shows and compare it with
+  a screenshot before blaming the textures.</li>
+<li><strong>Paint per texel, and give solid black its own material.</strong> Recolouring a generated texture by
+  rough regions bleeds colour across edges. Rasterise every triangle into a map of which face each
+  texel belongs to, colour by face, and put large flat black areas on a second material with a small
+  solid-black texture: at a distance the game blends texture levels, and a black ring sharing a
+  texture with an olive face came out smeared olive.</li>
+<li><strong>Paint out invented lettering.</strong> A generator will print convincing nonsense text on a tent cover
+  or a case. Paint it out of the texture (and the normal map) before the part goes anywhere.</li>
 </ul>
 <h2 id="6-into-the-game">6. Into the game<a class="headerlink" href="#6-into-the-game" title="Permanent link">#</a></h2>
 <p>Every mesh the game loads has to pass through the game&rsquo;s own converter, and the game&rsquo;s limits
@@ -431,9 +460,10 @@ apply to generated parts like any other:</p>
 </ul>
 <h2 id="what-has-been-checked">What has been checked<a class="headerlink" href="#what-has-been-checked" title="Permanent link">#</a></h2>
 <p>Everything above comes from parts that were built, installed and looked at in game, and from the
-mistakes along the way. The credit and polygon numbers are from those runs. What is not here yet:
-a side-by-side of Tripo against Meshy on the same input, and rigging a generated part to move (a
-winch drum, a door).</p></article>
+mistakes along the way. The credit and polygon numbers are from those runs. The rim lessons were
+confirmed in game once the rims were turned and painted per texel. What is not here yet: a
+side-by-side of Tripo against Meshy on the same input, and rigging a generated part to move (a winch
+drum, a door).</p></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../65-vehicles/diagnosing.html"><span>Previous</span>Diagnosing a vehicle</a><a class="seq-next" href="../65-vehicles/tube-parts.html"><span>Next</span>Tube parts in code</a>      </nav>
@@ -448,6 +478,7 @@ winch drum, a door).</p></article>
 <li><a href="#3-generate">3. Generate</a></li>
 <li><a href="#4-clean-the-model-do-not-rebuild-it">4. Clean the model, do not rebuild it</a></li>
 <li><a href="#5-fit-it-to-the-truck">5. Fit it to the truck</a></li>
+<li><a href="#keep-the-model-intact-through-conversion">Keep the model intact through conversion</a></li>
 <li><a href="#6-into-the-game">6. Into the game</a></li>
 <li><a href="#what-has-been-checked">What has been checked</a></li>
 </ul>

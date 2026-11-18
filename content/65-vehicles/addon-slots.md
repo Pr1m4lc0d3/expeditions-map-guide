@@ -43,6 +43,33 @@ When an add-on "does not work" and its XML matches a working one, list the frame
 mesh first. A script that exports many add-ons in one Blender session must delete its helper objects
 after each export, not just unlink them.
 
+## Mesh and class traps
+
+These each cost a round trip into the game, and none of them reports an error.
+
+- **Never point a mod class at another truck's mesh.** A gear class that reused a stock truck's
+  tuning mesh (with its frames and a socket offset) **froze the game at the loading screen**: no
+  log, no crash dump, nothing in the script callstack. Removing only that class let it load. Copy the
+  shape you need into your own mesh instead. A mod mesh may still *name* the game's own textures.
+- **Add-on meshes are placed from the truck's zero**, not from the socket's frame. One hardtop built
+  relative to the chassis bone drew a metre too low, inside the cab, and looked for a day as if it
+  did not draw at all.
+- **Every add-on mesh needs the usual frames**: a `RootNode`, a `cdt` collision frame, then the
+  mesh. One roll cage listed in the garage with a price but could not be bought and did not draw;
+  its meshes lacked the frames every working add-on has. Adding them is the fix we use now.
+- **A texture with alpha must be saved with alpha.** A `__d_a` texture written as plain RGB drew
+  a banner as a white strip.
+- **Another mod's classes resolve only inside that mod.** The game files every mod class under its
+  mod's id, so a truck that names another mod's wheel set in `CompatibleWheels` never finds it. Copy
+  the wheel classes, meshes and textures into your own mod. Then keep each tyre's inner sidewall
+  where the truck's own tyre's is: borrowing another truck's wheel offset put one set of tyres
+  16 cm too far in, with the hubs through the wheel faces.
+- **Engines, gearboxes and suspensions take no requirements.** Only add-ons accept `RequiredAddon`
+  or `RequiredSuspension`. "This lift needs the V8" cannot be enforced; the parts stay separate.
+- **A dented corner may be the game, not your mesh.** Trucks take visual damage. Almost every stock
+  add-on, and many stock trucks, set `AcceptVisualDamage="false"` on their `PhysicsModel`. Compare a
+  garage shot before hunting for a fault in a mesh that looks crumpled in the field.
+
 ## Supply gear
 
 Parts that carry supplies (fuel cans, a parts case, batteries, a tent with camp kit) are add-ons
@@ -82,8 +109,10 @@ part off in the garage.
 
 ## What has been checked
 
-The socket offset, requirements, supply capacities and the per-size spares were each confirmed in
-game on a built truck or a port. The frame-name fault was found by reading the converted meshes; the
-parts drew once the names matched, but that fix was not checked on its own. The `TruckData` field list was read from
-the game's executable. Gear hiding as it empties is the stock mechanism and was not tested on a
-custom part.
+Confirmed in game on a built truck or a port: the socket offset, requirements, supply capacities,
+the per-size spares, the loading-screen freeze and its fix, the hardtop drawn a metre low, and other
+mods' wheel sets once copied in. The `TruckData` field list was read from the game's executable. The
+frame-name fault was found by reading the converted meshes; the parts drew once the names matched,
+but that fix was not checked on its own. Not yet confirmed: that the missing frames alone stopped the
+roll cage, that the alpha flag alone fixed the banner, whether `AcceptVisualDamage="false"` keeps a
+custom truck's body clean, and gear hiding as it empties on a custom part.

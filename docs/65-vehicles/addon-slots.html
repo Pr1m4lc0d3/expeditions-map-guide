@@ -358,6 +358,32 @@ the class asks for <code>BoneRackSlot1_cdt</code>, and the part does not appear.
 <p>When an add-on &ldquo;does not work&rdquo; and its XML matches a working one, list the frames in its converted
 mesh first. A script that exports many add-ons in one Blender session must delete its helper objects
 after each export, not just unlink them.</p>
+<h2 id="mesh-and-class-traps">Mesh and class traps<a class="headerlink" href="#mesh-and-class-traps" title="Permanent link">#</a></h2>
+<p>These each cost a round trip into the game, and none of them reports an error.</p>
+<ul>
+<li><strong>Never point a mod class at another truck&rsquo;s mesh.</strong> A gear class that reused a stock truck&rsquo;s
+  tuning mesh (with its frames and a socket offset) <strong>froze the game at the loading screen</strong>: no
+  log, no crash dump, nothing in the script callstack. Removing only that class let it load. Copy the
+  shape you need into your own mesh instead. A mod mesh may still <em>name</em> the game&rsquo;s own textures.</li>
+<li><strong>Add-on meshes are placed from the truck&rsquo;s zero</strong>, not from the socket&rsquo;s frame. One hardtop built
+  relative to the chassis bone drew a metre too low, inside the cab, and looked for a day as if it
+  did not draw at all.</li>
+<li><strong>Every add-on mesh needs the usual frames</strong>: a <code>RootNode</code>, a <code>cdt</code> collision frame, then the
+  mesh. One roll cage listed in the garage with a price but could not be bought and did not draw;
+  its meshes lacked the frames every working add-on has. Adding them is the fix we use now.</li>
+<li><strong>A texture with alpha must be saved with alpha.</strong> A <code>__d_a</code> texture written as plain RGB drew
+  a banner as a white strip.</li>
+<li><strong>Another mod&rsquo;s classes resolve only inside that mod.</strong> The game files every mod class under its
+  mod&rsquo;s id, so a truck that names another mod&rsquo;s wheel set in <code>CompatibleWheels</code> never finds it. Copy
+  the wheel classes, meshes and textures into your own mod. Then keep each tyre&rsquo;s inner sidewall
+  where the truck&rsquo;s own tyre&rsquo;s is: borrowing another truck&rsquo;s wheel offset put one set of tyres
+  16 cm too far in, with the hubs through the wheel faces.</li>
+<li><strong>Engines, gearboxes and suspensions take no requirements.</strong> Only add-ons accept <code>RequiredAddon</code>
+  or <code>RequiredSuspension</code>. &ldquo;This lift needs the V8&rdquo; cannot be enforced; the parts stay separate.</li>
+<li><strong>A dented corner may be the game, not your mesh.</strong> Trucks take visual damage. Almost every stock
+  add-on, and many stock trucks, set <code>AcceptVisualDamage="false"</code> on their <code>PhysicsModel</code>. Compare a
+  garage shot before hunting for a fault in a mesh that looks crumpled in the field.</li>
+</ul>
 <h2 id="supply-gear">Supply gear<a class="headerlink" href="#supply-gear" title="Permanent link">#</a></h2>
 <p>Parts that carry supplies (fuel cans, a parts case, batteries, a tent with camp kit) are add-ons
 whose <code>&lt;TruckData&gt;</code> adds capacity:</p>
@@ -389,11 +415,13 @@ save names something that no longer exists. Before a rebuild drops any add-on cl
 (read only) and keep every fitted class, with its mesh and texture, until the player has taken the
 part off in the garage.</p>
 <h2 id="what-has-been-checked">What has been checked<a class="headerlink" href="#what-has-been-checked" title="Permanent link">#</a></h2>
-<p>The socket offset, requirements, supply capacities and the per-size spares were each confirmed in
-game on a built truck or a port. The frame-name fault was found by reading the converted meshes; the
-parts drew once the names matched, but that fix was not checked on its own. The <code>TruckData</code> field list was read from
-the game&rsquo;s executable. Gear hiding as it empties is the stock mechanism and was not tested on a
-custom part.</p></article>
+<p>Confirmed in game on a built truck or a port: the socket offset, requirements, supply capacities,
+the per-size spares, the loading-screen freeze and its fix, the hardtop drawn a metre low, and other
+mods&rsquo; wheel sets once copied in. The <code>TruckData</code> field list was read from the game&rsquo;s executable. The
+frame-name fault was found by reading the converted meshes; the parts drew once the names matched,
+but that fix was not checked on its own. Not yet confirmed: that the missing frames alone stopped the
+roll cage, that the alpha flag alone fixed the banner, whether <code>AcceptVisualDamage="false"</code> keeps a
+custom truck&rsquo;s body clean, and gear hiding as it empties on a custom part.</p></article>
 
       <nav class="seq" aria-label="Previous and next page">
 <a class="seq-prev" href="../65-vehicles/tube-parts.html"><span>Previous</span>Tube parts in code</a><a class="seq-next" href="../70-shipping/packing.html"><span>Next</span>Packing your map</a>      </nav>
@@ -405,6 +433,7 @@ custom part.</p></article>
 <ul>
 <li><a href="#slots-and-requirements">Slots and requirements</a></li>
 <li><a href="#the-frame-name-trap">The frame name trap</a></li>
+<li><a href="#mesh-and-class-traps">Mesh and class traps</a></li>
 <li><a href="#supply-gear">Supply gear</a></li>
 <li><a href="#when-the-truck-itself-changes">When the truck itself changes</a></li>
 <li><a href="#never-pull-a-class-a-save-is-using">Never pull a class a save is using</a></li>

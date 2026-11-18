@@ -90,6 +90,36 @@ generated one lost everything that made it look right.
   not levelled by its base: one generated can had a base plate skewed 2.4 degrees, so every
   base-levelled copy leaned.
 - Render it on the truck, **with back-face culling on**, from the angle the player sees, on both sides.
+- **Fit the gear to the design, not the design to the gear.** When a real bumper's can holders
+  were sized for real cans, the fix for a stock can that was too big was a new can, not a new bumper.
+- **Look at what the model already has before building what seems to be missing.** On one ported
+  truck, five rebuilds of a "missing" door jamb were wasted: the original model had the whole jamb,
+  and our own cutting script was removing it. Render the untouched original against a magenta
+  background (holes show as magenta) and compare it with your patched version first.
+- **Measure from orthographic views, not perspective screenshots.** A colour-coded side render with
+  the see-through pixels counted found a gap that a dozen perspective looks had argued about. In a
+  player's screenshot, work out which side the camera is on before reading left and right.
+
+## Keep the model intact through conversion
+
+A generated model can look perfect as it came from the generator and wrong in game, because of what
+happened to it on the way. Render the raw generated file and your converted file side by side before
+installing anything. On one set of generated wheel rims that comparison was the whole diagnosis.
+
+- **Keep its own shading normals.** Merging vertices, recomputing normals or re-smoothing a
+  generated mesh melted a rim's bolts into lumps and crumpled its centre cap. Move the model with
+  object transforms, keep the generator's UVs, normals and normal map, and do not reduce it if it
+  fits the budget.
+- **Check which side the game draws.** The same rims showed a plain disc in game for a day: the game
+  was drawing their back. Render the converted file from the side the game shows and compare it with
+  a screenshot before blaming the textures.
+- **Paint per texel, and give solid black its own material.** Recolouring a generated texture by
+  rough regions bleeds colour across edges. Rasterise every triangle into a map of which face each
+  texel belongs to, colour by face, and put large flat black areas on a second material with a small
+  solid-black texture: at a distance the game blends texture levels, and a black ring sharing a
+  texture with an olive face came out smeared olive.
+- **Paint out invented lettering.** A generator will print convincing nonsense text on a tent cover
+  or a case. Paint it out of the texture (and the normal map) before the part goes anywhere.
 
 ## 6. Into the game
 
@@ -106,6 +136,7 @@ apply to generated parts like any other:
 ## What has been checked
 
 Everything above comes from parts that were built, installed and looked at in game, and from the
-mistakes along the way. The credit and polygon numbers are from those runs. What is not here yet:
-a side-by-side of Tripo against Meshy on the same input, and rigging a generated part to move (a
-winch drum, a door).
+mistakes along the way. The credit and polygon numbers are from those runs. The rim lessons were
+confirmed in game once the rims were turned and painted per texel. What is not here yet: a
+side-by-side of Tripo against Meshy on the same input, and rigging a generated part to move (a winch
+drum, a door).
