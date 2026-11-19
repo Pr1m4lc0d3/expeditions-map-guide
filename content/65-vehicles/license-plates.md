@@ -10,7 +10,7 @@ status: draft
 
 A truck in the game carries a licence plate only if its maker modelled one. This page explains
 how your own plate can replace it, and which trucks that works on. The **Doc's Rocks Plate
-Maker** (PC only, on mod.io) does all of this from a small Windows program.
+Maker** (PC only, [on mod.io](https://mod.io/g/expeditions/m/docs-rocks-plate-maker)) does all of this from a small Windows program.
 
 The rule it follows: **a truck that comes with no plate gets none.** The custom plate only
 replaces a plate that is already there.
@@ -77,13 +77,15 @@ on a mod truck, the slot and the plates go into that mod's own files. The slot c
 
 ## Which trucks
 
-- **Trucks that came with the game:** 37 carry a plate on a front bumper. The Haukka NS420 has a
-  full-size plate only on its standard bumper. Its other two bumpers show a 6.6 cm strip, too thin
-  for a plate. On the Tatra T815-7 Force and the Shiba Overlander, the light-coloured parts that
-  look like a plate are a long strip, a slanted panel and a grille. They are not plates.
-- **Truck mods, measured on these mods in November 2026:** 12 NOA Scouts trucks (the stock bumpers
-  they share), the RosenBug (its own rear plate piece), and the Jeep Pack RC CJ-7 where its version
-  has a tail plate hanger or a tire-carrier plate.
+- **Trucks that came with the game:** 38 carry a plate on at least one front bumper. Many plates are
+  tilted back or turned at an angle, such as the Tuz 16's reinforced bumper, which has its plate on the
+  driver's corner. So each plate is measured in its own plane, with its long edge setting the picture's
+  direction. The Haukka NS420 has a full-size plate only on its standard bumper; its other two bumpers
+  show a 6.6 cm strip, too thin for a plate. The Shiba Overlander's light-coloured front part is a grille,
+  not a plate.
+- **Truck mods:** the same method works inside a truck mod's own files, over the plate that truck
+  already carries: a stock bumper it reuses, or a plate piece of its own. A truck mod with no plate gets
+  none.
 
 ## Sharing what you made
 
@@ -98,5 +100,5 @@ blanklicenseplates.com on your own PC and does not ship them.
 - In game: custom plates on the stock bumpers of trucks that came with the game (Scout 800, DON 71),
   with only the fitted bumper's version buyable.
 - In game: one master mesh showing two different plates by changing only the texture name.
-- In game: plates on the CJ-7's tail hanger and tire carrier.
-- **Not yet checked in game:** the plates on the NOA Scouts trucks and the RosenBug.
+- In game: plates on a truck mod, on two plate spots of its own.
+- **Not yet checked in game:** the tilted and turned plates, and two plates on one truck at the same time.
