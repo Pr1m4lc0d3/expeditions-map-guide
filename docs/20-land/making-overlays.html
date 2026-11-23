@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Making your own overlays &middot; Expeditions Map Making</title>
+<meta name="description" content="The files behind a road, fence or guardrail you draw like a road, how to write your own, and how to give it a picture in the editor&#39;s library."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+        <li>
+          <a href="../00-start/downloads.html">Downloads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/making-overlays.html" aria-current="page">Making your own overlays</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/fence-lines.html">Breakable fences and guardrails from a line</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objective-system-map.html">The objective system map</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html">Unlocking trucks and parts</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/rock-lights.html">Rock lights on any truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/license-plates.html">Custom licence plates</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/engine-ghost.html">Placing the engine ghost</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/ai-built-parts.html">Building parts with AI</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/tube-parts.html">Tube parts in code</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/addon-slots.html">Add-on slots, dependencies and gear</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">The land</p>
+        <h1>Making your own overlays</h1>
+<p class="lede">The files behind a road, fence or guardrail you draw like a road, how to write your own, and how to give it a picture in the editor&#39;s library.</p>      </div>
+      <div class="banner">
+        <strong>This page is draft.</strong>
+        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
+        been proven in a running game.
+      </div>
+      <article class="prose"><p>Every road, track, fence line and guardrail line in the editor&rsquo;s overlay list is an
+<strong>overlay type</strong>: a small class file that says how to draw it, plus its textures, and for
+a fence, a mesh. The game&rsquo;s own types live inside its paks. Yours go in your own <code>Media</code>
+folder, <code>Documents\My Games\Expeditions\Media</code>, and the editor lists them next to the
+game&rsquo;s. <a href="roads.html">Roads are not carved terrain</a> covers laying one; this page covers
+making one.</p>
+<p>There are two kinds:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>What it is</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Painted</strong></td>
+<td>A texture laid over the ground along your line, which can also reshape the ground under it</td>
+<td>Roads, trails, tracks</td>
+</tr>
+<tr>
+<td><strong>Geometric</strong></td>
+<td>A short mesh repeated along your line and pressed onto the ground</td>
+<td>Fences, guardrails, walls, pipes</td>
+</tr>
+</tbody>
+</table></div>
+<div class="admonition note">
+<p class="admonition-title">How much of this is tested</p>
+<p>Fourteen painted roads built this way have been laid and seen <strong>in a running game</strong>
+on a locally installed map. Geometric fence and guardrail lines built this way convert
+and draw in the editor. The library pictures were seen in the editor after the fix
+below. A map installed from mod.io has not been tested.
+<span class="prov prov-unver">measured</span></p>
+</div>
+<h2 id="names-and-where-the-files-go">Names and where the files go<a class="headerlink" href="#names-and-where-the-files-go" title="Permanent link">#</a></h2>
+<p>Pick a name of lowercase letters, digits and underscores that the game does not already
+use, such as <code>my_gravel_road</code>. Every file carries it:</p>
+<div class="hl"><pre><span></span><code>Media\classes\overlays\my_gravel_road.xml                the class
+Media\textures\overlays\my_gravel_road__d_a.tga          colour (painted)
+Media\textures\overlays\my_gravel_road_relief__d_a.tga   relief and coverage (painted)
+Media\prebuild\common\my_gravel_road__s.tga              ground shape, optional (painted)
+Media\meshes\overlays\my_fence_line.fbx                  the mesh (geometric)
+Media\meshes\overlays\my_fence_line.xml                  its materials (geometric)
+Media\icons\overlays_my_gravel_road.dds                  the library picture
+</code></pre></div>
+
+<p>Save every class and mesh <code>.xml</code> with bare <code>LF</code> line endings. Restart the editor after
+adding a type; it lists the name with <code>\Media</code> after it.</p>
+<h2 id="a-painted-road">A painted road<a class="headerlink" href="#a-painted-road" title="Permanent link">#</a></h2>
+<h3 id="the-class">The class<a class="headerlink" href="#the-class" title="Permanent link">#</a></h3>
+<p>This is a working two-lane highway&rsquo;s class, as shipped:
+<span class="prov prov-unver">measured</span></p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;OverlayBrand</span>
+<span class="w">    </span><span class="na">IsClampV=</span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="na">HeightMapBlendingContrast=</span><span class="s">&quot;0.9&quot;</span>
+<span class="w">    </span><span class="na">BlendBorderMin=</span><span class="s">&quot;0.0&quot;</span>
+<span class="w">    </span><span class="na">BlendBorderMax=</span><span class="s">&quot;0.4&quot;</span>
+<span class="w">    </span><span class="na">IsAsphalt=</span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="na">IsExtrudable=</span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="na">GenerateDust=</span><span class="s">&quot;false&quot;</span>
+<span class="w">    </span><span class="na">WheelTracks=</span><span class="s">&quot;0&quot;</span>
+<span class="w">    </span><span class="na">Texture=</span><span class="s">&quot;overlays/my_highway__d_a.tga&quot;</span>
+<span class="w">    </span><span class="na">TextureRelief=</span><span class="s">&quot;overlays/my_highway_relief__d_a.tga&quot;</span>
+<span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Prebuild</span>
+<span class="w">        </span><span class="na">DefaultWidth=</span><span class="s">&quot;16&quot;</span>
+<span class="w">        </span><span class="na">FlattenPart=</span><span class="s">&quot;1&quot;</span>
+<span class="w">        </span><span class="na">LandmarkColor=</span><span class="s">&quot;(110; 110; 110)&quot;</span>
+<span class="w">        </span><span class="na">LandmarkPart=</span><span class="s">&quot;1&quot;</span>
+<span class="w">        </span><span class="na">Layer=</span><span class="s">&quot;5&quot;</span>
+<span class="w">        </span><span class="na">HeightmapOffset=</span><span class="s">&quot;my_highway__s.tga&quot;</span>
+<span class="w">    </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/OverlayBrand&gt;</span>
+</code></pre></div>
+
+<p>The paths in <code>Texture</code> and <code>TextureRelief</code> are relative to <code>Media\textures</code>; the one in
+<code>HeightmapOffset</code> is a file in <code>Media\prebuild\common</code>. <code>DefaultWidth</code> is the width in
+metres the road is drawn at. The rest were copied from the game&rsquo;s own road classes:
+<code>IsAsphalt</code>, <code>GenerateDust</code> and <code>IsExtrudable</code> (a road that can sink into mud) set what
+the surface is like, <code>LandmarkColor</code> is its colour on the navigation map, and <code>Layer</code>
+decides which road draws on top where two cross. What each value does in detail has not
+been measured. <span class="prov prov-unver">unverified</span></p>
+<p>To paint with <strong>one of the game&rsquo;s own road textures</strong>, point <code>Texture</code> at it, for example
+<code>overlays/dirt_road_pbr__d_a.tga</code>, and ship only your relief and shape. The game supplies
+the colour.</p>
+<h3 id="the-textures">The textures<a class="headerlink" href="#the-textures" title="Permanent link">#</a></h3>
+<p>Measured on the game&rsquo;s own roads: <span class="prov prov-unver">measured</span></p>
+<ul>
+<li><strong>Colour</strong> (<code>__d_a</code>) and <strong>relief</strong> (<code>_relief__d_a</code>): <code>2048 x 1024</code> TGA. The long side
+  (columns) runs <strong>along</strong> the road and repeats; the short side (rows) runs <strong>across</strong> it,
+  from one edge to the other.</li>
+<li>The <strong>alpha of the relief</strong> is the coverage: <code>255</code> draws the road, <code>0</code> shows the map&rsquo;s
+  own ground. Fade it at the edges, or leave a grass strip down the middle of a two-track.</li>
+<li><strong>Ground shape</strong> (<code>__s</code>, optional): <code>256 x 128</code>, 24-bit TGA, rows across the road again.
+  Grey <code>128</code> leaves the ground alone; each grey level up or down moves it about <code>1.5 cm</code>,
+  in a straight line (grey <code>12</code> dug <code>1.65 m</code>, grey <code>192</code> raised <code>0.96 m</code>, on a map with
+  MaxHeight <code>64</code>). A crown is lighter in the middle; ruts are two darker bands. It is
+  applied on top of Flatten only when the overlay&rsquo;s <strong>Apply Offset</strong> is on.</li>
+</ul>
+<p>The editor converts the textures the first time it loads a map that needs them. It may
+stop responding for a minute while it does; leave it.</p>
+<h2 id="a-geometric-overlay">A geometric overlay<a class="headerlink" href="#a-geometric-overlay" title="Permanent link">#</a></h2>
+<h3 id="the-mesh">The mesh<a class="headerlink" href="#the-mesh" title="Permanent link">#</a></h3>
+<p>Model <strong>one section</strong>, such as one fence bay, running along Blender&rsquo;s <strong>+Y</strong> from its start,
+centred on <code>x = 0</code>. The editor repeats it along your line and bends it to the ground. Saber&rsquo;s
+guidance asks for a section symmetrical about X. <span class="prov prov-doc">documented</span>
+Let nothing pass the section&rsquo;s two ends: a post that sits wholly past an end shows up twice
+at every join, so put half a post at each end and the two halves meet.
+<span class="prov prov-unver">measured</span></p>
+<p>Export it as <code>Media\meshes\overlays\&lt;name&gt;.fbx</code> and write its material file beside it:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;CombineXMesh</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;Overlay&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Material</span><span class="w"> </span><span class="na">Name=</span><span class="s">&quot;fence&quot;</span><span class="w"> </span><span class="na">AlbedoMap=</span><span class="s">&quot;overlays/my_fence_line__d.tga&quot;</span>
+<span class="w">              </span><span class="na">NormalMap=</span><span class="s">&quot;overlays/my_fence_line__n_d.tga&quot;</span>
+<span class="w">              </span><span class="na">ShadingMap=</span><span class="s">&quot;overlays/my_fence_line__sh_d.tga&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/CombineXMesh&gt;</span>
+</code></pre></div>
+
+<p><strong><code>Name</code> must be the material&rsquo;s own name inside the FBX.</strong> A name that matches nothing drew
+the whole fence plain white. For wire or mesh with see-through parts, use a <code>__d_a</code> texture
+and add <code>AlphaKill="true" TwoSided="true"</code>. <span class="prov prov-unver">measured</span></p>
+<h3 id="the-class_1">The class<a class="headerlink" href="#the-class_1" title="Permanent link">#</a></h3>
+<div class="hl"><pre><span></span><code><span class="nt">&lt;OverlayBrand</span><span class="w"> </span><span class="na">NoVeryFar=</span><span class="s">&quot;true&quot;</span><span class="w"> </span><span class="na">WithTailOffset=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;Prebuild</span><span class="w"> </span><span class="na">OverlayType=</span><span class="s">&quot;GeometricConform&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/OverlayBrand&gt;</span>
+</code></pre></div>
+
+<p><code>GeometricConform</code> makes it a mesh pressed onto the ground. Leave out
+<code>WithTailOffset="false"</code> and both ends of every run sink into the ground, so the top rail
+slopes down and two runs cannot be joined. The game&rsquo;s own <code>racetrack_fence_us07</code> sets it
+the same way. <span class="prov prov-unver">measured</span></p>
+<p>A geometric overlay stops a truck but <strong>never breaks</strong>: it is one mesh with no parts.
+<a href="../30-dressing/fence-lines.html">Breakable fences and guardrails from a line</a> explains why
+and how to swap a line for sections that do.</p>
+<h2 id="a-picture-in-the-editors-library">A picture in the editor&rsquo;s library<a class="headerlink" href="#a-picture-in-the-editors-library" title="Permanent link">#</a></h2>
+<p>Without a picture, the editor draws its own: a painted road shows its texture, and a
+geometric overlay shows an empty grey square. You can give it a picture, but the editor
+needs a fix first.</p>
+<h3 id="why-your-picture-never-shows">Why your picture never shows<a class="headerlink" href="#why-your-picture-never-shows" title="Permanent link">#</a></h3>
+<p>The library looks for <code>Media\icons\&lt;kind&gt;_&lt;name&gt;.dds</code>. For a custom piece the name it uses
+ends in <code>\Media</code>, so it asks for <code>icons/overlays_my_road\Media.dds</code>. The editor&rsquo;s file
+system only splits paths on <code>/</code>, so that file is never found, wherever you put it. This
+was traced in the running editor: the same check finds <code>icons/overlays_my_road.dds</code> and
+<code>icons/overlays_my_road/Media.dds</code>, but never the path with <code>\</code>.
+<span class="prov prov-unver">measured</span></p>
+<p><strong>Editor Pictures Fix</strong> changes 41 bytes of <code>ExpeditionsEditor.exe</code> so a path ending in
+<code>\Media.dds</code> is looked up as <code>.dds</code>, which loads your picture. The game&rsquo;s own pieces are
+untouched. It keeps a backup beside the exe and can put it back. A game update replaces the
+editor, so run it again after one. Run it with the editor closed:</p>
+<div class="hl"><pre><span></span><code>python editor_pictures_fix.py            apply (asks first)
+python editor_pictures_fix.py --check    only say whether it is applied
+python editor_pictures_fix.py --undo     put the backup back
+</code></pre></div>
+
+<p>It is in <a href="https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/overlay-tools">overlay-tools</a>,
+and each of the road packages on the <a href="../00-start/downloads.html">Downloads</a> page installs
+it as an app.</p>
+<h3 id="the-picture-file">The picture file<a class="headerlink" href="#the-picture-file" title="Permanent link">#</a></h3>
+<p><code>128 x 128</code>, uncompressed 32-bit <code>A8R8G8B8</code> DDS, with a see-through background, the same
+as the game&rsquo;s own pictures. <strong>The library ignores the alpha and shows the colour under it.</strong>
+The game&rsquo;s pictures are light grey <code>(200, 200, 200)</code> where they are see-through; a picture
+with black there shows as a black square. <span class="prov prov-unver">measured</span></p>
+<p><code>make_icon.py</code> (same folder) writes one from any image, over the right grey:</p>
+<div class="hl"><pre><span></span><code>python make_icon.py overlays my_gravel_road my_gravel_road__d_a.tga --square
+python make_icon.py overlays my_fence_line my_fence_render.png
+</code></pre></div>
+
+<p>For a road, <code>--square</code> takes the middle of its own colour texture, as the game&rsquo;s roads do.
+For a fence, render one section at three-quarter view on a transparent background.</p>
+<p>The editor reads library pictures <strong>the first time a list is opened</strong> in a session. To see a
+new picture, restart the editor.</p>
+<h2 id="after-every-pack-terrain">After every Pack terrain<a class="headerlink" href="#after-every-pack-terrain" title="Permanent link">#</a></h2>
+<p>A packed map draws a custom road as bare, levelled ground with no surface, for the same
+reason a custom model drops a packed map to the main menu: the game registers it under one
+name and looks it up under another. Run the after-pack fix after <strong>every</strong> pack, as
+described in <a href="../30-dressing/making-models.html#after-every-pack-terrain">Making your own models</a>.</p>
+<h2 id="not-yet-known">Not yet known<a class="headerlink" href="#not-yet-known" title="Permanent link">#</a></h2>
+<ul>
+<li>What each class value (<code>Layer</code>, <code>IsExtrudable</code>, <code>HeightMapBlendingContrast</code>,
+  <code>BlendBorderMin</code> and <code>Max</code>) does in detail.</li>
+<li>Whether the ground-shape scale is fixed or follows the map&rsquo;s MaxHeight.</li>
+<li>Whether custom overlays on a map installed from mod.io draw on other players&rsquo; machines.</li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../20-land/roads.html"><span>Previous</span>Roads are not carved terrain</a><a class="seq-next" href="../20-land/water.html"><span>Next</span>Rivers, lakes and waterfalls</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#names-and-where-the-files-go">Names and where the files go</a></li>
+<li><a href="#a-painted-road">A painted road</a><ul>
+<li><a href="#the-class">The class</a></li>
+<li><a href="#the-textures">The textures</a></li>
+</ul>
+</li>
+<li><a href="#a-geometric-overlay">A geometric overlay</a><ul>
+<li><a href="#the-mesh">The mesh</a></li>
+<li><a href="#the-class_1">The class</a></li>
+</ul>
+</li>
+<li><a href="#a-picture-in-the-editors-library">A picture in the editor&rsquo;s library</a><ul>
+<li><a href="#why-your-picture-never-shows">Why your picture never shows</a></li>
+<li><a href="#the-picture-file">The picture file</a></li>
+</ul>
+</li>
+<li><a href="#after-every-pack-terrain">After every Pack terrain</a></li>
+<li><a href="#not-yet-known">Not yet known</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -239,6 +239,9 @@ in the editor before a script writes files. That rule is proven for terrain
 tiles; that overlay files behave the same way is assumed, not tested.
 <span class="prov prov-unver">unverified</span>
 
+To make your own road, fence or guardrail type, with its own picture in the overlay
+list, see [Making your own overlays](making-overlays.html).
+
 Read Saber's pages first; this returns all nine of them:
 
 ```

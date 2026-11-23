@@ -22,6 +22,7 @@ or `git clone`, and keep its folders side by side. Each folder's README says wha
 |---|---|---|
 | **Map tools** | Building and fixing maps from the command line: objectives and story chains from one plan file, [earning a custom truck and its parts](../50-missions/vehicle-unlocks.html), [gateways and regions](../40-zones/gateways.html), the fix to run after every pack, packing checks, real-world terrain, roads, rivers and placed models | [map-tools](https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/map-tools) |
 | **Map model tools** | [Your own 3D models on a map](../30-dressing/making-models.html): one command from a `.glb` to a model you can place | [map-models](https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/map-models) |
+| **Overlay tools** | [Your own roads, fences and guardrails](../20-land/making-overlays.html): pictures for the editor's library, and the fix that lets the editor show them | [overlay-tools](https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/overlay-tools) |
 | **FOB module tools** | [Custom base modules](../60-custom/fob-modules.html): stats, recolours or your own building, with the descriptor, art and packing | [fob-modules](https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/fob-modules) |
 | **Rock lights** | [A five-colour rock-light kit on any truck](../65-vehicles/rock-lights.html): your own truck in Media, or on your own PC an installed truck mod. Places the pods on the truck's own frame | [rock-lights](https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/rock-lights) |
 | **Engine ghost** | [Puts a truck's see-through start-up engine in its engine bay](../65-vehicles/engine-ghost.html): reads the truck's own mesh, finds the bay, draws a picture and writes the place into an installed mod or a Media project | [engine-ghost](https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/engine-ghost) |
@@ -70,8 +71,8 @@ be linked here as each one is released.
 | **Culverts** | 8 culverts |
 | **Tunnel Portals** | 5 tunnel portals |
 | **Concrete Slabs and Blocks** | 28 slabs and blocks |
-| **Guardrails** | 16 guardrail pieces and ends, plus 5 guardrail lines |
-| **Fences** | 12 fence pieces and gates, plus 11 fence lines |
+| **Guardrails** | 19 guardrail sections, links and ends, 5 guardrail lines, and the [Fence Lines](../30-dressing/fence-lines.html) app |
+| **Fences** | 11 fence sections, 11 links, 11 fence lines, and the [Fence Lines](../30-dressing/fence-lines.html) app |
 | **Swing Gates** | 7 gates that swing open |
 | **Grand Gates** | 33 entrance arches and the lanterns, fire stands and trophies that go with them |
 | **Billboards** | 9 billboards |
