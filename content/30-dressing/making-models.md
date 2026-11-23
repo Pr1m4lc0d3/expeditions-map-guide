@@ -159,6 +159,15 @@ converted it: click **Rebuild terrain** and it comes up textured. No second rest
 
 ![Seven custom cabins on a slope in the editor, all textured](../assets/dressing/custom-models-textured-in-editor.jpg)
 
+### A picture in the editor's library
+
+A model's picture in the library is `Media\icons\models_<name>.dds`, the same format as an
+overlay's. The editor never shows it for a custom model until **Editor Pictures Fix** has
+been run once. [Making your own overlays](../20-land/making-overlays.html#a-picture-in-the-editors-library)
+covers the format, `make_icon.py` and the fix. Every model package on the
+[Downloads](../00-start/downloads.html) page installs the fix as an app and offers to run it
+at the end of setup. <span class="prov prov-unver">measured</span>
+
 ## After every Pack terrain
 
 A packed map with a custom model on it drops back to the main menu, because the game
