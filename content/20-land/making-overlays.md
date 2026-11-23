@@ -175,8 +175,8 @@ python editor_pictures_fix.py --undo     put the backup back
 ```
 
 It is in [overlay-tools](https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/overlay-tools),
-and each of the road packages on the [Downloads](../00-start/downloads.html) page installs
-it as an app.
+and the road, fence and guardrail packages on the [Downloads](../00-start/downloads.html)
+page each install it as an app.
 
 ### The picture file
 
