@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Small RC drones &middot; Expeditions Map Making</title>
-<meta name="description" content="How a drone the size of an RC car was made to deploy, drive and ride over mud without digging trenches. Lighter weight doesn&#39;t fix the ruts; four fixed-size numbers in the game do."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="How to make a drone the size of an RC car that deploys from a truck, drives, and rides over mud without digging itself in. Four steps, two of them changes to the game files."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/guide.css">
@@ -328,7 +328,7 @@
       <div class="page-head">
         <p class="eyebrow">Vehicles</p>
         <h1>Small RC drones</h1>
-<p class="lede">How a drone the size of an RC car was made to deploy, drive and ride over mud without digging trenches. Lighter weight doesn&#39;t fix the ruts; four fixed-size numbers in the game do.</p>      </div>
+<p class="lede">How to make a drone the size of an RC car that deploys from a truck, drives, and rides over mud without digging itself in. Four steps, two of them changes to the game files.</p>      </div>
       <div class="banner">
         <strong>This page is draft.</strong>
         It may be incomplete or unverified. Anything marked <em>unverified</em> has not
@@ -337,34 +337,29 @@
       <article class="prose"><h1 id="small-rc-drones">Small RC drones<a class="headerlink" href="#small-rc-drones" title="Permanent link">#</a></h1>
 <p><strong>Works, on PC, with a patched game.</strong> A drone about half the size of the stock scout drone, built
 to look like an RC crawler, deploys from a truck, drives, and rides over real mud without leaving a
-rut. That&rsquo;s confirmed in game (2026-11-22). It needs two changes to the game files themselves, so a
-mod on mod.io can&rsquo;t deliver it alone, and consoles can&rsquo;t run it. The tools that apply the changes
+rut. That&rsquo;s confirmed in game (2026-11-22). Two of the steps change the game&rsquo;s own files, so a mod
+on mod.io can&rsquo;t deliver it alone, and consoles can&rsquo;t run it. The tools that apply those changes
 aren&rsquo;t released yet.</p>
-<p>Four separate things stopped it, and each one looked like the others from the driver&rsquo;s seat. They
-are below in the order they were found.</p>
-<h2 id="1-the-game-didnt-recognise-a-mod-drone">1. The game didn&rsquo;t recognise a mod drone<a class="headerlink" href="#1-the-game-didnt-recognise-a-mod-drone" title="Permanent link">#</a></h2>
-<p>A carried drone is two classes. The drone itself is a truck class with <code>IsWheelDrone="true"</code>. The
-part that carries it is an add-on with <code>HasWheelDrone="true"</code> and <code>WheelDroneType="&lt;the drone's
-class name&gt;"</code>.</p>
+<p>A carried drone is two classes. The drone is a truck class with <code>IsWheelDrone="true"</code>. The part
+that carries it is an add-on with <code>HasWheelDrone="true"</code> and <code>WheelDroneType="&lt;the drone's class
+name&gt;"</code>. Build both, then work through the four steps below.</p>
+<h2 id="1-let-the-game-accept-a-drone-from-a-mod">1. Let the game accept a drone from a mod<a class="headerlink" href="#1-let-the-game-accept-a-drone-from-a-mod" title="Permanent link">#</a></h2>
 <p>The game decides what kind of drone it has <strong>by name</strong>. A script in <code>initial.pak</code> compares the name
 with exactly <code>drone_anchor</code>, <code>drone_cargo</code> and <code>drone_scout</code>. A class shipped in a mod loads under
 its own name plus the mod&rsquo;s id (<code>my_drone</code> becomes <code>my_drone_1234567</code>), so it never matches. The
-drone is typed &ldquo;none&rdquo;, it won&rsquo;t deploy, and the garage throws script errors. Renaming the class to
+drone is typed &ldquo;none&rdquo;, it won&rsquo;t deploy, and the garage throws script errors. Renaming your class to
 <code>drone_scout</code> doesn&rsquo;t help, because the id is still added.</p>
-<p><strong>The fix</strong> is a two-byte change to that script, so any non-empty drone name counts as a scout. An
-earlier version compared with a name nothing uses. That also made every ordinary add-on count as a
-scout, and it filled the inventory bar with dozens of scout-drone tabs. Comparing with the empty
-string fixed that.</p>
-<h2 id="2-the-wheels-never-turned">2. The wheels never turned<a class="headerlink" href="#2-the-wheels-never-turned" title="Permanent link">#</a></h2>
-<p>With the type fixed, the drone deployed and sat there. The wheels didn&rsquo;t turn at any torque.</p>
-<p>The cause was found by bisection: take the stock scout drone, which drives, change <strong>one</strong> thing
-from the custom drone, and see which copy stops. Only one did. The custom drone&rsquo;s wheel block said
-<code>Torque="full"</code> where the stock drone says <code>Torque="default"</code>. On a drone, <code>full</code> means the wheels
-never get power. Every other difference (axles, mesh, engine, gearbox, suspension, tyre class) was
-harmless.</p>
+<p><strong>Do this:</strong> change that comparison so any non-empty drone name counts as a scout. It&rsquo;s a two-byte
+change to the script in <code>initial.pak</code>. Compare with the empty string, not with a name nothing uses.
+The second version also makes every ordinary add-on count as a scout, and the inventory bar fills
+with dozens of scout-drone tabs.</p>
+<h2 id="2-use-the-stock-drones-wheel-settings">2. Use the stock drone&rsquo;s wheel settings<a class="headerlink" href="#2-use-the-stock-drones-wheel-settings" title="Permanent link">#</a></h2>
+<p>In the drone&rsquo;s wheel block, use <code>Torque="default"</code>, as the stock drones do. With <code>Torque="full"</code> the
+drone deploys and sits there, and the wheels never turn at any engine torque.</p>
+<p>If a drone won&rsquo;t drive and you can&rsquo;t see why, bisect it. Copy the stock scout drone, which drives,
+change one thing from your drone, and test. The copy that stops driving names the cause.</p>
 <h2 id="3-scale-the-stock-drone-dont-invent-one">3. Scale the stock drone, don&rsquo;t invent one<a class="headerlink" href="#3-scale-the-stock-drone-dont-invent-one" title="Permanent link">#</a></h2>
-<p>The settings that work all come from scaling the stock scout drone class by one factor <em>k</em> (0.5 for
-half size):</p>
+<p>Start from the stock scout drone class and scale it by one factor <em>k</em> (0.5 for half size):</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -401,41 +396,29 @@ half size):</p>
 </table></div>
 <p>Keep the body&rsquo;s collision box about 6 cm above the tops of the tyres, or it grabs the tyres. Then
 put any body you like on top as the drawn mesh.</p>
-<h2 id="4-the-ruts-and-why-less-weight-doesnt-fix-them">4. The ruts, and why less weight doesn&rsquo;t fix them<a class="headerlink" href="#4-the-ruts-and-why-less-weight-doesnt-fix-them" title="Permanent link">#</a></h2>
-<p>The drone now drove, but on dirt, grass and mud it dug itself a trench and sank, while a truck
-beside it left no mark.</p>
-<p><strong>Making it lighter doesn&rsquo;t help.</strong> Here&rsquo;s what was tried:</p>
-<ul>
-<li>weight from 1/8 down to 1/64 of the scaled value</li>
-<li>stiffer springs</li>
-<li>wider tyres, firmer tyres</li>
-<li>tyre <code>PushUpFactor</code> up to 10,000</li>
-<li>turning off the wheel-track stamp</li>
-</ul>
-<p>Every version still dug in. The very light ones bounced or flew off the ground on deploy and broke
-their engines landing. <code>PushUpFactor</code> only acts in water.</p>
-<p>The reason is in the game&rsquo;s ground code, read from <code>Expeditions.exe</code>. Three amounts are fixed sizes
-built for trucks. A small toy and a 10-tonne truck get the same:</p>
+<h2 id="4-stop-the-ruts">4. Stop the ruts<a class="headerlink" href="#4-stop-the-ruts" title="Permanent link">#</a></h2>
+<p>At this point the drone drives, but on dirt, grass and mud it digs a trench and sinks. The cause is
+in <code>Expeditions.exe</code>. Three amounts in the game&rsquo;s ground code are fixed sizes made for trucks, and
+nothing in a class file reaches them:</p>
 <ul>
 <li><strong>Mud sink.</strong> A tyre sinks half the painted mud&rsquo;s thickness before the mud starts holding it up.
   That&rsquo;s a few centimetres for any truck, and most of a small tyre.</li>
 <li><strong>Ground digging.</strong> Each contact on soft ground can lower the ground under the tyre by up to
   15.6 cm.</li>
 <li><strong>The rut stamp.</strong> The mark pressed into mud is never smaller than 0.3 m wide and 0.4 m in radius,
-  however small the tyre. On normal soil there&rsquo;s often a thin layer of mud you can&rsquo;t see, so this
-  fires even where the ground looks dry.</li>
+  however small the tyre. Normal soil often carries a thin layer of mud you can&rsquo;t see, so this fires
+  even where the ground looks dry.</li>
 </ul>
-<p>None of these reads the vehicle&rsquo;s weight or the tyre&rsquo;s size, so no setting in a class file reaches
-them.</p>
-<p><strong>The fix</strong> is four small patches to <code>Expeditions.exe</code>. They act only on tyres under 0.33 m in radius
-(the stock drone&rsquo;s tyre). Every truck and stock drone runs exactly as before.</p>
+<p><strong>Do this:</strong> four small patches to <code>Expeditions.exe</code> that scale those amounts to the tyre. They act
+only on tyres under 0.33 m in radius (the stock drone&rsquo;s tyre), so every truck and stock drone runs
+exactly as before.</p>
 <ol>
 <li>The mud sink shrinks with the tyre, by (radius ÷ 0.33)⁴.</li>
 <li>Small tyres never lower the ground layer.</li>
 <li>Small tyres get full mud support at a quarter of the sink, so they ride on thin mud.</li>
 <li>The rut stamp is drawn at the tyre&rsquo;s own size.</li>
 </ol>
-<p>With all four in, the drone drove a whole map without digging a rut and crossed real mud like a
+<p>With all four in, the drone drives a whole map without digging a rut and crosses real mud like a
 real RC car.</p>
 <h2 id="whats-still-open">What&rsquo;s still open<a class="headerlink" href="#whats-still-open" title="Permanent link">#</a></h2>
 <ul>
@@ -453,10 +436,10 @@ real RC car.</p>
     <p>On this page</p>
     <div class="toc">
 <ul>
-<li><a href="#1-the-game-didnt-recognise-a-mod-drone">1. The game didn&rsquo;t recognise a mod drone</a></li>
-<li><a href="#2-the-wheels-never-turned">2. The wheels never turned</a></li>
+<li><a href="#1-let-the-game-accept-a-drone-from-a-mod">1. Let the game accept a drone from a mod</a></li>
+<li><a href="#2-use-the-stock-drones-wheel-settings">2. Use the stock drone&rsquo;s wheel settings</a></li>
 <li><a href="#3-scale-the-stock-drone-dont-invent-one">3. Scale the stock drone, don&rsquo;t invent one</a></li>
-<li><a href="#4-the-ruts-and-why-less-weight-doesnt-fix-them">4. The ruts, and why less weight doesn&rsquo;t fix them</a></li>
+<li><a href="#4-stop-the-ruts">4. Stop the ruts</a></li>
 <li><a href="#whats-still-open">What&rsquo;s still open</a></li>
 </ul>
 </div>
