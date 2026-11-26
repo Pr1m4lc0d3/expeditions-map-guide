@@ -36,6 +36,7 @@ chapter is worth stating once:
 | giving a truck an add-on it never had, such as rock lights | [Rock lights on any truck](rock-lights.html) |
 | putting your own licence plate on a truck | [Custom licence plates](license-plates.html) |
 | fixing the see-through engine that floats out of the nose | [Placing the engine ghost](engine-ghost.html) |
+| making a small RC-car drone that deploys, drives and doesn't dig trenches | [Small RC drones](rc-drones.html) |
 | making bumpers, tents, cans or boards with an AI assistant and Tripo or Meshy | [Building parts with AI](ai-built-parts.html) |
 | writing a rack, cage or tube bumper as code | [Tube parts in code](tube-parts.html) |
 | wiring parts that depend on each other, gear that carries supplies, lift kits | [Add-on slots, dependencies and gear](addon-slots.html) |
