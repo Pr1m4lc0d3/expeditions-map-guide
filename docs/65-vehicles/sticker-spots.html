@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sticker spots on mod trucks &middot; Expeditions Map Making</title>
+<meta name="description" content="How the garage&#39;s sticker menu decides where a sticker can go, and how to give a truck from a mod its own sticker spots with the sticker-spots tool and an AI assistant, checked by eye before anything is installed."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+        <li>
+          <a href="../00-start/downloads.html">Downloads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/making-overlays.html">Making your own overlays</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/fence-lines.html">Breakable fences and guardrails from a line</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objective-system-map.html">The objective system map</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html">Unlocking trucks and parts</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/quest-item-pipeline.html">A quest item from start to finish</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/rock-lights.html">Rock lights on any truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/license-plates.html">Custom licence plates</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/sticker-spots.html" aria-current="page">Sticker spots on mod trucks</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/engine-ghost.html">Placing the engine ghost</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/rc-drones.html">Small RC drones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/ai-built-parts.html">Building parts with AI</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/tube-parts.html">Tube parts in code</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/addon-slots.html">Add-on slots, dependencies and gear</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Vehicles</p>
+        <h1>Sticker spots on mod trucks</h1>
+<p class="lede">How the garage&#39;s sticker menu decides where a sticker can go, and how to give a truck from a mod its own sticker spots with the sticker-spots tool and an AI assistant, checked by eye before anything is installed.</p>      </div>
+      <article class="prose"><h1 id="sticker-spots-on-mod-trucks">Sticker spots on mod trucks<a class="headerlink" href="#sticker-spots-on-mod-trucks" title="Permanent link">#</a></h1>
+<p>The trucks that came with the game each have a few fixed places for an exterior sticker: usually
+both doors, the hood and the roof. Most truck mods have none, so their <strong>Exterior stickers</strong> menu
+is empty. This page explains what a sticker spot is, then how to add your own spots to a mod
+truck on your PC.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>You want</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Your own pictures as stickers on the trucks that came with the game</td>
+<td><strong>Sticker Maker</strong> on <a href="https://mod.io/g/expeditions/m/docs-rocks-sticker-maker">mod.io</a>. PC only, one installer</td>
+</tr>
+<tr>
+<td>Sticker spots on a truck from a mod, for the stock stickers and your own</td>
+<td>The <a href="https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/sticker-spots">sticker-spots tool</a> in expeditions-tools, on this page</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Tested so far:</strong> one pickup-truck mod, in game. All four spots took every stock sticker and
+My Sticker 1-10 and sat flat on the paint. Co-op with a partner who lacks the spots, and other
+body shapes, are not tested yet.</p>
+</blockquote>
+<h2 id="what-a-sticker-spot-is">What a sticker spot is<a class="headerlink" href="#what-a-sticker-spot-is" title="Permanent link">#</a></h2>
+<p>A sticker in this game is not painted on the truck. It is a small add-on: a thin, flat piece of
+mesh that sits a few millimetres off the paint, with the sticker&rsquo;s picture as its texture. A
+sticker spot is three things working together:</p>
+<ol>
+<li><strong>A slot on the truck.</strong> The truck&rsquo;s class lists it under <code>AddonSockets</code>, like any other
+   add-on slot:
+   <code>xml
+   &lt;AddonSockets&gt;
+       &lt;Socket Names="StickerSpots_MyTruck_door_r" /&gt;
+   &lt;/AddonSockets&gt;</code></li>
+<li><strong>The sticker add-on that fits it.</strong> Its class names the slot with <code>InstallSocket</code>, sets
+   <code>Category="sticker_exterior"</code> (which puts it in the Exterior stickers menu) and points at its
+   mesh. The mesh is the flat piece, already bent to the shape of the body under it.</li>
+<li><strong>The list of pictures.</strong> The mesh&rsquo;s header carries one <code>MaterialOverride</code> per sticker the game
+   has, each swapping in a different picture. That list is what the menu shows when you pick
+   the spot. A preset file under <code>classes/customization_presets/</code> ties the add-on to the game&rsquo;s
+   <code>OutsideSticker1x1</code> template, the same one the stock trucks use.</li>
+</ol>
+<p>The game draws the menu from those pieces alone, so a mod truck gets a working sticker menu as
+soon as all three are in the truck&rsquo;s own mod. They have to be in the same mod as the truck: the
+game files a mod&rsquo;s classes under its id, so a slot in one mod and a sticker in another never meet.</p>
+<h2 id="why-a-person-has-to-place-them">Why a person has to place them<a class="headerlink" href="#why-a-person-has-to-place-them" title="Permanent link">#</a></h2>
+<p>The mesh has to follow the body exactly, or the sticker cuts into the paint or floats off it. The
+tool reads the body from the truck&rsquo;s own converted mesh and bends the flat piece onto it, so the
+fit is automatic. <strong>Where</strong> the spot goes is not. A program can find a flat area, but it cannot
+tell a door seam from a body line, or know that one door is an add-on the truck can lose. On a
+four-door cab the first guess can land right across the gap between the doors.</p>
+<p>So the tool never installs on its own judgement. It proposes spots, draws a picture of the
+truck with every spot on it, and waits until you say it looks right.</p>
+<h2 id="what-you-need">What you need<a class="headerlink" href="#what-you-need" title="Permanent link">#</a></h2>
+<ul>
+<li>Expeditions installed (Epic or Steam). The tool reads the game&rsquo;s sticker list from your own
+  install, so it ships none of the game&rsquo;s files.</li>
+<li>The truck mod, installed through the game&rsquo;s mod.io browser and enabled.</li>
+<li>Python 3.10 or newer, and the tool:
+  <a href="https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/sticker-spots">sticker-spots</a>. In
+  its folder, <code>pip install -r requirements.txt</code>.</li>
+<li>An AI assistant that can run commands on your PC (optional, but it is what the tool is made
+  for). Point it at the folder&rsquo;s <code>AGENTS.md</code>, which tells it the whole job and the rules.</li>
+<li><a href="https://mod.io/g/expeditions/m/docs-rocks-sticker-maker">Sticker Maker</a>, if you want your own
+  pictures (My Sticker 1-10) on the new spots too.</li>
+</ul>
+<h2 id="step-by-step">Step by step<a class="headerlink" href="#step-by-step" title="Permanent link">#</a></h2>
+<p>With an AI assistant, say <strong>&ldquo;add sticker slots to my &lt;truck&gt;&ldquo;</strong> and it runs these steps,
+showing you each picture. Without one, run them yourself.</p>
+<p><strong>1. Find the truck.</strong></p>
+<div class="hl"><pre><span></span><code>python sticker_spots.py trucks
+</code></pre></div>
+
+<p>Each line is the <code>--mod</code> id and <code>--truck</code> name to use, with the mod&rsquo;s title.</p>
+<p><strong>2. Scan it.</strong></p>
+<div class="hl"><pre><span></span><code>python sticker_spots.py scan --mod &lt;id&gt; --truck &lt;name&gt;
+</code></pre></div>
+
+<p>It proposes up to four spots, <code>door_l</code>, <code>door_r</code>, <code>hood</code> and <code>roof</code>, and writes a plan and a
+picture to <code>Documents\My Games\Expeditions\StickerSpots\</code>. The first scan of a detailed body can
+take a few minutes. Every redraw after that takes a second or two.</p>
+<p><strong>3. Read the picture.</strong> It shows the truck from the left, the top and the right, shaded by the
+angle of the surface. Door gaps, panel edges, badges, handles, vents and creases show as dark
+lines. The rulers are in metres. Each spot is a box: green when it sits on clear paint, amber
+when something is under it. The tool prints a <code>LOOK:</code> note for every amber box, for example:</p>
+<div class="hl"><pre><span></span><code>door_r  right centre 0.94 0.80  size 0.60 x 0.60 m   LOOK: a line runs across it at y = 0.58, 0.62
+</code></pre></div>
+
+<p>Amber is not an error. A crease or a badge under a sticker may be fine to you. It is a reason to
+look.</p>
+<p><strong>4. Move the spots until they are right.</strong></p>
+<div class="hl"><pre><span></span><code>python sticker_spots.py set  --mod &lt;id&gt; --truck &lt;name&gt; --spot door_r --centre 0.94 0.80
+python sticker_spots.py set  --mod &lt;id&gt; --truck &lt;name&gt; --spot hood --size 0.6
+python sticker_spots.py add  --mod &lt;id&gt; --truck &lt;name&gt; --spot tailgate --view top --centre -2.4 0 --size 0.5
+python sticker_spots.py drop --mod &lt;id&gt; --truck &lt;name&gt; --spot roof
+</code></pre></div>
+
+<p>Each command redraws the picture. In the side views x runs along the truck (front is +x) and y
+is height. In the top view x runs along the truck and y across it. To centre a spot on a door,
+read the door&rsquo;s two edge lines off the ruler and take the middle. Mirror a door spot to the other
+side by giving it the same numbers.</p>
+<p>Good places, and places to avoid:</p>
+<ul>
+<li><strong>Doors:</strong> the middle of one panel, clear of the door gap, the handle and the window.</li>
+<li><strong>Hood:</strong> flat paint beside a scoop or bulge, not on it.</li>
+<li><strong>Roof:</strong> clear of where a roof rack sits, or the rack hides it.</li>
+<li><strong>Never</strong> on a part the truck can change in the garage, such as optional doors or a different
+  hood. The sticker stays where the old part was and floats when the part changes or comes off.</li>
+<li>Sizes like the stock trucks&rsquo; are a good start: about 0.5 to 0.6 m on a door, 0.6 to 0.8 m on a
+  hood, up to 1.1 m on a roof. Stickers are square.</li>
+</ul>
+<p><strong>5. Install it,</strong> with the game and the map editor closed:</p>
+<div class="hl"><pre><span></span><code>python sticker_spots.py install --mod &lt;id&gt; --truck &lt;name&gt;
+</code></pre></div>
+
+<p>The first install leaves a copy of the mod&rsquo;s file beside it, <code>&lt;name&gt;.pak.stickerspots_bak</code>.</p>
+<p><strong>6. Check it in the game.</strong> Garage, the truck, <strong>Accessories &gt; Exterior stickers</strong>. Each new
+spot lists every stock sticker, plus My Sticker 1-10 if Sticker Maker is installed. If a spot sits
+off, close the game, <code>set</code> it, look at the picture, and <code>install</code> again. The new install replaces
+the old spots.</p>
+<h2 id="taking-them-off">Taking them off<a class="headerlink" href="#taking-them-off" title="Permanent link">#</a></h2>
+<div class="hl"><pre><span></span><code>python sticker_spots.py remove --mod &lt;id&gt; --truck &lt;name&gt;
+</code></pre></div>
+
+<p>It removes exactly what <code>install</code> added. It refuses while a save has a sticker fitted on one of
+the spots, because the save would then name a part that no longer exists. Take the sticker off in
+the garage first.</p>
+<h2 id="things-to-know">Things to know<a class="headerlink" href="#things-to-know" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>A mod.io update of the truck replaces its files, and the spots go with it.</strong> The plan is
+  kept. Run <code>install</code> again after an update, before you load a save that has one of the stickers on.</li>
+<li><strong>The spots exist only on your PC.</strong> In co-op, a partner without the same spots sees no
+  sticker there.</li>
+<li><strong>Changing someone else&rsquo;s truck on your own PC is fine. Uploading it is not,</strong> unless you made
+  it or its licence allows it.</li>
+<li>The trucks that came with the game already have their spots. This tool does not change them.
+  For your own pictures on those, use Sticker Maker.</li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../65-vehicles/license-plates.html"><span>Previous</span>Custom licence plates</a><a class="seq-next" href="../65-vehicles/engine-ghost.html"><span>Next</span>Placing the engine ghost</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#what-a-sticker-spot-is">What a sticker spot is</a></li>
+<li><a href="#why-a-person-has-to-place-them">Why a person has to place them</a></li>
+<li><a href="#what-you-need">What you need</a></li>
+<li><a href="#step-by-step">Step by step</a></li>
+<li><a href="#taking-them-off">Taking them off</a></li>
+<li><a href="#things-to-know">Things to know</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

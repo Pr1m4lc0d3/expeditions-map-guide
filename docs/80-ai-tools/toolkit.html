@@ -199,6 +199,9 @@
           <a href="../65-vehicles/license-plates.html">Custom licence plates</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
+          <a href="../65-vehicles/sticker-spots.html">Sticker spots on mod trucks</a>
+        </li>
+        <li>
           <a href="../65-vehicles/engine-ghost.html">Placing the engine ghost</a>
 <span class="pill pill-draft">draft</span>        </li>
         <li>
@@ -657,6 +660,20 @@ Blue and Green: eight lights each, on with the engine, with pods that are placed
 truck&rsquo;s wheels and mounted on its own frame. <code>--plan</code> prints where each pod goes and changes
 nothing. On an installed mod it backs up each pak once. The method is explained in
 <a href="../65-vehicles/rock-lights.html">Rock lights on any truck</a>.</p>
+<h3 id="sticker_spotspy-sticker-spots-on-a-truck-from-a-mod"><code>sticker_spots.py</code> — sticker spots on a truck from a mod<a class="headerlink" href="#sticker_spotspy-sticker-spots-on-a-truck-from-a-mod" title="Permanent link">#</a></h3>
+<div class="hl"><pre><span></span><code>python sticker_spots.py trucks                                      # every truck in your installed mods
+python sticker_spots.py scan    --mod &lt;id&gt; --truck &lt;name&gt;           # propose spots, draw the picture
+python sticker_spots.py set     --mod &lt;id&gt; --truck &lt;name&gt; --spot door_r --centre X Y [--size M]
+python sticker_spots.py add | drop | preview | install | remove ...
+</code></pre></div>
+
+<p>In the <a href="https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/sticker-spots">sticker-spots</a>
+folder, with an <code>AGENTS.md</code> that tells an AI assistant the whole job. Reads the truck&rsquo;s body,
+proposes door, hood and roof spots, and draws left, top and right views shaded so door gaps and
+badges show, with each spot boxed and a <code>LOOK:</code> note for anything under it. A person places the
+spots by eye; <code>install</code> then writes stock-style sticker add-ons into the truck&rsquo;s own mod, so the
+garage&rsquo;s sticker menu offers every stock sticker and Sticker Maker&rsquo;s My Sticker 1-10 there. The
+method is explained in <a href="../65-vehicles/sticker-spots.html">Sticker spots on mod trucks</a>.</p>
 <h2 id="conventions-these-scripts-follow">Conventions these scripts follow<a class="headerlink" href="#conventions-these-scripts-follow" title="Permanent link">#</a></h2>
 <p><strong>Measure, then claim.</strong> Report the number, not the impression.</p>
 <p><strong>A zero result is a claim.</strong> Run a positive control before citing one. A search
@@ -688,6 +705,7 @@ bug wearing two faces.</p></article>
 <li><a href="#restore_addonspy-give-a-ported-truck-back-its-stock-accessories">restore_addons.py — give a ported truck back its stock accessories</a></li>
 <li><a href="#vehicle_uipy-store-and-garage-artwork">vehicle_ui.py — store and garage artwork</a></li>
 <li><a href="#add_rock_lightspy-a-rock-light-kit-on-any-truck">add_rock_lights.py — a rock-light kit on any truck</a></li>
+<li><a href="#sticker_spotspy-sticker-spots-on-a-truck-from-a-mod">sticker_spots.py — sticker spots on a truck from a mod</a></li>
 </ul>
 </li>
 <li><a href="#conventions-these-scripts-follow">Conventions these scripts follow</a></li>

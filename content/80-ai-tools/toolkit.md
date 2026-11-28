@@ -236,6 +236,23 @@ truck's wheels and mounted on its own frame. `--plan` prints where each pod goes
 nothing. On an installed mod it backs up each pak once. The method is explained in
 [Rock lights on any truck](../65-vehicles/rock-lights.html).
 
+### `sticker_spots.py` — sticker spots on a truck from a mod
+
+```
+python sticker_spots.py trucks                                      # every truck in your installed mods
+python sticker_spots.py scan    --mod <id> --truck <name>           # propose spots, draw the picture
+python sticker_spots.py set     --mod <id> --truck <name> --spot door_r --centre X Y [--size M]
+python sticker_spots.py add | drop | preview | install | remove ...
+```
+
+In the [sticker-spots](https://github.com/Pr1m4lc0d3/expeditions-tools/tree/main/sticker-spots)
+folder, with an `AGENTS.md` that tells an AI assistant the whole job. Reads the truck's body,
+proposes door, hood and roof spots, and draws left, top and right views shaded so door gaps and
+badges show, with each spot boxed and a `LOOK:` note for anything under it. A person places the
+spots by eye; `install` then writes stock-style sticker add-ons into the truck's own mod, so the
+garage's sticker menu offers every stock sticker and Sticker Maker's My Sticker 1-10 there. The
+method is explained in [Sticker spots on mod trucks](../65-vehicles/sticker-spots.html).
+
 ## Conventions these scripts follow
 
 **Measure, then claim.** Report the number, not the impression.
