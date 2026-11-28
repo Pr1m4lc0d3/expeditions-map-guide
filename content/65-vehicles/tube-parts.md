@@ -71,6 +71,43 @@ Before sending a render, run the self-check on every joint:
 - clearances measured, not eyeballed ("11.7 cm to the hardtop", not "looks clear");
 - triangle count under the game's 65,534 per mesh.
 
+## Test a measurement before you trust it
+
+A clearance or "how far did it move" number is only as good as the code that measures it. Before
+believing one, run it on two cases where you already know the answer:
+
+- the part against **itself**: the answer must be 0.0 mm;
+- the part against **a copy moved 3 mm**: the answer must be 3.0 mm.
+
+On this project a point-to-surface measurer read 3.8 mm for a part against itself. It only checked
+the few triangles whose centres were nearest each point; a large flat face (a sheet, a foot plate)
+has its centre far from points on its own edge, and dozens of tiny weld-bead faces crowded out the
+right one. The fix was to split every face down to edges of 2 cm or less and check more candidates
+(128). The proof it worked was the two controls reading 0.00 and 3.00 mm, not the code looking
+right. A number from an untested measurer that "passes" proves nothing.
+
+## Installing over a mod that other tools have patched
+
+A truck mod is often changed after its own build: another tool adds custom wheels to its pak, a
+licence-plate tool adds plate parts, a paint tool swaps textures. Rebuild the truck and install the
+result, and every one of those additions is gone, because the build never made them. A save that has
+one of those parts fitted then names a part that no longer exists.
+
+This happened here: a rebuilt pak was missing 59 files (a set of custom rims and their spares,
+several licence plates). It was caught only because the installer compared the old paks with the
+new ones. The install routine that came out of it:
+
+1. **Back up the installed paks** before writing anything.
+2. **Install the new build.**
+3. **Re-run every tool that patches this mod**, in order, so they put their parts back. Keep that
+   list with the truck's recipe, so it can't be forgotten.
+4. **Compare the new paks with the backup.** Every file that was there before must still be there.
+5. **If anything is missing, put the backup back automatically**, byte for byte, and stop. Never
+   leave the mod half-installed for someone to find in the garage.
+
+Test step 3 on its own first: run the re-apply tools on the current install, unchanged. If the
+comparison then shows nothing lost and nothing added, they are safe to run after every build.
+
 ## Where to find working code
 
 The truck-building code these rules came from is not public yet. Until it is, ask an assistant for

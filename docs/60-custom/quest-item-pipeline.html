@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A quest item from start to finish &middot; Expeditions Map Making</title>
+<meta name="description" content="Your own named item with your own icon, picked up on the map, delivered to a zone, and paid for. Every step, in order."><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/guide.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("theme"); } catch (e) {}
+    if (t) document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="../index.html">
+    <span class="brand-mark">EXP</span>
+    <span class="brand-name">Map Making<span class="brand-sub">for people who have never done it</span></span>
+  </a>
+  <div class="topbar-tools">
+    <div class="search">
+      <label class="vh" for="q">Search the guide</label>
+      <input id="q" type="search" placeholder="Search&hellip;" autocomplete="off" spellcheck="false">
+      <div id="results" role="listbox" hidden></div>
+    </div>
+    <button id="theme" type="button" aria-label="Switch between light and dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+    <button id="menu" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="sidebar" id="sidebar" aria-label="Guide contents">
+    <section>
+      <h2>Start here</h2>
+      <ul>
+        <li>
+          <a href="../00-start/what-you-need.html">What you need</a>
+        </li>
+        <li>
+          <a href="../00-start/where-things-live.html">Where everything lives</a>
+        </li>
+        <li>
+          <a href="../00-start/map-that-loads.html">Make a map that loads</a>
+        </li>
+        <li>
+          <a href="../00-start/downloads.html">Downloads</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>The land</h2>
+      <ul>
+        <li>
+          <a href="../20-land/terrain.html">How terrain actually works</a>
+        </li>
+        <li>
+          <a href="../20-land/brushes.html">The brushes</a>
+        </li>
+        <li>
+          <a href="../20-land/roads.html">Roads are not carved terrain</a>
+        </li>
+        <li>
+          <a href="../20-land/making-overlays.html">Making your own overlays</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../20-land/water.html">Rivers, lakes and waterfalls</a>
+        </li>
+        <li>
+          <a href="../20-land/real-terrain.html">Using real-world terrain</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Dressing the map</h2>
+      <ul>
+        <li>
+          <a href="../30-dressing/models.html">Models, rocks and cliffs</a>
+        </li>
+        <li>
+          <a href="../30-dressing/making-models.html">Making and importing your own models</a>
+        </li>
+        <li>
+          <a href="../30-dressing/vegetation.html">Vegetation and distributions</a>
+        </li>
+        <li>
+          <a href="../30-dressing/fence-lines.html">Breakable fences and guardrails from a line</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/colour.html">Colour and textures</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../30-dressing/sound.html">Music and sound</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Zones</h2>
+      <ul>
+        <li>
+          <a href="../40-zones/what-is-a-zone.html">What a zone is</a>
+        </li>
+        <li>
+          <a href="../40-zones/deploy-zones.html">Deploy zones and FOBs</a>
+        </li>
+        <li>
+          <a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>
+        </li>
+        <li>
+          <a href="../40-zones/construction-zones.html">Construction zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/discoverability.html">Hiding and revealing zones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../40-zones/gateways.html">Gateways between maps</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Missions</h2>
+      <ul>
+        <li>
+          <a href="../50-missions/objective-system-map.html">The objective system map</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../50-missions/objectives-overview.html">Objectives in one page</a>
+        </li>
+        <li>
+          <a href="../50-missions/stages.html">Stages and substages</a>
+        </li>
+        <li>
+          <a href="../50-missions/assignment-types.html">The assignment types</a>
+        </li>
+        <li>
+          <a href="../50-missions/rewards.html">Rewards</a>
+        </li>
+        <li>
+          <a href="../50-missions/building-a-story.html">Building a story</a>
+        </li>
+        <li>
+          <a href="../50-missions/vehicle-unlocks.html">Unlocking trucks and parts</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Custom content</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/specialists.html">Custom specialists</a>
+        </li>
+        <li>
+          <a href="../60-custom/items.html">Custom inventory items</a>
+        </li>
+        <li>
+          <a href="../60-custom/quest-item-pipeline.html" aria-current="page">A quest item from start to finish</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Vehicles</h2>
+      <ul>
+        <li>
+          <a href="../65-vehicles/vehicles-overview.html">Vehicles, and what this part covers</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-runbook.html">Porting runbook, start to finish</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/porting-a-truck.html">Porting a SnowRunner truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/addons-and-wheels.html">Accessories and tyres</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/store-and-garage-images.html">Store and garage artwork</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/skins-and-paint.html">Skins and paint</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/rock-lights.html">Rock lights on any truck</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/license-plates.html">Custom licence plates</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/engine-ghost.html">Placing the engine ghost</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/diagnosing.html">Diagnosing a vehicle</a>
+        </li>
+        <li>
+          <a href="../65-vehicles/rc-drones.html">Small RC drones</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/ai-built-parts.html">Building parts with AI</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/tube-parts.html">Tube parts in code</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
+          <a href="../65-vehicles/addon-slots.html">Add-on slots, dependencies and gear</a>
+<span class="pill pill-draft">draft</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Shipping</h2>
+      <ul>
+        <li>
+          <a href="../70-shipping/packing.html">Packing your map</a>
+        </li>
+        <li>
+          <a href="../70-shipping/troubleshooting.html">Something is broken</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>AI tools</h2>
+      <ul>
+        <li>
+          <a href="../80-ai-tools/overview.html">Using AI with the editor</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/skills.html">The skills</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/toolkit.html">The toolkit</a>
+        </li>
+        <li>
+          <a href="../80-ai-tools/transferable.html">Lessons that transfer to other games</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix A - base modules</h2>
+      <ul>
+        <li>
+          <a href="../60-custom/base-modules-reference.html">Module descriptor reference</a>
+        </li>
+        <li>
+          <a href="../62-modules/index.html">Every base module</a>
+        </li>
+        <li>
+          <a href="../62-modules/gas-station.html">Gas station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/extra-storage.html">Warehouse</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/double-stock.html">Essentials storage</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/workshop.html">Workshop</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/repair-station.html">Repair station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/service-station.html">Service station</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/generator.html">Generator</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/helicopter.html">Helipad</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/parking.html">Expanded parking</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/drone-base.html">Cargo drone</a>
+<span class="pill pill-v-works">works</span>        </li>
+        <li>
+          <a href="../62-modules/com-center.html">Intelligence center</a>
+<span class="pill pill-v-broken">broken</span>        </li>
+        <li>
+          <a href="../62-modules/evacuator.html">Tow truck</a>
+<span class="pill pill-v-works">works</span>        </li>
+      </ul>
+    </section>
+    <section>
+      <h2>Appendix B - specialists</h2>
+      <ul>
+        <li>
+          <a href="../64-specialists/index.html">Every specialist</a>
+        </li>
+        <li>
+          <a href="../64-specialists/mechanic.html">Mechanics</a>
+        </li>
+        <li>
+          <a href="../64-specialists/logistician.html">Logisticians</a>
+        </li>
+        <li>
+          <a href="../64-specialists/hydrologist.html">Hydrologists</a>
+        </li>
+        <li>
+          <a href="../64-specialists/jaeger.html">Jaegers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/operator.html">Operators</a>
+        </li>
+        <li>
+          <a href="../64-specialists/manager.html">Managers</a>
+        </li>
+        <li>
+          <a href="../64-specialists/descriptor.html">Descriptor settings</a>
+        </li>
+        <li>
+          <a href="../64-specialists/modifiers.html">Every ability</a>
+        </li>
+      </ul>
+    </section>
+  </nav>
+
+  <main id="main">
+      <div class="page-head">
+        <p class="eyebrow">Custom content</p>
+        <h1>A quest item from start to finish</h1>
+<p class="lede">Your own named item with your own icon, picked up on the map, delivered to a zone, and paid for. Every step, in order.</p>      </div>
+      <div class="banner">
+        <strong>This page is draft.</strong>
+        It may be incomplete or unverified. Anything marked <em>unverified</em> has not
+        been proven in a running game.
+      </div>
+      <article class="prose"><h1 id="a-quest-item-from-start-to-finish">A quest item from start to finish<a class="headerlink" href="#a-quest-item-from-start-to-finish" title="Permanent link">#</a></h1>
+<p>This page builds one thing: an item with your own name and your own icon that the
+player picks up, carries, and hands in to finish a task.</p>
+<p>It was run in game on 2026-11-27. The task started, the popup showed the item&rsquo;s own
+name and icon, three items were delivered in two trips, the task closed and paid.</p>
+<p><img alt="A delivery popup showing a custom item's own name and icon, two of three delivered" src="../assets/custom/quest-item-delivery-popup.jpg" /></p>
+<p><img alt="The task's completed screen with its reward" src="../assets/custom/quest-item-task-completed.jpg" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Two things to know before you start</p>
+<p><strong>Delivery needs a patched game.</strong> The stock game can collect a named custom
+item but can&rsquo;t deliver it. The fix is two bytes in <code>initial.pak</code>, and every
+player of your map needs it. The patch tool is not released yet. See
+<a href="#step-6-patch-the-game">Step 6</a>. Without it, end the task with a visit
+instead of a delivery.</p>
+<p><strong>The task title shows a raw id.</strong> On a mod map the title reads
+<code>mod_&lt;level&gt;_&lt;task name&gt;</code>, as in the second picture. A fix is being tested. See
+<a href="#what-is-still-open">What is still open</a>.</p>
+</div>
+<h2 id="the-steps">The steps<a class="headerlink" href="#the-steps" title="Permanent link">#</a></h2>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What you make</th>
+<th>Where it lives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>An icon</td>
+<td>One square picture</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A name and an id</td>
+<td>Decided on paper</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The item mod</td>
+<td><code>Media\Mods\InventoryItemDesc_&lt;id&gt;.pak</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>A pickup zone that holds the item</td>
+<td>The map&rsquo;s zone settings</td>
+</tr>
+<tr>
+<td>5</td>
+<td>The task</td>
+<td>The map&rsquo;s objective settings</td>
+</tr>
+<tr>
+<td>6</td>
+<td>The delivery patch</td>
+<td><code>initial.pak</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>A test run</td>
+<td>In game</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="step-1-make-the-icon">Step 1: make the icon<a class="headerlink" href="#step-1-make-the-icon" title="Permanent link">#</a></h2>
+<p>Start with one square picture of the item on a <strong>transparent</strong> background. 256
+pixels or larger is plenty. Keep the shape simple: the smallest copy is 20 pixels
+wide.</p>
+<p>The game wants four copies:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>Size</th>
+<th>Where it shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;key&gt;_20.png</code></td>
+<td>20 x 20</td>
+<td>Requirements at Headquarters</td>
+</tr>
+<tr>
+<td><code>&lt;key&gt;_30.png</code></td>
+<td>30 x 30</td>
+<td>Summary and specialist screens</td>
+</tr>
+<tr>
+<td><code>&lt;key&gt;_40.png</code></td>
+<td>40 x 40</td>
+<td>The map</td>
+</tr>
+<tr>
+<td><code>&lt;key&gt;_60.png</code></td>
+<td>60 x 60</td>
+<td>The inventory slot and the delivery popup</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>&lt;key&gt;</code> is any short name in lower case, such as <code>idol</code>. Save all four as <strong>RGBA</strong>
+PNG, not palettised. A picture that is not square should be padded with
+transparent pixels, not stretched.</p>
+<h2 id="step-2-choose-the-name-and-the-id">Step 2: choose the name and the id<a class="headerlink" href="#step-2-choose-the-name-and-the-id" title="Permanent link">#</a></h2>
+<p>The <strong>name</strong> is what the player reads: <code>Golden Idol</code>. The <strong>id</strong> is what the map
+files use: <code>Golden_Idol</code>.</p>
+<p>Three rules for the id:</p>
+<ul>
+<li><strong>Letters, digits and underscores only. No spaces.</strong> The game splits some ids on
+  spaces, and the item can then never be handed in.</li>
+<li><strong>Not an id the game already uses.</strong> Two items with one id bind the wrong one,
+  with no error.</li>
+<li><strong>Decide it once.</strong> The id is typed into the pickup zone and into the task. A
+  mismatch fails silently.</li>
+</ul>
+<h2 id="step-3-build-the-item-mod">Step 3: build the item mod<a class="headerlink" href="#step-3-build-the-item-mod" title="Permanent link">#</a></h2>
+<p>The mod is a small pak with five files:</p>
+<div class="hl"><pre><span></span><code>InventoryItemDesc_Golden_Idol.pak
+  InventoryItemDesc              the descriptor (JSON, no file extension)
+  ui/textures/idol_20.png
+  ui/textures/idol_30.png
+  ui/textures/idol_40.png
+  ui/textures/idol_60.png
+</code></pre></div>
+
+<p>The descriptor. This is the one from the tested item, with the name changed:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;SslType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InventoryItemDesc&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;SslValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InventoryItemDesc&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;baseTypeAbility&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;uiName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Golden Idol&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;uiDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Old, heavy, and wanted.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon20&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;idol_20&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;icon30&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;idol_30&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon40&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;idol_40&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;icon60&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;idol_60&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;iconDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;defaultUseCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;craftRepairsCost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;craftUseCount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;recycleRepairsCost&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isUsable&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isHeavyItem&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isTreasure&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;canTakeInHq&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;notForSale&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;isRequired&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;notForCoopDel&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;notForDuplicate&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;canBeUsedInCave&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;hasIconOnMinimap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Golden_Idol&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>What matters here:</p>
+<ul>
+<li><strong><code>type</code> is <code>14</code></strong>, the general quest item type. A delivery needs a type that has
+  a default item, and 14 has one. A type without one, such as 42, faults when the
+  player presses the deliver key.</li>
+<li><strong>The icon fields hold the file names</strong> with no folder and no <code>.png</code>.</li>
+<li><strong>The outer <code>name</code> is the id.</strong> The inner <code>name</code> is always <code>InventoryItemDesc</code>.</li>
+<li><strong><code>canTakeInHq</code> is <code>false</code></strong>, so the item can&rsquo;t be bought before the run.</li>
+</ul>
+<p>Two ways to make the pak:</p>
+<ul>
+<li><strong>In the editor:</strong> <strong>EXP MODs creation</strong>, <strong>File &gt; New Mod &gt; Inventory Item</strong>.
+  Fill in the fields, save, add the four PNGs under <code>ui\textures</code> in the mod&rsquo;s
+  folder, then <strong>File &gt; Pack</strong>.</li>
+<li><strong>By hand:</strong> zip the five files with normal (deflate) compression and name the
+  file <code>.pak</code>. Mod paks must be compressed. Level paks must not be.</li>
+</ul>
+<p>Put the pak in <code>Documents\My Games\Expeditions\Media\Mods</code> and restart the game.</p>
+<p>Every field is explained on <a href="items.html">Custom inventory items</a>.</p>
+<h2 id="step-4-put-the-item-on-the-map">Step 4: put the item on the map<a class="headerlink" href="#step-4-put-the-item-on-the-map" title="Permanent link">#</a></h2>
+<p>The item sits in a loot zone until the player takes it. On the pickup zone, add a
+<code>ZonePropertyInventoryStorage</code> property with the item in a slot:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZoneItem&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;chance&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;itemName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Golden_Idol&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>Add one slot per item the task needs. Three to deliver means three slots.</li>
+<li>Set the zone&rsquo;s <code>capacity</code> above <code>0</code>, or nothing shows.</li>
+<li>Give the zone an id with <strong>no spaces</strong>, or nothing can be taken from it.</li>
+</ul>
+<p>You also need the zone the items are delivered to, and for a task, the zone that
+hands the task out. See
+<a href="../40-zones/storage-zones.html">Loot, storage and airdrops</a>.</p>
+<h2 id="step-5-build-the-task">Step 5: build the task<a class="headerlink" href="#step-5-build-the-task" title="Permanent link">#</a></h2>
+<p>Use <strong>one stage</strong> with two jobs in it:</p>
+<div class="hl"><pre><span></span><code>  stage[0]  ├─ takeInventory        optional  &quot;Collect the idols&quot;
+            └─ objectConstruction   required  &quot;Bring them to camp&quot;
+</code></pre></div>
+
+<p>Collecting is optional and delivering is required. A player who already carries
+the items is then not sent back for more, and the stage still has its one required
+job. Do not give the collect job a stage of its own as an optional job: a stage
+with nothing required in it is an error. See
+<a href="../50-missions/stages.html">Stages and substages</a>.</p>
+<p>Both jobs name the item the same way:</p>
+<div class="hl"><pre><span></span><code><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InventoryPack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;invId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Golden_Idol&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>The collect job, inside the stage:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&quot;takeInventory&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TakeInventoryPackSettings&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;zoneToTakeInvFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TakeInventorySettings&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;OptionalToPerform&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;inventoryToTake&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InventoryPack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;invId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Golden_Idol&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;uiDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Collect three idols from the ruin.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;zoneGlobalId&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZoneGlobalIdentificator&quot;</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">&quot;globalZoneId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;pickup zone&gt;&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The deliver job, in the same stage:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&quot;objectConstruction&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ObjectConstructionPackSettings&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;zoneToFill&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ObjectConstructionZoneSetting&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;OptionalToPerform&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;inventory&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;InventoryPack&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                   </span><span class="nt">&quot;invId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Golden_Idol&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;inventories&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nt">&quot;fuelNum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;repairsNum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;electroNum&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;uiDesc&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deliver three idols to camp.&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;globalZoneId&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ZoneGlobalIdentificator&quot;</span><span class="p">,</span>
+<span class="w">                      </span><span class="nt">&quot;globalZoneId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;delivery zone&gt;&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Pick the zones in the editor so it writes the full zone id for you. The pieces
+above show only the fields this recipe changes; leave the rest as the editor
+writes them.</p>
+<p><strong>The reward.</strong> Put money on the stage:</p>
+<div class="hl"><pre><span></span><code><span class="nt">&quot;rewards&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;ObjectiveRewardMoney&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;$type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ObjectiveRewardMoney&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;amount&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>The tested task carried 1,000 on the stage and 5,000 on the task. The completed
+screen showed 1,000. Whether the task&rsquo;s own amount was also paid has not been
+checked.</p>
+<p><strong>The text.</strong> The task&rsquo;s <code>description</code> shows on the completed screen. Each job&rsquo;s
+<code>uiDesc</code> is its line in the task list.</p>
+<p>Pack the map. Then check the packed map, not the source: the game reads the pak.</p>
+<h2 id="step-6-patch-the-game">Step 6: patch the game<a class="headerlink" href="#step-6-patch-the-game" title="Permanent link">#</a></h2>
+<p>The stock game can&rsquo;t finish a delivery that names an item. When the player presses
+the key, the game compares your item&rsquo;s id with a blank id, and the two never match.
+Nothing happens and no error shows. The full reason is on
+<a href="items.html#delivering-a-custom-item">Custom inventory items</a>.</p>
+<p>The patch changes two bytes in <code>initial_release.sslbundle</code>, a file inside
+<code>initial.pak</code>:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Offset in the bundle</th>
+<th>Stock</th>
+<th>Patched</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x310E6D</code></td>
+<td><code>8A</code></td>
+<td><code>88</code></td>
+</tr>
+<tr>
+<td><code>0x310E73</code></td>
+<td><code>84</code></td>
+<td><code>86</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>After it, the check tests the item&rsquo;s type twice and ignores the id. The game still
+counts and removes items by their real id, so another item of the same type can&rsquo;t
+stand in for yours. Stock deliveries use a blank id and behave as before.</p>
+<div class="admonition danger">
+<p class="admonition-title">Never rebuild <code>initial.pak</code> as a new zip</p>
+<p>A rewritten <code>initial.pak</code> crashed the game on load on the test install. The
+bundle must be replaced in place, with every other byte of the pak left
+exactly as it was. Keep a copy of the stock file first.</p>
+</div>
+<p>Every player needs the patched file. The tool that applies it is not released yet.</p>
+<h2 id="step-7-test-it">Step 7: test it<a class="headerlink" href="#step-7-test-it" title="Permanent link">#</a></h2>
+<ol>
+<li>Start the task and collect the items.</li>
+<li>Drive to the delivery zone and open the popup. It should show the item&rsquo;s own
+   name and icon.</li>
+<li>Deliver.</li>
+</ol>
+<p>Reading the popup:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A counter such as <code>2/3</code></td>
+<td>Delivered so far, out of needed. <strong>Not</strong> how many are on the truck</td>
+</tr>
+<tr>
+<td><code>0/3</code> with the items on board</td>
+<td>Normal. Nothing has been handed in yet</td>
+</tr>
+<tr>
+<td>The green line &ldquo;The resources are sufficient&rdquo;</td>
+<td>The truck has something to deliver</td>
+</tr>
+<tr>
+<td><code>&lt;item&gt; x1</code></td>
+<td>How many are on the truck now</td>
+</tr>
+<tr>
+<td><code>Deliver 1</code></td>
+<td>What one key press will hand in</td>
+</tr>
+</tbody>
+</table></div>
+<p>Part deliveries work. In the test, two items went in first and the counter read
+<code>2/3</code>, as in the picture at the top. The third closed the task.</p>
+<p>If it does not work:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The key does nothing, popup looks right</td>
+<td>The game is not patched</td>
+</tr>
+<tr>
+<td>The popup shows the wrong item name</td>
+<td>The job&rsquo;s <code>invId</code> is blank, so the game asks for the type&rsquo;s default item</td>
+</tr>
+<tr>
+<td>A script fault on the key press</td>
+<td>The item&rsquo;s type has no default item. Use 14</td>
+</tr>
+<tr>
+<td>An empty icon slot</td>
+<td>The icon files are missing from the pak, or the field names don&rsquo;t match the file names</td>
+</tr>
+<tr>
+<td>Nothing to take from the pickup zone</td>
+<td>The zone id has a space, or <code>capacity</code> is <code>0</code></td>
+</tr>
+<tr>
+<td>The task errors on load</td>
+<td>A stage has only optional jobs</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="what-is-still-open">What is still open<a class="headerlink" href="#what-is-still-open" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>The task title.</strong> A mod map shows <code>mod_&lt;level&gt;_&lt;task name&gt;</code> as the title of
+  every objective. The task has no separate title field. A text file in the map
+  pak, keyed by that full id, did not change it. More tests are under way.</li>
+<li><strong>The task-level reward.</strong> Not confirmed as paid. Put the money on the stage.</li>
+<li><strong>A required collect job, and collect and deliver as two stages.</strong> Only the
+  one-stage form above has been run to the end.</li>
+<li><strong>Two different custom items in one stage.</strong></li>
+<li><strong>Consoles.</strong> Whether a patched <code>initial.pak</code> can reach them is unknown.</li>
+</ul></article>
+
+      <nav class="seq" aria-label="Previous and next page">
+<a class="seq-prev" href="../60-custom/items.html"><span>Previous</span>Custom inventory items</a><a class="seq-next" href="../60-custom/fob-modules.html"><span>Next</span>Custom FOB modules</a>      </nav>
+  </main>
+
+  <aside class="onthispage" aria-label="On this page">
+    <p>On this page</p>
+    <div class="toc">
+<ul>
+<li><a href="#the-steps">The steps</a></li>
+<li><a href="#step-1-make-the-icon">Step 1: make the icon</a></li>
+<li><a href="#step-2-choose-the-name-and-the-id">Step 2: choose the name and the id</a></li>
+<li><a href="#step-3-build-the-item-mod">Step 3: build the item mod</a></li>
+<li><a href="#step-4-put-the-item-on-the-map">Step 4: put the item on the map</a></li>
+<li><a href="#step-5-build-the-task">Step 5: build the task</a></li>
+<li><a href="#step-6-patch-the-game">Step 6: patch the game</a></li>
+<li><a href="#step-7-test-it">Step 7: test it</a></li>
+<li><a href="#what-is-still-open">What is still open</a></li>
+</ul>
+</div>
+
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <p>
+    A community guide to building maps for <em>Expeditions: A MudRunner Game</em>.
+    Not affiliated with or endorsed by Saber Interactive. Facts here are checked
+    against the editor's own type schema and against working maps; where a claim has
+    not been proven in a running game it says so.
+  </p>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var menu = document.getElementById("menu");
+  var side = document.getElementById("sidebar");
+  menu.addEventListener("click", function () {
+    var open = side.classList.toggle("open");
+    menu.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  var q = document.getElementById("q");
+  var out = document.getElementById("results");
+  var idx = null;
+
+  function load() {
+    if (idx) return Promise.resolve(idx);
+    return fetch("../search.json").then(function (r) { return r.json(); })
+      .then(function (j) { idx = j; return j; });
+  }
+  q.addEventListener("focus", load);
+
+  function score(page, terms) {
+    var t = page.t.toLowerCase(), s = (page.s || "").toLowerCase(), x = (page.x || "").toLowerCase();
+    var total = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var k = terms[i];
+      if (!k) continue;
+      var hit = 0;
+      if (t.indexOf(k) > -1) hit += 12;
+      if (s.indexOf(k) > -1) hit += 4;
+      if (x.indexOf(k) > -1) hit += 1;
+      if (!hit) return 0;          // every term must appear somewhere
+      total += hit;
+    }
+    return total;
+  }
+
+  function render(list) {
+    if (!list.length) {
+      out.innerHTML = '<p class="nohit">Nothing matched. Try a shorter word.</p>';
+      out.hidden = false;
+      return;
+    }
+    out.innerHTML = list.map(function (p) {
+      return '<a href="../' + p.u + '"><strong>' + p.t + '</strong>' +
+             '<em>' + p.p + '</em>' + (p.s ? '<span>' + p.s + '</span>' : '') + '</a>';
+    }).join("");
+    out.hidden = false;
+  }
+
+  q.addEventListener("input", function () {
+    var v = q.value.trim().toLowerCase();
+    if (v.length < 2) { out.hidden = true; return; }
+    load().then(function (pages) {
+      var terms = v.split(/\s+/);
+      var hits = pages.map(function (p) { return { p: p, n: score(p, terms) }; })
+                      .filter(function (h) { return h.n > 0; })
+                      .sort(function (a, b) { return b.n - a.n; })
+                      .slice(0, 8)
+                      .map(function (h) { return h.p; });
+      render(hits);
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!out.contains(e.target) && e.target !== q) out.hidden = true;
+  });
+  q.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { out.hidden = true; q.blur(); }
+  });
+})();
+</script>
+
+
+<script>
+/* Keep the sidebar where the reader left it.
+   Every page is its own HTML file, so the nav is re-created on each
+   navigation and starts at the top. Scrolling back down to pick the next
+   module makes a 14-page appendix tedious. Persist the offset for the tab. */
+(function () {
+  var nav = document.getElementById('sidebar');
+  if (!nav) return;
+  var KEY = 'guide.sidebar.scroll';
+  try {
+    var saved = sessionStorage.getItem(KEY);
+    if (saved !== null) nav.scrollTop = parseInt(saved, 10) || 0;
+  } catch (e) {}
+  var pending = null;
+  nav.addEventListener('scroll', function () {
+    if (pending) return;
+    pending = setTimeout(function () {
+      pending = null;
+      try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+    }, 120);
+  }, {passive: true});
+  /* save immediately on the way out, so a click is never missed */
+  nav.addEventListener('click', function () {
+    try { sessionStorage.setItem(KEY, String(nav.scrollTop)); } catch (e) {}
+  }, true);
+  /* and bring the current page into view if it is off-screen */
+  var cur = nav.querySelector('a[aria-current], a.current, .current a');
+  if (cur && cur.getBoundingClientRect) {
+    var r = cur.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    if (r.top < n.top || r.bottom > n.bottom) {
+      cur.scrollIntoView({block: 'center'});
+    }
+  }
+})();
+</script>
+</body>
+</html>

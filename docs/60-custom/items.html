@@ -164,6 +164,9 @@
           <a href="../60-custom/items.html" aria-current="page">Custom inventory items</a>
         </li>
         <li>
+          <a href="../60-custom/quest-item-pipeline.html">A quest item from start to finish</a>
+<span class="pill pill-draft">draft</span>        </li>
+        <li>
           <a href="../60-custom/fob-modules.html">Custom FOB modules</a>
         </li>
       </ul>
@@ -1016,7 +1019,10 @@ comparison repeats the type test and the id stops mattering. The popup&rsquo;s c
 removal still use the real id, so another item of the same type can&rsquo;t stand in for
 yours. A patched <code>initial.pak</code> has to be installed by every player, and this one is
 not released yet.</p>
-<p><strong>To build one:</strong></p>
+<p><strong>To build one,</strong> follow
+<a href="quest-item-pipeline.html">A quest item from start to finish</a>: the icon, the item
+mod, the pickup zone, the task, the patch and the test, each with its own files.
+In short:</p>
 <ol>
 <li>Make the item: a descriptor and four icons, as in
    <a href="#what-an-item-mod-contains">What an item mod contains</a>. Use type <code>14</code>, an id with
@@ -1032,8 +1038,8 @@ item, then reach a zone. The item stays on the truck.</p>
 <li>Whether a named <code>QUEST_ITEM</code> works as a construction-zone requirement. Saber&rsquo;s
   guide marks the field &ldquo;not implemented&rdquo;. Every shipped example uses consumable
   types.</li>
-<li>Delivering more than one custom item at once, and two deliveries of one type in a
-  single stage.</li>
+<li>Two deliveries of one type in a single stage. (Several of one custom item, handed
+  in over more than one trip, is tested and works.)</li>
 <li>The four-mod HQ limit, in practice.</li>
 <li>What <code>notForSale</code>, <code>isRequired</code>, <code>notForCoopDel</code>, <code>notForDuplicate</code>,
   <code>canBeUsedInCave</code>, <code>hasIconOnMinimap</code>, <code>canBeUsedFromDrone</code> and
@@ -1043,7 +1049,7 @@ item, then reach a zone. The item stays on the truck.</p>
 </ul></article>
 
       <nav class="seq" aria-label="Previous and next page">
-<a class="seq-prev" href="../60-custom/specialists.html"><span>Previous</span>Custom specialists</a><a class="seq-next" href="../60-custom/fob-modules.html"><span>Next</span>Custom FOB modules</a>      </nav>
+<a class="seq-prev" href="../60-custom/specialists.html"><span>Previous</span>Custom specialists</a><a class="seq-next" href="../60-custom/quest-item-pipeline.html"><span>Next</span>A quest item from start to finish</a>      </nav>
   </main>
 
   <aside class="onthispage" aria-label="On this page">

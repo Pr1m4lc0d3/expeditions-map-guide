@@ -448,7 +448,10 @@ removal still use the real id, so another item of the same type can't stand in f
 yours. A patched `initial.pak` has to be installed by every player, and this one is
 not released yet.
 
-**To build one:**
+**To build one,** follow
+[A quest item from start to finish](quest-item-pipeline.html): the icon, the item
+mod, the pickup zone, the task, the patch and the test, each with its own files.
+In short:
 
 1. Make the item: a descriptor and four icons, as in
    [What an item mod contains](#what-an-item-mod-contains). Use type `14`, an id with
@@ -465,8 +468,8 @@ item, then reach a zone. The item stays on the truck.
 - Whether a named `QUEST_ITEM` works as a construction-zone requirement. Saber's
   guide marks the field "not implemented". Every shipped example uses consumable
   types.
-- Delivering more than one custom item at once, and two deliveries of one type in a
-  single stage.
+- Two deliveries of one type in a single stage. (Several of one custom item, handed
+  in over more than one trip, is tested and works.)
 - The four-mod HQ limit, in practice.
 - What `notForSale`, `isRequired`, `notForCoopDel`, `notForDuplicate`,
   `canBeUsedInCave`, `hasIconOnMinimap`, `canBeUsedFromDrone` and
